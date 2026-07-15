@@ -112,16 +112,19 @@ export default function Footer() {
                 <Link href="/" className="hover:text-slate-950 transition-colors">Home Page</Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-slate-950 transition-colors">Automation Catalog</Link>
+                <Link href="/catalog" className="hover:text-slate-950 transition-colors">Automation Solutions</Link>
+              </li>
+              <li>
+                <Link href="/website-development" className="hover:text-slate-950 transition-colors">Web Development</Link>
+              </li>
+              <li>
+                <Link href="/ai-integration" className="hover:text-slate-950 transition-colors">AI Integration</Link>
+              </li>
+              <li>
+                <Link href="/deployment" className="hover:text-slate-950 transition-colors">Deployment Models</Link>
               </li>
               <li>
                 <Link href="/quote" className="hover:text-slate-950 transition-colors">Quote Builder</Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className="hover:text-slate-950 transition-colors">Our Work Examples</Link>
-              </li>
-              <li>
-                <Link href="/booking" className="hover:text-slate-950 transition-colors">Book a Consultation</Link>
               </li>
             </ul>
           </div>
@@ -131,19 +134,19 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-slate-950">What We Do</h4>
             <ul className="flex flex-col gap-2.5 text-xs text-slate-600">
               <li>
-                <span className="hover:text-slate-950 transition-colors">Automatic Outbound Outreach</span>
+                <Link href="/catalog" className="hover:text-slate-950 transition-colors">AI Workflow Automation</Link>
               </li>
               <li>
-                <span className="hover:text-slate-950 transition-colors">Social Post Schedulers</span>
+                <Link href="/website-development" className="hover:text-slate-950 transition-colors">Website Design & Dev</Link>
               </li>
               <li>
-                <span className="hover:text-slate-950 transition-colors">Google Review and Referral tools</span>
+                <Link href="/ai-integration" className="hover:text-slate-950 transition-colors">Custom AI Integration</Link>
               </li>
               <li>
-                <span className="hover:text-slate-950 transition-colors">AI Customer Support Assistants</span>
+                <Link href="/deployment" className="hover:text-slate-950 transition-colors">Managed Cloud Hosting</Link>
               </li>
               <li>
-                <span className="hover:text-slate-950 transition-colors">CRM and Calendar Sync</span>
+                <Link href="/deployment" className="hover:text-slate-950 transition-colors">Dedicated Deployments</Link>
               </li>
             </ul>
           </div>

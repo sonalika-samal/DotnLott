@@ -9,10 +9,11 @@ import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Catalog', path: '/catalog' },
-  { name: 'Quote Builder', path: '/quote' },
+  { name: 'Solutions', path: '/catalog' },
+  { name: 'Web Dev', path: '/website-development' },
+  { name: 'AI Integration', path: '/ai-integration' },
+  { name: 'Deployment', path: '/deployment' },
   { name: 'Portfolio', path: '/portfolio' },
-  { name: 'Book Consultation', path: '/booking' },
 ];
 
 export default function Navbar() {
