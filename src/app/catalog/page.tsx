@@ -202,8 +202,8 @@ const pricingPlans = [
       'Updates & Minor Maintenance',
       'Basic Performance Logging'
     ],
-    price: 'Starting at ₹15,000',
-    subPrice: '$199 / month',
+    price: 'Starting at ₹10,000',
+    subPrice: '$129 One-Time Setup',
     cta: 'Book Starter Consultation',
     popular: false
   },
@@ -218,8 +218,8 @@ const pricingPlans = [
       'Business Analytics Dashboard',
       'Monthly Optimization Audits'
     ],
-    price: 'Starting at ₹40,000',
-    subPrice: '$499 / month',
+    price: 'Starting at ₹20,000',
+    subPrice: '$249 One-Time Setup',
     cta: 'Book Growth Consultation',
     popular: true
   },
@@ -373,10 +373,10 @@ export default function CatalogPage() {
           <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Platform Pricing Structure</span>
             <h2 className="font-display text-3xl font-extrabold text-slate-900">
-              Pricing Based on Automation Suites
+              One-Time Setup Configurations
             </h2>
             <p className="text-sm text-slate-650 font-light leading-relaxed">
-              We do not charge for individual workflows. Pricing scales cleanly based on the number of active Automation Suites and your hosting deployment choices.
+              We charge a single one-time setup fee for developing your suites. Monthly cloud rental or dedicated client VPS hosting models will be discussed during discovery.
             </p>
           </div>
 
