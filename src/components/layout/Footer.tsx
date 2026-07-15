@@ -141,8 +141,8 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-sm font-bold uppercase tracking-wider text-slate-950">Contact Us</h4>
             <ul className="flex flex-col gap-3 text-xs text-slate-600">
-              <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-brand-blue flex-shrink-0 mt-0.5" />
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-brand-blue flex-shrink-0 translate-y-[1.5px]" />
                 <a href="mailto:connect@dotnlott.com" className="hover:text-slate-900 break-all transition-colors">
                   connect@dotnlott.com
                 </a>
@@ -160,8 +160,8 @@ export default function Footer() {
                   </div>
                 </div>
               </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-brand-blue flex-shrink-0 mt-0.5" />
+              <li className="flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-brand-blue flex-shrink-0 translate-y-[1.5px]" />
                 <span>Cuttack, Odisha, India</span>
               </li>
             </ul>
