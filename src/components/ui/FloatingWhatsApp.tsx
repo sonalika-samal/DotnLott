@@ -26,8 +26,6 @@ export default function FloatingWhatsApp() {
 
     if (pathname === '/catalog') {
       text = 'Hey Sonalika, I was browsing your Automation Catalog and want to learn more about your pre-built workflows.';
-    } else if (pathname === '/quote') {
-      text = 'Hey Sonalika, I am looking to get a custom automation quote for my business operations.';
     } else if (pathname === '/booking') {
       text = 'Hey Sonalika, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
     } else if (pathname === '/portfolio') {
