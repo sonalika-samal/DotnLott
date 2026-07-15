@@ -44,6 +44,12 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Mascot Co-Pilot</span>
+                <span className="text-[11px] text-brand-blue font-semibold leading-tight">
+                  "Ready to save you hours of work?"
+                </span>
+              </div>
             </div>
 
             {/* Social Links */}
@@ -156,7 +162,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-blue flex-shrink-0 mt-0.5" />
-                <span>Mumbai, Maharashtra, India</span>
+                <span>Cuttack, Odisha, India</span>
               </li>
             </ul>
           </div>
@@ -171,7 +177,7 @@ export default function Footer() {
               © {currentYear} DotnLott. All rights reserved.
             </p>
             <p className="text-slate-500 max-w-xl">
-              DotnLott is a venture under A2Z Version Private Limited. Registered Indian Private Limited Company. CIN: U72900MH2026PTC123456
+              DotnLott is a venture under A2Z Version Private Limited. Registered Indian Private Limited Company. CIN: U47721BR2026PTC085973
             </p>
           </div>
 
