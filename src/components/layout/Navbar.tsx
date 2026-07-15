@@ -63,7 +63,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-9 h-9 overflow-hidden rounded-lg bg-slate-900 border border-white/10 p-1 flex items-center justify-center">
               <Image
-                src="/logo.png"
+                src="/logo-v2.png"
                 alt="DotnLott Logo"
                 width={32}
                 height={32}

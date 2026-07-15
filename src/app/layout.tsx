@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
     description: 'Transform manual operations into blazing fast automatic workflows. Custom AI & Web development.',
     type: 'website',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'DotnLott Logo' }],
+    images: [{ url: '/logo-v2.png', width: 512, height: 512, alt: 'DotnLott Logo' }],
   },
 };
 

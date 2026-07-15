@@ -18,7 +18,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <div className="relative w-8 h-8 overflow-hidden rounded-lg bg-slate-100 border border-slate-200 p-1 flex items-center justify-center">
                 <Image
-                  src="/logo.png"
+                  src="/logo-v2.png"
                   alt="DotnLott Logo"
                   width={24}
                   height={24}

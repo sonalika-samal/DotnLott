@@ -316,7 +316,7 @@ export default function HomePage() {
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-blue to-brand-purple p-[1px] glow-blue flex items-center justify-center relative overflow-hidden">
             <div className="w-full h-full bg-white rounded-2xl flex items-center justify-center p-2.5">
               <Image
-                src="/logo.png"
+                src="/logo-v2.png"
                 alt="DotnLott Logo Center"
                 width={36}
                 height={36}
