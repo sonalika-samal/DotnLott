@@ -21,7 +21,7 @@ export default function FloatingWhatsApp() {
 
   // Helper to generate dynamic prefilled WhatsApp message based on current page
   const getWhatsAppLink = () => {
-    const phoneNumber = '919876543210'; // Client phone number
+    const phoneNumber = '917846969508'; // Client phone number
     let text = 'Hi DotnLott! I would like to inquire about your workflow automation services.';
 
     if (pathname === '/catalog') {
