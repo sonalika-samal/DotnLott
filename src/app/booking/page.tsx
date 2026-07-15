@@ -379,13 +379,29 @@ export default function BookingPage() {
                             <a href="tel:+917846969508" className="font-bold text-slate-900 hover:text-brand-purple transition-colors">
                               +91 78469 69508
                             </a>
-                            <span className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 px-1 py-0.5 rounded leading-none uppercase">WhatsApp</span>
+                            <a
+                              href="https://wa.me/917846969508?text=Hey%20Sonalika%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 px-1 py-0.5 rounded leading-none uppercase transition-colors"
+                              title="WhatsApp Sonalika"
+                            >
+                              WhatsApp
+                            </a>
                           </div>
                           <div className="flex items-center gap-1.5">
                             <a href="tel:+918544121551" className="font-bold text-slate-900 hover:text-brand-purple transition-colors">
                               +91 85441 21551
                             </a>
-                            <span className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 px-1 py-0.5 rounded leading-none uppercase">WhatsApp</span>
+                            <a
+                              href="https://wa.me/918544121551?text=Hi%20DotnLott%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 px-1 py-0.5 rounded leading-none uppercase transition-colors"
+                              title="WhatsApp Support"
+                            >
+                              WhatsApp
+                            </a>
                           </div>
                         </div>
                       </div>

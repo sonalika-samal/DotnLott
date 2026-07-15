@@ -22,16 +22,16 @@ export default function FloatingWhatsApp() {
   // Helper to generate dynamic prefilled WhatsApp message based on current page
   const getWhatsAppLink = () => {
     const phoneNumber = '917846969508'; // Client phone number
-    let text = 'Hi DotnLott! I would like to inquire about your workflow automation services.';
+    let text = 'Hey Sonalika, I would like to inquire about your workflow automation services.';
 
     if (pathname === '/catalog') {
-      text = 'Hi DotnLott! I was browsing your Automation Catalog and want to learn more about your pre-built workflows.';
+      text = 'Hey Sonalika, I was browsing your Automation Catalog and want to learn more about your pre-built workflows.';
     } else if (pathname === '/quote') {
-      text = 'Hi DotnLott! I am looking to get a custom automation quote for my business operations.';
+      text = 'Hey Sonalika, I am looking to get a custom automation quote for my business operations.';
     } else if (pathname === '/booking') {
-      text = 'Hi DotnLott! I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
+      text = 'Hey Sonalika, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
     } else if (pathname === '/portfolio') {
-      text = 'Hi DotnLott! I saw your portfolio case studies and would love to see how you can automate similar flows for us.';
+      text = 'Hey Sonalika, I saw your portfolio case studies and would love to see how you can automate similar flows for us.';
     }
 
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
@@ -64,7 +64,7 @@ export default function FloatingWhatsApp() {
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-950 rounded-full animate-pulse" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white leading-none">Lott (DotnLott Bot)</span>
+                  <span className="text-xs font-bold text-white leading-none">Sonalika (DotnLott)</span>
                   <span className="text-[10px] text-zinc-400">Online & Ready</span>
                 </div>
               </div>

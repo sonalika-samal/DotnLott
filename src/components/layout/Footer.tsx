@@ -55,7 +55,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-2.5 mt-3">
               <a
-                href="https://wa.me/917846969508"
+                href="https://wa.me/917846969508?text=Hey%20Sonalika%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-7 h-7 rounded-full bg-slate-50 hover:bg-emerald-50 text-slate-500 hover:text-emerald-600 flex items-center justify-center border border-slate-200/60 transition-all shadow-sm hover:scale-105"
@@ -163,11 +163,27 @@ export default function Footer() {
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center gap-1.5">
                     <a href="tel:+917846969508" className="hover:text-slate-900 transition-colors">+91 78469 69508</a>
-                    <span className="text-[9px] font-bold text-slate-400 bg-slate-100 px-1 py-0.5 rounded leading-none">WA</span>
+                    <a
+                      href="https://wa.me/917846969508?text=Hey%20Sonalika%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[9px] font-bold text-slate-400 bg-slate-100 hover:bg-slate-200 hover:text-slate-600 px-1 py-0.5 rounded leading-none transition-colors"
+                      title="WhatsApp Sonalika"
+                    >
+                      WA
+                    </a>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <a href="tel:+918544121551" className="hover:text-slate-900 transition-colors">+91 85441 21551</a>
-                    <span className="text-[9px] font-bold text-slate-400 bg-slate-100 px-1 py-0.5 rounded leading-none">WA</span>
+                    <a
+                      href="https://wa.me/918544121551?text=Hi%20DotnLott%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[9px] font-bold text-slate-400 bg-slate-100 hover:bg-slate-200 hover:text-slate-600 px-1 py-0.5 rounded leading-none transition-colors"
+                      title="WhatsApp Support"
+                    >
+                      WA
+                    </a>
                   </div>
                 </div>
               </li>
