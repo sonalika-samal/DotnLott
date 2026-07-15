@@ -618,22 +618,22 @@ export default function HomePage() {
           </h2>
           
           <p className="text-xs text-slate-450 max-w-xl leading-relaxed font-light">
-            Deploy self-healing automation models. Get a custom proposal and estimate in minutes with our Quote Builder, or book a consultation call directly.
+            Deploy self-healing automation models. Start with a consultation call to discuss your company requirements and mapping workflow needs.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
             <Link
-              href="/quote"
+              href="/booking"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-slate-950 bg-white rounded-full hover:bg-slate-100 transition-colors shadow-lg"
             >
-              Get Custom Quote
+              Book Consultation Call
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/booking"
+              href="/catalog"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white border border-white/20 hover:bg-white/5 rounded-full transition-colors"
             >
-              Schedule Consultation
+              Explore Suites Catalog
             </Link>
           </div>
         </div>

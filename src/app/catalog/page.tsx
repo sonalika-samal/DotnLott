@@ -202,8 +202,9 @@ const pricingPlans = [
       'Updates & Minor Maintenance',
       'Basic Performance Logging'
     ],
-    price: 'Contact Sales',
-    cta: 'Select Starter Plan',
+    price: 'Starting at ₹15,000',
+    subPrice: '$199 / month',
+    cta: 'Book Starter Consultation',
     popular: false
   },
   {
@@ -217,8 +218,9 @@ const pricingPlans = [
       'Business Analytics Dashboard',
       'Monthly Optimization Audits'
     ],
-    price: 'Contact Sales',
-    cta: 'Select Growth Plan',
+    price: 'Starting at ₹40,000',
+    subPrice: '$499 / month',
+    cta: 'Book Growth Consultation',
     popular: true
   },
   {
@@ -232,40 +234,14 @@ const pricingPlans = [
       'Complete Code & Database Ownership',
       'Custom API Integrations & Webhooks'
     ],
-    price: 'Contact Sales',
-    cta: 'Select Enterprise Plan',
+    price: 'Custom Quote',
+    subPrice: 'SLA Scope Based',
+    cta: 'Book Enterprise Consultation',
     popular: false
   }
 ];
 
 export default function CatalogPage() {
-  const [selectedSuiteIds, setSelectedSuiteIds] = useState<string[]>([]);
-  const [mounted, setMounted] = useState(false);
-
-  // Sync with localStorage
-  useEffect(() => {
-    setMounted(true);
-    const cart = localStorage.getItem('dotnlott_quote_suites');
-    if (cart) {
-      try {
-        setSelectedSuiteIds(JSON.parse(cart));
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  }, []);
-
-  const toggleSuiteSelection = (id: string) => {
-    let updated: string[];
-    if (selectedSuiteIds.includes(id)) {
-      updated = selectedSuiteIds.filter((item) => item !== id);
-    } else {
-      updated = [...selectedSuiteIds, id];
-    }
-    setSelectedSuiteIds(updated);
-    localStorage.setItem('dotnlott_quote_suites', JSON.stringify(updated));
-  };
-
   return (
     <div className="relative min-h-screen bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Ambient backgrounds */}
@@ -287,39 +263,15 @@ export default function CatalogPage() {
           </p>
         </div>
 
-        {/* Floating Cart Indicator */}
-        {mounted && selectedSuiteIds.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="fixed bottom-24 left-1/2 -translate-x-1/2 z-30 bg-gradient-to-r from-brand-blue to-brand-purple p-[1px] rounded-full shadow-2xl glow-purple"
-          >
-            <div className="bg-white px-6 py-3 rounded-full flex items-center gap-4 text-xs font-bold uppercase tracking-wider text-slate-800">
-              <span>{selectedSuiteIds.length} Suite{selectedSuiteIds.length > 1 ? 's' : ''} Selected</span>
-              <div className="h-4 w-px bg-slate-200" />
-              <Link
-                href="/quote"
-                className="flex items-center gap-1.5 text-brand-blue hover:text-brand-purple transition-colors"
-              >
-                Configure Quote
-                <Calculator className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        )}
-
         {/* Grid of 10 Suites */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {suites.map((suite) => {
             const IconComponent = suite.icon;
-            const isSelected = selectedSuiteIds.includes(suite.id);
 
             return (
               <div
                 key={suite.id}
-                className={`bg-white border rounded-3xl p-8 flex flex-col justify-between gap-6 transition-all duration-300 shadow-sm hover:shadow-md group ${suite.color} ${
-                  isSelected ? 'border-brand-purple/45 shadow-[0_4px_20px_rgba(157,78,221,0.08)] ring-1 ring-brand-purple/20' : ''
-                }`}
+                className={`bg-white border rounded-3xl p-8 flex flex-col justify-between gap-6 transition-all duration-300 shadow-sm hover:shadow-md group ${suite.color}`}
               >
                 <div className="flex flex-col gap-4">
                   {/* Card top banner */}
@@ -372,26 +324,12 @@ export default function CatalogPage() {
                     Consult Expert <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
 
-                  <button
-                    onClick={() => toggleSuiteSelection(suite.id)}
-                    className={`inline-flex items-center gap-1.5 py-2 px-4 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
-                      isSelected
-                        ? 'bg-brand-blue/10 border border-brand-blue/30 text-brand-blue'
-                        : 'bg-slate-900 text-white hover:bg-slate-800'
-                    }`}
+                  <Link
+                    href="/booking"
+                    className="inline-flex items-center gap-1.5 py-2 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-white hover:bg-slate-800 transition-colors"
                   >
-                    {isSelected ? (
-                      <>
-                        <Check className="w-3.5 h-3.5" />
-                        Selected
-                      </>
-                    ) : (
-                      <>
-                        <Plus className="w-3.5 h-3.5" />
-                        Add to Quote
-                      </>
-                    )}
-                  </button>
+                    Inquire Now
+                  </Link>
                 </div>
               </div>
             );
@@ -462,8 +400,9 @@ export default function CatalogPage() {
                     <p className="text-xs text-slate-500 font-light leading-normal">{plan.desc}</p>
                   </div>
 
-                  <div className="flex items-baseline gap-1 mt-2">
-                    <span className="text-3xl font-black text-slate-900">{plan.price}</span>
+                  <div className="flex flex-col gap-1 mt-2">
+                    <span className="text-2xl font-black text-slate-900 leading-none">{plan.price}</span>
+                    <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider">{plan.subPrice}</span>
                   </div>
 
                   <ul className="flex flex-col gap-3 border-t border-slate-100 pt-6 text-xs text-slate-650 font-light">
@@ -477,7 +416,7 @@ export default function CatalogPage() {
                 </div>
 
                 <Link
-                  href="/quote"
+                  href="/booking"
                   className={`w-full py-3 text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
                     plan.popular
                       ? 'bg-slate-900 text-white hover:bg-slate-800 shadow-md'

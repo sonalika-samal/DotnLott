@@ -108,10 +108,10 @@ export default function DeploymentPage() {
             </div>
 
             <Link
-              href="/quote"
+              href="/booking"
               className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md mt-4"
             >
-              Get Cloud Proposal <ArrowRight className="w-4 h-4" />
+              Book Cloud Deployment <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -221,14 +221,14 @@ export default function DeploymentPage() {
               href="/booking"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-950 font-bold uppercase tracking-wider text-[11px] rounded-full hover:bg-slate-100 transition-colors shadow-lg"
             >
-              Book consultation
+              Book Consultation Call
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
-              href="/quote"
+              href="/catalog"
               className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 hover:bg-white/5 text-white font-bold uppercase tracking-wider text-[11px] rounded-full transition-colors"
             >
-              Get Custom Quote
+              Explore Suites
             </Link>
           </div>
         </div>
