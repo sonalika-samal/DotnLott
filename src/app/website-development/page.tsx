@@ -113,7 +113,7 @@ const services = [
 
 export default function WebDevPage() {
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
+    <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Mesh glow layers */}
       <div className="mesh-bg bg-brand-blue/5 top-20 right-10 animate-mesh-spin" style={{ animationDuration: '32s' }} />
       <div className="mesh-bg bg-brand-purple/5 bottom-20 left-10 animate-mesh-spin" style={{ animationDuration: '42s', animationDirection: 'reverse' }} />

@@ -98,7 +98,7 @@ const solutions = [
 
 export default function AIIntegrationPage() {
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
+    <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Background mesh layers */}
       <div className="mesh-bg bg-brand-blue/5 top-20 right-10 animate-mesh-spin" style={{ animationDuration: '35s' }} />
       <div className="mesh-bg bg-brand-purple/5 bottom-20 left-10 animate-mesh-spin" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />

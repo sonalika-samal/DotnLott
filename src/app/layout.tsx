@@ -46,7 +46,7 @@ export default function RootLayout({
         <Navbar />
 
         {/* Page Content */}
-        <main className="flex-grow pt-24">
+        <main className="flex-grow pt-24 overflow-x-hidden w-full">
           {children}
         </main>
 
