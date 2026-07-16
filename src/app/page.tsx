@@ -47,7 +47,7 @@ export default function HomePage() {
       <div className="mesh-bg bg-brand-purple/5 bottom-40 right-10 animate-mesh-spin" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />
 
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 z-10">
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-24 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Text content */}
           <motion.div
