@@ -64,6 +64,33 @@ export default function HomePage() {
               DotnLott AI Automation Platform
             </motion.div>
 
+            {/* Promo Banner */}
+            <motion.div
+              variants={fadeInUp}
+              className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-brand-blue/10 via-indigo-500/5 to-brand-purple/10 border border-brand-purple/20 p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-1"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="flex items-center gap-3 relative z-10">
+                <div className="w-10 h-10 rounded-xl bg-brand-purple/10 border border-brand-purple/25 flex items-center justify-center text-brand-purple flex-shrink-0">
+                  <Zap className="w-5 h-5 animate-pulse text-brand-purple" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-slate-900">
+                    🔥 Special Offer: Tiers starting at ₹499 ($6)!
+                  </span>
+                  <span className="text-[11px] text-slate-650 font-light mt-0.5 leading-normal">
+                    Book a whole Business Automation Suite today and receive a <strong>flat 20% discount</strong>.
+                  </span>
+                </div>
+              </div>
+              <Link
+                href="/booking"
+                className="inline-flex items-center justify-center gap-1.5 px-4.5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold uppercase tracking-wider text-[9px] rounded-xl transition-all shadow-md whitespace-nowrap relative z-10"
+              >
+                Claim Offer <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </motion.div>
+
             <motion.h1
               variants={fadeInUp}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-slate-900"
@@ -543,9 +570,9 @@ export default function HomePage() {
                   Lock in promotional management, AMC, and server subscription rates by signing up during our initial launch window.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-xs font-light text-slate-200">
-                  <div className="flex items-center gap-2">✓ 50% OFF Setup Charges</div>
-                  <div className="flex items-center gap-2">✓ 30% OFF First Month</div>
-                  <div className="flex items-center gap-2">✓ Complimentary Onboarding</div>
+                  <div className="flex items-center gap-2 text-sky-400 font-semibold">✓ 20% OFF Full Suites Today</div>
+                  <div className="flex items-center gap-2">✓ Setup pilots starting at ₹499 ($6)</div>
+                  <div className="flex items-center gap-2">✓ Complimentary Onboarding Call</div>
                   <div className="flex items-center gap-2">✓ Rates Locked for 12 Months</div>
                   <div className="flex items-center gap-2">✓ Priority Launch Support</div>
                   <div className="flex items-center gap-2">✓ Flexible Cloud-to-VPS Upgrades</div>
