@@ -193,50 +193,45 @@ const suites = [
 
 const pricingPlans = [
   {
-    name: 'Starter Plan',
-    desc: 'Perfect for startups and local businesses looking to automate a single key channel.',
+    name: 'Starter Pack',
+    desc: 'Perfect for testing out automation capabilities with a single targeted workflow.',
     features: [
-      'Choose 1 Automation Suite',
-      'Managed Cloud Deployment',
-      'Standard Email Support',
-      'Updates & Minor Maintenance',
-      'Basic Performance Logging'
+      'Try 1 hero automation from 1 Automation Suite of your choice',
+      'Managed Cloud hosting',
+      'Standard support',
+      'Basic performance logging'
     ],
-    price: 'Starting at ₹10,000',
-    subPrice: '$129 One-Time Setup',
+    price: 'Starting at ₹499',
+    subPrice: 'starting at $6',
     cta: 'Book Starter Consultation',
     popular: false
   },
   {
-    name: 'Growth Plan',
-    desc: 'Designed for scaling operations needing multiple interconnected automation channels.',
+    name: 'Growth Pack',
+    desc: 'Designed for scaling workflows across multiple core business pipelines.',
     features: [
-      'Choose Up to 3 Automation Suites',
-      'Managed Cloud or Custom Setup',
-      'Priority SLA Support',
-      'Advanced AI Integrations Included',
-      'Business Analytics Dashboard',
-      'Monthly Optimization Audits'
+      'Try 1 top automation each from 3 different Automation Suites',
+      'Managed Cloud hosting',
+      'Priority support',
+      'Advanced performance analytics'
     ],
-    price: 'Starting at ₹20,000',
-    subPrice: '$249 One-Time Setup',
+    price: 'Starting at ₹999',
+    subPrice: 'starting at $12',
     cta: 'Book Growth Consultation',
     popular: true
   },
   {
-    name: 'Enterprise Plan',
-    desc: 'For organizations demanding tailor-made workflows, complete VPS ownership, and compliance.',
+    name: 'Business Pack',
+    desc: 'Unlock full access to automated systems across all operational suites.',
     features: [
-      'Unlimited Custom Solutions',
-      'Dedicated VPS/Server Deployment',
-      'Dedicated Account Manager',
-      '24/7 SLA Priority Support',
-      'Complete Code & Database Ownership',
-      'Custom API Integrations & Webhooks'
+      'Try 1 hero automation each from every Automation Suite (all 10)',
+      'Managed Cloud hosting',
+      'Priority support + onboarding call',
+      'Dedicated setup assistance'
     ],
-    price: 'Custom Quote',
-    subPrice: 'SLA Scope Based',
-    cta: 'Book Enterprise Consultation',
+    price: 'Starting at ₹1,999',
+    subPrice: 'starting at $24',
+    cta: 'Book Business Consultation',
     popular: false
   }
 ];
