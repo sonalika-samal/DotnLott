@@ -125,22 +125,19 @@ export default function Footer() {
                 <Link href="/" className="hover:text-slate-950 transition-colors">Home Page</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-slate-950 transition-colors font-semibold text-brand-purple">About & FAQs</Link>
+                <Link href="/catalog" className="hover:text-slate-950 transition-colors font-semibold text-brand-purple">Workflow Automation</Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-slate-950 transition-colors">Resources & Blog</Link>
+                <Link href="/website-development" className="hover:text-slate-950 transition-colors">Website Development</Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-slate-950 transition-colors">Automation Solutions</Link>
+                <Link href="/portfolio" className="hover:text-slate-950 transition-colors">Portfolio</Link>
               </li>
               <li>
-                <Link href="/website-development" className="hover:text-slate-950 transition-colors">Web Development</Link>
+                <Link href="/about" className="hover:text-slate-950 transition-colors">About & FAQs</Link>
               </li>
               <li>
-                <Link href="/ai-integration" className="hover:text-slate-950 transition-colors">AI Integration</Link>
-              </li>
-              <li>
-                <Link href="/deployment" className="hover:text-slate-950 transition-colors">Deployment Models</Link>
+                <Link href="/blog" className="hover:text-slate-950 transition-colors">Blog</Link>
               </li>
               <li>
                 <Link href="/booking" className="hover:text-slate-950 transition-colors">Book Consultation</Link>
@@ -153,19 +150,16 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-slate-950">What We Do</h4>
             <ul className="flex flex-col gap-2.5 text-xs text-slate-600">
               <li>
-                <Link href="/catalog" className="hover:text-slate-950 transition-colors">AI Workflow Automation</Link>
+                <Link href="/catalog" className="hover:text-slate-950 transition-colors">Workflow Automation Setup</Link>
               </li>
               <li>
-                <Link href="/website-development" className="hover:text-slate-950 transition-colors">Website Design & Dev</Link>
+                <Link href="/website-development" className="hover:text-slate-950 transition-colors">Website Design & Development</Link>
               </li>
               <li>
-                <Link href="/ai-integration" className="hover:text-slate-950 transition-colors">Custom AI Integration</Link>
+                <Link href="/catalog#suite-voice-agent" className="hover:text-slate-950 transition-colors">Voice Agent Support Suite</Link>
               </li>
               <li>
-                <Link href="/deployment" className="hover:text-slate-950 transition-colors">Managed Cloud Hosting</Link>
-              </li>
-              <li>
-                <Link href="/deployment" className="hover:text-slate-950 transition-colors">Dedicated Deployments</Link>
+                <Link href="/catalog#suite-crm" className="hover:text-slate-950 transition-colors">CRM & Database Syncing</Link>
               </li>
             </ul>
           </div>

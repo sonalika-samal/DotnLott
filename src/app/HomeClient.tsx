@@ -189,7 +189,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* Three Primary Services Section */}
+      {/* Two Primary Services Section */}
       <section className="relative py-20 border-t border-slate-200 z-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
@@ -198,20 +198,20 @@ export default function HomeClient() {
               Our Primary Capabilities
             </h2>
             <p className="text-sm text-slate-600">
-              Three specialized services designed to scale your operations, enhance digital presence, and deploy artificial intelligence.
+              Two specialized core services designed to scale your operations, enhance digital presence, and deploy background automations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Service 1: AI Workflow Automation */}
             <div className="glass-card p-8 rounded-3xl flex flex-col justify-between gap-6 group hover:border-brand-blue/30 transition-all bg-white shadow-sm hover:shadow-md">
               <div className="flex flex-col gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue">
                   <Cpu className="w-6 h-6 group-hover:rotate-6 transition-transform" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">AI Workflow Automation</h3>
+                <h3 className="text-lg font-bold text-slate-900">Workflow Automation</h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-light">
-                  Custom automation suites connecting your apps and databases. Auto-outreach, lead responders, CRM sync, and team alerts running 24/7 without code.
+                  Custom automation suites connecting your apps and databases. Auto-outreach, lead responders, CRM sync, custom AI voice support suites, and team alerts running 24/7.
                 </p>
               </div>
               <Link href="/catalog" className="text-xs font-bold text-brand-blue flex items-center gap-1.5 hover:underline mt-2">
@@ -232,22 +232,6 @@ export default function HomeClient() {
               </div>
               <Link href="/website-development" className="text-xs font-bold text-brand-purple flex items-center gap-1.5 hover:underline mt-2">
                 Learn About Web Development <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            {/* Service 3: AI Integration */}
-            <div className="glass-card p-8 rounded-3xl flex flex-col justify-between gap-6 group hover:border-emerald-500/30 transition-all bg-white shadow-sm hover:shadow-md">
-              <div className="flex flex-col gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600">
-                  <Zap className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">Custom AI Integration</h3>
-                <p className="text-xs text-slate-600 leading-relaxed font-light">
-                  Embed custom LLM chatbots, voice agents, and AI semantic databases directly into your website, support desk, and internal channels.
-                </p>
-              </div>
-              <Link href="/ai-integration" className="text-xs font-bold text-emerald-600 flex items-center gap-1.5 hover:underline mt-2">
-                Explore AI Integrations <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
@@ -441,21 +425,21 @@ export default function HomeClient() {
                 <div className="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue flex-shrink-0">
                   <Globe className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">Managed Cloud Model</h3>
+                <h3 className="text-lg font-bold text-slate-900">Host on Our Managed VPS</h3>
                 <p className="text-xs text-slate-550 font-light leading-relaxed">
-                  We host and manage your automation suites directly on our high-speed secure server cloud infrastructure. Lower setup friction and fully managed updates.
+                  We deploy and configure your suites on our secure VPS infrastructure. You get complete database isolation, onboarding setup, and executive training.
                 </p>
                 <ul className="text-xs text-slate-600 flex flex-col gap-2 mt-2 font-light">
-                  <li className="flex items-center gap-2">✓ Hosted on DotnLott servers</li>
-                  <li className="flex items-center gap-2">✓ Lower entry monthly subscription</li>
-                  <li className="flex items-center gap-2">✓ Maintenance and updates handled by our team</li>
+                  <li className="flex items-center gap-2">✓ One-time deployment & setup fee</li>
+                  <li className="flex items-center gap-2">✓ No ongoing rental charges paid to us</li>
+                  <li className="flex items-center gap-2">✓ Client pays directly for VPS hosting resources</li>
                 </ul>
               </div>
               <Link
-                href="/deployment"
+                href="/catalog#deployment"
                 className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 border border-slate-200 hover:border-brand-blue/30 text-slate-700 hover:text-brand-blue text-xs font-bold uppercase tracking-wider rounded-xl transition-all"
               >
-                Learn Cloud Pricing <ArrowRight className="w-3.5 h-3.5" />
+                Learn Setup Options <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
@@ -463,20 +447,20 @@ export default function HomeClient() {
             <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all group">
               <div className="flex flex-col gap-4">
                 <div className="w-10 h-10 rounded-xl bg-brand-purple/10 flex items-center justify-center text-brand-purple flex-shrink-0">
-                  <Server className="w-5 h-5" />
+                  <Cpu className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">Dedicated Deployment</h3>
+                <h3 className="text-lg font-bold text-slate-900">Host on Your Dedicated VPS</h3>
                 <p className="text-xs text-slate-550 font-light leading-relaxed">
-                  Total ownership. Host your suites on your company-owned VPS (Hetzner, AWS, GCP, etc.). Ideal for growing teams with specific compliance policies.
+                  Direct root control. We deploy the automation systems inside your own AWS, Hetzner, or Google Cloud VPS account, and train your executive.
                 </p>
                 <ul className="text-xs text-slate-600 flex flex-col gap-2 mt-2 font-light">
-                  <li className="flex items-center gap-2">✓ Complete code & database ownership</li>
-                  <li className="flex items-center gap-2">✓ No shared server limitations</li>
-                  <li className="flex items-center gap-2">✓ Strict compliance & enterprise security</li>
+                  <li className="flex items-center gap-2">✓ Hosted entirely within your company accounts</li>
+                  <li className="flex items-center gap-2">✓ One-time setup fee + direct provider VPS billing</li>
+                  <li className="flex items-center gap-2">✓ Training sessions for your automation executive</li>
                 </ul>
               </div>
               <Link
-                href="/deployment"
+                href="/catalog#deployment"
                 className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 border border-slate-200 hover:border-brand-purple/30 text-slate-700 hover:text-brand-purple text-xs font-bold uppercase tracking-wider rounded-xl transition-all"
               >
                 Learn VPS Setup <ArrowRight className="w-3.5 h-3.5" />

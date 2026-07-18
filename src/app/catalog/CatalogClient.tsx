@@ -22,7 +22,9 @@ import {
   ShieldCheck,
   Clock,
   ArrowRight,
-  ChevronDown
+  ChevronDown,
+  Phone,
+  Server
 } from 'lucide-react';
 
 const catalogFaqs = [
@@ -204,6 +206,23 @@ const suites = [
     ],
     deployments: ['Managed Cloud', 'Dedicated VPS'],
     color: 'border-violet-200 hover:border-violet-500/40'
+  },
+  {
+    id: 'suite-voice-agent',
+    icon: Phone,
+    title: 'Voice Agent Customer Support Suite',
+    description: 'Deploys intelligent, human-like voice agents that handle inbound support calls, qualify customer inquiries, and trigger background CRM workflows automatically.',
+    features: [
+      'Autonomous Inbound Call Handler',
+      'Natural Language Voice Synthesis',
+      'Real-time Conversation Transcriber',
+      'Post-Call CRM Summary Log',
+      'Instant WhatsApp Callback Trigger',
+      'Custom Calendar Booking Sync',
+      'Multi-Language Vocal Support'
+    ],
+    deployments: ['Dedicated VPS Only'],
+    color: 'border-amber-200 hover:border-amber-500/40'
   }
 ];
 
@@ -470,6 +489,77 @@ export default function CatalogClient() {
             >
               Talk to Sales <ArrowRight className="w-3 h-3" />
             </Link>
+          </div>
+
+          {/* VPS Deployment Setup Models Section */}
+          <div id="deployment" className="border-t border-slate-200 pt-16 flex flex-col gap-10 scroll-mt-24">
+            <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold uppercase tracking-wider text-brand-purple justify-center w-fit mx-auto shadow-sm">
+                <Server className="w-4 h-4 text-brand-blue animate-pulse" />
+                Deployment Infrastructure
+              </span>
+              <h2 className="font-display text-3xl font-extrabold text-slate-900">
+                VPS Deployment & Setup Models
+              </h2>
+              <p className="text-sm text-slate-650 font-light leading-relaxed">
+                We deliver our automation suites as complete, production-ready server setups. We perform the deployment, configure security protocols, and fully train your executive for a smooth hands-off transition.
+              </p>
+              <div className="p-4 bg-amber-50 border border-amber-250 text-xs text-amber-800 rounded-2xl max-w-2xl mx-auto font-light leading-relaxed">
+                <strong>No Rental Models:</strong> We operate strictly on a one-time setup fee model. You pay for your own VPS hosting costs directly to the hosting provider, and maintain complete ownership and control of your database pipeline. We do not charge ongoing rental fees.
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto w-full">
+              {/* Option 1: Managed VPS Setup */}
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all">
+                <div className="flex flex-col gap-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-blue">Option A</span>
+                  <h3 className="text-xl font-extrabold text-slate-900">Host on Our Managed VPS</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-light">
+                    Ideal for businesses without dedicated in-house sysadmin teams. We deploy your automation suites onto a secure virtual server isolated inside our infrastructure.
+                  </p>
+                  <ul className="text-xs text-slate-650 flex flex-col gap-2.5 font-light pt-2">
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+                      One-time deployment configuration & API syncing
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+                      Complete onboarding and executive training
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+                      Client pays directly for dedicated VPS resource billing
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Option 2: Dedicated Client VPS Setup */}
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all">
+                <div className="flex flex-col gap-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-purple">Option B</span>
+                  <h3 className="text-xl font-extrabold text-slate-900">Host on Your Own VPS</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-light">
+                    Best for corporate entities requiring strict compliance and direct root-level server access. We deploy directly to your AWS, Hetzner, or Google Cloud VPS.
+                  </p>
+                  <ul className="text-xs text-slate-650 flex flex-col gap-2.5 font-light pt-2">
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-purple" />
+                      Deployment inside your corporate cloud environment
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-purple" />
+                      Direct database root control & backup security keys
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-purple" />
+                      Comprehensive training for your automation executive
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* FAQ Accordion Section */}
