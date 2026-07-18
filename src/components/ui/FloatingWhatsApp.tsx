@@ -51,15 +51,17 @@ export default function FloatingWhatsApp() {
             {/* Dialogue Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
-                  <Image
-                    src="/sonalika.jpg"
-                    alt="Sonalika Samal Avatar"
-                    width={32}
-                    height={32}
-                    className="object-cover w-full h-full"
-                  />
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full animate-pulse" />
+                <div className="relative w-8 h-8 flex-shrink-0">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
+                    <Image
+                      src="/sonalika.jpg"
+                      alt="Sonalika Samal Avatar"
+                      width={32}
+                      height={32}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full translate-x-0.5 translate-y-0.5 animate-pulse z-10" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-slate-900 leading-none">Sonalika Samal</span>
