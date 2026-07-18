@@ -3,10 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Users,
-  Award,
   ShieldCheck,
   ChevronDown,
   ArrowRight,
@@ -14,9 +12,7 @@ import {
   Mail,
   Phone,
   Building2,
-  Sparkles,
-  Zap,
-  CheckCircle,
+  Brain
 } from 'lucide-react';
 
 import { faqsList } from './faqs';
@@ -43,30 +39,31 @@ export default function AboutClient() {
             Who We Are
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-            About DotnLott
+            About Dot n Lott
           </h1>
           <p className="text-sm text-slate-650 font-light leading-relaxed">
-            We build the technical infrastructure that allows businesses to scale without adding operational overhead. From simple CRM synchronizations to sophisticated autonomous AI assistants, our goal is to save you hours of work.
+            Dot n Lott is founded by Sonalika Samal and Abhishek Abhinav, two passionate AI experts, AI automation developers, and website designers dedicated to helping businesses grow through intelligent technology.
           </p>
         </div>
 
         {/* Corporate & Trust Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {/* Card 1: Legal Company Infrastructure */}
           <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all">
             <div className="flex flex-col gap-5">
               <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue">
                 <Building2 className="w-6 h-6" />
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-extrabold text-slate-900">Legal Company Infrastructure</h3>
+                <h3 className="text-xl font-extrabold text-slate-900 font-display">Legal Company Infrastructure</h3>
                 <p className="text-xs text-slate-550 leading-relaxed font-light">
-                  DotnLott is an official tech brand operated under <strong className="text-slate-900">A2Z Version Private Limited</strong>, a legally incorporated private limited company in India. We operate under strict corporate governance and SLA guidelines.
+                  Dot n Lott is an official tech brand operated under <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-900 font-semibold">A2Z Version Private Limited</a>, established with the vision of making advanced automation and modern web solutions accessible to businesses of all sizes.
                 </p>
               </div>
               <ul className="text-xs text-slate-600 flex flex-col gap-3 font-light pt-2">
                 <li className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span><strong>CIN:</strong> U47721BR2026PTC085973</span>
+                  <span><strong>CIN:</strong> <a href="https://www.mca.gov.in/content/mca/global/en/mca/services/company-services/check-company-name.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-900 font-semibold">U47721BR2026PTC085973</a></span>
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-brand-blue flex-shrink-0" />
@@ -75,6 +72,10 @@ export default function AboutClient() {
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-brand-purple flex-shrink-0" />
                   <span>connect@dotnlott.com</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                  <span>+91-78469-69508</span>
                 </li>
               </ul>
             </div>
@@ -95,36 +96,52 @@ export default function AboutClient() {
             </div>
           </div>
 
-          {/* Founder Bio */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all">
-            <div className="flex flex-col gap-5">
+          {/* Card 2: Founders & Leadership */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/5 rounded-full blur-2xl group-hover:bg-brand-purple/10 transition-colors" />
+            
+            <div className="flex flex-col gap-5 relative z-10">
               <div className="w-12 h-12 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple">
-                <Award className="w-6 h-6" />
+                <Brain className="w-6 h-6 animate-pulse" />
               </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-extrabold text-slate-900">Founder & Core Team</h3>
+              <div className="flex flex-col gap-3">
+                <h3 className="text-xl font-extrabold text-slate-900 font-display">Founders & Leadership</h3>
                 <p className="text-xs text-slate-550 leading-relaxed font-light">
-                  DotnLott was founded by <strong className="text-slate-900">Sonalika Samal</strong>, an automation architect and tech consultant. With years of experience in system integrations, custom API development, and data workflows, Sonalika leads a handpicked team of software developers.
+                  With expertise in AI-powered workflow automation, CRM automation, website development, and digital transformation, we build solutions that save time, reduce manual work, and improve business efficiency.
                 </p>
                 <p className="text-xs text-slate-550 leading-relaxed font-light">
-                  Under Sonalika&apos;s leadership, DotnLott has built, deployed, and supported over 50 automated systems, ranging from small agency sales pipelines to enterprise CRM configurations.
+                  Our systems are engineered by our core leadership team to guarantee secure, production-ready server configurations and seamless third-party integrations.
                 </p>
               </div>
-              <div className="flex items-center gap-3 border-t border-slate-100 pt-4">
-                <div className="w-9 h-9 bg-brand-purple/10 text-brand-purple font-extrabold flex items-center justify-center rounded-xl text-xs">
-                  SS
+
+              {/* Profiles Row */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:items-center border-t border-slate-100 pt-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-brand-purple/10 text-brand-purple font-extrabold flex items-center justify-center rounded-xl text-xs">
+                    SS
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-slate-900 leading-none">Sonalika Samal</span>
+                    <span className="text-[9px] text-slate-400 mt-1">Founder & Systems Architect</span>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-xs font-bold text-slate-900">Sonalika Samal</span>
-                  <span className="text-[10px] text-slate-400">Founder & Lead Systems Architect</span>
+                <div className="hidden sm:block text-slate-200">|</div>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-brand-blue/10 text-brand-blue font-extrabold flex items-center justify-center rounded-xl text-xs">
+                    AA
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-slate-900 leading-none">Abhishek Abhinav</span>
+                    <span className="text-[9px] text-slate-400 mt-1">Founder & Software Engineer</span>
+                  </div>
                 </div>
               </div>
             </div>
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md mt-4"
+              className="relative z-10 inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md mt-4"
             >
-              Consult with Sonalika <ArrowRight className="w-4 h-4" />
+              Consult with Leadership <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -152,7 +169,7 @@ export default function AboutClient() {
                   <h3 className="m-0 p-0">
                     <button
                       onClick={() => toggleFaq(idx)}
-                      className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors border-0"
+                      className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/55 transition-colors border-0"
                       aria-expanded={isOpen}
                     >
                       <span className="text-xs font-bold text-slate-900 leading-snug">{faq.question}</span>
@@ -164,20 +181,14 @@ export default function AboutClient() {
                     </button>
                   </h3>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0 }}
-                        animate={{ height: 'auto' }}
-                        exit={{ height: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
-                          {faq.answer}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div
+                    className="transition-all duration-350 overflow-hidden"
+                    style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
+                  >
+                    <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
+                      {faq.answer}
+                    </div>
+                  </div>
                 </div>
               );
             })}

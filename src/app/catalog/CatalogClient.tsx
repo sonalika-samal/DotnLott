@@ -346,14 +346,14 @@ export default function CatalogClient() {
                     href="/booking"
                     className="text-xs font-bold text-slate-450 hover:text-brand-blue transition-colors flex items-center gap-1"
                   >
-                    Consult Expert <ArrowRight className="w-3.5 h-3.5" />
+                    Request Blueprint <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
 
                   <Link
                     href="/booking"
                     className="inline-flex items-center gap-1.5 py-2 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-white hover:bg-slate-800 transition-colors"
                   >
-                    Inquire Now
+                    Configure Suite
                   </Link>
                 </div>
               </div>
@@ -507,20 +507,14 @@ export default function CatalogClient() {
                       </button>
                     </h3>
 
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: 'auto' }}
-                          exit={{ height: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
-                            {faq.answer}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <div
+                      className="transition-all duration-350 overflow-hidden"
+                      style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
+                    >
+                      <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
+                        {faq.answer}
+                      </div>
+                    </div>
                   </div>
                 );
               })}

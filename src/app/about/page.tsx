@@ -4,11 +4,11 @@ import { faqsList } from './faqs';
 
 export const metadata: Metadata = {
   title: 'About Us & FAQs | DotnLott Automation',
-  description: 'Meet Sonalika Samal and the team behind DotnLott, understand our legal private limited infrastructure, and find answers to frequently asked questions about our automation services.',
-  keywords: 'about DotnLott, Sonalika Samal founder, automation agency FAQs, workflow outsourcing, private limited company CIN, Cuttack automation',
+  description: 'Meet Sonalika Samal and Abhishek Abhinav, the founders of Dot n Lott. Learn about our private limited registration (CIN), secure setups, and FAQ answers.',
+  keywords: 'about DotnLott, Sonalika Samal, Abhishek Abhinav, automation agency FAQs, private limited company CIN, Cuttack web development, startup leadership',
   openGraph: {
     title: 'About Us & FAQs | DotnLott Automation',
-    description: 'Meet Sonalika Samal and the team behind DotnLott. Learn about our private limited registration, secure setups, and service guarantees.',
+    description: 'Meet Sonalika Samal and Abhishek Abhinav, the founders of Dot n Lott. Learn about our private limited registration (CIN), secure setups, and FAQ answers.',
     type: 'website',
     images: [{ url: '/logo-v2.png', width: 512, height: 512, alt: 'DotnLott Logo' }],
   },

@@ -2,21 +2,21 @@ import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
-  title: 'Enterprise Workflow Automation & AI Web Apps | DotnLott',
+  title: 'DotnLott | AI Workflow Automation & Custom Web Development',
   description: 'Enterprise-grade workflow automation, n8n integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
   keywords: 'workflow automation, n8n integrations, custom AI web apps, website development, lead outreach autopilot, Zoho CRM synchronizer, DotnLott',
   openGraph: {
-    title: 'Enterprise Workflow Automation & AI Web Apps | DotnLott',
-    description: 'Transform manual operations into blazing fast automatic workflows. Custom AI & Web development.',
+    title: 'DotnLott | AI Workflow Automation & Custom Web Development',
+    description: 'Enterprise-grade workflow automation, n8n integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
     type: 'website',
-    images: [{ url: '/logo-v2.png', width: 512, height: 512, alt: 'DotnLott Logo' }],
+    images: [{ url: '/home-og.png', width: 1200, height: 630, alt: 'DotnLott AI Workflow Automation' }],
   },
 };
 
 const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  'name': 'How DotnLott Automates & Deploys Your Systems',
+  'name': 'Our 4-Step Process for Custom Business Automations',
   'description': 'Our 4-step process for analyzing, designing, deploying, and supporting custom business automations.',
   'step': [
     {

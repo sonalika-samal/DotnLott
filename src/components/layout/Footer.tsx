@@ -226,24 +226,37 @@ export default function Footer() {
               © {currentYear} DotnLott. All rights reserved.
             </p>
             <p className="text-slate-500 max-w-xl">
-              DotnLott is a venture under A2Z Version Private Limited. Registered Indian Private Limited Company. CIN: U47721BR2026PTC085973
+              DotnLott is a venture under <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">A2Z Version Private Limited</a>. Registered Indian Private Limited Company. CIN: <a href="https://www.mca.gov.in/content/mca/global/en/mca/services/company-services/check-company-name.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">U47721BR2026PTC085973</a>
             </p>
           </div>
 
           {/* Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-4 text-slate-600">
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full">
+            <a
+              href="https://www.mca.gov.in/content/mca/global/en/mca/services/company-services/check-company-name.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full hover:bg-slate-100 transition-colors"
+            >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>Registered Pvt Ltd</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full">
+            </a>
+            <a
+              href="https://supabase.com/security"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full hover:bg-slate-100 transition-colors"
+            >
               <Database className="w-3.5 h-3.5 text-brand-blue" />
               <span>Supabase Encrypted Data</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full">
+            </a>
+            <Link
+              href="/about"
+              className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full hover:bg-slate-100 transition-colors"
+            >
               <Award className="w-3.5 h-3.5 text-brand-purple" />
               <span>SLA Guaranteed</span>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

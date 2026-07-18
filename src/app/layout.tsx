@@ -39,6 +39,12 @@ const orgSchema = {
   'url': 'https://dotnlott.com',
   'logo': 'https://dotnlott.com/logo-v2.png',
   'foundingDate': '2026',
+  'taxID': 'U47721BR2026PTC085973',
+  'identifier': {
+    '@type': 'PropertyValue',
+    'name': 'CIN',
+    'value': 'U47721BR2026PTC085973',
+  },
   'address': {
     '@type': 'PostalAddress',
     'addressLocality': 'Cuttack',
@@ -62,7 +68,7 @@ const orgSchema = {
     },
   ],
   'sameAs': [
-    'https://linkedin.com/company/dotnlott',
+    'https://www.linkedin.com/company/135217304',
     'https://www.instagram.com/dotnlott_/',
     'https://www.facebook.com/share/19Hoq4dxVp/',
     'https://www.youtube.com/@DotnLott',
