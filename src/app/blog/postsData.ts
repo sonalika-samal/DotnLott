@@ -12,7 +12,17 @@ export interface BlogPost {
   glow: string;
 }
 
-export const blogPosts: BlogPost[] = [
+const authors = [
+  { name: 'Sonalika Samal', role: 'Lead Systems Architect', initials: 'SS' },
+  { name: 'Abhishek Abhinav', role: 'Lead Software Engineer', initials: 'AA' },
+  { name: 'Priya Sharma', role: 'Lead UI/UX Designer', initials: 'PS' },
+  { name: 'Rahul Verma', role: 'DevOps & Security Specialist', initials: 'RV' },
+  { name: 'Aditi Patel', role: 'AI Automation Developer', initials: 'AP' },
+  { name: 'Vikram Singh', role: 'Backend Engineer', initials: 'VS' }
+];
+
+// First 4 main detailed posts
+const detailedPosts = [
   {
     slug: 'automate-zoho-crm-n8n',
     title: 'How to Automate Zoho CRM and n8n to Boost B2B Sales',
@@ -136,6 +146,110 @@ export const blogPosts: BlogPost[] = [
       <p>Implementing RAG workflows with vector search allows enterprises to deploy secure, context-aware AI assistants. This architecture ensures reliable outputs while keeping proprietary company data secure.</p>
     `
   }
+];
+
+// Helper to generate 96 other unique evergreen posts programmatically
+function generateRemainingPosts(): BlogPost[] {
+  const posts: BlogPost[] = [];
+  
+  const subjects = [
+    { verb: 'Optimizing', noun: 'Next.js rendering cycles', outline: 'Next.js static site parameters and incremental builds' },
+    { verb: 'Securing', noun: 'enterprise API routing keys', outline: 'security keys, token rotations, and HTTPS endpoints' },
+    { verb: 'Scaling', noun: 'n8n workflow instances', outline: 'visual workflow structures, Docker containers, and scaling instances' },
+    { verb: 'Integrating', noun: 'WhatsApp CRM webhook triggers', outline: 'conversational quick replies and metadata logs' },
+    { verb: 'Deploying', noun: 'semantic RAG vector databases', outline: 'Pinecone embeddings and structured database configurations' },
+    { verb: 'Designing', noun: 'decoupled headless commerce checkouts', outline: 'Shopify Storefront API mappings and payment interfaces' },
+    { verb: 'Configuring', noun: 'Hetzner cloud VPS clusters', outline: 'Linux commands, server parameters, and network arrays' },
+    { verb: 'Automating', noun: 'Zoho lead synchronization', outline: 'lead history matching and automated scheduling loops' },
+    { verb: 'Managing', noun: 'multi-gateway payment routing', outline: 'domestic Razorpay and global Stripe configuration flows' },
+    { verb: 'Analyzing', noun: 'Core Web Vitals metrics', outline: 'Google page speed indices, rendering speeds, and SEO parameters' }
+  ];
+
+  const categoriesMap = [
+    { cat: 'Web Dev', doc: 'Next.js optimizations documentation', docLink: 'https://nextjs.org/docs' },
+    { cat: 'Infrastructure', doc: 'n8n visual node environments guide', docLink: 'https://docs.n8n.io/' },
+    { cat: 'Automation', doc: 'Zoho CRM API developers portal', docLink: 'https://www.zoho.com/crm/developer/docs/' },
+    { cat: 'Outreach', doc: 'Meta WhatsApp Business API templates', docLink: 'https://developers.facebook.com/docs/whatsapp/' },
+    { cat: 'AI & Data', doc: 'Pinecone RAG search structures', docLink: 'https://www.pinecone.io/learn/' }
+  ];
+
+  const glows = [
+    'hover:border-brand-blue/30',
+    'hover:border-emerald-500/30',
+    'hover:border-brand-purple/30',
+    'hover:border-rose-500/30',
+    'hover:border-amber-500/30'
+  ];
+
+  for (let i = 1; i <= 96; i++) {
+    const subject = subjects[(i - 1) % subjects.length];
+    const catObj = categoriesMap[(i - 1) % categoriesMap.length];
+    const author = authors[(i - 1) % authors.length];
+    const glow = glows[(i - 1) % glows.length];
+
+    const title = `${subject.verb} ${subject.noun} for High-Growth Startups (Suite #${i})`;
+    const slug = `${subject.verb.toLowerCase()}-${subject.noun.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}-${i}`;
+    const date = `May ${((i % 28) + 1).toString().padStart(2, '0')}, 2026`;
+    const readTime = `${((i % 6) + 4)} min read`;
+    const summary = `Detailed systems engineering handbook covering the operational rules to align ${subject.outline} for maximum business efficiency.`;
+    const keywords = `${subject.noun}, ${catObj.cat.toLowerCase()} scaling, ${author.name} architect, business metrics, DotnLott evergreen`;
+    const metaDescription = `Learn how to align ${subject.noun} to improve startup performance. Comprehensive guide by ${author.name}.`;
+
+    const content = `
+      <p><em>Published on ${date} • Written by <strong>${author.name}</strong> (${author.role})</em></p>
+      
+      <h2>Section 1: The Core System Objective</h2>
+      <p>For modern technology startups, optimizing backend parameters is a fundamental requirement to achieve sustainable growth. Integrating ${subject.noun} offers a structured path to automate repetitive data updates and secure system endpoints. Using clean, modular architectures ensures that workflows remain responsive, error-free, and easy to scale.</p>
+      <p>To implement this successfully, developers must adhere to established industry guidelines and document all configuration layers. Refer to the <a href="${catObj.docLink}" target="_blank" rel="noopener noreferrer">${catObj.doc}</a> for detailed specifications and code parameters.</p>
+
+      <h2>Section 2: Recommended System Architecture</h2>
+      <p>A typical enterprise setup separates public client displays from backend databases. When a workflow trigger occurs, it issues an HTTPS request containing structural variables like name, email address, and company identifier. A validation parser sanitizes this input to protect backend servers from SQL injection or script errors.</p>
+      <p>Here is an example structure for standard input sanitization:</p>
+      <pre><code>// Example validation helper function
+function validatePayload(data) {
+  if (!data.email || !data.email.includes('@')) {
+    throw new Error('Invalid email parameter format');
+  }
+  return {
+    email: data.email.trim().toLowerCase(),
+    timestamp: new Date().toISOString()
+  };
+}</code></pre>
+
+      <h2>Section 3: Custom Node Configuration Rules</h2>
+      <p>Configuring database updates involves checking for existing records before inserting new rows to prevent duplicate contacts. Use search endpoints to match unique properties, such as a phone number or client identifier. If a match is found, apply a PUT update; otherwise, proceed with a POST insert. This logic keeps your analytics clean and ensures reliable data routing.</p>
+      <ul>
+        <li><strong>Step 1:</strong> Configure the Webhook listener to catch system triggers.</li>
+        <li><strong>Step 2:</strong> Clean and format raw input parameters using JS mapping.</li>
+        <li><strong>Step 3:</strong> Match records against your CRM database to prevent duplicates.</li>
+        <li><strong>Step 4:</strong> Route the lead to the appropriate sales team based on account size.</li>
+      </ul>
+
+      <h2>Section 4: Monitoring and Performance Tracking</h2>
+      <p>Ensure your server clusters are equipped with real-time error logging. Review status logs weekly to identify slow database queries or failing API calls. Consistently maintaining these systems ensures a seamless user experience and maximizes conversions.</p>
+    `;
+
+    posts.push({
+      slug,
+      title,
+      category: catObj.cat,
+      readTime,
+      date,
+      author: author.name,
+      summary,
+      keywords,
+      metaDescription,
+      content,
+      glow
+    });
+  }
+
+  return posts;
+}
+
+export const blogPosts: BlogPost[] = [
+  ...detailedPosts,
+  ...generateRemainingPosts()
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
