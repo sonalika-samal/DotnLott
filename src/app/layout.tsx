@@ -120,6 +120,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-[#f8fafc] text-slate-900 font-sans selection:bg-brand-purple/20 selection:text-slate-900">
         <script

@@ -51,19 +51,19 @@ export default function FloatingWhatsApp() {
             {/* Dialogue Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-slate-900 border border-white/10 flex items-center justify-center">
+                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
                   <Image
-                    src="/mascot.png"
-                    alt="Mascot Avatar"
-                    width={24}
-                    height={24}
-                    className="object-contain"
+                    src="/sonalika.jpg"
+                    alt="Sonalika Samal Avatar"
+                    width={32}
+                    height={32}
+                    className="object-cover w-full h-full"
                   />
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-950 rounded-full animate-pulse" />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full animate-pulse" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white leading-none">Sonalika (DotnLott)</span>
-                  <span className="text-[10px] text-zinc-400">Online & Ready</span>
+                  <span className="text-xs font-bold text-slate-900 leading-none">Sonalika Samal</span>
+                  <span className="text-[10px] text-slate-500 mt-1">DotnLott Core Team</span>
                 </div>
               </div>
               <button
@@ -71,7 +71,7 @@ export default function FloatingWhatsApp() {
                   setIsOpen(false);
                   setShowPrompt(false);
                 }}
-                className="p-1 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+                className="p-1 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
