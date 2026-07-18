@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
-  title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
+  title: 'Enterprise Workflow Automation & AI Web Apps | DotnLott',
   description: 'Enterprise-grade workflow automation, n8n integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
   keywords: 'workflow automation, n8n integrations, custom AI web apps, website development, lead outreach autopilot, Zoho CRM synchronizer, DotnLott',
   openGraph: {
-    title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
+    title: 'Enterprise Workflow Automation & AI Web Apps | DotnLott',
     description: 'Transform manual operations into blazing fast automatic workflows. Custom AI & Web development.',
     type: 'website',
     images: [{ url: '/logo-v2.png', width: 512, height: 512, alt: 'DotnLott Logo' }],

@@ -2,43 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { BookOpen, Calendar, Clock, Search, ArrowRight, Sparkles } from 'lucide-react';
-
-const articles = [
-  {
-    title: 'How to Automate Zoho CRM and n8n to Boost B2B Sales',
-    category: 'Automation',
-    readTime: '5 min read',
-    date: 'July 12, 2026',
-    description: 'Learn the exact system architecture used to synchronize contact logs, qualify leads, and trigger outreach tasks automatically.',
-    glow: 'hover:border-brand-blue/30',
-  },
-  {
-    title: 'WhatsApp API Automation: Driving 28% Response Rates in India',
-    category: 'Outreach',
-    readTime: '4 min read',
-    date: 'June 28, 2026',
-    description: 'Discover how trigger-based WhatsApp notifications qualify leads in under 5 minutes compared to standard email templates.',
-    glow: 'hover:border-emerald-500/30',
-  },
-  {
-    title: 'Why Headless Commerce Beats Shopify for High-Traffic Brands',
-    category: 'Web Dev',
-    readTime: '6 min read',
-    date: 'May 15, 2026',
-    description: 'An engineering deep-dive into page load speeds, SEO indexability, and payment API integrations.',
-    glow: 'hover:border-brand-purple/30',
-  },
-  {
-    title: 'Vector Databases & RAG: How We Build Secure AI Assistants',
-    category: 'AI & Data',
-    readTime: '8 min read',
-    date: 'April 20, 2026',
-    description: 'Explore how semantic vector mappings and database structures keep company data secure during LLM reasoning runs.',
-    glow: 'hover:border-rose-500/30',
-  },
-];
+import { BookOpen, Calendar, Clock, Search, ArrowRight } from 'lucide-react';
+import { blogPosts } from './postsData';
 
 export default function BlogClient() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -46,9 +11,9 @@ export default function BlogClient() {
 
   const categories = ['All', 'Automation', 'Outreach', 'Web Dev', 'AI & Data'];
 
-  const filteredArticles = articles.filter((art) => {
+  const filteredArticles = blogPosts.filter((art) => {
     const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          art.description.toLowerCase().includes(searchQuery.toLowerCase());
+                          art.summary.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || art.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -137,13 +102,13 @@ export default function BlogClient() {
                       {art.title}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed font-light">
-                      {art.description}
+                      {art.summary}
                     </p>
                   </div>
                 </div>
 
                 <Link
-                  href="/booking"
+                  href={`/blog/${art.slug}`}
                   className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-brand-blue transition-colors group/link mt-2"
                 >
                   Read Article & Discuss Implementation
