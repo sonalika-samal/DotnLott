@@ -77,9 +77,8 @@ export default function FloatingWhatsApp() {
               </button>
             </div>
 
-            {/* Dialogue Message */}
             <div className="bg-zinc-950/80 rounded-xl p-3 border border-white/5 text-[11px] text-zinc-300 leading-relaxed">
-              "Hey there! Need help scoping an automation or setting up a database? Let's discuss it directly on WhatsApp!"
+              &quot;Hey there! Need help scoping an automation or setting up a database? Let&apos;s discuss it directly on WhatsApp!&quot;
             </div>
 
             {/* CTA Button */}

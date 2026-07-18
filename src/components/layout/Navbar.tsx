@@ -14,26 +14,13 @@ const navItems = [
   { name: 'AI Integration', path: '/ai-integration' },
   { name: 'Deployment', path: '/deployment' },
   { name: 'Portfolio', path: '/portfolio' },
+  { name: 'About & FAQ', path: '/about' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
-
-  useEffect(() => {
-    const stored = localStorage.getItem('dotnlott_currency');
-    if (stored === 'INR' || stored === 'USD') {
-      setCurrency(stored);
-    }
-  }, []);
-
-  const handleCurrencyChange = (newCurrency: 'USD' | 'INR') => {
-    setCurrency(newCurrency);
-    localStorage.setItem('dotnlott_currency', newCurrency);
-    window.dispatchEvent(new Event('dotnlott_currency_changed'));
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +36,13 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setIsOpen(false);
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname, isOpen]);
 
   return (
     <header
