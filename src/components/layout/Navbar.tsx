@@ -14,6 +14,7 @@ const navItems = [
   { name: 'AI Integration', path: '/ai-integration' },
   { name: 'Deployment', path: '/deployment' },
   { name: 'Portfolio', path: '/portfolio' },
+  { name: 'Blog', path: '/blog' },
   { name: 'About & FAQ', path: '/about' },
 ];
 

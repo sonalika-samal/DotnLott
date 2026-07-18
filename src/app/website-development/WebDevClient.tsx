@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Globe,
   Layout,
@@ -14,8 +15,23 @@ import {
   ShieldCheck,
   CheckCircle,
   Clock,
-  Layers
+  ChevronDown
 } from 'lucide-react';
+
+const webDevFaqs = [
+  {
+    question: 'How long does a custom website development project take?',
+    answer: 'A standard custom business website takes 2 to 4 weeks, while complex web applications with database integrations and client portals typically take 4 to 8 weeks depending on the scope.',
+  },
+  {
+    question: 'Do you build custom ecommerce systems?',
+    answer: 'Yes. We build high-performance custom ecommerce storefronts using next-generation headless CMS architectures, connecting secure payment APIs like Razorpay, Stripe, and custom inventory databases.',
+  },
+  {
+    question: 'What are the benefits of custom code over WordPress or Shopify?',
+    answer: 'Custom Next.js sites provide near-instant loading speeds, higher conversion rates, robust security, and absolute design freedom. Furthermore, they are fully custom-integrated with automated database triggers and client notification hubs.',
+  },
+];
 
 const services = [
   {
@@ -112,6 +128,12 @@ const services = [
 ];
 
 export default function WebDevClient() {
+  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaqIdx(openFaqIdx === idx ? null : idx);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Mesh glow layers */}
@@ -128,8 +150,13 @@ export default function WebDevClient() {
           <h1 className="font-display text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
             High-Performance Web Development
           </h1>
-          <p className="text-sm text-slate-650 font-light leading-relaxed">
-            We design and code lightning-fast, high-converting websites and custom web applications. Fully integrated with automated database triggers and client notification hubs.
+        </div>
+
+        {/* Definition Block */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm max-w-4xl mx-auto flex flex-col gap-3">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 font-display">What is Custom Website Development?</h2>
+          <p className="text-xs text-slate-655 leading-relaxed font-light">
+            Custom website development is the process of building tailored, high-performance web applications and business portfolios using custom code rather than generic page builders. By writing modular frameworks like Next.js and React, we deliver sub-second loading speeds, advanced animations, and superior SEO architecture tailored to your brand identity.
           </p>
         </div>
 
@@ -186,6 +213,61 @@ export default function WebDevClient() {
               </div>
             );
           })}
+        </div>
+
+        {/* FAQ Accordion Section */}
+        <div className="border-t border-slate-200 pt-16 flex flex-col gap-10">
+          <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-purple">Help & Support</span>
+            <h2 className="font-display text-3xl font-extrabold text-slate-900">
+              Web Development FAQ
+            </h2>
+            <p className="text-sm text-slate-655 font-light leading-relaxed">
+              Find answers to common questions about timelines, headless e-commerce, and development technologies.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto w-full flex flex-col gap-3">
+            {webDevFaqs.map((faq, idx) => {
+              const isOpen = openFaqIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border border-slate-250/70 rounded-2xl overflow-hidden transition-all shadow-sm"
+                >
+                  <h3 className="m-0 p-0">
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/55 transition-colors border-0 cursor-pointer"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-xs font-bold text-slate-900 leading-snug">{faq.question}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform ${
+                          isOpen ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  </h3>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: 'auto' }}
+                        exit={{ height: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Custom Web App Banner */}

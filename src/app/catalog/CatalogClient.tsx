@@ -21,8 +21,24 @@ import {
   Cpu,
   ShieldCheck,
   Clock,
-  ArrowRight
+  ArrowRight,
+  ChevronDown
 } from 'lucide-react';
+
+const catalogFaqs = [
+  {
+    question: 'How much does business workflow automation cost?',
+    answer: 'Standardized automation suite setups at DotnLott start at ₹499 ($6) on our Managed Cloud model. Custom integrations are priced based on API complexity, webhook volume, and system requirements after a consultation call.',
+  },
+  {
+    question: 'Can workflow automation connect our legacy CRM databases?',
+    answer: 'Yes. We design custom connectors to sync legacy databases (SQL, Postgres, private REST APIs) with modern platforms like Zoho, Slack, and WhatsApp to ensure absolute data consistency.',
+  },
+  {
+    question: 'How long does it take to implement a standard automation suite?',
+    answer: 'Standard suites deployed on our Managed Cloud can be fully configured, tested, and integrated with your current workspace tools within 3 to 7 business days.',
+  },
+];
 
 const suites = [
   {
@@ -237,6 +253,12 @@ const pricingPlans = [
 ];
 
 export default function CatalogClient() {
+  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaqIdx(openFaqIdx === idx ? null : idx);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Ambient backgrounds */}
@@ -255,6 +277,14 @@ export default function CatalogClient() {
           </h1>
           <p className="text-sm text-slate-600 font-light leading-relaxed">
             Eliminate operational overhead. Our modular, secure, and production-tested Automation Suites group specialized scripts to keep your sales pipelines, support desks, and marketing channels running at max efficiency.
+          </p>
+        </div>
+
+        {/* Definition Block */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm max-w-4xl mx-auto flex flex-col gap-3">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 font-display">What is Workflow Automation?</h2>
+          <p className="text-xs text-slate-650 leading-relaxed font-light">
+            Workflow automation is the technology-driven execution of repetitive, manual tasks using secure API integrations, scripts, and software co-pilots. By replacing spreadsheets and hand-offs with trigger-based systems like n8n or custom pipelines, businesses eliminate human error and achieve 24/7 operational efficiency.
           </p>
         </div>
 
@@ -440,6 +470,61 @@ export default function CatalogClient() {
             >
               Talk to Sales <ArrowRight className="w-3 h-3" />
             </Link>
+          </div>
+
+          {/* FAQ Accordion Section */}
+          <div className="border-t border-slate-200 pt-16 flex flex-col gap-10">
+            <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-purple">Help & Support</span>
+              <h2 className="font-display text-3xl font-extrabold text-slate-900">
+                Solutions & Pricing FAQ
+              </h2>
+              <p className="text-sm text-slate-650 font-light leading-relaxed">
+                Find answers to key operational concerns regarding automation costs, compatibility, and integrations.
+              </p>
+            </div>
+
+            <div className="max-w-3xl mx-auto w-full flex flex-col gap-3">
+              {catalogFaqs.map((faq, idx) => {
+                const isOpen = openFaqIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white border border-slate-250/70 rounded-2xl overflow-hidden transition-all shadow-sm"
+                  >
+                    <h3 className="m-0 p-0">
+                      <button
+                        onClick={() => toggleFaq(idx)}
+                        className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/55 transition-colors border-0 cursor-pointer"
+                        aria-expanded={isOpen}
+                      >
+                        <span className="text-xs font-bold text-slate-900 leading-snug">{faq.question}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                    </h3>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: 'auto' }}
+                          exit={{ height: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

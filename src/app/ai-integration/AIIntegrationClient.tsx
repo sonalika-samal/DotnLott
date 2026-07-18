@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain,
   MessageSquare,
@@ -12,8 +13,24 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle,
-  Sparkles
+  Sparkles,
+  ChevronDown
 } from 'lucide-react';
+
+const aiDevFaqs = [
+  {
+    question: 'How does DotnLott train AI chatbots on custom company documents?',
+    answer: 'We index your internal PDFs, documentation, and database files into a secure semantic vector database. The AI chatbot queries this database using RAG (Retrieval-Augmented Generation), answering support questions with accurate, company-approved data.',
+  },
+  {
+    question: 'What are autonomous background AI agents?',
+    answer: 'Autonomous AI agents are system processes that run continuously to monitor inbox queues, analyze screenshots, parse emails, drafts responses, and update spreadsheets without human supervision.',
+  },
+  {
+    question: 'Is our corporate data safe when using LLM integrations?',
+    answer: 'Yes. We configure private database vectors and implement strict access controls. By using API models (like Anthropic Claude and OpenAI APIs) with data-privacy guarantees, your inputs are never used to train public foundational models.',
+  },
+];
 
 const solutions = [
   {
@@ -97,6 +114,12 @@ const solutions = [
 ];
 
 export default function AIIntegrationClient() {
+  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaqIdx(openFaqIdx === idx ? null : idx);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Background mesh layers */}
@@ -113,8 +136,13 @@ export default function AIIntegrationClient() {
           <h1 className="font-display text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
             Custom AI Integration Services
           </h1>
-          <p className="text-sm text-slate-650 font-light leading-relaxed">
-            Deploy proprietary conversational agents, LLM vector search databases, and automated background AI business executives customized to your company documents.
+        </div>
+
+        {/* Definition Block */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm max-w-4xl mx-auto flex flex-col gap-3">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 font-display">What is Custom AI Integration?</h2>
+          <p className="text-xs text-slate-655 leading-relaxed font-light">
+            Custom AI integration is the deployment of conversational models, vector databases, and autonomous agents directly into a company&apos;s software workflows. Rather than using generic ChatGPT wrappers, custom integrations connect models like Claude or Gemini to your internal documentation, PDFs, and CRMs to automate business reasoning.
           </p>
         </div>
 
@@ -171,6 +199,61 @@ export default function AIIntegrationClient() {
               </div>
             );
           })}
+        </div>
+
+        {/* FAQ Accordion Section */}
+        <div className="border-t border-slate-200 pt-16 flex flex-col gap-10">
+          <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-purple">Help & Support</span>
+            <h2 className="font-display text-3xl font-extrabold text-slate-900">
+              AI Integration FAQ
+            </h2>
+            <p className="text-sm text-slate-655 font-light leading-relaxed">
+              Find answers to common questions about document training, safety, and background autonomous agents.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto w-full flex flex-col gap-3">
+            {aiDevFaqs.map((faq, idx) => {
+              const isOpen = openFaqIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border border-slate-250/70 rounded-2xl overflow-hidden transition-all shadow-sm"
+                >
+                  <h3 className="m-0 p-0">
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/55 transition-colors border-0 cursor-pointer"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-xs font-bold text-slate-900 leading-snug">{faq.question}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform ${
+                          isOpen ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  </h3>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: 'auto' }}
+                        exit={{ height: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Custom LLM fine-tuning Callout */}
