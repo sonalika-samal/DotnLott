@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, ShieldCheck, Database, Award } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Brand Info & Mascot Interaction */}
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative w-8 h-8 overflow-hidden rounded-lg bg-slate-100 border border-slate-200 p-1 flex items-center justify-center">
+              <div className="relative w-8 h-8 overflow-hidden rounded-lg bg-white border border-slate-200 p-1 flex items-center justify-center">
                 <Image
                   src="/logo-v2.png"
                   alt="DotnLott Logo"
@@ -26,7 +26,7 @@ export default function Footer() {
                 />
               </div>
               <span className="text-md font-extrabold tracking-tight text-slate-900">
-                Dot<span className="text-brand-purple">n</span>Lott
+                Dot<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-brand-purple">n</span>Lott
               </span>
             </Link>
             <p className="text-xs text-slate-600 leading-relaxed max-w-sm">
@@ -37,11 +37,12 @@ export default function Footer() {
             <div className="flex items-center gap-3 mt-2 bg-slate-50 border border-slate-200/50 p-2.5 rounded-xl max-w-xs">
               <div className="relative w-9 h-9 flex-shrink-0 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 flex items-center justify-center">
                 <Image
-                  src="/mascot.png"
+                  src="/mascot-v4.png"
                   alt="DotnLott Mascot Mini"
                   width={28}
                   height={28}
                   className="object-contain"
+                  unoptimized
                 />
               </div>
               <div className="flex flex-col">
@@ -213,45 +214,13 @@ export default function Footer() {
 
         <hr className="border-slate-200/60 mb-8" />
 
-        {/* Corporate details, badges and copyright */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 text-slate-500 text-[11px]">
-          <div className="flex flex-col gap-1 items-center lg:items-start text-center lg:text-left">
-            <p className="font-semibold text-slate-700">
-              © {currentYear} DotnLott. All rights reserved.
-            </p>
-            <p className="text-slate-500 max-w-xl">
-              DotnLott is a venture under <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">A2Z Version Private Limited</a>. Registered Indian Private Limited Company. CIN: <a href="https://www.mca.gov.in/content/mca/global/en/mca/services/company-services/check-company-name.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">U47721BR2026PTC085973</a>
-            </p>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-slate-600">
-            <a
-              href="https://www.mca.gov.in/content/mca/global/en/mca/services/company-services/check-company-name.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full hover:bg-slate-100 transition-colors"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Registered Pvt Ltd</span>
-            </a>
-            <a
-              href="https://supabase.com/security"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full hover:bg-slate-100 transition-colors"
-            >
-              <Database className="w-3.5 h-3.5 text-brand-blue" />
-              <span>Supabase Encrypted Data</span>
-            </a>
-            <Link
-              href="/about"
-              className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200/50 rounded-full hover:bg-slate-100 transition-colors"
-            >
-              <Award className="w-3.5 h-3.5 text-brand-purple" />
-              <span>SLA Guaranteed</span>
-            </Link>
-          </div>
+        {/* Corporate details and copyright */}
+        <div className="flex flex-col items-center justify-center text-slate-500 text-[11px] text-center w-full">
+          <p className="max-w-7xl w-full leading-relaxed">
+            <span className="font-semibold text-slate-700">© {currentYear} DotnLott. All rights reserved.</span>
+            <span className="mx-2 text-slate-300">|</span>
+            <span>DotnLott is a venture under <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">A2Z Version Private Limited</a>. Registered Indian Private Limited Company. CIN: <a href="https://www.mca.gov.in/content/mca/global/en/mca/services/company-services/check-company-name.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">U47721BR2026PTC085973</a></span>
+          </p>
         </div>
       </div>
     </footer>

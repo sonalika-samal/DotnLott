@@ -39,10 +39,10 @@ export default function AboutClient() {
             Who We Are
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-            About Dot n Lott
+            About DotnLott
           </h1>
           <p className="text-sm text-slate-650 font-light leading-relaxed">
-            Dot n Lott is founded by Sonalika Samal and Abhishek Abhinav, two passionate AI experts, AI automation developers, and website designers dedicated to helping businesses grow through intelligent technology.
+            DotnLott is founded by Sonalika Samal and Abhishek Abhinav, two passionate AI experts, AI automation developers, and website designers dedicated to helping businesses grow through intelligent technology.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ export default function AboutClient() {
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-extrabold text-slate-900 font-display">Legal Company Infrastructure</h3>
                 <p className="text-xs text-slate-550 leading-relaxed font-light">
-                  Dot n Lott is an official tech brand operated under <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-900 font-semibold">A2Z Version Private Limited</a>, established with the vision of making advanced automation and modern web solutions accessible to businesses of all sizes.
+                  DotnLott is an official tech brand operated under <a href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-900 font-semibold">A2Z Version Private Limited</a>, established with the vision of making advanced automation and modern web solutions accessible to businesses of all sizes.
                 </p>
               </div>
               <ul className="text-xs text-slate-600 flex flex-col gap-3 font-light pt-2">
@@ -81,11 +81,12 @@ export default function AboutClient() {
             </div>
             <div className="flex items-center gap-2.5 p-3.5 bg-slate-50 border border-slate-200/50 rounded-2xl">
               <Image
-                src="/mascot.png"
+                src="/mascot-v4.png"
                 alt="DotnLott Mascot Co-Pilot"
                 width={36}
                 height={36}
                 className="object-contain bg-slate-100 rounded-xl border border-slate-200 p-1"
+                unoptimized
               />
               <div className="flex flex-col">
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Corporate Security</span>

@@ -2,20 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Globe,
-  Layout,
-  ShoppingBag,
-  Cpu,
-  Wrench,
-  RefreshCw,
   Sparkles,
   ArrowRight,
-  ShieldCheck,
-  CheckCircle,
-  Clock,
-  ChevronDown
+  ChevronDown,
+  CheckCircle
 } from 'lucide-react';
 
 const webDevFaqs = [
@@ -33,97 +25,110 @@ const webDevFaqs = [
   },
 ];
 
-const services = [
+const pricingData = [
   {
-    icon: Layout,
-    title: 'Business & Brand Websites',
-    description: 'Clean, elegant, responsive websites crafted to represent your business core identity, display services, and capture organic leads.',
+    emoji: '🚀',
+    type: 'Landing Page',
+    regular: '₹3,999',
+    offer: '₹3,199',
+    bgClass: 'bg-rose-50 text-rose-600',
     features: [
-      'Tailored custom design systems',
-      'Fully responsive & fluid layouts',
-      'Contact form database routing',
-      'SEO audit & keywords mapping',
-      'Vibrant visual micro-animations'
-    ],
-    color: 'border-blue-200 hover:border-brand-blue/40'
+      'Single-page layout optimized for conversions',
+      'Optimized above-the-fold CTA buttons',
+      'Ultra-fast page speed metrics (<1.2s)',
+      'Basic contact forms & social link integrations'
+    ]
   },
   {
-    icon: Globe,
-    title: 'Corporate Web Portals',
-    description: 'Secure, multi-page platforms for medium and large enterprises. Structured layout hierarchies, admin dashboards, and custom user portals.',
+    emoji: '💼',
+    type: 'Business Website',
+    regular: '₹9,999',
+    offer: '₹7,999',
+    bgClass: 'bg-amber-50 text-amber-700',
     features: [
-      'Multi-level navigation logic',
-      'Enterprise speed optimizations',
-      'GDPR compliance privacy configurations',
-      'Custom API & analytics dashboards',
-      'Multiple user permissions'
-    ],
-    color: 'border-purple-200 hover:border-brand-purple/40'
+      'Multi-page fluid layout (up to 5 pages)',
+      'Brand portfolio and services galleries',
+      'Fully SEO-optimized keyword structure',
+      'Secure contact forms with email routing'
+    ]
   },
   {
-    icon: Sparkles,
-    title: 'High-Converting Landing Pages',
-    description: 'Performance-engineered landing pages built with clear layout visual cues to maximize marketing conversion metrics.',
+    emoji: '🏢',
+    type: 'Corporate Website',
+    regular: '₹19,999',
+    offer: '₹15,999',
+    bgClass: 'bg-blue-50 text-blue-600',
     features: [
-      'A/B testable structures',
-      'Optimized above-the-fold CTA blocks',
-      'Ultra-fast page load metrics (<1.2s)',
-      'Ad campaign tracking scripts',
-      'Clean forms & WhatsApp integrations'
-    ],
-    color: 'border-rose-200 hover:border-rose-500/40'
+      'Enterprise page hierarchies and structures',
+      'Premium custom styling & interactive cues',
+      'Integrated admin panels & performance reports',
+      'GDPR privacy and data security compliance'
+    ]
   },
   {
-    icon: ShoppingBag,
-    title: 'Custom E-commerce Platforms',
-    description: 'Bespoke online store configurations matching complex catalogs, payment portals, delivery trackers, and discount structures.',
+    emoji: '🛒',
+    type: 'E-commerce Website',
+    regular: '₹24,999',
+    offer: '₹19,999',
+    bgClass: 'bg-indigo-50 text-indigo-600',
     features: [
-      'Secure checkout integrations',
-      'Inventory control sheets mapping',
-      'Custom client checkout receipts',
-      'Automated review request emails',
-      'WhatsApp shipping tracking codes'
-    ],
-    color: 'border-emerald-200 hover:border-emerald-500/40'
+      'Dynamic product catalogs & checkout carts',
+      'Secure Stripe or Razorpay API gateways',
+      'Automated receipting & invoice delivery',
+      'Clean sales dashboard database tracker'
+    ]
   },
   {
-    icon: Cpu,
-    title: 'Custom Web Applications',
-    description: 'Bespoke React/Next.js dynamic dashboards, portal directories, customer CRM tools, and business workflows portals.',
+    emoji: '🎓',
+    type: 'Educational / Institute Website',
+    regular: '₹14,999',
+    offer: '₹11,999',
+    bgClass: 'bg-purple-50 text-purple-600',
     features: [
-      'Dynamic database records mapping',
-      'Client file upload & file servers',
-      'Real-time operations updates',
-      'Automated email/SMS triggers',
-      'Robust API endpoint hooks'
-    ],
-    color: 'border-amber-200 hover:border-amber-500/40'
+      'Bespoke courses & listings dynamic layouts',
+      'Online inquiry & enrollment modules',
+      'Notice boards & interactive photo galleries',
+      'Accessibility optimized layout design'
+    ]
   },
   {
-    icon: Wrench,
-    title: 'Website Maintenance & SLA',
-    description: 'Scheduled weekly safety backups, plugin checks, server configurations maintenance, security compliance audits, and performance tuning.',
+    emoji: '🍽️',
+    type: 'Food Delivery Website',
+    regular: '₹19,999',
+    offer: '₹15,999',
+    bgClass: 'bg-violet-50 text-violet-600',
     features: [
-      'Weekly automated backup sweeps',
-      'Plugin stability & updates audit',
-      'SSL cert check & renewing alerts',
-      'Broken link checking & correction',
-      'Continuous loading speed monitors'
-    ],
-    color: 'border-indigo-200 hover:border-indigo-500/40'
+      'Digital interactive menu with cart setups',
+      'Secure checkout & discount promo modules',
+      'Real-time order dashboard notifications',
+      'WhatsApp shipping tracking automation'
+    ]
   },
   {
-    icon: RefreshCw,
-    title: 'Website Redesigns',
-    description: 'Modernize legacy HTML websites, clean up layout blocks, rebuild with fast modern frameworks, and retain critical historical SEO URLs.',
+    emoji: '🏨',
+    type: 'Hotel & Travel Website',
+    regular: '₹24,999',
+    offer: '₹19,999',
+    bgClass: 'bg-pink-50 text-pink-600',
     features: [
-      'Complete look-and-feel revamp',
-      'Clean responsiveness code rewrite',
-      'Old URL 301 redirection maps',
-      'Lighthouse speed score boosts',
-      'Modern interactive assets setup'
-    ],
-    color: 'border-teal-200 hover:border-teal-500/40'
+      'Rooms & packages filter directories',
+      'Direct booking inquiry form routing',
+      'Premium carousel image gallery systems',
+      'Seasonal pricing adjustment widgets'
+    ]
+  },
+  {
+    emoji: '⚙️',
+    type: 'Custom Web Application',
+    regular: '₹39,999',
+    offer: '₹31,999',
+    bgClass: 'bg-slate-100 text-slate-600',
+    features: [
+      'Custom React/Next.js dashboard structure',
+      'Fully secure user credential logic',
+      'Real-time operations database triggers',
+      'S3 cloud file upload & storage pipelines'
+    ]
   }
 ];
 
@@ -135,87 +140,155 @@ export default function WebDevClient() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8 z-10 font-sans">
+    <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 z-10 font-sans">
       {/* Mesh glow layers */}
       <div className="mesh-bg bg-brand-blue/5 top-20 right-10 animate-mesh-spin" style={{ animationDuration: '32s' }} />
       <div className="mesh-bg bg-brand-purple/5 bottom-20 left-10 animate-mesh-spin" style={{ animationDuration: '42s', animationDirection: 'reverse' }} />
 
-      <div className="max-w-6xl mx-auto flex flex-col gap-16">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold uppercase tracking-wider text-brand-purple justify-center w-fit mx-auto shadow-sm">
-            <Globe className="w-4 h-4 text-brand-blue animate-spin" style={{ animationDuration: '10s' }} />
-            Web Engineering
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-            High-Performance Web Development
-          </h1>
+      <div className="max-w-7xl mx-auto flex flex-col gap-12">
+        {/* Page Header Card */}
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-xl border border-white/10 w-full max-w-5xl mx-auto flex flex-col gap-4">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none" />
+          
+          <div className="flex flex-col gap-4 relative z-10 text-center items-center">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold uppercase tracking-wider text-brand-purple justify-center w-fit shadow-sm">
+              <Globe className="w-4 h-4 text-brand-blue animate-spin" style={{ animationDuration: '10s' }} />
+              Web Engineering
+            </span>
+            <h1 className="font-display text-4xl sm:text-5xl font-black text-white leading-tight">
+              High-Performance Web Development
+            </h1>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-extrabold text-emerald-400 w-fit shadow-sm animate-pulse">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-500 animate-spin" style={{ animationDuration: '4s' }} />
+              <span>Launch Offer: Flat 20% OFF on all packages</span>
+            </div>
+            <p className="text-sm text-slate-300 font-light leading-relaxed max-w-4xl mx-auto mt-2">
+              Bespoke website layouts engineered for sub-second speeds, flawless responsiveness, and premium animations. We design high-converting portfolios, landing pages, e-commerce stores, and custom SaaS applications that elevate your brand.
+            </p>
+          </div>
         </div>
 
-        {/* Definition Block */}
-        <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm max-w-4xl mx-auto flex flex-col gap-3">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 font-display">What is Custom Website Development?</h2>
-          <p className="text-xs text-slate-655 leading-relaxed font-light">
-            Custom website development is the process of building tailored, high-performance web applications and business portfolios using custom code rather than generic page builders. By writing modular frameworks like Next.js and React, we deliver sub-second loading speeds, advanced animations, and superior SEO architecture tailored to your brand identity.
-          </p>
-        </div>
+        {/* Pricing Cards Section */}
+        <div className="flex flex-col gap-8 w-full">
+          <div className="text-center flex flex-col gap-1.5 mt-2">
+            <h2 className="text-xl md:text-2xl font-black text-brand-blue font-display tracking-tight">
+              ⚡ Explore Our Custom Services
+            </h2>
+            <p className="text-xs text-slate-500 font-light">Select a high-performance package designed to scale your business.</p>
+          </div>
 
-        {/* Services Showcase Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          {services.map((svc) => {
-            const IconComp = svc.icon;
-            return (
-              <div
-                key={svc.title}
-                className={`bg-white border rounded-3xl p-8 flex flex-col justify-between gap-6 transition-all duration-300 shadow-sm hover:shadow-md group ${svc.color}`}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {pricingData.map((item, index) => (
+              <div 
+                key={index}
+                className="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col gap-5 transition-all duration-300 shadow-sm hover:shadow-md group hover:border-brand-purple/40"
               >
-                <div className="flex flex-col gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200/60 flex items-center justify-center text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-all">
-                    <IconComp className="w-6 h-6" />
-                  </div>
+                <div className="flex items-center gap-3">
+                  <span className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl text-xl ${item.bgClass} shadow-sm flex-shrink-0`}>
+                    {item.emoji}
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-brand-purple transition-colors">
+                    {item.type}
+                  </h3>
+                </div>
 
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">
-                      {svc.title}
-                    </h3>
-                    <p className="text-xs text-slate-550 leading-relaxed font-light">
-                      {svc.description}
-                    </p>
+                <div className="bg-slate-50/70 border border-slate-150/60 rounded-2xl p-4 flex flex-col gap-1">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] text-slate-400 uppercase tracking-wider font-medium">Regular Price</span>
+                    <span className="text-xs text-slate-400 line-through font-medium">{item.regular}</span>
                   </div>
-
-                  <div className="flex flex-col gap-2 border-t border-slate-100 pt-4 mt-2">
-                    <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Scope Checklist:</span>
-                    <ul className="flex flex-col gap-2">
-                      {svc.features.map((feat) => (
-                        <li key={feat} className="flex items-center gap-2 text-xs text-slate-650 font-light">
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] text-brand-purple uppercase tracking-wider font-extrabold">Launch Offer</span>
+                    <span className="text-lg font-black text-slate-900">{item.offer}</span>
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center border-t border-slate-100 pt-5 mt-2">
-                  <Link
-                    href="/booking"
-                    className="text-xs font-bold text-slate-450 hover:text-brand-blue transition-colors flex items-center gap-1"
-                  >
-                    Consult Design <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  <Link
-                    href="/booking"
-                    className="inline-flex items-center justify-center gap-1.5 py-2 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-slate-800 text-white transition-colors"
-                  >
-                    Book a Web Dev Consult
-                  </Link>
+                <div className="flex flex-col gap-2.5 flex-grow">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Features Included:</span>
+                  <ul className="flex flex-col gap-2">
+                    {item.features?.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-650 font-light leading-relaxed">
+                        <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <Link
+                  href="/booking"
+                  className="w-full text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-slate-800 text-white transition-colors mt-auto flex items-center justify-center gap-1.5"
+                >
+                  Book Package
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+          </div>
+          
+          {/* Early Adopter Launch Benefits Banner */}
+          <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-xl border border-white/10 w-full flex flex-col lg:flex-row justify-between items-center gap-8 max-w-5xl mx-auto mt-8">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none" />
+
+            <div className="flex flex-col gap-4 relative z-10 flex-grow">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-[10px] font-semibold uppercase tracking-wider text-brand-purple w-fit">
+                🚀 Launch Promotions
+              </span>
+              <h2 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+                Early Adopter Launch Benefits
+              </h2>
+              <p className="text-xs text-slate-350 leading-relaxed font-light max-w-xl">
+                Lock in promotional rates by booking during our launch window. Clients are recommended to have their own domain and hosting updated, compatible, and purchased as per the type of websites they need. We will provide full-cycle website design, development, and setup services.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-xs text-slate-300 font-light">
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span className="text-brand-blue font-bold">Flat 20% OFF All Packages</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Own Domain & Hosting Recommended</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Complete Website Designing Service</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Rates Locked for 12 Months</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Complimentary SEO Foundations</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>30 Days Post-Launch Support</span>
                 </div>
               </div>
-            );
-          })}
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center justify-between gap-4 w-full lg:w-80 flex-shrink-0 backdrop-blur-sm relative z-10">
+              <span className="text-[10px] text-slate-450 uppercase tracking-widest font-bold">Book Free Call Today</span>
+              <h3 className="text-xl font-black text-white leading-tight">Setup Session in 10 Min</h3>
+              <p className="text-[11px] text-slate-400 font-light max-w-[220px]">
+                No upfront card details required. Lock your launch rate now.
+              </p>
+              <Link
+                href="/booking"
+                className="w-full py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5"
+              >
+                Consult Now
+                <ArrowRight className="w-4 h-4 text-slate-950" />
+              </Link>
+            </div>
+          </div>
         </div>
 
-        {/* FAQ Accordion Section */}
+        {/* FAQ Accordion Section (Colorful Edition) */}
         <div className="border-t border-slate-200 pt-16 flex flex-col gap-10">
           <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-purple">Help & Support</span>
@@ -227,65 +300,57 @@ export default function WebDevClient() {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto w-full flex flex-col gap-3">
+          <div className="max-w-3xl mx-auto w-full flex flex-col gap-3.5">
             {webDevFaqs.map((faq, idx) => {
               const isOpen = openFaqIdx === idx;
               return (
                 <div
                   key={idx}
-                  className="bg-white border border-slate-250/70 rounded-2xl overflow-hidden transition-all shadow-sm"
+                  className={`border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm ${
+                    isOpen 
+                      ? 'bg-gradient-to-r from-purple-50/40 via-indigo-50/10 to-blue-50/40 border-brand-purple/40 shadow-md' 
+                      : 'bg-white border-slate-200 hover:border-brand-purple/20 hover:bg-slate-50/40'
+                  }`}
                 >
                   <h3 className="m-0 p-0">
                     <button
                       onClick={() => toggleFaq(idx)}
-                      className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/55 transition-colors border-0 cursor-pointer"
+                      className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:opacity-90 transition-opacity border-0 cursor-pointer bg-transparent"
                       aria-expanded={isOpen}
                     >
-                      <span className="text-xs font-bold text-slate-900 leading-snug">{faq.question}</span>
+                      <span className={`text-xs font-bold leading-snug transition-colors duration-300 ${isOpen ? 'text-brand-purple' : 'text-slate-900'}`}>{faq.question}</span>
                       <ChevronDown
-                        className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform ${
-                          isOpen ? 'rotate-180' : ''
+                        className={`w-4 h-4 flex-shrink-0 transition-all duration-300 ${
+                          isOpen ? 'rotate-180 text-brand-purple' : 'text-slate-400'
                         }`}
                       />
                     </button>
                   </h3>
 
-                    <div
-                      className="transition-all duration-350 overflow-hidden"
-                      style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
-                    >
-                      <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
-                        {faq.answer}
-                      </div>
+                  <div
+                    className="transition-all duration-350 overflow-hidden"
+                    style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
+                  >
+                    <div className={`px-6 pb-5 pt-1 text-xs leading-relaxed font-light ${isOpen ? 'border-t border-brand-purple/10 text-slate-700' : 'text-slate-600'}`}>
+                      {faq.answer}
                     </div>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Custom Web App Banner */}
-        <div className="bg-slate-900 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-xl">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-brand-blue/15 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple/15 rounded-full blur-[80px]" />
-
-          <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-col gap-3 max-w-2xl">
-              <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white/10 border border-white/10 text-[9px] uppercase tracking-wider font-bold text-brand-blue leading-none w-fit">
-                Next-Gen Frameworks
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold">Need a Custom Web Portal or CRM dashboard?</h3>
-              <p className="text-xs text-slate-350 leading-relaxed font-light">
-                We design and build bespoke Next.js and React portals with customized database syncing, user permissions, file servers, and WhatsApp automation triggers.
-              </p>
-            </div>
-            <Link
-              href="/booking"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-950 bg-white hover:bg-slate-100 transition-colors rounded-xl flex-shrink-0 shadow-lg"
-            >
-              Configure Custom App
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+        {/* Definition Block Card */}
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white border border-white/10 rounded-3xl p-8 shadow-xl relative overflow-hidden max-w-4xl mx-auto w-full flex flex-col gap-4">
+          <div className="absolute top-0 right-0 w-48 h-48 bg-brand-blue/5 rounded-full blur-[50px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-purple/5 rounded-full blur-[50px] pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col gap-3">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-brand-purple font-display">What is Custom Website Development?</h2>
+            <p className="text-xs text-slate-300 leading-relaxed font-light">
+              Custom website development is the process of building tailored, high-performance web applications and business portfolios using custom code rather than generic page builders. By writing modular, clean code, we deliver sub-second loading speeds, advanced animations, and superior SEO architecture tailored to your brand identity.
+            </p>
           </div>
         </div>
       </div>

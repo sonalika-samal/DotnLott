@@ -122,7 +122,10 @@ export default function RootLayout({
       className={`${outfit.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#f8fafc] text-slate-900 font-sans selection:bg-brand-purple/20 selection:text-slate-900">
+      <body
+        className="min-h-full flex flex-col bg-[#f8fafc] text-slate-900 font-sans selection:bg-brand-purple/20 selection:text-slate-900"
+        suppressHydrationWarning
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}

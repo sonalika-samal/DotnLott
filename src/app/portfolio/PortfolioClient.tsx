@@ -2,18 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
-  Sparkles,
   Layers,
-  Cpu,
-  Mail,
-  CheckCircle,
-  Database,
   ArrowRight,
-  TrendingUp,
-  Clock,
-  ThumbsUp,
   Image as ImageIcon
 } from 'lucide-react';
 

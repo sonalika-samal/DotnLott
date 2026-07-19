@@ -13,7 +13,6 @@ import {
   Phone,
   FileText,
   CheckCircle,
-  ArrowRight,
   Globe
 } from 'lucide-react';
 

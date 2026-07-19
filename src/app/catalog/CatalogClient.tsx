@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Mail,
   Share2,
@@ -14,17 +13,14 @@ import {
   Brain,
   Plane,
   Globe,
-  Plus,
   Check,
   Sparkles,
-  Calculator,
   Cpu,
-  ShieldCheck,
-  Clock,
   ArrowRight,
   ChevronDown,
   Phone,
-  Server
+  Server,
+  Receipt
 } from 'lucide-react';
 
 const catalogFaqs = [
@@ -223,6 +219,22 @@ const suites = [
     ],
     deployments: ['Dedicated VPS Only'],
     color: 'border-amber-200 hover:border-amber-500/40'
+  },
+  {
+    id: 'suite-billing',
+    icon: Receipt,
+    title: 'Quotation & Invoice Automation Suite',
+    description: 'Automates price calculations, builds client quotes, generates professional invoices, and syncs payment tracking status across tools.',
+    features: [
+      'Dynamic PDF Quotation Auto-Builder',
+      'Automated Recurring Invoices & Receipts',
+      'Smart Payment Reminder Autopilot',
+      'Real-time Accounting & CRM Sync',
+      'Multi-Currency Rate Convert Webhooks',
+      'Instant WhatsApp Payment Notifications'
+    ],
+    deployments: ['Managed Cloud', 'Dedicated VPS'],
+    color: 'border-emerald-200 hover:border-emerald-500/40'
   }
 ];
 
@@ -259,7 +271,7 @@ const pricingPlans = [
     name: 'Business Pack',
     desc: 'Unlock full access to automated systems across all operational suites.',
     features: [
-      'Try 1 hero automation each from every Automation Suite (all 10)',
+      'Try 1 hero automation each from every Automation Suite (all 12)',
       'Managed Cloud hosting',
       'Priority support + onboarding call',
       'Dedicated setup assistance'
@@ -285,29 +297,37 @@ export default function CatalogClient() {
       <div className="mesh-bg bg-brand-blue/5 bottom-10 left-10 animate-mesh-spin" style={{ animationDuration: '50s', animationDirection: 'reverse' }} />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold uppercase tracking-wider text-brand-purple justify-center w-fit mx-auto shadow-sm">
-            <Cpu className="w-4 h-4 animate-pulse text-brand-blue" />
-            AI Automation Solutions
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-            Our Enterprise Automation Suites
-          </h1>
-          <p className="text-sm text-slate-600 font-light leading-relaxed">
-            Eliminate operational overhead. Our modular, secure, and production-tested Automation Suites group specialized scripts to keep your sales pipelines, support desks, and marketing channels running at max efficiency.
-          </p>
-        </div>
-
-        {/* Definition Block */}
-        <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm max-w-4xl mx-auto flex flex-col gap-3">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 font-display">What is Workflow Automation?</h2>
-          <p className="text-xs text-slate-650 leading-relaxed font-light">
-            Workflow automation is the technology-driven execution of repetitive, manual tasks using secure API integrations, scripts, and software co-pilots. By replacing spreadsheets and hand-offs with trigger-based systems like n8n or custom pipelines, businesses eliminate human error and achieve 24/7 operational efficiency.
-          </p>
+        {/* Page Header Card */}
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-xl border border-white/10 w-full max-w-5xl mx-auto flex flex-col gap-4">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none" />
+          
+          <div className="flex flex-col gap-4 relative z-10 text-center items-center">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold uppercase tracking-wider text-brand-purple justify-center w-fit shadow-sm">
+              <Cpu className="w-4 h-4 animate-pulse text-brand-blue" />
+              AI Automation Solutions
+            </span>
+            <h1 className="font-display text-4xl sm:text-5xl font-black text-white leading-tight">
+              Our Enterprise Automation Suites
+            </h1>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-extrabold text-emerald-400 w-fit shadow-sm animate-pulse">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-500 animate-spin" style={{ animationDuration: '4s' }} />
+              <span>Managed Cloud Suite Setup starting from ₹499/- per month</span>
+            </div>
+            <p className="text-sm text-slate-300 font-light leading-relaxed max-w-4xl mx-auto mt-2">
+              Eliminate operational overhead. Our modular, secure, and production-tested Automation Suites group specialized scripts to keep your sales pipelines, support desks, and marketing channels running at max efficiency.
+            </p>
+          </div>
         </div>
 
         {/* Grid of 10 Suites */}
+        <div className="text-center flex flex-col gap-1.5 mt-4">
+          <h2 className="text-xl md:text-2xl font-black text-brand-blue font-display tracking-tight">
+            ⚡ Explore Our Automation Solutions
+          </h2>
+          <p className="text-xs text-slate-500 font-light">Modular, secure integrations engineered to run your business operations 24/7.</p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {suites.map((suite) => {
             const IconComponent = suite.icon;
@@ -473,22 +493,64 @@ export default function CatalogClient() {
             ))}
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3 text-left">
-              <div className="w-10 h-10 rounded-full bg-brand-purple/10 flex items-center justify-center text-brand-purple flex-shrink-0">
-                <Clock className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-bold text-slate-950">Rates Locked For Early Adopters</span>
-                <p className="text-[10px] text-slate-500 font-light">Get custom solutions locked at special pilot prices for 12 full months.</p>
+          {/* Early Adopter Launch Benefits Banner */}
+          <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-xl border border-white/10 w-full flex flex-col lg:flex-row justify-between items-center gap-8 max-w-5xl mx-auto">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none" />
+
+            <div className="flex flex-col gap-4 relative z-10 flex-grow text-left">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-[10px] font-semibold uppercase tracking-wider text-brand-purple w-fit">
+                🚀 Launch Promotions
+              </span>
+              <h2 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+                Early Adopter Launch Benefits
+              </h2>
+              <p className="text-xs text-slate-350 leading-relaxed font-light max-w-xl">
+                Lock in promotional management, AMC, and server subscription rates by signing up during our initial launch window.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-xs text-slate-300 font-light">
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span className="text-brand-blue font-bold">20% OFF Full Suites Today</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Setup pilots starting at ₹499 ($6)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Complimentary Onboarding Call</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Rates Locked for 12 Months</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Priority Launch Support</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">✓</span>
+                  <span>Flexible Cloud-to-VPS Upgrades</span>
+                </div>
               </div>
             </div>
-            <Link
-              href="/booking"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold uppercase tracking-wider text-[10px] rounded-xl transition-colors shadow-sm"
-            >
-              Talk to Sales <ArrowRight className="w-3 h-3" />
-            </Link>
+
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center justify-between gap-4 w-full lg:w-80 flex-shrink-0 backdrop-blur-sm relative z-10">
+              <span className="text-[10px] text-slate-450 uppercase tracking-widest font-bold">Book Free Call Today</span>
+              <h3 className="text-xl font-black text-white leading-tight">Setup Session in 10 Min</h3>
+              <p className="text-[11px] text-slate-400 font-light max-w-[220px]">
+                No upfront card details required. Lock your launch rate now.
+              </p>
+              <Link
+                href="/booking"
+                className="w-full py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5"
+              >
+                Consult Now
+                <ArrowRight className="w-4 h-4 text-slate-950" />
+              </Link>
+            </div>
           </div>
 
           {/* VPS Deployment Setup Models Section */}
@@ -562,36 +624,40 @@ export default function CatalogClient() {
             </div>
           </div>
 
-          {/* FAQ Accordion Section */}
+          {/* FAQ Accordion Section (Colorful Edition) */}
           <div className="border-t border-slate-200 pt-16 flex flex-col gap-10">
             <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
               <span className="text-xs font-bold uppercase tracking-wider text-brand-purple">Help & Support</span>
               <h2 className="font-display text-3xl font-extrabold text-slate-900">
                 Solutions & Pricing FAQ
               </h2>
-              <p className="text-sm text-slate-650 font-light leading-relaxed">
+              <p className="text-sm text-slate-655 font-light leading-relaxed">
                 Find answers to key operational concerns regarding automation costs, compatibility, and integrations.
               </p>
             </div>
 
-            <div className="max-w-3xl mx-auto w-full flex flex-col gap-3">
+            <div className="max-w-3xl mx-auto w-full flex flex-col gap-3.5">
               {catalogFaqs.map((faq, idx) => {
                 const isOpen = openFaqIdx === idx;
                 return (
                   <div
                     key={idx}
-                    className="bg-white border border-slate-250/70 rounded-2xl overflow-hidden transition-all shadow-sm"
+                    className={`border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm ${
+                      isOpen 
+                        ? 'bg-gradient-to-r from-purple-50/40 via-indigo-50/10 to-blue-50/40 border-brand-purple/40 shadow-md' 
+                        : 'bg-white border-slate-200 hover:border-brand-purple/20 hover:bg-slate-50/40'
+                    }`}
                   >
                     <h3 className="m-0 p-0">
                       <button
                         onClick={() => toggleFaq(idx)}
-                        className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/55 transition-colors border-0 cursor-pointer"
+                        className="w-full px-6 py-4.5 text-left flex justify-between items-center gap-4 hover:opacity-90 transition-opacity border-0 cursor-pointer bg-transparent"
                         aria-expanded={isOpen}
                       >
-                        <span className="text-xs font-bold text-slate-900 leading-snug">{faq.question}</span>
+                        <span className={`text-xs font-bold leading-snug transition-colors duration-300 ${isOpen ? 'text-brand-purple' : 'text-slate-900'}`}>{faq.question}</span>
                         <ChevronDown
-                          className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform ${
-                            isOpen ? 'rotate-180' : ''
+                          className={`w-4 h-4 flex-shrink-0 transition-all duration-300 ${
+                            isOpen ? 'rotate-180 text-brand-purple' : 'text-slate-400'
                           }`}
                         />
                       </button>
@@ -601,7 +667,7 @@ export default function CatalogClient() {
                       className="transition-all duration-350 overflow-hidden"
                       style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
                     >
-                      <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-light">
+                      <div className={`px-6 pb-5 pt-1 text-xs leading-relaxed font-light ${isOpen ? 'border-t border-brand-purple/10 text-slate-700' : 'text-slate-600'}`}>
                         {faq.answer}
                       </div>
                     </div>
@@ -609,6 +675,19 @@ export default function CatalogClient() {
                 );
               })}
             </div>
+          </div>
+        </div>
+
+        {/* Definition Block Card */}
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white border border-white/10 rounded-3xl p-8 shadow-xl relative overflow-hidden max-w-4xl mx-auto w-full flex flex-col gap-4">
+          <div className="absolute top-0 right-0 w-48 h-48 bg-brand-blue/5 rounded-full blur-[50px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-purple/5 rounded-full blur-[50px] pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col gap-3">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-brand-purple font-display">What is Workflow Automation?</h2>
+            <p className="text-xs text-slate-300 leading-relaxed font-light">
+              Workflow automation is the technology-driven execution of repetitive, manual tasks using secure API integrations, scripts, and software co-pilots. By replacing spreadsheets and hand-offs with trigger-based automation systems or custom pipelines, businesses eliminate human error and achieve 24/7 operational efficiency.
+            </p>
           </div>
         </div>
       </div>

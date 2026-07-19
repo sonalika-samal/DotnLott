@@ -52,7 +52,7 @@ export default function BlogClient() {
               Evergreen Resources Vault
             </span>
             <h1 className="font-display text-3xl sm:text-4.5xl font-black text-slate-900 leading-tight">
-              Dot n Lott Knowledge Hub
+              DotnLott Knowledge Hub
             </h1>
             <p className="text-xs text-slate-500 font-light leading-relaxed">
               Explore 100+ evergreen engineering handbooks and operational workflow tutorials. A different article is featured every time you visit.
@@ -117,7 +117,7 @@ export default function BlogClient() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-slate-900 leading-none">{currentPost.author}</span>
-                  <span className="text-[9px] text-slate-450 mt-1 font-light">Dot n Lott Core Team</span>
+                  <span className="text-[9px] text-slate-450 mt-1 font-light">DotnLott Core Team</span>
                 </div>
               </div>
             </div>

@@ -6,23 +6,15 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Cpu,
-  Layers,
   Sparkles,
   Zap,
-  Mail,
   Database,
-  Calendar,
   ShieldCheck,
-  CheckCircle,
   Award,
   Globe,
-  Server,
-  Users,
-  Search,
-  MessageSquare,
-  Activity,
   ArrowUpRight,
-  Play
+  Bot,
+  Layout
 } from 'lucide-react';
 
 export default function HomeClient() {
@@ -109,10 +101,10 @@ export default function HomeClient() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-slate-900">
-                    🔥 Special Offer: Tiers starting at ₹499 ($6)!
+                    🔥 Launch Offers: Flat 20% OFF on Web Dev & Automations starting from ₹499/- per month!
                   </span>
-                  <span className="text-[11px] text-slate-650 font-light mt-0.5 leading-normal">
-                    Book a whole Business Automation Suite today and receive a <strong>flat 20% discount</strong>.
+                  <span className="text-[11px] text-slate-655 font-light mt-0.5 leading-normal">
+                    Get premium custom web packages with a flat 20% launch discount and host secure workflow automation suites starting at just ₹499/mo.
                   </span>
                 </div>
               </div>
@@ -154,22 +146,58 @@ export default function HomeClient() {
               initial={{ opacity: 0, y: 10, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute -top-6 bg-white border border-slate-200 px-4 py-2.5 rounded-2xl shadow-lg max-w-xs z-20 text-xs text-slate-700 font-semibold after:content-[''] after:absolute after:bottom-[-8px] after:left-[45px] after:border-8 after:border-t-white after:border-r-transparent after:border-l-transparent after:border-b-transparent after:z-10 before:content-[''] before:absolute before:bottom-[-9px] before:left-[44px] before:border-9 before:border-t-slate-200 before:border-r-transparent before:border-l-transparent before:border-b-transparent before:z-0"
+              className="absolute -top-22 bg-white border border-slate-200 px-4 py-2.5 rounded-2xl shadow-lg max-w-xs z-20 text-xs text-slate-700 font-semibold after:content-[''] after:absolute after:bottom-[-8px] after:left-[45px] after:border-8 after:border-t-white after:border-r-transparent after:border-l-transparent after:border-b-transparent after:z-10 before:content-[''] before:absolute before:bottom-[-9px] before:left-[44px] before:border-9 before:border-t-slate-200 before:border-r-transparent before:border-l-transparent before:border-b-transparent before:z-0"
             >
               <span className="flex items-center gap-1 text-brand-purple font-bold">
-                <Sparkles className="w-3.5 h-3.5" /> Lott:
+                <Sparkles className="w-3.5 h-3.5" /> Floto:
               </span>
-              Let&apos;s build a customized AI team to automate your daily workflows! 🚀
+              Hey! I am Floto. Let&apos;s build a customized AI team to automate your daily workflows! 🚀
             </motion.div>
 
-            <div className="relative w-80 h-80 sm:w-96 sm:h-96 animate-float flex items-center justify-center">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 animate-float flex items-center justify-center">
+              {/* Floating Service Bubbles */}
+              
+              {/* Bubble 1: Workflow Automation */}
+              <div className="absolute -left-12 sm:-left-24 top-[15%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-slow hover:scale-105 transition-all duration-300">
+                <div className="w-8 h-8 rounded-xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-sm">
+                  <Cpu className="w-4.5 h-4.5 animate-pulse" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">WORKFLOW</span>
+                  <span className="text-[9px] font-bold text-slate-450 tracking-wider uppercase font-display mt-0.5 leading-none">AUTOMATION</span>
+                </div>
+              </div>
+
+              {/* Bubble 2: Website Design */}
+              <div className="absolute -right-2 sm:-right-10 top-[40%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-medium hover:scale-105 transition-all duration-300">
+                <div className="w-8 h-8 rounded-xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue shadow-sm">
+                  <Layout className="w-4.5 h-4.5" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">WEBSITE</span>
+                  <span className="text-[9px] font-bold text-slate-450 tracking-wider uppercase font-display mt-0.5 leading-none">DESIGN</span>
+                </div>
+              </div>
+
+              {/* Bubble 3: AI Solutions */}
+              <div className="absolute -left-2 sm:-left-10 bottom-10 z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-fast hover:scale-105 transition-all duration-300">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 shadow-sm">
+                  <Bot className="w-4.5 h-4.5 animate-pulse" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">AI</span>
+                  <span className="text-[9px] font-bold text-slate-450 tracking-wider uppercase font-display mt-0.5 leading-none">SOLUTIONS</span>
+                </div>
+              </div>
+
               <Image
-                src="/mascot.png"
+                src="/mascot-v4.png"
                 alt="DotnLott AI Mascot"
-                width={380}
-                height={380}
+                width={310}
+                height={310}
                 className="object-contain drop-shadow-[0_15px_30px_rgba(27,99,255,0.12)]"
                 priority
+                unoptimized
               />
             </div>
           </motion.div>
@@ -206,8 +234,14 @@ export default function HomeClient() {
             {/* Service 1: AI Workflow Automation */}
             <div className="glass-card p-8 rounded-3xl flex flex-col justify-between gap-6 group hover:border-brand-blue/30 transition-all bg-white shadow-sm hover:shadow-md">
               <div className="flex flex-col gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue">
-                  <Cpu className="w-6 h-6 group-hover:rotate-6 transition-transform" />
+                <div className="flex justify-between items-center w-full">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    <Cpu className="w-6 h-6 group-hover:rotate-6 transition-transform" />
+                  </div>
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-250 text-[10px] font-bold text-emerald-700 shadow-sm">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-500 animate-pulse" />
+                    starts at ₹499/mo
+                  </span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">Workflow Automation</h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-light">
@@ -222,8 +256,14 @@ export default function HomeClient() {
             {/* Service 2: Website Design & Development */}
             <div className="glass-card p-8 rounded-3xl flex flex-col justify-between gap-6 group hover:border-brand-purple/30 transition-all bg-white shadow-sm hover:shadow-md">
               <div className="flex flex-col gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple">
-                  <Globe className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                <div className="flex justify-between items-center w-full">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple flex-shrink-0">
+                    <Globe className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-rose-50 border border-rose-250 text-[10px] font-bold text-rose-700 shadow-sm">
+                    <Sparkles className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
+                    Flat 20% OFF
+                  </span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">Website Design & Dev</h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-light">

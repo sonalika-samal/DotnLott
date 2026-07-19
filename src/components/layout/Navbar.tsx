@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -53,7 +53,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 overflow-hidden rounded-lg bg-slate-900 border border-white/10 p-1 flex items-center justify-center">
+            <div className="relative w-9 h-9 overflow-hidden rounded-lg bg-white border border-slate-200 p-1 flex items-center justify-center">
               <Image
                 src="/logo-v2.png"
                 alt="DotnLott Logo"
@@ -64,7 +64,7 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-extrabold tracking-tight text-slate-900">
-                Dot<span className="text-brand-purple">n</span>Lott
+                Dot<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-brand-purple">n</span>Lott
               </span>
               <span className="text-[9px] uppercase tracking-widest text-slate-500 group-hover:text-brand-blue transition-colors">
                 Dream. Build. Repeat.

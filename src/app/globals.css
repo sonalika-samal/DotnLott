@@ -54,6 +54,9 @@
   --font-display: var(--font-outfit), sans-serif;
   
   --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-medium: float 5.5s ease-in-out infinite;
+  --animate-float-fast: float 4.5s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-mesh-spin: mesh-spin 20s linear infinite;
 
