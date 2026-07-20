@@ -1,29 +1,52 @@
 import { NextResponse } from 'next/server';
 import { saveContactSubmission } from '@/lib/db';
+import { sendContactEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     
-    if (!body.lead || !body.lead.name || !body.lead.email || !body.subject || !body.message) {
+    // Support both flattened and nested formats
+    const name = body.lead?.name || body.name;
+    const email = body.lead?.email || body.email;
+    const phone = body.lead?.phone || body.phone;
+    const category = body.category || 'AI Automation';
+    const projectType = body.projectType || body.subject || 'Custom Inquiry';
+    const message = body.message;
+
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields: lead.name, lead.email, subject, message' },
+        { success: false, error: 'Missing required fields: name, email, message' },
         { status: 400 }
       );
     }
 
-    const result = await saveContactSubmission({
+    // Save to Database / Leads Storage
+    const dbResult = await saveContactSubmission({
       lead: {
-        name: body.lead.name,
-        email: body.lead.email,
-        phone: body.lead.phone,
-        company: body.lead.company,
+        name,
+        email,
+        phone,
       },
-      subject: body.subject,
-      message: body.message,
+      subject: `${category} - ${projectType}`,
+      message,
     });
 
-    return NextResponse.json(result);
+    // Send Clean Formatted Email to connect@dotnlott.com
+    const emailResult = await sendContactEmail({
+      name,
+      email,
+      phone,
+      category,
+      projectType,
+      message,
+    });
+
+    return NextResponse.json({
+      success: true,
+      dbResult,
+      emailResult,
+    });
   } catch (error) {
     console.error('API Contact route error:', error);
     return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });

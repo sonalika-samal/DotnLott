@@ -43,8 +43,8 @@ export default function FloatingWhatsApp() {
       text = 'Hey Sonalika, I was browsing your AI Automation Catalog and want to learn more about your pre-built workflows.';
     } else if (pathname === '/booking') {
       text = 'Hey Sonalika, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
-    } else if (pathname === '/portfolio') {
-      text = 'Hey Sonalika, I saw your portfolio case studies and would love to see how you can automate similar flows for us.';
+    } else if (pathname === '/contact') {
+      text = 'Hey Sonalika, I am reaching out from your Contact page and would like to inquire about your services.';
     } else if (pathname === '/website-development') {
       text = 'Hey Sonalika, I am interested in building a high-performance custom website or web app with DotnLott.';
     }

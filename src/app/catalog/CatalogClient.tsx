@@ -73,6 +73,7 @@ const suites = [
     icon: Mail,
     title: 'Email Marketing Automation Suite',
     description: 'Autonomous prospecting, validation, outbound cold email outreach, follow-up sequencing, and primary inbox warmups.',
+    popular: true,
     features: [
       'AI Lead Prospecting',
       'Email Outreach Autopilot',
@@ -313,6 +314,7 @@ const pricingPlans = [
 ];
 
 export default function CatalogClient() {
+  const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
 
   const toggleFaq = (idx: number) => {
@@ -405,10 +407,10 @@ export default function CatalogClient() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-slate-900">
-                    🔥 Managed Cloud Suite Setup starting from ₹499/- per month!
+                    🔥 Managed Cloud Suite Setup starting from {currency === 'INR' ? '₹499/-' : '$6/-'} per month!
                   </span>
                   <span className="text-[11px] text-slate-655 font-light mt-0.5 leading-normal">
-                    Host secure workflow automation suites with priority support starting at just ₹499/mo.
+                    Host secure workflow automation suites with priority support starting at just {currency === 'INR' ? '₹499/mo' : '$6/mo'}.
                   </span>
                 </div>
               </div>
@@ -539,44 +541,50 @@ export default function CatalogClient() {
                   key={suite.id}
                   id={suite.id}
                   variants={fadeInUp}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className={`bg-white/95 backdrop-blur-md border rounded-3xl p-6 flex flex-col justify-between gap-5 shadow-sm hover:shadow-2xl group relative overflow-hidden scroll-mt-28 ${suite.color}`}
+                  whileHover={{ y: suite.popular ? -8 : -5, scale: 1.01 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  className={`bg-white/95 backdrop-blur-md border rounded-2xl p-4.5 sm:p-5 flex flex-col justify-between gap-3.5 transition-all duration-300 relative overflow-hidden scroll-mt-28 group ${
+                    suite.popular
+                      ? 'border-brand-purple/80 ring-2 ring-brand-purple/30 shadow-lg'
+                      : `shadow-xs hover:shadow-xl ${suite.color}`
+                  }`}
                 >
-                  {/* Glowing Top Gradient Bar */}
-                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-indigo-500 to-brand-purple opacity-0 group-hover:opacity-100 transition-all duration-300" />
-
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3">
                     {/* Card Top Icon & Live Status */}
                     <div className="flex justify-between items-start gap-2">
-                      <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-800 group-hover:bg-slate-950 group-hover:text-white transition-all duration-300 shadow-sm flex-shrink-0 group-hover:scale-110">
-                        <IconComponent className="w-6 h-6" />
+                      <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-800 group-hover:bg-slate-950 group-hover:text-white transition-all duration-300 shadow-xs flex-shrink-0 group-hover:scale-105">
+                        <IconComponent className="w-5 h-5" />
                       </div>
                       <div className="flex flex-col items-end gap-1">
-                        <span className="inline-flex items-center gap-1 text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                          24/7 Live
-                        </span>
+                        {suite.popular ? (
+                          <span className="inline-flex items-center gap-1 text-[8.5px] font-black text-white bg-gradient-to-r from-brand-blue via-brand-purple to-indigo-600 px-2 py-0.5 rounded-full uppercase tracking-widest shadow-xs animate-pulse">
+                            Most Popular 🔥
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 text-[8.5px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                            24/7 Autopilot
+                          </span>
+                        )}
                       </div>
                     </div>
 
                     {/* Suite Title & Description */}
-                    <div className="flex flex-col gap-1.5">
-                      <h3 className="text-base font-extrabold text-slate-900 leading-snug group-hover:text-brand-purple transition-colors">
+                    <div className="flex flex-col gap-1">
+                      <h3 className="text-sm font-extrabold text-slate-900 leading-snug group-hover:text-brand-purple transition-colors font-display">
                         {suite.title}
                       </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed font-light line-clamp-3">
+                      <p className="text-[11px] text-slate-600 leading-relaxed font-light line-clamp-2">
                         {suite.description}
                       </p>
                     </div>
 
-                    {/* Features Bullet List */}
-                    <div className="flex flex-col gap-2 border-t border-slate-100 pt-4">
-                      <span className="text-[10px] uppercase font-black text-slate-400 tracking-wider">Included Engine Features:</span>
-                      <ul className="flex flex-col gap-1.5">
-                        {suite.features.map((feat) => (
-                          <li key={feat} className="flex items-center gap-2 text-xs text-slate-700 font-light">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    {/* Features Bullet List (Compact top 3 items) */}
+                    <div className="flex flex-col gap-1.5 border-t border-slate-100 pt-2.5">
+                      <ul className="flex flex-col gap-1">
+                        {suite.features.slice(0, 3).map((feat) => (
+                          <li key={feat} className="flex items-center gap-1.5 text-[11px] text-slate-700 font-light">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                             <span className="truncate">{feat}</span>
                           </li>
                         ))}
@@ -585,13 +593,17 @@ export default function CatalogClient() {
                   </div>
 
                   {/* Card Footer CTAs */}
-                  <div className="flex flex-col gap-2 border-t border-slate-100 pt-4 mt-auto">
+                  <div className="flex flex-col gap-1.5 border-t border-slate-100 pt-2.5 mt-auto">
                     <Link
                       href="/booking"
-                      className="w-full text-center py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-slate-900 hover:bg-brand-purple text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg"
+                      className={`w-full text-center py-2 rounded-xl text-[10px] font-extrabold uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-1.5 group-hover:shadow-md ${
+                        suite.popular
+                          ? 'bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:brightness-110'
+                          : 'bg-slate-900 hover:bg-brand-purple text-white'
+                      }`}
                     >
                       Configure Suite
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </motion.div>
@@ -641,65 +653,102 @@ export default function CatalogClient() {
 
         {/* Pricing Solutions Section */}
         <div className="pt-16 flex flex-col gap-12">
-          <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Platform Pricing Structure</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
-              One-Time Setup Configurations
-            </h2>
-            <p className="text-sm text-slate-650 font-light leading-relaxed">
-              We charge a single one-time setup fee for developing your suites. Monthly cloud rental or dedicated client VPS hosting models will be discussed during discovery.
-            </p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full border-b border-slate-200/80 pb-6">
+            <div className="text-center md:text-left flex flex-col gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Platform Pricing Structure</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
+                One-Time Setup Configurations
+              </h2>
+              <p className="text-sm text-slate-650 font-light leading-relaxed max-w-2xl">
+                We charge a single one-time setup fee for developing your suites. Monthly cloud rental or dedicated client VPS hosting models will be discussed during discovery.
+              </p>
+            </div>
+
+            {/* Currency Toggle (INR vs USD) */}
+            <div className="flex items-center gap-2 bg-slate-200/70 p-1.5 rounded-2xl border border-slate-300/80 shadow-inner flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => setCurrency('INR')}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 ${
+                  currency === 'INR'
+                    ? 'bg-white text-slate-900 shadow-md scale-105 border border-slate-200'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <span>🇮🇳</span> INR (₹)
+              </button>
+              <button
+                type="button"
+                onClick={() => setCurrency('USD')}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 ${
+                  currency === 'USD'
+                    ? 'bg-white text-slate-900 shadow-md scale-105 border border-slate-200'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <span>🇺🇸</span> USD ($)
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan) => (
-              <motion.div
-                key={plan.name}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
-                className={`bg-white border rounded-3xl p-8 flex flex-col justify-between gap-8 relative shadow-sm hover:shadow-xl transition-all ${
-                  plan.popular ? 'border-brand-purple/60 ring-2 ring-brand-purple/20' : 'border-slate-200'
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-blue to-brand-purple text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg leading-none">
-                    Most Popular
-                  </span>
-                )}
+            {pricingPlans.map((plan) => {
+              const mainPrice = currency === 'INR' 
+                ? plan.price 
+                : plan.price.replace('₹499', '$6').replace('₹999', '$12').replace('₹1,999', '$24');
+              const secondaryPrice = currency === 'INR'
+                ? plan.subPrice
+                : plan.subPrice.replace('$6', '₹499').replace('$12', '₹999').replace('$24', '₹1,999');
 
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-xl font-bold text-slate-900">{plan.name}</h3>
-                    <p className="text-xs text-slate-500 font-light leading-normal">{plan.desc}</p>
-                  </div>
-
-                  <div className="flex flex-col gap-1 mt-2">
-                    <span className="text-3xl font-black text-slate-900 leading-none">{plan.price}</span>
-                    <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider">{plan.subPrice}</span>
-                  </div>
-
-                  <ul className="flex flex-col gap-3 border-t border-slate-100 pt-6 text-xs text-slate-650 font-light">
-                    {plan.features.map((feat) => (
-                      <li key={feat} className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Link
-                  href="/booking"
-                  className={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
-                    plan.popular
-                      ? 'bg-slate-900 text-white hover:bg-brand-purple shadow-md'
-                      : 'bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100'
+              return (
+                <motion.div
+                  key={plan.name}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className={`bg-white/95 backdrop-blur-md border rounded-3xl p-8 flex flex-col justify-between gap-8 relative shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden ${
+                    plan.popular ? 'border-brand-purple/60 ring-2 ring-brand-purple/20' : 'border-slate-200'
                   }`}
                 >
-                  {plan.cta}
-                </Link>
-              </motion.div>
-            ))}
+                  {plan.popular && (
+                    <span className="absolute top-3.5 right-4 bg-gradient-to-r from-brand-blue to-brand-purple text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md leading-none">
+                      Most Popular
+                    </span>
+                  )}
+
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-xl font-bold text-slate-900">{plan.name}</h3>
+                      <p className="text-xs text-slate-500 font-light leading-normal">{plan.desc}</p>
+                    </div>
+
+                    <div className="flex flex-col gap-1 mt-2">
+                      <span className="text-3xl font-black text-slate-900 leading-none">{mainPrice}</span>
+                      <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider">{secondaryPrice}</span>
+                    </div>
+
+                    <ul className="flex flex-col gap-3 border-t border-slate-100 pt-6 text-xs text-slate-650 font-light">
+                      {plan.features.map((feat) => (
+                        <li key={feat} className="flex items-center gap-2">
+                          <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link
+                    href="/booking"
+                    className={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
+                      plan.popular
+                        ? 'bg-slate-900 text-white hover:bg-brand-purple shadow-md'
+                        : 'bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100'
+                    }`}
+                  >
+                    {plan.cta}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Early Adopter Launch Benefits Banner (Dark Action Card) */}

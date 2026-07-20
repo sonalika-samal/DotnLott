@@ -120,7 +120,7 @@ export default function Footer() {
                 <Link href="/ai-automation#pricing-plans" className="hover:text-brand-blue font-normal transition-colors">Pricing & Catalog</Link>
               </li>
               <li>
-                <Link href="/portfolio" className="hover:text-brand-blue font-normal transition-colors">Portfolio</Link>
+                <Link href="/contact" className="hover:text-brand-blue font-normal transition-colors">Contact Us</Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-brand-blue font-normal transition-colors">Engineering Blog</Link>

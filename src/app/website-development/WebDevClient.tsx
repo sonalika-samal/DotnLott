@@ -30,134 +30,81 @@ import MovingShowcaseWebDev from '@/components/ui/MovingShowcaseWebDev';
 
 const pricingData = [
   {
-    type: 'Landing Page Website (One Page)',
+    type: '🚀 Landing Page Website',
+    pages: '1 Page',
     icon: Rocket,
     bgClass: 'bg-indigo-50 border border-indigo-200 text-brand-blue',
-    regular: '₹7,999',
-    offer: '₹5,999',
+    startingPrice: '₹2,999',
     features: [
-      'Single Page Layout',
-      'Modern High-Converting UI',
-      'Mobile Responsive',
-      'Fast Loading Speed',
-      'Basic On-Page SEO',
-      'Social Media Icons',
-      'Click-to-Call Buttons',
-      'Contact Form Setup'
-    ]
+      'Responsive Design',
+      'Basic SEO',
+      'Contact Form',
+      'WhatsApp Chat',
+      'Social Media Links',
+      'Fast Loading',
+      'Mobile Friendly',
+    ],
   },
   {
-    type: 'Business Website (Standard - 5 Pages)',
+    type: '💼 Business Website',
+    pages: '5–10 Pages',
     icon: Briefcase,
     bgClass: 'bg-purple-50 border border-purple-200 text-brand-purple',
-    regular: '₹14,999',
-    offer: '₹11,999',
+    startingPrice: '₹7,999',
+    popular: true,
     features: [
-      'Up to 5 Pages (Home, About, Services, Contact, Blog)',
-      'Custom Unique Design',
-      'Mobile Friendly Layout',
-      'Fast Performance',
-      'SEO Optimized Structure',
-      'Social Media Links',
-      'Contact Form & WhatsApp Button',
-      'Google Maps Integration'
-    ]
-  },
-  {
-    type: 'Corporate Website (Advanced - 8-10 Pages)',
-    icon: Building2,
-    bgClass: 'bg-emerald-50 border border-emerald-200 text-emerald-600',
-    regular: '₹24,999',
-    offer: '₹19,999',
-    features: [
-      '8–10 Custom Pages',
-      'Premium UI & UX',
-      'Fully Responsive',
-      'Speed Optimized',
-      'Advanced On-Page SEO',
-      'Lead Form + Auto Email Alert',
+      'Responsive Design',
+      'Advanced SEO',
+      'Contact Forms',
+      'Google Maps Integration',
+      'WhatsApp Chat',
+      'SSL Security',
+      'Social Media Integration',
+      'Gallery',
       'Blog Setup',
-      'Social Media & Map Integration',
-      'Admin Panel (CMS)'
-    ]
+      'Admin Panel',
+    ],
   },
   {
-    type: 'E-Commerce Website (Basic)',
+    type: '⚙️ Custom Dynamic Website',
+    pages: '10–25 Pages',
+    icon: Cpu,
+    bgClass: 'bg-emerald-50 border border-emerald-200 text-emerald-600',
+    startingPrice: '₹12,999',
+    features: [
+      'Responsive Design',
+      'Advanced SEO',
+      'Admin Dashboard',
+      'Dynamic Content Management',
+      'User Login/Registration',
+      'Database Integration',
+      'Blog/News Module',
+      'API Integration',
+      'Booking/Inquiry Forms',
+      'Analytics Integration',
+    ],
+  },
+  {
+    type: '🛒 E-Commerce Website',
+    pages: '20–100+ Pages (Products)',
     icon: ShoppingCart,
     bgClass: 'bg-blue-50 border border-blue-200 text-brand-blue',
-    regular: '₹29,999',
-    offer: '₹23,999',
+    startingPrice: '₹19,999',
     features: [
-      'Up to 20 Products',
-      'Payment Gateway Integration',
-      'Shopping Cart & Checkout',
-      'Product Categories & Filter',
-      'Mobile Responsive',
-      'Order Notification Email',
-      'Admin Dashboard'
-    ]
+      'Responsive Design',
+      'Advanced SEO',
+      'Unlimited Products',
+      'Shopping Cart',
+      'Secure Payment Gateway',
+      'Order Management',
+      'Inventory Management',
+      'Customer Accounts',
+      'Coupon & Discount System',
+      'Shipping Integration',
+      'Analytics Dashboard',
+      'WhatsApp & Email Notifications',
+    ],
   },
-  {
-    type: 'Educational Institution Website',
-    icon: GraduationCap,
-    bgClass: 'bg-amber-50 border border-amber-200 text-amber-600',
-    regular: '₹24,999',
-    offer: '₹19,999',
-    features: [
-      'Courses & Syllabus Display',
-      'Admission Inquiry Form',
-      'Events & Notices Section',
-      'Gallery & Media Library',
-      'Student Notice Board',
-      'Mobile Friendly',
-      'Admin Panel'
-    ]
-  },
-  {
-    type: 'Hotel / Restaurant Website',
-    icon: Utensils,
-    bgClass: 'bg-rose-50 border border-rose-200 text-rose-600',
-    regular: '₹19,999',
-    offer: '₹15,999',
-    features: [
-      'Room & Menu Showcase',
-      'Table / Room Inquiry Form',
-      'Location & Map Integration',
-      'Image Gallery',
-      'Mobile Friendly',
-      'WhatsApp Order/Inquiry Button'
-    ]
-  },
-  {
-    type: 'Travel & Tourism Website',
-    icon: Plane,
-    bgClass: 'bg-sky-50 border border-sky-200 text-sky-600',
-    regular: '₹22,999',
-    offer: '₹17,999',
-    features: [
-      'Tour Packages Showcase',
-      'Itinerary Pages',
-      'Inquiry & Booking Form',
-      'Destination Gallery',
-      'WhatsApp Chat Integration',
-      'Mobile Friendly'
-    ]
-  },
-  {
-    type: 'Web Application / Portal (Custom Development)',
-    icon: Cpu,
-    bgClass: 'bg-teal-50 border border-teal-200 text-teal-600',
-    regular: '₹49,999+',
-    offer: 'Custom Quote',
-    features: [
-      'Custom Functionality',
-      'User Authentication (Login / Signup)',
-      'Database Integration',
-      'API Integration',
-      'Custom Admin Dashboard',
-      'Scalable Architecture'
-    ]
-  }
 ];
 
 const webFaqs = [
@@ -197,6 +144,16 @@ const webFaqs = [
 
 export default function WebDevClient() {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
+  const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
+
+  const getPriceDisplay = (priceInr: string) => {
+    if (currency === 'INR') return priceInr;
+    if (priceInr.includes('2,999')) return '$39';
+    if (priceInr.includes('7,999')) return '$99';
+    if (priceInr.includes('12,999')) return '$159';
+    if (priceInr.includes('19,999')) return '$249';
+    return priceInr;
+  };
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIdx(openFaqIdx === idx ? null : idx);
@@ -394,17 +351,45 @@ export default function WebDevClient() {
 
         {/* Pricing Cards Section - 4 Columns Vertical Lively Animated Grid */}
         <div id="pricing-grid" className="flex flex-col gap-8 w-full scroll-mt-24">
-          <div className="text-center flex flex-col items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-xs font-bold uppercase tracking-wider text-brand-purple shadow-sm">
-              <Zap className="w-4 h-4 text-brand-purple animate-bounce" />
-              8 Specialized Packages
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 font-display tracking-tight leading-tight">
-              Explore Our Web Development Solutions
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 font-light max-w-2xl leading-relaxed">
-              Select a high-performance website package engineered to elevate your digital presence.
-            </p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full border-b border-slate-200/80 pb-6">
+            <div className="text-center md:text-left flex flex-col gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-xs font-bold uppercase tracking-wider text-brand-purple shadow-sm w-fit mx-auto md:mx-0">
+                <Zap className="w-4 h-4 text-brand-purple animate-bounce" />
+                4 Specialized Packages
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 font-display tracking-tight leading-tight">
+                Explore Our Web Development Solutions
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 font-light max-w-2xl leading-relaxed">
+                Select a high-performance website package engineered to elevate your digital presence.
+              </p>
+            </div>
+
+            {/* Currency Toggle (INR vs USD) */}
+            <div className="flex items-center gap-2 bg-slate-200/70 p-1.5 rounded-2xl border border-slate-300/80 shadow-inner flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => setCurrency('INR')}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 ${
+                  currency === 'INR'
+                    ? 'bg-white text-slate-900 shadow-md scale-105 border border-slate-200'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <span>🇮🇳</span> INR (₹)
+              </button>
+              <button
+                type="button"
+                onClick={() => setCurrency('USD')}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 ${
+                  currency === 'USD'
+                    ? 'bg-white text-slate-900 shadow-md scale-105 border border-slate-200'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <span>🇺🇸</span> USD ($)
+              </button>
+            </div>
           </div>
 
           <motion.div 
@@ -421,12 +406,22 @@ export default function WebDevClient() {
                 <motion.div 
                   key={index}
                   variants={fadeInUp}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileHover={{ y: item.popular ? -12 : -8, scale: 1.02 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-3xl p-6 flex flex-col justify-between gap-5 transition-all duration-300 shadow-sm hover:shadow-2xl group hover:border-brand-purple/50 relative overflow-hidden"
+                  className={`bg-white/95 backdrop-blur-md border rounded-3xl p-6 flex flex-col justify-between gap-5 transition-all duration-300 relative overflow-hidden group ${
+                    item.popular
+                      ? 'border-brand-purple/80 ring-2 ring-brand-purple/30 shadow-xl lg:-translate-y-3'
+                      : 'border-slate-200/90 shadow-sm hover:shadow-2xl hover:border-brand-purple/50'
+                  }`}
                 >
-                  {/* Subtle top hover accent line */}
-                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-indigo-500 to-brand-purple opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  {/* Top Gradient Accent Line */}
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-indigo-500 to-brand-purple" />
+
+                  {item.popular && (
+                    <span className="absolute top-3.5 right-4 bg-gradient-to-r from-brand-blue via-brand-purple to-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md leading-none animate-pulse">
+                      Most Popular 🔥
+                    </span>
+                  )}
 
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-3">
@@ -438,14 +433,14 @@ export default function WebDevClient() {
                       </h3>
                     </div>
 
-                    <div className="bg-slate-50/90 border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-1 shadow-inner">
+                    <div className={`border rounded-2xl p-3.5 flex flex-col gap-1.5 shadow-inner ${item.popular ? 'bg-purple-50/50 border-purple-200' : 'bg-slate-50/90 border-slate-200'}`}>
                       <div className="flex justify-between items-center text-[10px]">
-                        <span className="text-slate-400 uppercase tracking-wider font-semibold">Standard Price</span>
-                        <span className="text-slate-400 line-through font-bold">{item.regular}</span>
+                        <span className="text-slate-400 uppercase tracking-wider font-semibold">Scale / Pages</span>
+                        <span className="text-brand-purple font-extrabold">{item.pages}</span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[10px] text-brand-purple uppercase tracking-wider font-black">Offer Savings</span>
-                        <span className="text-lg font-black text-slate-900">{item.offer}</span>
+                      <div className="flex justify-between items-center border-t border-slate-200/60 pt-1.5">
+                        <span className="text-[10px] text-slate-500 uppercase tracking-wider font-black">Starting Price</span>
+                        <span className="text-xl font-black text-slate-900 font-display">{getPriceDisplay(item.startingPrice)}</span>
                       </div>
                     </div>
 
@@ -464,7 +459,11 @@ export default function WebDevClient() {
 
                   <Link
                     href="/booking"
-                    className="w-full text-center py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-slate-900 hover:bg-brand-blue text-white transition-all shadow-md mt-auto flex items-center justify-center gap-2 group-hover:shadow-lg"
+                    className={`w-full text-center py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all mt-auto flex items-center justify-center gap-2 shadow-md hover:shadow-lg ${
+                      item.popular
+                        ? 'bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:brightness-110'
+                        : 'bg-slate-900 hover:bg-brand-blue text-white'
+                    }`}
                   >
                     Select Package
                     <ArrowRight className="w-4 h-4" />

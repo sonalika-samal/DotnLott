@@ -256,16 +256,16 @@ export default function HomeClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Service 1: AI Workflow Automation - Logo Theme Styled Card */}
             <motion.div 
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 relative overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-blue/50 group transition-all"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 relative overflow-hidden shadow-sm hover:shadow-2xl hover:border-brand-blue/50 group transition-all duration-300"
             >
               {/* Top Accent Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-indigo-600 to-brand-purple opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-indigo-600 to-brand-purple" />
 
               <div className="flex flex-col gap-5 relative z-10">
                 <div className="flex justify-between items-center w-full">
-                  <div className="w-13 h-13 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                  <div className="w-13 h-13 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                     <Cpu className="w-6 h-6" />
                   </div>
                   
@@ -277,7 +277,7 @@ export default function HomeClient() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors font-display">
+                  <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-blue transition-colors font-display">
                     Business Automation
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed font-light">
@@ -299,22 +299,22 @@ export default function HomeClient() {
                 href="/ai-automation" 
                 className="w-full py-3.5 px-5 rounded-2xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-brand-blue text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg mt-4"
               >
-                Explore Automation Suites <ArrowRight className="w-4 h-4" />
+                Explore Automation Suites <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
 
             {/* Service 2: Website Development - Logo Theme Styled Card */}
             <motion.div 
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 relative overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-purple/50 group transition-all"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 relative overflow-hidden shadow-sm hover:shadow-2xl hover:border-brand-purple/50 group transition-all duration-300"
             >
               {/* Top Accent Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-purple via-indigo-600 to-brand-blue opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-purple via-indigo-600 to-brand-blue" />
 
               <div className="flex flex-col gap-5 relative z-10">
                 <div className="flex justify-between items-center w-full">
-                  <div className="w-13 h-13 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                  <div className="w-13 h-13 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                     <Globe className="w-6 h-6" />
                   </div>
 
@@ -326,7 +326,7 @@ export default function HomeClient() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-purple transition-colors font-display">
+                  <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-purple transition-colors font-display">
                     Website Development
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed font-light">
@@ -348,7 +348,7 @@ export default function HomeClient() {
                 href="/website-development" 
                 className="w-full py-3.5 px-5 rounded-2xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-brand-purple text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg mt-4"
               >
-                Learn About Web Development <ArrowRight className="w-4 h-4" />
+                Learn About Web Development <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           </div>
@@ -565,19 +565,19 @@ export default function HomeClient() {
               <div className="flex flex-col gap-3.5">
                 {/* Card 1 */}
                 <motion.div 
-                  whileHover={{ x: 6 }}
+                  whileHover={{ x: 6, y: -2 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-slate-50/80 hover:bg-white border border-slate-200/90 rounded-2xl p-4.5 shadow-2xs hover:shadow-md transition-all flex items-start gap-4 group"
+                  className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-xl transition-all duration-300 flex items-start gap-4 border-l-4 border-l-brand-blue group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <ShieldCheck className="w-5 h-5" />
+                    <ShieldCheck className="w-5 h-5 text-brand-blue" />
                   </div>
                   <div className="flex flex-col gap-1 flex-grow">
                     <div className="flex justify-between items-center">
-                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Corporate Compliance & Safety</h4>
-                      <span className="text-[9px] font-extrabold text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2 py-0.5 rounded-full uppercase">100% Regulated</span>
+                      <h4 className="text-sm font-extrabold text-slate-900 group-hover:text-brand-blue transition-colors font-display">Corporate Compliance & Safety</h4>
+                      <span className="text-[9px] font-extrabold text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-0.5 rounded-full uppercase">100% Regulated</span>
                     </div>
-                    <p className="text-xs text-slate-550 font-light leading-relaxed">
+                    <p className="text-xs text-slate-600 font-light leading-relaxed">
                       Registered Private Limited Company operating under strict data security protocols & enterprise SLA guarantees.
                     </p>
                   </div>
@@ -585,19 +585,19 @@ export default function HomeClient() {
 
                 {/* Card 2 */}
                 <motion.div 
-                  whileHover={{ x: 6 }}
+                  whileHover={{ x: 6, y: -2 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-slate-50/80 hover:bg-white border border-slate-200/90 rounded-2xl p-4.5 shadow-2xs hover:shadow-md transition-all flex items-start gap-4 group"
+                  className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-xl transition-all duration-300 flex items-start gap-4 border-l-4 border-l-brand-purple group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <Database className="w-5 h-5" />
+                    <Database className="w-5 h-5 text-brand-purple" />
                   </div>
                   <div className="flex flex-col gap-1 flex-grow">
                     <div className="flex justify-between items-center">
-                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-brand-purple transition-colors">Zero Vendor Lock-In</h4>
-                      <span className="text-[9px] font-extrabold text-brand-purple bg-brand-purple/10 border border-brand-purple/20 px-2 py-0.5 rounded-full uppercase">Full Ownership</span>
+                      <h4 className="text-sm font-extrabold text-slate-900 group-hover:text-brand-purple transition-colors font-display">Zero Vendor Lock-In</h4>
+                      <span className="text-[9px] font-extrabold text-brand-purple bg-brand-purple/10 border border-brand-purple/20 px-2.5 py-0.5 rounded-full uppercase">Full Ownership</span>
                     </div>
-                    <p className="text-xs text-slate-550 font-light leading-relaxed">
+                    <p className="text-xs text-slate-600 font-light leading-relaxed">
                       Take dedicated ownership. Host it on your VPS server array and maintain 100% root control over your data pipelines.
                     </p>
                   </div>
@@ -605,19 +605,19 @@ export default function HomeClient() {
 
                 {/* Card 3 */}
                 <motion.div 
-                  whileHover={{ x: 6 }}
+                  whileHover={{ x: 6, y: -2 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-slate-50/80 hover:bg-white border border-slate-200/90 rounded-2xl p-4.5 shadow-2xs hover:shadow-md transition-all flex items-start gap-4 group"
+                  className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-xl transition-all duration-300 flex items-start gap-4 border-l-4 border-l-emerald-500 group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <Award className="w-5 h-5" />
+                    <Award className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div className="flex flex-col gap-1 flex-grow">
                     <div className="flex justify-between items-center">
-                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Locked Pricing Protection</h4>
-                      <span className="text-[9px] font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full uppercase">12-Mo Lock</span>
+                      <h4 className="text-sm font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors font-display">Locked Pricing Protection</h4>
+                      <span className="text-[9px] font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full uppercase">12-Mo Lock</span>
                     </div>
-                    <p className="text-xs text-slate-550 font-light leading-relaxed">
+                    <p className="text-xs text-slate-600 font-light leading-relaxed">
                       Sign up during our launch window to lock in management, AMC, and server subscription rates for a full year.
                     </p>
                   </div>

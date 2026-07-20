@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, ChevronRight, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
 import type { BlogPost } from '../postsData';
+import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
 interface PostClientProps {
   post: BlogPost;
@@ -11,6 +12,9 @@ interface PostClientProps {
 export default function PostClient({ post }: PostClientProps) {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 z-10 font-sans">
+      {/* Moving element canvas particle theme */}
+      <InteractiveParticles density={45} particleColor="mixed" />
+
       {/* Background glow layers */}
       <div className="mesh-bg bg-brand-blue/5 top-20 right-10 animate-mesh-spin" style={{ animationDuration: '40s' }} />
       <div className="mesh-bg bg-brand-purple/5 bottom-20 left-10 animate-mesh-spin" style={{ animationDuration: '50s', animationDirection: 'reverse' }} />

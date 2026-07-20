@@ -11,9 +11,9 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'AI Automation', path: '/ai-automation' },
   { name: 'Website Development', path: '/website-development' },
-  { name: 'Portfolio', path: '/portfolio' },
   { name: 'About', path: '/about' },
   { name: 'Blog', path: '/blog' },
+  { name: 'Contact', path: '/contact' },
 ];
 
 export default function Navbar() {
@@ -35,13 +35,8 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    if (isOpen) {
-      const timer = setTimeout(() => {
-        setIsOpen(false);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-  }, [pathname, isOpen]);
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <header
@@ -122,33 +117,36 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden absolute top-full left-0 right-0 glass-nav border-t border-white/5 py-6 px-4 shadow-2xl"
+            className="lg:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-xl border-t border-slate-200 py-6 px-6 shadow-2xl z-50 overflow-hidden"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               {navItems.map((item) => {
                 const isActive = pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`text-base font-semibold py-2 px-3 rounded-lg transition-colors ${
+                    onClick={() => setIsOpen(false)}
+                    className={`text-sm font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between ${
                       isActive
-                        ? 'bg-slate-100 text-slate-900 border-l-2 border-brand-purple'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-950'
+                        ? 'bg-brand-purple/10 text-brand-purple border-l-4 border-brand-purple'
+                        : 'text-slate-700 hover:bg-slate-100 hover:text-slate-950'
                     }`}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    {isActive && <span className="w-2 h-2 rounded-full bg-brand-purple" />}
                   </Link>
                 );
               })}
-              <div className="h-px bg-slate-200/50 my-2" />
+              <div className="h-px bg-slate-200/80 my-1" />
               <Link
                 href="/booking"
-                className="w-full flex items-center justify-center gap-1.5 py-3 text-sm font-semibold uppercase tracking-wider text-white bg-slate-900 rounded-xl hover:bg-slate-800"
+                onClick={() => setIsOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white bg-slate-900 rounded-xl hover:bg-slate-800 shadow-md active:scale-95 transition-all"
               >
                 Consult Now
                 <ArrowRight className="w-4 h-4" />

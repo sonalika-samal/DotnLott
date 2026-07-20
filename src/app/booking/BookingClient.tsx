@@ -15,6 +15,7 @@ import {
   CheckCircle,
   Globe
 } from 'lucide-react';
+import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
 // Generates upcoming 14 days for selection
 const getAvailableDays = () => {
@@ -106,6 +107,9 @@ export default function BookingClient() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 z-10">
+      {/* Moving element canvas particle theme */}
+      <InteractiveParticles density={45} particleColor="mixed" />
+
       <div className="mesh-bg bg-brand-blue/5 top-20 right-10 animate-mesh-spin" style={{ animationDuration: '30s' }} />
       <div className="mesh-bg bg-brand-purple/5 bottom-20 left-10 animate-mesh-spin" style={{ animationDuration: '40s', animationDirection: 'reverse' }} />
 

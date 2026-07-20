@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BookOpen, Calendar, Clock, ArrowRight, Shuffle, MessageSquare, ShieldCheck } from 'lucide-react';
 import { blogPosts } from './postsData';
+import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
 export default function BlogClient() {
   const [currentPost, setCurrentPost] = useState<typeof blogPosts[0] | null>(null);
@@ -38,6 +39,9 @@ export default function BlogClient() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 z-10 font-sans">
+      {/* Moving element canvas particle theme */}
+      <InteractiveParticles density={45} particleColor="mixed" />
+
       {/* Background glow layers */}
       <div className="mesh-bg bg-brand-blue/5 top-20 right-10 animate-mesh-spin" style={{ animationDuration: '35s' }} />
       <div className="mesh-bg bg-brand-purple/5 bottom-20 left-10 animate-mesh-spin" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />
