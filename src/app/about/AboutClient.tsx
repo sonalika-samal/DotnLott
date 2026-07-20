@@ -147,8 +147,8 @@ export default function AboutClient() {
           </div>
         </div>
 
-        {/* FAQ Accordion Section */}
-        <div className="border-t border-slate-200 pt-16 flex flex-col gap-10">
+        {/* FAQ Section */}
+        <div className="pt-16 flex flex-col gap-10">
           <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-purple">Help & Support</span>
             <h2 className="font-display text-3xl font-extrabold text-slate-900">

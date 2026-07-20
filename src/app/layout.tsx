@@ -3,6 +3,7 @@ import { Outfit, Inter } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 import './globals.css';
 
 const outfit = Outfit({
@@ -144,6 +145,9 @@ export default function RootLayout({
 
         {/* Footer */}
         <Footer />
+
+        {/* Scroll To Top Handler on Route Change */}
+        <ScrollToTop />
 
         {/* WhatsApp Float */}
         <FloatingWhatsApp />

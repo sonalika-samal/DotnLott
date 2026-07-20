@@ -24,7 +24,7 @@ const webDevFaqs = [
   },
   {
     question: 'What are the benefits of custom code over WordPress or Shopify?',
-    answer: 'Custom Next.js sites provide near-instant loading speeds, higher conversion rates, robust security, and absolute design freedom. Furthermore, they are fully custom-integrated with automated database triggers and client notification hubs.',
+    answer: 'Custom bespoke sites provide near-instant loading speeds, higher conversion rates, robust security, and absolute design freedom. Furthermore, they are fully custom-integrated with automated database triggers and client notification hubs.',
   },
 ];
 

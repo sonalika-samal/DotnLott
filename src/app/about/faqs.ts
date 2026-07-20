@@ -5,19 +5,19 @@ export const faqsList = [
   },
   {
     question: 'How does DotnLott automate my workflows?',
-    answer: 'We connect your software tools (like n8n, Zoho CRM, Slack, WhatsApp, Google Sheets) using secure API integrations. By mapping your manual rules, we create auto-run background tasks that do the data syncing, messaging, and scheduling for you, completely on autopilot.',
+    answer: 'We connect your corporate software systems (like CRMs, messaging platforms, spreadsheets, and databases) using secure API integrations. By mapping your manual rules, we create auto-run background tasks that do the data syncing, messaging, and scheduling for you, completely on autopilot.',
   },
   {
     question: 'Are my company data and files secure with DotnLott?',
-    answer: 'Yes, data security is our top priority. All our automations use standard secure APIs, SSL encryption, and isolated Supabase database architectures. We sign formal Non-Disclosure Agreements (NDAs) with all corporate clients prior to system design.',
+    answer: 'Yes, data security is our top priority. All our automations use standard secure APIs, SSL encryption, and isolated cloud database architectures. We sign formal Non-Disclosure Agreements (NDAs) with all corporate clients prior to system design.',
   },
   {
     question: 'Can I migrate from Managed Cloud to Dedicated VPS later?',
-    answer: 'Absolutely. Every automation suite we build is designed using clean, modular code. If your business compliance grows or you require full control, we can migrate your entire system from our Managed Cloud hosting onto your own Dedicated VPS server (AWS, GCP, Hetzner, etc.) at any time.',
+    answer: 'Absolutely. Every automation suite we build is designed using clean, modular code. If your business compliance grows or you require full control, we can migrate your entire system from our Managed Cloud hosting onto your own Dedicated VPS server at any time.',
   },
   {
     question: 'What software tools can DotnLott integrate with?',
-    answer: 'We can integrate any software tool that provides an API. Common configurations include Zoho, Salesforce, HubSpot, Gmail, Google Calendar, Slack, WhatsApp Business, Stripe, Shopify, Notion, and custom legacy database endpoints.',
+    answer: 'We can integrate any software system or platform that provides an API. Common configurations include CRM databases, email platforms, team communication channels, payment gateways, and custom legacy database endpoints.',
   },
   {
     question: 'What is your pricing model for custom integrations?',

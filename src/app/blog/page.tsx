@@ -3,8 +3,8 @@ import BlogClient from './BlogClient';
 
 export const metadata: Metadata = {
   title: 'Automation & AI Blog | DotnLott Resources',
-  description: 'Read our engineering articles and tutorials on workflow automation, n8n databases, custom AI chatbot integration, and headless Next.js web development.',
-  keywords: 'n8n automation blog, AI vector database guides, custom website speed, business automation tutorials, DotnLott resources',
+  description: 'Read our engineering articles and tutorials on workflow automation, cloud databases, custom AI chatbot integration, and high-performance web development.',
+  keywords: 'workflow automation blog, AI vector database guides, custom website speed, business automation tutorials, DotnLott resources',
   openGraph: {
     title: 'Automation & AI Blog | DotnLott Resources',
     description: 'Read our engineering articles and tutorials on workflow automation, AI integration, and high-performance website development.',

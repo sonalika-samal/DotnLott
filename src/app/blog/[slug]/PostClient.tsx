@@ -83,7 +83,7 @@ export default function PostClient({ post }: PostClientProps) {
               </div>
               <h2 className="text-lg font-bold font-display leading-tight">Implement This Suite in Your Workspace</h2>
               <p className="text-[11px] text-slate-350 leading-relaxed font-light">
-                Do you want to automate Zoho CRM, WhatsApp notifications, headless layouts, or vector databases customized to your parameters?
+                Do you want to automate CRM databases, messaging workflows, bespoke layouts, or AI pipelines customized to your parameters?
               </p>
             </div>
 

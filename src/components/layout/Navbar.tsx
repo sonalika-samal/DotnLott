@@ -9,7 +9,7 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Workflow Automation', path: '/catalog' },
+  { name: 'AI Automation', path: '/ai-automation' },
   { name: 'Website Development', path: '/website-development' },
   { name: 'Portfolio', path: '/portfolio' },
   { name: 'About', path: '/about' },
