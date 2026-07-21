@@ -118,7 +118,7 @@ export default function RefundPolicyPage() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand-purple" />
-                <span>A2Z Version Private Limited | Registered Office: Bihar, India | Operational Office: Odisha, India</span>
+                <span>A2Z Version Private Limited | Operational Address: Odisha, India</span>
               </div>
             </div>
           </section>

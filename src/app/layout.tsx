@@ -1,10 +1,16 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Outfit, Inter } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import './globals.css';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 const outfit = Outfit({
   variable: '--font-outfit',
@@ -120,7 +126,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${inter.variable} h-full antialiased`}
+      className={`${outfit.variable} ${inter.variable} min-h-full antialiased bg-[#f8fafc]`}
       suppressHydrationWarning
     >
       <body
@@ -139,7 +145,7 @@ export default function RootLayout({
         <Navbar />
 
         {/* Page Content */}
-        <main className="flex-grow pt-24 overflow-x-hidden w-full">
+        <main className="flex-grow pt-24 w-full">
           {children}
         </main>
 

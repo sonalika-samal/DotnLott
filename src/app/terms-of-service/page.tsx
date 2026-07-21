@@ -137,7 +137,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand-purple" />
-                <span>Registered Office: Bihar, India | Operational Office: Odisha, India</span>
+                <span>Operational Address: Odisha, India</span>
               </div>
             </div>
           </section>

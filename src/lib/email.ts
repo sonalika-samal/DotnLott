@@ -10,7 +10,7 @@ export interface EmailInquiryPayload {
 }
 
 /**
-  * Generates a modern HTML email template for DotnLott team (connect@dotnlott.com)
+ * Generates a modern HTML email template for DotnLott team (connect@dotnlott.com)
  */
 export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
   const timestamp = new Date().toLocaleString('en-IN', {
@@ -98,49 +98,43 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
     .info-label {
       width: 38%;
       padding: 12px 16px;
-      background-color: #f8fafc;
       font-size: 12px;
       font-weight: 700;
-      color: #475569;
+      color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      background-color: #f8fafc;
     }
     .info-value {
       padding: 12px 16px;
       font-size: 13px;
-      font-weight: 600;
       color: #0f172a;
-    }
-    .info-value a {
-      color: #6366f1;
-      text-decoration: none;
     }
     .message-box {
       background-color: #f8fafc;
-      border-left: 4px solid #6366f1;
-      border-radius: 8px;
-      padding: 18px 20px;
-      margin-bottom: 28px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
     }
     .message-title {
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      color: #64748b;
+      color: #475569;
       margin-bottom: 8px;
     }
     .message-body {
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.6;
-      color: #334155;
-      white-space: pre-line;
+      color: #1e293b;
+      white-space: pre-wrap;
       margin: 0;
     }
-    .actions {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
+    .btn-container {
+      text-align: center;
+      margin-top: 24px;
     }
     .btn {
       display: inline-block;
@@ -149,23 +143,24 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
       font-weight: 700;
       text-decoration: none;
       border-radius: 10px;
-      text-align: center;
+      transition: all 0.2s ease;
     }
     .btn-primary {
-      background-color: #0f172a;
-      color: #ffffff !important;
+      background-color: #6366f1;
+      color: #ffffff;
     }
     .btn-whatsapp {
-      background-color: #25D366;
-      color: #ffffff !important;
+      background-color: #10b981;
+      color: #ffffff;
     }
     .footer {
       padding: 20px 32px;
       background-color: #f8fafc;
-      border-top: 1px solid #f1f5f9;
+      border-top: 1px solid #e2e8f0;
       font-size: 11px;
       color: #94a3b8;
       text-align: center;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -173,29 +168,27 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
   <div class="email-container">
     <div class="header-accent"></div>
     <div class="header">
-      <span class="brand-badge">⚡ New Lead Notification</span>
-      <h1 class="title">Website Inquiry Received</h1>
-      <p class="subtitle">A new project request was submitted via dotnlott.com</p>
+      <div class="brand-badge">⚡ New Lead Received</div>
+      <h1 class="title">Website Lead: ${data.name}</h1>
+      <p class="subtitle">Submitted on DotnLott Website Contact Form</p>
     </div>
 
     <div class="content">
       <table class="info-table">
         <tr>
           <td class="info-label">Full Name</td>
-          <td class="info-value">${data.name}</td>
+          <td class="info-value"><strong>${data.name}</strong></td>
         </tr>
         <tr>
-          <td class="info-label">Business Email</td>
-          <td class="info-value">
-            <a href="mailto:${data.email}">${data.email}</a>
-          </td>
+          <td class="info-label">Email Address</td>
+          <td class="info-value"><a href="mailto:${data.email}" style="color: #6366f1; text-decoration: none;">${data.email}</a></td>
         </tr>
         <tr>
-          <td class="info-label">Phone / WhatsApp</td>
-          <td class="info-value">${data.phone || 'Not Provided'}</td>
+          <td class="info-label">Phone Number</td>
+          <td class="info-value">${data.phone || 'N/A'}</td>
         </tr>
         <tr>
-          <td class="info-label">Service Category</td>
+          <td class="info-label">Category</td>
           <td class="info-value"><strong>${data.category}</strong></td>
         </tr>
         <tr>
@@ -213,7 +206,7 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
         <p class="message-body">${data.message}</p>
       </div>
 
-      <div style="text-align: center; margin-top: 24px;">
+      <div class="btn-container">
         <a href="mailto:${data.email}?subject=Re:%20DotnLott%20Inquiry%20-%20${encodeURIComponent(data.projectType)}" class="btn btn-primary" style="margin-right: 8px;">Reply via Email</a>
         <a href="${whatsappUrl}" class="btn btn-whatsapp">Chat on WhatsApp</a>
       </div>
@@ -230,12 +223,216 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
 }
 
 /**
- * Sends an email notification to connect@dotnlott.com
+ * Generates an auto-responder confirmation HTML email template for the client
+ */
+export function generateClientConfirmationEmailHTML(data: EmailInquiryPayload): string {
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquiry Confirmation - DotnLott</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 24px 12px;
+      color: #0f172a;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .header-accent {
+      height: 6px;
+      background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+    }
+    .header {
+      padding: 32px 32px 24px 32px;
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .brand-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #10b981;
+      background-color: #ecfdf5;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 6px 0;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .content {
+      padding: 32px;
+    }
+    .status-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #6366f1;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .status-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .status-desc {
+      font-size: 13px;
+      color: #475569;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-bottom: 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .info-table tr:not(:last-child) td {
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .info-label {
+      width: 38%;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+    }
+    .info-value {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #0f172a;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+    .btn-whatsapp {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+    .footer {
+      padding: 20px 32px;
+      background-color: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      font-size: 11px;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header-accent"></div>
+    <div class="header">
+      <div class="brand-badge">✓ Inquiry Received</div>
+      <h1 class="title">Thank You for Reaching Out!</h1>
+      <p class="subtitle">Hi ${data.name}, we've received your inquiry and our engineering leads are reviewing it.</p>
+    </div>
+
+    <div class="content">
+      <div class="status-card">
+        <div class="status-title">⚡ Estimated Response Time: Within a Few Hours</div>
+        <p class="status-desc">
+          Our core team (Sonalika Samal & Abhishek Abhinav) will review your requirements for <strong>${data.category} (${data.projectType})</strong> and reply to this email within a few hours.
+        </p>
+      </div>
+
+      <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 12px;">Summary of Your Submitted Request</h4>
+      
+      <table class="info-table">
+        <tr>
+          <td class="info-label">Name</td>
+          <td class="info-value"><strong>${data.name}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Email</td>
+          <td class="info-value"><a href="mailto:${data.email}" style="color: #6366f1; text-decoration: none;">${data.email}</a></td>
+        </tr>
+        <tr>
+          <td class="info-label">Phone</td>
+          <td class="info-value">${data.phone || 'N/A'}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Category</td>
+          <td class="info-value"><strong>${data.category}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Package / Type</td>
+          <td class="info-value"><strong>${data.projectType}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Message</td>
+          <td class="info-value">${data.message}</td>
+        </tr>
+      </table>
+
+      <div class="btn-container">
+        <a href="https://wa.me/917846969508" class="btn btn-whatsapp">Need Immediate Help? Chat on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <strong>DotnLott AI Automation & Web Studio</strong><br>
+      A brand under A2Z Version Private Limited (CIN: U47721BR2026PTC085973)<br>
+      Operational Address: Odisha, India | Contact: <a href="mailto:connect@dotnlott.com" style="color: #6366f1; text-decoration: none;">connect@dotnlott.com</a>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Sends email notifications to connect@dotnlott.com AND confirmation email to the client
  */
 export async function sendContactEmail(payload: EmailInquiryPayload) {
-  const recipient = 'connect@dotnlott.com';
-  const subject = `🚀 New Inquiry: ${payload.name} - ${payload.projectType}`;
-  const htmlContent = generateInquiryEmailHTML(payload);
+  const teamRecipient = 'connect@dotnlott.com';
+  const teamSubject = `🚀 New Inquiry: ${payload.name} - ${payload.projectType}`;
+  const teamHtmlContent = generateInquiryEmailHTML(payload);
+
+  const clientSubject = `We've Received Your Inquiry - DotnLott`;
+  const clientHtmlContent = generateClientConfirmationEmailHTML(payload);
 
   // 1. Check Web3Forms Access Key
   const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
@@ -246,8 +443,8 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: web3Key,
-          to: recipient,
-          subject: subject,
+          to: teamRecipient,
+          subject: teamSubject,
           from_name: payload.name,
           replyto: payload.email,
           name: payload.name,
@@ -272,7 +469,8 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
   const resendKey = process.env.RESEND_API_KEY;
   if (resendKey) {
     try {
-      const res = await fetch('https://api.resend.com/emails', {
+      // Send to Team
+      await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -280,23 +478,36 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
         },
         body: JSON.stringify({
           from: process.env.RESEND_FROM || 'DotnLott <onboarding@resend.dev>',
-          to: [recipient],
+          to: [teamRecipient],
           reply_to: payload.email,
-          subject: subject,
-          html: htmlContent,
+          subject: teamSubject,
+          html: teamHtmlContent,
         }),
       });
-      const data = await res.json();
-      if (res.ok) {
-        console.log('Successfully delivered inquiry email via Resend:', data.id);
-        return { success: true, method: 'resend', id: data.id };
-      }
+
+      // Send Confirmation to Client
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendKey}`,
+        },
+        body: JSON.stringify({
+          from: process.env.RESEND_FROM || 'DotnLott <onboarding@resend.dev>',
+          to: [payload.email],
+          reply_to: 'connect@dotnlott.com',
+          subject: clientSubject,
+          html: clientHtmlContent,
+        }),
+      });
+
+      return { success: true, method: 'resend' };
     } catch (err) {
       console.error('Resend dispatch error:', err);
     }
   }
 
-  // 3. Check SMTP credentials from environment
+  // 3. Check SMTP credentials from environment (Google Workspace)
   const smtpHost = process.env.SMTP_HOST;
   const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587;
   const smtpUser = process.env.SMTP_USER;
@@ -314,16 +525,26 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
         },
       });
 
-      const info = await transporter.sendMail({
+      // Send Notification to Team (connect@dotnlott.com)
+      const teamInfo = await transporter.sendMail({
         from: process.env.SMTP_FROM || `"DotnLott Website" <${smtpUser}>`,
-        to: recipient,
+        to: teamRecipient,
         replyTo: payload.email,
-        subject: subject,
-        html: htmlContent,
+        subject: teamSubject,
+        html: teamHtmlContent,
       });
 
-      console.log('Successfully dispatched email to connect@dotnlott.com:', info.messageId);
-      return { success: true, method: 'smtp', messageId: info.messageId };
+      // Send Confirmation Auto-Responder Email to Client
+      const clientInfo = await transporter.sendMail({
+        from: process.env.SMTP_FROM || `"DotnLott Team" <${smtpUser}>`,
+        to: payload.email,
+        replyTo: teamRecipient,
+        subject: clientSubject,
+        html: clientHtmlContent,
+      });
+
+      console.log('Successfully sent team email & client confirmation auto-responder:', teamInfo.messageId, clientInfo.messageId);
+      return { success: true, method: 'smtp', teamMessageId: teamInfo.messageId, clientMessageId: clientInfo.messageId };
     } catch (err) {
       console.error('Failed to send email via SMTP, falling back to db log:', err);
     }
@@ -331,8 +552,9 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
 
   // Fallback: Log email details cleanly in console & server logs
   console.log('====================================================');
-  console.log(`[INQUIRY EMAIL TO: ${recipient}]`);
-  console.log(`Subject: ${subject}`);
+  console.log(`[INQUIRY EMAIL TO: ${teamRecipient}]`);
+  console.log(`[CLIENT CONFIRMATION TO: ${payload.email}]`);
+  console.log(`Subject: ${teamSubject}`);
   console.log(`From: ${payload.name} <${payload.email}>`);
   console.log(`Phone: ${payload.phone || 'N/A'}`);
   console.log(`Category: ${payload.category}`);

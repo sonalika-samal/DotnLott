@@ -34,7 +34,7 @@ const contactFaqs = [
   },
   {
     question: 'Where are DotnLott\'s operational and corporate headquarters located?',
-    answer: 'DotnLott operates as a registered tech brand under A2Z Version Private Limited (CIN: U47721BR2026PTC085973). Our registered office is located in Bihar, India, and our primary development & operational hub is in Odisha, India.',
+    answer: 'DotnLott operates as a registered tech brand under A2Z Version Private Limited (CIN: U47721BR2026PTC085973). Our primary development & operational hub is located in Odisha, India.',
   },
 ];
 
@@ -89,20 +89,12 @@ export default function ContactClient() {
     setIsSubmitting(true);
 
     try {
-      // Save lead to DB / backend
+      // Save lead to DB & dispatch email notification to connect@dotnlott.com + client confirmation email
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
-      // Construct clean formatted WhatsApp message without emoji encoding issues
-      const whatsappText = `*New Website Inquiry for DotnLott*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'N/A'}\n*Category:* ${formData.category}\n*Package / Type:* ${formData.projectType}\n\n*Message:* ${formData.message}`;
-
-      const whatsappUrl = `https://wa.me/917846969508?text=${encodeURIComponent(whatsappText)}`;
-      
-      // Auto open WhatsApp chat in new window/app
-      window.open(whatsappUrl, '_blank');
     } catch (err) {
       console.error('Contact submission error:', err);
     } finally {
@@ -193,36 +185,64 @@ export default function ContactClient() {
               
               <div className="flex flex-col gap-3.5">
                 {/* Email Box */}
-                <a
-                  href="mailto:connect@dotnlott.com"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-brand-purple/50 hover:bg-white hover:shadow-md transition-all group/item border-l-4 border-l-brand-purple"
-                >
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-brand-purple/50 hover:bg-white hover:shadow-md transition-all group/item border-l-4 border-l-brand-purple">
                   <div className="w-11 h-11 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
                     <Mail className="w-5 h-5 text-brand-purple" />
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email Us</span>
-                    <span className="text-xs font-extrabold text-slate-900 group-hover/item:text-brand-purple transition-colors">connect@dotnlott.com</span>
+                    <div className="flex flex-wrap items-center gap-1.5 text-xs font-extrabold text-slate-900">
+                      <a
+                        href="mailto:connect@dotnlott.com"
+                        className="hover:text-brand-purple underline transition-colors"
+                        title="Email connect@dotnlott.com"
+                      >
+                        connect@dotnlott.com
+                      </a>
+                      <span className="text-slate-300 font-normal">|</span>
+                      <a
+                        href="mailto:dotnlott.connect@gmail.com"
+                        className="hover:text-brand-purple underline transition-colors"
+                        title="Email dotnlott.connect@gmail.com"
+                      >
+                        dotnlott.connect@gmail.com
+                      </a>
+                    </div>
                     <span className="text-[11px] text-slate-500 font-light">Formal RFPs & specs</span>
                   </div>
-                </a>
+                </div>
 
                 {/* Phone & WhatsApp Box */}
-                <a
-                  href="https://wa.me/917846969508?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20Contact%20page."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-emerald-500/50 hover:bg-white hover:shadow-md transition-all group/item border-l-4 border-l-emerald-500"
-                >
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-emerald-500/50 hover:bg-white hover:shadow-md transition-all group/item border-l-4 border-l-emerald-500">
                   <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
                     <MessageCircle className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-display">WhatsApp & Direct Call</span>
-                    <span className="text-xs font-extrabold text-slate-900 group-hover/item:text-emerald-600 transition-colors">+91 78469 69508 | +91 85441 21551</span>
+                    <div className="flex flex-wrap items-center gap-1.5 text-xs font-extrabold text-slate-900">
+                      <a
+                        href="https://wa.me/917846969508?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20Contact%20page."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-emerald-600 underline transition-colors"
+                        title="Chat on WhatsApp with +91 78469 69508"
+                      >
+                        +91 78469 69508
+                      </a>
+                      <span className="text-slate-300 font-normal">|</span>
+                      <a
+                        href="https://wa.me/918544121551?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20Contact%20page."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-emerald-600 underline transition-colors"
+                        title="Chat on WhatsApp with +91 85441 21551"
+                      >
+                        +91 85441 21551
+                      </a>
+                    </div>
                     <span className="text-[11px] text-slate-500 font-light">Instant WhatsApp chat</span>
                   </div>
-                </a>
+                </div>
 
                 {/* Strategy Booking Box */}
                 <Link
@@ -252,28 +272,16 @@ export default function ContactClient() {
                 <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full uppercase tracking-wider">India</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-auto">
-                {/* Registered Office */}
-                <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex flex-col gap-1.5 border-l-4 border-l-brand-blue hover:bg-white transition-colors shadow-2xs">
-                  <div className="flex items-center gap-2 text-brand-blue font-extrabold text-xs">
-                    <MapPin className="w-4 h-4 flex-shrink-0" />
-                    <span>Registered Office</span>
-                  </div>
-                  <p className="text-xs text-slate-900 font-bold leading-snug">Bihar, India</p>
-                  <p className="text-[10px] text-slate-500 font-light mt-0.5">
-                    A2Z Version Pvt Ltd<br />CIN: U47721BR2026PTC085973
-                  </p>
-                </div>
-
-                {/* Operational Hub */}
-                <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex flex-col gap-1.5 border-l-4 border-l-brand-purple hover:bg-white transition-colors shadow-2xs">
+              <div className="my-auto">
+                {/* Operational Address */}
+                <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex flex-col gap-1.5 border-l-4 border-l-brand-purple hover:bg-white transition-colors shadow-2xs">
                   <div className="flex items-center gap-2 text-brand-purple font-extrabold text-xs">
                     <MapPin className="w-4 h-4 flex-shrink-0" />
-                    <span>Operational Hub</span>
+                    <span>Operational Address</span>
                   </div>
-                  <p className="text-xs text-slate-900 font-bold leading-snug">Odisha, India</p>
-                  <p className="text-[10px] text-slate-500 font-light mt-0.5">
-                    Primary Engineering & System Deployment Team
+                  <p className="text-sm text-slate-900 font-bold leading-snug">Odisha, India</p>
+                  <p className="text-xs text-slate-500 font-light mt-0.5">
+                    Primary Engineering, Design & System Deployment Team
                   </p>
                 </div>
               </div>
@@ -301,30 +309,30 @@ export default function ContactClient() {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <div className="flex flex-col gap-2 max-w-md">
-                    <h3 className="text-2xl font-extrabold text-slate-900 font-display">Message Received!</h3>
+                    <h3 className="text-2xl font-extrabold text-slate-900 font-display">Inquiry Submitted Successfully!</h3>
                     <p className="text-xs text-slate-600 leading-relaxed font-light">
-                      Thank you for contacting DotnLott. Our core team has received your details and will get back to you at <span className="font-semibold text-slate-900">{formData.email}</span> within 2 to 4 business hours.
+                      Thank you for contacting DotnLott! We have sent a confirmation email to <span className="font-semibold text-slate-900">{formData.email}</span>. Our core engineering leads (Sonalika Samal & Abhishek Abhinav) will review your project details and get back to you within a few hours.
                     </p>
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 w-full justify-center">
                     <a
                       href={`https://wa.me/917846969508?text=${encodeURIComponent(
-                        `Hey Sonalika, I just submitted an inquiry on your website for ${formData.category} (${formData.projectType}). My name is ${formData.name}.`
+                        `Hey DotnLott team, I just submitted an inquiry on your website for ${formData.category} (${formData.projectType}). My name is ${formData.name}.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto px-6 py-3 bg-[#25D366] hover:bg-[#20ba56] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      Chat Instantly on WhatsApp
+                      Optional: Chat on WhatsApp
                     </a>
 
                     <button
                       onClick={() => setSubmitted(false)}
                       className="w-full sm:w-auto px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider rounded-xl transition-all"
                     >
-                      Send Another Inquiry
+                      Submit Another Inquiry
                     </button>
                   </div>
                 </div>
@@ -452,11 +460,11 @@ export default function ContactClient() {
                       {isSubmitting ? (
                         <>
                           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Sending...
+                          Submitting Inquiry...
                         </>
                       ) : (
                         <>
-                          Send Inquiry via WhatsApp <MessageCircle className="w-4 h-4 text-emerald-400 fill-emerald-400/20" />
+                          Submit Inquiry via Email <Send className="w-4 h-4 text-brand-purple" />
                         </>
                       )}
                     </button>

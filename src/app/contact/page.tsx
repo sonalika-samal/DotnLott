@@ -4,7 +4,7 @@ import ContactClient from './ContactClient';
 export const metadata: Metadata = {
   title: 'Contact Us | DotnLott AI Automation & Website Development',
   description: 'Get in touch with DotnLott. Reach out to Sonalika Samal & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
-  keywords: 'contact DotnLott, AI automation inquiry, website development company contact, Sonalika Samal, Abhishek Abhinav, Bihar tech company, Odisha web developer',
+  keywords: 'contact DotnLott, AI automation inquiry, website development company contact, Sonalika Samal, Abhishek Abhinav, Odisha tech company, Odisha web developer',
   openGraph: {
     title: 'Contact Us | DotnLott AI Automation & Website Development',
     description: 'Get in touch with DotnLott. Reach out to Sonalika Samal & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
@@ -26,15 +26,9 @@ const contactSchema = {
     'address': [
       {
         '@type': 'PostalAddress',
-        'addressLocality': 'Bihar',
-        'addressCountry': 'IN',
-        'name': 'Registered Office',
-      },
-      {
-        '@type': 'PostalAddress',
         'addressLocality': 'Odisha',
         'addressCountry': 'IN',
-        'name': 'Operational Office',
+        'name': 'Operational Address',
       },
     ],
   },

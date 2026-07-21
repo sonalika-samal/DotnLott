@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import WebDevClient from './WebDevClient';
+import WebDevServicesClient from './WebDevServicesClient';
 
 export const metadata: Metadata = {
-  title: 'Custom Website Development | High-Performance Web Apps | DotnLott',
-  description: 'Modern, fast, and SEO-optimized website development. We design premium custom web applications and business portfolios tailored to your brand.',
-  keywords: 'website development, custom web app, React Nextjs developer, portfolio web design, business website, DotnLott web development',
+  title: 'Custom Website Engineering & Web App Studio | DotnLott',
+  description: 'High-performance Next.js web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
+  keywords: 'website development, custom web app studio, Nextjs developer, headless ecommerce, portfolio web design, DotnLott web studio',
   openGraph: {
-    title: 'Custom Website Development | High-Performance Web Apps | DotnLott',
-    description: 'Modern, fast, and SEO-optimized website development. We design premium custom web applications and business portfolios tailored to your brand.',
+    title: 'Custom Website Engineering & Web App Studio | DotnLott',
+    description: 'High-performance Next.js web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
     type: 'website',
     images: [{ url: '/logo-v2.png', width: 512, height: 512, alt: 'DotnLott Logo' }],
   },
@@ -37,39 +37,9 @@ const serviceSchema = {
     'name': 'DotnLott',
   },
   'areaServed': 'Worldwide',
-  'hasOfferCatalog': {
-    '@type': 'OfferCatalog',
-    'name': 'Website Development Solutions',
-    'itemListElement': [
-      {
-        '@type': 'Offer',
-        'itemOffered': {
-          '@type': 'Service',
-          'name': 'Corporate Portfolio Design',
-          'description': 'Premium landing pages, business portfolio layouts with advanced micro-interactions.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        'itemOffered': {
-          '@type': 'Service',
-          'name': 'Headless E-commerce Solutions',
-          'description': 'Tailored digital storefronts built on headless CMS, Stripe/Razorpay checkout grids.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        'itemOffered': {
-          '@type': 'Service',
-          'name': 'SaaS & Web App Architectures',
-          'description': 'Custom web applications, dashboards, client portals, databases.',
-        },
-      },
-    ],
-  },
 };
 
-export default function Page() {
+export default function WebsiteDevPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -93,7 +63,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <WebDevClient />
+      <WebDevServicesClient />
     </>
   );
 }

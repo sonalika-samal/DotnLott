@@ -102,7 +102,7 @@ const webDevRow2 = [
     metric: '100% Responsive'
   },
   {
-    name: 'Supabase DB & Real-Time Auth',
+    name: 'PostgreSQL DB & Secure Auth',
     desc: 'Postgres & Row Security Rules',
     category: 'DATABASE',
     gradient: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30 text-emerald-400',

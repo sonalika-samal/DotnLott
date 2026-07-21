@@ -38,15 +38,9 @@ const organizationSchema = {
   'address': [
     {
       '@type': 'PostalAddress',
-      'addressLocality': 'Bihar',
-      'addressCountry': 'IN',
-      'name': 'Head Office',
-    },
-    {
-      '@type': 'PostalAddress',
       'addressLocality': 'Odisha',
       'addressCountry': 'IN',
-      'name': 'Operational Office',
+      'name': 'Operational Address',
     },
   ],
   'sameAs': [

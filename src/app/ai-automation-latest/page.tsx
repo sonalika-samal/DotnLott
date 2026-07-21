@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
-import AIAutomationClient from './AIAutomationClient';
+import CatalogClient from '../catalog/CatalogClient';
 
 export const metadata: Metadata = {
-  title: 'Autonomous AI Systems & Workflow Automation | DotnLott',
-  description: 'Enterprise-grade AI automation architectures. Connect your CRMs, databases, and communication channels into 24/7 autonomous autopilots.',
-  keywords: 'AI automation systems, workflow automation, autonomous AI agents, CRM integration, database sync, enterprise AI',
+  title: 'AI Automation Suites & Pricing | DotnLott Landing Page',
+  description: 'Explore DotnLott\'s catalog of 12 automated AI business suites and development pricing. Set up automated workflows, CRM sync tools, and custom AI chatbots.',
+  keywords: 'AI automation pricing, email automation, CRM sync, workflow integrations, web automation cost, DotnLott pricing',
   openGraph: {
-    title: 'Autonomous AI Systems & Workflow Automation | DotnLott',
-    description: 'Enterprise-grade AI automation architectures. Connect your CRMs, databases, and communication channels into 24/7 autonomous autopilots.',
+    title: 'AI Automation Suites & Pricing | DotnLott',
+    description: 'Explore DotnLott\'s catalog of 12 automated AI business suites and development pricing. Set up automated workflows, CRM sync tools, and custom AI chatbots.',
     type: 'website',
-    images: [{ url: '/catalog-og.png', width: 1200, height: 630, alt: 'DotnLott AI Automation Solutions' }],
+    images: [{ url: '/catalog-og.png', width: 1200, height: 630, alt: 'DotnLott AI Automation Solutions Catalog' }],
   },
 };
 
 const catalogFaqs = [
   {
-    question: 'How much does enterprise business workflow automation cost?',
+    question: 'How much does business workflow automation cost?',
     answer: 'Standardized automation suite setups at DotnLott start at ₹499 ($6) on our Managed Cloud model. Custom integrations are priced based on API complexity, webhook volume, and system requirements after a consultation call.',
   },
   {
@@ -39,7 +39,7 @@ const serviceSchema = {
   'areaServed': 'Worldwide',
 };
 
-export default function AiAutomationPage() {
+export default function AiAutomationLatestPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -63,7 +63,7 @@ export default function AiAutomationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <AIAutomationClient />
+      <CatalogClient />
     </>
   );
 }
