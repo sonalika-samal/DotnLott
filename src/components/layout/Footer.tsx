@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Mail, MapPin, MessageCircle, Calendar } from 'lucide-react';
+import { Mail, MapPin, Phone, Calendar } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -143,7 +143,7 @@ export default function Footer() {
               className="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-brand-purple hover:bg-brand-purple/90 text-white text-[11px] font-bold uppercase tracking-wider shadow-xs hover:shadow-md transition-all border border-purple-400/30 w-fit hover:scale-105"
             >
               <Calendar className="w-3.5 h-3.5" />
-              Book Meeting
+              Book a meeting
             </Link>
           </div>
 
@@ -248,37 +248,33 @@ export default function Footer() {
               <div className="flex flex-col gap-0.5 min-w-0">
                 <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email Us</span>
                 <div className="flex flex-col text-xs font-bold text-slate-900">
-                  <a href="mailto:connect@dotnlott.com" className="hover:text-brand-purple underline transition-colors truncate">
+                  <a href="mailto:connect@dotnlott.com" className="hover:text-brand-purple transition-colors truncate no-underline">
                     connect@dotnlott.com
                   </a>
-                  <a href="mailto:hello.dotnlott@gmail.com" className="hover:text-brand-purple underline transition-colors truncate">
+                  <a href="mailto:hello.dotnlott@gmail.com" className="hover:text-brand-purple transition-colors truncate no-underline">
                     hello.dotnlott@gmail.com
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Phone Number / WhatsApp Text Links */}
+            {/* Phone Number Call Links */}
             <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-2.5 flex items-start gap-2.5 shadow-2xs hover:border-emerald-500/30 transition-all">
-              <div className="w-6.5 h-6.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0 mt-0.5">
-                <MessageCircle className="w-3.5 h-3.5" />
+              <div className="w-6.5 h-6.5 rounded-xl bg-emerald-500/10 border border-emerald-200/20 flex items-center justify-center text-emerald-600 flex-shrink-0 mt-0.5">
+                <Phone className="w-3.5 h-3.5" />
               </div>
               <div className="flex flex-col gap-0.5 min-w-0">
-                <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Phone & WhatsApp</span>
-                <div className="flex flex-col text-xs font-bold text-slate-900">
+                <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Call Us</span>
+                <div className="flex flex-col text-xs font-bold text-slate-900 gap-1 mt-0.5">
                   <a
-                    href="https://wa.me/917846969508?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20website."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-emerald-600 underline transition-colors"
+                    href="tel:+917846969508"
+                    className="hover:text-emerald-600 transition-colors no-underline"
                   >
                     +91 78469 69508
                   </a>
                   <a
-                    href="https://wa.me/918544121551?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20website."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-emerald-600 underline transition-colors"
+                    href="tel:+918544121551"
+                    className="hover:text-emerald-600 transition-colors no-underline"
                   >
                     +91 85441 21551
                   </a>

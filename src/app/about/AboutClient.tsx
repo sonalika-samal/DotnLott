@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -38,6 +38,14 @@ import InteractiveAboutSpecialtiesShowcase from '@/components/ui/InteractiveAbou
 export default function AboutClient() {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [trustTab, setTrustTab] = useState<'trust' | 'vision' | 'guarantee'>('trust');
+  const [sonalikaOnTop, setSonalikaOnTop] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSonalikaOnTop((prev) => !prev);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIdx(openFaqIdx === idx ? null : idx);
@@ -536,189 +544,149 @@ export default function AboutClient() {
             </div>
           )}
         </div>
+      </div> {/* End of max-w-7xl wrapper */}
 
-        {/* ==========================================
-            4. FOUNDERS SHOWCASE (1 Row Side-by-Side Premium Cards)
-           ========================================== */}
-        <div className="flex flex-col gap-8 pt-4">
-          <div className="text-center max-w-3xl mx-auto flex flex-col gap-3">
-            <span className="text-xs font-extrabold uppercase tracking-wider text-brand-purple font-display bg-brand-purple/10 px-4 py-1 rounded-full w-fit mx-auto border border-brand-purple/20">
-              Direct Engineering Leadership
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
-              Meet the Founders
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
-              Engineered and led by hands-on AI workflow architects and software engineers directly accountable for your business builds.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
-            {/* Founder 1: Sonalika Samal (Thin Purple Border) */}
-            <div className="bg-gradient-to-b from-white via-slate-50/60 to-white border border-brand-purple/40 hover:border-brand-purple/70 rounded-3xl p-7 flex flex-col items-center text-center gap-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full">
-              
-              <div className="relative pt-2">
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-[3px] border-emerald-500 overflow-hidden relative shadow-sm group-hover:scale-105 transition-transform duration-300">
+      {/* ==========================================
+          4. FOUNDERS CORNER (Combined Cards Showcase & Note - Full-Bleed Violet Purple Background)
+         ========================================== */}
+      <div className="w-full bg-[#4a157d] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-t border-b border-purple-900/60 my-16 sm:my-24">
+        {/* Decorative ambient background mesh lights */}
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-white/5 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-white/5 blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          {/* Left Side: Overlapping tilted sliding cards */}
+          <div className="lg:col-span-5 flex justify-center items-center h-[370px] relative w-full max-w-[360px] mx-auto overflow-visible">
+            
+            {/* Sonalika Card */}
+            <div 
+              className={`absolute left-1/2 top-6 w-[240px] h-[320px] rounded-3xl p-5 border-0 transition-all duration-700 ease-in-out flex flex-col items-center text-center justify-between shadow-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 ${
+                sonalikaOnTop 
+                  ? "z-20 scale-100 -translate-x-1/2 translate-y-0 opacity-100 shadow-purple-900/40 rotate-[-2.5deg]" 
+                  : "z-10 scale-90 -translate-x-[100%] translate-y-[20px] opacity-100 rotate-[-5deg]"
+              }`}
+            >
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-32 h-32 rounded-full border-4 border-slate-950/20 overflow-hidden relative shadow-sm">
                   <Image
                     src="/sonalika.jpg"
-                    alt="Ms. Sonalika Samal - Founder & Systems Architect"
+                    alt="Ms. Sonalika Samal"
                     fill
                     className="object-cover object-top"
                     unoptimized
                   />
                 </div>
+                <div className="flex flex-col gap-0.5">
+                  <h3 className="text-base font-black font-display tracking-tight">Ms. Sonalika Samal</h3>
+                  <span className="text-[9px] font-extrabold uppercase tracking-widest opacity-80 font-mono">Founder & Systems Architect</span>
+                  <span className="text-[8px] font-bold uppercase opacity-85 font-mono">MCA, IIT Patna • 3+ Years Exp</span>
+                </div>
               </div>
-
-              <div className="flex flex-col items-center gap-1.5">
-                <h3 className="text-2xl font-black text-slate-900 font-display">Ms. Sonalika Samal</h3>
-                <span className="text-xs font-extrabold text-brand-purple uppercase tracking-wider font-mono">Founder & Systems Architect</span>
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Automation specialist and AI workflow architect with 3+ years of experience in AI toolings, webhook automation engines, instant messaging chatbots, and business process automation.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {['CRM Sync', 'Messaging APIs', 'AI Agents', 'Workflow Pipelines'].map((skill, i) => (
-                  <span key={i} className="text-[11px] font-extrabold text-brand-purple bg-brand-purple/10 border border-brand-purple/20 px-3 py-1 rounded-xl">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <div className="w-full pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500 mt-auto">
-                <span className="flex items-center gap-1 text-slate-800">
-                  <Building2 className="w-3.5 h-3.5 text-brand-purple" /> Systems & AI Lead
-                </span>
+              <div className="flex flex-col items-center gap-2 w-full border-t border-slate-950/15 pt-2">
+                <span className="text-[8px] font-extrabold bg-slate-950/10 text-slate-950 px-2.5 py-0.5 rounded-full uppercase tracking-wider font-mono">Systems & AI Lead</span>
                 <a
-                  href="https://wa.me/917846969508"
+                  href="https://www.linkedin.com/in/sonalikasamal/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[10px] font-black text-white bg-slate-950 hover:bg-slate-900 px-4 py-2 rounded-xl transition-all shadow-xs leading-none"
                 >
-                  <PhoneCall className="w-3 h-3" /> Connect Direct
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                  LinkedIn
                 </a>
               </div>
             </div>
 
-            {/* Founder 2: Abhishek Abhinav (Thin Blue Border) */}
-            <div className="bg-gradient-to-b from-white via-slate-50/60 to-white border border-brand-blue/40 hover:border-brand-blue/70 rounded-3xl p-7 flex flex-col items-center text-center gap-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full">
-              
-              <div className="relative pt-2">
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-[3px] border-emerald-500 overflow-hidden relative shadow-sm group-hover:scale-105 transition-transform duration-300">
+            {/* Abhishek Card */}
+            <div 
+              className={`absolute left-1/2 top-6 w-[240px] h-[320px] rounded-3xl p-5 border-0 transition-all duration-700 ease-in-out flex flex-col items-center text-center justify-between shadow-2xl bg-gradient-to-br from-blue-600 to-blue-700 text-white ${
+                sonalikaOnTop 
+                  ? "z-10 scale-90 translate-x-[0%] translate-y-[20px] opacity-100 rotate-[5deg]" 
+                  : "z-20 scale-100 -translate-x-1/2 translate-y-0 opacity-100 shadow-blue-900/40 rotate-[2.5deg]"
+              }`}
+            >
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-32 h-32 rounded-full border-4 border-white/20 overflow-hidden relative shadow-sm">
                   <Image
                     src="/abhishek.jpg"
-                    alt="Mr. Abhishek Abhinav - Founder & Software Engineer"
+                    alt="Mr. Abhishek Abhinav"
                     fill
                     className="object-cover object-top"
                     unoptimized
                   />
                 </div>
+                <div className="flex flex-col gap-0.5">
+                  <h3 className="text-base font-black font-display tracking-tight">Mr. Abhishek Abhinav</h3>
+                  <span className="text-[9px] font-extrabold uppercase tracking-widest opacity-80 font-mono">Founder & Software Engineer</span>
+                  <span className="text-[8px] font-bold uppercase opacity-85 font-mono">MCA, IIT Patna • 3+ Years Exp</span>
+                </div>
               </div>
-
-              <div className="flex flex-col items-center gap-1.5">
-                <h3 className="text-2xl font-black text-slate-900 font-display">Mr. Abhishek Abhinav</h3>
-                <span className="text-xs font-extrabold text-brand-blue uppercase tracking-wider font-mono">Founder & Software Engineer</span>
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Full-stack software engineer specializing in modern custom web applications, sub-second web performance, scalable REST APIs, cloud deployments, and system security.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {['React / Frontend', 'Node.js APIs', 'VPS / Cloud', 'System Infra'].map((skill, i) => (
-                  <span key={i} className="text-[11px] font-extrabold text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-3 py-1 rounded-xl">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <div className="w-full pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500 mt-auto">
-                <span className="flex items-center gap-1 text-slate-800">
-                  <Code2 className="w-3.5 h-3.5 text-brand-blue" /> Web & Cloud Lead
-                </span>
+              <div className="flex flex-col items-center gap-2 w-full border-t border-white/15 pt-2">
+                <span className="text-[8px] font-extrabold bg-white/10 text-white px-2.5 py-0.5 rounded-full uppercase tracking-wider font-mono">Web & Cloud Lead</span>
                 <a
-                  href="https://wa.me/918544121551"
+                  href="https://www.linkedin.com/in/abhi5hekabhinav/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[10px] font-black text-blue-600 bg-white hover:bg-slate-50 px-4 py-2 rounded-xl transition-all shadow-xs leading-none"
                 >
-                  <PhoneCall className="w-3 h-3" /> Connect Direct
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                  LinkedIn
                 </a>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* ==========================================
-            5. FOUNDER'S NOTE (Clean Editorial Letter Style)
-           ========================================== */}
-        <div className="max-w-3xl mx-auto flex flex-col gap-6 py-8 px-2 text-left relative w-full">
-          {/* Soft ambient background glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-purple/5 rounded-full blur-[100px] pointer-events-none" />
-
-          <h2 className="font-display text-2xl sm:text-3xl font-black text-brand-purple border-b border-slate-250/60 pb-3 relative z-10">
-            Founder&apos;s Note
-          </h2>
-
-          <div className="flex flex-col gap-5 text-sm sm:text-base text-slate-650 font-light leading-relaxed relative z-10">
-            <p>
-              At DotnLott, we believe AI and automation shouldn&apos;t be reserved for large enterprises with massive budgets. Every business—whether it&apos;s a startup, a growing company, or a local organization—deserves access to technology that saves time, reduces costs, and helps people focus on meaningful work.
-            </p>
-            
-            {/* Core Mission highlighted pull-quote with vertical border */}
-            <div className="border-l-4 border-brand-purple pl-4 py-2 my-2 bg-brand-purple/10 rounded-r-xl">
-              <p className="text-base sm:text-lg font-bold text-slate-800 italic leading-relaxed font-display">
-                We started DotnLott with a simple mission: to make AI automation practical, affordable, and accessible for everyone.
-              </p>
-            </div>
-
-            <p>
-              Every day, businesses spend countless hours on repetitive tasks—copying data, sending follow-ups, managing spreadsheets, generating reports, updating CRMs, and coordinating across multiple tools. These activities consume valuable time, increase operational costs, and often require additional manpower.
-            </p>
-            <p>
-              Our vision is to help organizations replace repetitive work with intelligent automation. Instead of expanding teams just to handle routine operations, businesses can leverage AI-powered workflows to complete those tasks faster, more accurately, and at a fraction of the cost. This doesn&apos;t replace human creativity—it empowers people to spend their time on strategy, innovation, and customer relationships.
-            </p>
-            <p>
-              Beyond building automation solutions, we are committed to educating people. Through content, workshops, demonstrations, and real-world examples, we aim to spread awareness about how AI can improve both business operations and everyday life. Our goal is to help individuals and organizations confidently embrace automation, regardless of their technical background.
-            </p>
-            <p>
-              At DotnLott, we don&apos;t just build workflows—we build a future where technology works for people, not the other way around.
-            </p>
           </div>
 
-          {/* Premium Sign-off Group with Cursive font & Avatars */}
-          <div className="flex items-center gap-3.5 pt-4 border-t border-slate-200/60 mt-4 relative z-10">
-            <div className="flex -space-x-2.5">
-              <div className="w-8.5 h-8.5 rounded-full border-2 border-white shadow-xs overflow-hidden relative">
-                <Image
-                  src="/sonalika.jpg"
-                  alt="Sonalika Samal"
-                  fill
-                  className="object-cover object-top"
-                  unoptimized
-                />
-              </div>
-              <div className="w-8.5 h-8.5 rounded-full border-2 border-white shadow-xs overflow-hidden relative">
-                <Image
-                  src="/abhishek.jpg"
-                  alt="Abhishek Abhinav"
-                  fill
-                  className="object-cover object-top"
-                  unoptimized
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-0.5">
-              <p className="font-extrabold text-slate-800 text-xs sm:text-sm tracking-wide">
-                Build. Automate. Grow.
+          {/* Right Side: Founder's Note (130 words, 3 Paragraphs with purple callout) */}
+          <div className="lg:col-span-7 flex flex-col gap-5 text-left">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 bg-white/15 px-3 py-1 rounded-full w-fit border border-white/20 font-display">
+              Founder&apos;s Note
+            </span>
+            <h2 className="font-display text-2xl sm:text-4xl font-black text-white leading-tight">
+              Meet our Founders
+            </h2>
+
+            <div className="flex flex-col gap-4 text-purple-100 text-xs sm:text-sm leading-relaxed font-light font-sans">
+              <p>
+                Our founders Ms. Sonalika and Mr. Abhishek, with <strong>3+ years of industrial experience</strong> in AI and Automation, deeply understand client risks. While others simply charge you <strong>lakhs</strong> for setups, they know your biggest <strong>fear</strong> remains: <em>what if systems clash and you <strong>lose everything</strong>?</em>
               </p>
-              <p className="text-sm sm:text-base text-slate-500 font-serif italic tracking-wide" style={{ fontFamily: "'Dancing Script', 'Georgia', 'Brush Script MT', cursive" }}>
-                — Sonalika & Abhishek, Founders
-              </p>
+              
+              <div className="border-l-4 border-amber-300 pl-4 py-2 bg-white/5 rounded-r-xl">
+                <p className="font-semibold text-amber-300 italic leading-relaxed text-xs sm:text-sm">
+                  They revolutionize this by delivering <strong>small, trial packages</strong> of AI and Automation setups, enabling SMEs to <strong>integrate fearlessly and frequently</strong> like big business giants typically do.
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm border border-white/10 p-4 sm:p-5 rounded-2xl shadow-xs flex flex-col gap-3">
+                <span className="text-[9px] font-black uppercase tracking-wider text-amber-300">
+                  Founders note
+                </span>
+                <p className="font-semibold text-white italic leading-relaxed text-xs sm:text-sm">
+                  &ldquo;Just like using <strong>ChatGPT on your phone</strong>, we want to make onboarding custom automation systems <strong>just that simple</strong>, <strong>risk-free</strong>, and <strong>highly effective</strong>{" "}to help your business scale fearlessly, eliminate manual labor, and grow.&rdquo;
+                </p>
+                <div className="pt-2 border-t border-white/10 flex flex-col gap-0.5 items-start">
+                  <p className="text-[12px] text-purple-100 font-serif italic" style={{ fontFamily: "'Dancing Script', 'Georgia', 'Brush Script MT', cursive" }}>
+                    — Sonalika & Abhishek
+                  </p>
+                  <span className="text-[8px] font-bold text-purple-200/80 uppercase tracking-widest font-mono pl-3">
+                    Co-founders, DotnLott
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Open wrapper again for the rest of the page */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-16 sm:gap-20 pb-0">
 
         {/* ==========================================
             5.5 INTERACTIVE SPECIALTIES & MOVING ENGINE SHOWCASE

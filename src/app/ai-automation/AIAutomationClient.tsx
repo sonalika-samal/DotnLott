@@ -80,7 +80,7 @@ const pricingPlans = [
     ],
     price: 'Starting at ₹499',
     cta: 'Book Starter Consultation',
-    popular: false
+    popular: true
   },
   {
     name: 'Growth Pack',
@@ -93,7 +93,7 @@ const pricingPlans = [
     ],
     price: 'Starting at ₹999',
     cta: 'Book Growth Consultation',
-    popular: true
+    popular: false
   },
   {
     name: 'Business Pack',
