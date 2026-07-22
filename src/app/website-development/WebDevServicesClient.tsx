@@ -506,7 +506,7 @@ export default function WebDevServicesClient() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { label: 'Performance', score: '100', color: 'border-emerald-500 text-emerald-400' },
                   { label: 'Accessibility', score: '100', color: 'border-emerald-500 text-emerald-400' },
@@ -615,7 +615,7 @@ export default function WebDevServicesClient() {
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center border-b border-slate-800 pb-3">
                   <span className="text-xs font-mono text-slate-400 uppercase tracking-widest">Estimated Schedule</span>
-                  <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-0.5 rounded-full">
+                  <span className="text-[10px] sm:text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full whitespace-nowrap flex-shrink-0">
                     FAST TRACK
                   </span>
                 </div>
@@ -631,9 +631,9 @@ export default function WebDevServicesClient() {
               <Link
                 href="/contact?booking=true#calendar-booking"
                 scroll={false}
-                className="w-full py-4 rounded-2xl bg-brand-purple hover:bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md text-center flex items-center justify-center gap-2"
+                className="w-full py-4 px-2 rounded-2xl bg-brand-purple hover:bg-indigo-600 text-white font-bold text-[10px] xs:text-xs uppercase tracking-wider transition-all shadow-md text-center flex items-center justify-center gap-2 whitespace-nowrap"
               >
-                Book Scope Discovery Call <ArrowRight className="w-4 h-4" />
+                Book Scope Discovery Call <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
               </Link>
             </div>
 

@@ -4,7 +4,7 @@ import AIAutomationClient from './AIAutomationClient';
 export const metadata: Metadata = {
   title: 'Autonomous AI Systems & Workflow Automation | DotnLott',
   description: 'Enterprise-grade AI automation architectures. Connect your CRMs, databases, and communication channels into 24/7 autonomous autopilots.',
-  keywords: 'AI automation systems, workflow automation, autonomous AI agents, CRM integration, database sync, enterprise AI',
+  keywords: 'AI agents for business, AI automation agency India, AI automation services India, AI agent development company, Business process automation AI, AI chatbot development company India, AI workflow automation for small business, CRM automation with AI, AI agents for customer support, AI powered business automation, Custom AI agent development India, AI automation consulting, AI agents pricing India, RPA vs AI agents, AI automation for sales teams, AI email automation, AI agents for lead generation, AI automation implementation partner, Enterprise AI automation solutions, AI automation systems, workflow automation, autonomous AI agents, CRM integration, database sync, enterprise AI',
   openGraph: {
     title: 'Autonomous AI Systems & Workflow Automation | DotnLott',
     description: 'Enterprise-grade AI automation architectures. Connect your CRMs, databases, and communication channels into 24/7 autonomous autopilots.',

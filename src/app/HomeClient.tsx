@@ -72,12 +72,13 @@ export default function HomeClient() {
             {/* Main Hero Headline */}
             <motion.h1
               variants={fadeInUp}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-slate-900"
+              className="font-display text-[3.25rem] sm:text-[3.75rem] lg:text-[4.5rem] font-black tracking-tight leading-[1.02] text-slate-900"
             >
-              Custom Business<br />
-              <span className="bg-gradient-to-r from-brand-blue via-indigo-600 to-brand-purple bg-clip-text text-fill-transparent drop-shadow-sm">
-                Automation & Websites
-              </span>
+              Custom Business{' '}
+              <br className="sm:block hidden" />
+              <span className="text-brand-purple">Automation</span>{' '}
+              &amp;{' '}
+              <span className="text-brand-blue">Websites</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -153,7 +154,7 @@ export default function HomeClient() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="lg:col-span-5 flex flex-col items-center justify-center relative"
+            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-20 lg:mt-0"
           >
             <div className="absolute w-72 h-72 rounded-full bg-brand-blue/5 blur-[80px] pointer-events-none" />
             
@@ -174,7 +175,7 @@ export default function HomeClient() {
               {/* Floating Service Bubbles */}
               
               {/* Bubble 1: 24/7 Autopilot */}
-              <div className="absolute -left-12 sm:-left-24 top-[15%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-slow hover:scale-105 transition-all duration-300">
+              <div className="absolute -left-6 sm:-left-24 top-[15%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-slow hover:scale-105 transition-all duration-300">
                 <div className="w-8 h-8 rounded-xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue shadow-sm">
                   <Zap className="w-4.5 h-4.5 animate-pulse" />
                 </div>
@@ -185,12 +186,12 @@ export default function HomeClient() {
               </div>
 
               {/* Bubble 2: Custom Web Dev */}
-              <div className="absolute -right-2 sm:-right-10 top-[40%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-medium hover:scale-105 transition-all duration-300">
+              <div className="absolute -right-6 sm:-right-10 top-[40%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-medium hover:scale-105 transition-all duration-300">
                 <div className="w-8 h-8 rounded-xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-sm">
                   <Globe className="w-4.5 h-4.5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">CUSTOM WEB</span>
+                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">CUSTOM</span>
                   <span className="text-[9px] font-bold text-slate-450 tracking-wider uppercase font-display mt-0.5 leading-none">WEB DEV</span>
                 </div>
               </div>

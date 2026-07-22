@@ -135,8 +135,8 @@ export default function AboutClient() {
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-purple to-pink-500" />
               
               <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-xs font-mono font-extrabold text-brand-purple uppercase">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+                  <span className="px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-[10px] sm:text-xs font-mono font-extrabold text-brand-purple uppercase w-fit flex-shrink-0">
                     Tier 01 • Micro-Automation
                   </span>
                   <span className="text-xs font-mono font-bold text-slate-400">₹499+ ($6+)</span>
@@ -178,8 +178,8 @@ export default function AboutClient() {
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue to-cyan-500" />
               
               <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-extrabold text-brand-blue uppercase">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+                  <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[10px] sm:text-xs font-mono font-extrabold text-brand-blue uppercase w-fit flex-shrink-0">
                     Tier 02 • Enterprise Systems
                   </span>
                   <span className="text-xs font-mono font-bold text-slate-400">Custom Scope</span>
@@ -234,39 +234,39 @@ export default function AboutClient() {
             </div>
 
             {/* Interactive SaaS Pill Tabs */}
-            <div className="flex flex-wrap items-center gap-2 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/80 flex-shrink-0">
+            <div className="flex flex-row items-center justify-between md:justify-start gap-1 sm:gap-2 p-1 bg-slate-100/90 rounded-2xl border border-slate-200/80 w-full md:w-auto flex-shrink-0">
               <button
                 onClick={() => setTrustTab('trust')}
-                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-2 ${
+                className={`flex-shrink-0 px-2 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[9px] xs:text-[10px] sm:text-xs font-extrabold transition-all flex items-center justify-center gap-1 sm:gap-2 ${
                   trustTab === 'trust'
                     ? 'bg-slate-900 text-white shadow-md'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                Why Trust Us
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                <span className="whitespace-nowrap">Why Trust Us</span>
               </button>
               <button
                 onClick={() => setTrustTab('vision')}
-                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-2 ${
+                className={`flex-shrink-0 px-2 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[9px] xs:text-[10px] sm:text-xs font-extrabold transition-all flex items-center justify-center gap-1 sm:gap-2 ${
                   trustTab === 'vision'
                     ? 'bg-brand-purple text-white shadow-md'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                <Target className="w-3.5 h-3.5" />
-                Our Vision
+                <Target className="w-3.5 h-3.5 flex-shrink-0" />
+                <span className="whitespace-nowrap">Our Vision</span>
               </button>
               <button
                 onClick={() => setTrustTab('guarantee')}
-                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-2 ${
+                className={`flex-shrink-0 px-2 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[9px] xs:text-[10px] sm:text-xs font-extrabold transition-all flex items-center justify-center gap-1 sm:gap-2 ${
                   trustTab === 'guarantee'
                     ? 'bg-brand-blue text-white shadow-md'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-slate-600 hover:text-slate-905'
                 }`}
               >
-                <Award className="w-3.5 h-3.5" />
-                Engineering SLA
+                <Award className="w-3.5 h-3.5 flex-shrink-0" />
+                <span className="whitespace-nowrap">Engineering SLA</span>
               </button>
             </div>
           </div>
@@ -753,7 +753,7 @@ export default function AboutClient() {
                       aria-expanded={isOpen}
                     >
                       <span className="text-xs font-extrabold text-slate-900 leading-snug flex items-center gap-3">
-                        <span className="text-[10px] font-mono text-brand-purple bg-brand-purple/10 px-2 py-0.5 rounded">
+                        <span className="flex-shrink-0 whitespace-nowrap text-[10px] font-mono text-brand-purple bg-brand-purple/10 px-2 py-0.5 rounded">
                           FAQ 0{idx + 1}
                         </span>
                         {faq.question}

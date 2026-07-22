@@ -42,6 +42,15 @@ export async function POST(request: Request) {
       message,
     });
 
+    if (!emailResult.success) {
+      return NextResponse.json({
+        success: false,
+        error: emailResult.error || 'Failed to deliver contact email',
+        dbResult,
+        emailResult,
+      }, { status: 500 });
+    }
+
     return NextResponse.json({
       success: true,
       dbResult,

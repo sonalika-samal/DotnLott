@@ -13,7 +13,8 @@ import {
   Phone,
   FileText,
   CheckCircle,
-  Globe
+  Globe,
+  AlertTriangle
 } from 'lucide-react';
 import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
@@ -60,11 +61,13 @@ export default function BookingClient() {
 
   // Status handlers
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
 
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setBookingError(null);
 
     try {
       const scheduledDateTime = `${selectedDay.rawString} ${selectedTime}`;
@@ -85,8 +88,14 @@ export default function BookingClient() {
       });
 
       const data = await response.json();
-      if (data.success) {
-        setBookingSuccess(true);
+      if (response.ok && data.success) {
+        setShowSuccessToast(true);
+        setName('');
+        setEmail('');
+        setPhone('');
+        setCompany('');
+        setNotes('');
+        
         // Confetti drop
         const confettiMod = await import('canvas-confetti');
         confettiMod.default({
@@ -94,12 +103,16 @@ export default function BookingClient() {
           spread: 60,
           origin: { y: 0.6 }
         });
+
+        setTimeout(() => {
+          setShowSuccessToast(false);
+        }, 2000);
       } else {
-        alert('Booking failed. Please check inputs.');
+        setBookingError(data.error || 'Failed to confirm booking. If this persists, please contact us directly.');
       }
     } catch (err) {
       console.error(err);
-      alert('Network issue. Your booking has been registered.');
+      setBookingError('A network error occurred. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -128,15 +141,7 @@ export default function BookingClient() {
           </p>
         </div>
 
-        <AnimatePresence mode="wait">
-          {!bookingSuccess ? (
-            <motion.form
-              onSubmit={handleBookingSubmit}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
-            >
+        <form onSubmit={handleBookingSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left Column: Calendar & Slots */}
               <div className="lg:col-span-7 flex flex-col gap-6">
                 
@@ -347,6 +352,16 @@ export default function BookingClient() {
                     </div>
                   </div>
 
+                  {bookingError && (
+                    <div className="w-full text-red-600 text-xs font-semibold p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2.5 shadow-2xs mt-4">
+                      <AlertTriangle className="w-4 h-4 text-red-650 flex-shrink-0 mt-0.5" />
+                      <div className="flex flex-col gap-0.5 text-left">
+                        <span className="font-bold font-display uppercase tracking-wide text-[10px] text-red-700">Booking Failed</span>
+                        <span className="text-slate-650 font-normal leading-relaxed">{bookingError}</span>
+                      </div>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -456,62 +471,25 @@ export default function BookingClient() {
                   </div>
                 </div>
               </div>
-            </motion.form>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              className="glass-card max-w-lg mx-auto p-8 rounded-3xl text-center flex flex-col items-center gap-5 border-slate-200 bg-white shadow-lg"
-            >
-              <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center text-emerald-500">
-                <CheckCircle className="w-8 h-8 animate-bounce" />
-              </div>
-              <h2 className="text-2xl font-black text-slate-900">Meeting Scheduled!</h2>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Thank you, <span className="text-slate-900 font-semibold">{name}</span>. Your consultation is booked for <span className="text-brand-blue font-semibold">{selectedDay.formatted}</span> at <span className="text-brand-purple font-semibold">{selectedTime} IST</span>.
-              </p>
-
-              <div className="bg-slate-50 p-4 border border-slate-200/50 rounded-2xl w-full text-left text-xs flex flex-col gap-2 shadow-inner">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Meeting Medium:</span>
-                  <span className="font-bold text-slate-900 uppercase text-[10px]">
-                    {meetingType === 'google_meet' ? 'Google Meet Video' : 'Phone Call'}
-                  </span>
-                </div>
-                {meetingType === 'google_meet' && (
-                  <div className="flex flex-col gap-1 mt-1 border-t border-slate-200/60 pt-2">
-                    <span className="text-slate-400">Meeting Link:</span>
-                    <a
-                      href="https://meet.google.com/abc-defg-hij"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-brand-blue hover:underline break-all"
-                    >
-                      https://meet.google.com/abc-defg-hij
-                    </a>
-                  </div>
-                )}
-              </div>
-
-              <div className="flex gap-4 w-full mt-2">
-                <button
-                  onClick={() => setBookingSuccess(false)}
-                  className="flex-1 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-slate-800 transition-colors shadow-md"
-                >
-                  Book Another Slot
-                </button>
-                <Link
-                  href="/"
-                  className="flex-1 py-2.5 glass-card hover:glass-card-hover text-slate-700 text-xs font-bold uppercase tracking-wider rounded-xl text-center flex items-center justify-center"
-                >
-                  Back to Home
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </form>
       </div>
+
+      {/* Floating Success Overlay Modal */}
+      {showSuccessToast && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/20 backdrop-blur-xs">
+          <div className="bg-white border border-slate-200/95 p-8 rounded-3xl shadow-2xl flex flex-col items-center gap-4 max-w-sm w-full text-center animate-scale-in">
+            <div className="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center text-emerald-600 animate-bounce">
+              <CheckCircle className="w-7 h-7" />
+            </div>
+            <div className="flex flex-col gap-1.5 text-center">
+              <h4 className="text-lg font-black text-slate-900 font-display uppercase tracking-wide">Booking Successful</h4>
+              <p className="text-xs text-slate-650 leading-relaxed font-light">
+                Your consultation has been booked. A calendar invitation has been sent to your email.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

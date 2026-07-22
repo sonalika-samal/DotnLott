@@ -29,7 +29,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
   description: 'Enterprise-grade workflow automation, custom integrations, AI-powered solutions, and custom website development. Registered Pvt Ltd company serving globally.',
-  keywords: 'workflow automation, custom integrations, custom AI web apps, website development, lead outreach autopilot, CRM synchronizer, DotnLott',
+  keywords: 'AI agents for business, AI automation agency India, AI automation services India, AI agent development company, Business process automation AI, AI chatbot development company India, AI workflow automation for small business, CRM automation with AI, AI agents for customer support, AI powered business automation, Custom AI agent development India, AI automation consulting, AI agents pricing India, RPA vs AI agents, AI automation for sales teams, AI email automation, AI agents for lead generation, AI automation implementation partner, Enterprise AI automation solutions, workflow automation, custom integrations, custom AI web apps, website development, lead outreach autopilot, CRM synchronizer, DotnLott',
   openGraph: {
     title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
     description: 'Transform manual operations into blazing fast automatic workflows. Custom AI & Web development.',

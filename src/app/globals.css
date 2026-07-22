@@ -164,4 +164,30 @@
   -webkit-text-fill-color: #020617 !important; /* Overrides gradient-text & text-transparent on selection! */
 }
 
+/* Responsive scrollable code blocks */
+pre {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  padding: 1.25rem !important;
+  border-radius: 0.75rem !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  font-size: 0.75rem !important;
+  line-height: 1.6 !important;
+  border: 1px solid #1e293b !important;
+}
+
+code {
+  font-family: var(--font-mono), monospace !important;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 

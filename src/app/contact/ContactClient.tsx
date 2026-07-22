@@ -11,7 +11,8 @@ import {
   ChevronDown,
   CheckCircle2,
   Sparkles,
-  Calendar
+  Calendar,
+  AlertTriangle
 } from 'lucide-react';
 import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
@@ -196,7 +197,8 @@ export default function ContactClient() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
 
   useEffect(() => {
@@ -236,10 +238,11 @@ export default function ContactClient() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
     try {
       const fullPhone = `${countryCode} ${formData.phone}`.trim();
-      await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -248,11 +251,28 @@ export default function ContactClient() {
           projectType: formData.category,
         }),
       });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setShowSuccessToast(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          category: 'AI Automation',
+          message: '',
+        });
+        setTimeout(() => {
+          setShowSuccessToast(false);
+        }, 2000);
+      } else {
+        setSubmitError(data.error || 'Failed to deliver inquiry email. If this persists, please contact us directly.');
+      }
     } catch (err) {
       console.error('Contact submission error:', err);
+      setSubmitError('A network error occurred. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
     }
   };
 
@@ -406,40 +426,6 @@ export default function ContactClient() {
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-brand-purple to-indigo-600" />
               <div className="absolute top-0 right-0 w-40 h-40 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
 
-              {submitted ? (
-                <div className="py-12 px-4 flex flex-col items-center justify-center text-center gap-5">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-600 flex items-center justify-center animate-bounce">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <div className="flex flex-col gap-2 max-w-md">
-                    <h3 className="text-2xl font-extrabold text-slate-900 font-display">Inquiry Submitted Successfully!</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-light">
-                      Thank you for contacting DotnLott! We have sent a confirmation email to <span className="font-semibold text-slate-900">{formData.email}</span>. Our core engineering leads (Sonalika Samal & Abhishek Abhinav) will review your project details and get back to you within a few hours.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 w-full justify-center">
-                    <a
-                      href={`https://wa.me/917846969508?text=${encodeURIComponent(
-                        `Hey DotnLott team, I just submitted an inquiry on your website for ${formData.category}. My name is ${formData.name}.`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full sm:w-auto px-6 py-3 bg-[#25D366] hover:bg-[#20ba56] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Optional: Chat on WhatsApp
-                    </a>
-
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="w-full sm:w-auto px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider rounded-xl transition-all"
-                    >
-                      Submit Another Inquiry
-                    </button>
-                  </div>
-                </div>
-              ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6 relative z-10">
                   <div className="flex flex-col gap-1 border-b border-slate-100 pb-4">
                     <h3 className="text-xl font-extrabold text-slate-900 font-display">Send Us a Message</h3>
@@ -551,6 +537,16 @@ export default function ContactClient() {
                       Your data is safe with us. We never spam.
                     </span>
 
+                    {submitError && (
+                      <div className="w-full text-red-600 text-xs font-semibold p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2.5 shadow-2xs">
+                        <AlertTriangle className="w-4 h-4 text-red-650 flex-shrink-0 mt-0.5" />
+                        <div className="flex flex-col gap-0.5">
+                          <span className="font-bold font-display uppercase tracking-wide text-[10px] text-red-700">Submission Failed</span>
+                          <span className="text-slate-650 font-normal leading-relaxed">{submitError}</span>
+                        </div>
+                      </div>
+                    )}
+
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -569,7 +565,6 @@ export default function ContactClient() {
                     </button>
                   </div>
                 </form>
-              )}
             </div>
           </div>
 
@@ -657,6 +652,23 @@ export default function ContactClient() {
         </div>
 
       </div>
+
+      {/* Floating Success Overlay Modal */}
+      {showSuccessToast && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/20 backdrop-blur-xs">
+          <div className="bg-white border border-slate-200/95 p-8 rounded-3xl shadow-2xl flex flex-col items-center gap-4 max-w-sm w-full text-center animate-scale-in">
+            <div className="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center text-emerald-600 animate-bounce">
+              <CheckCircle2 className="w-7 h-7" />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <h4 className="text-lg font-black text-slate-900 font-display uppercase tracking-wide">Submitted Successfully</h4>
+              <p className="text-xs text-slate-650 leading-relaxed font-light">
+                Your inquiry has been registered. Our engineering leads will review your details shortly.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
