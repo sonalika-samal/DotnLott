@@ -21,7 +21,7 @@ import {
 
 const catalogRow1 = [
   {
-    name: 'n8n Workflow Engine',
+    name: 'Workflow Integration Engine',
     desc: '24/7 Background Automations',
     category: 'INTEGRATION',
     gradient: 'from-orange-500/20 to-amber-500/20 border-orange-500/30 text-orange-400',
@@ -30,7 +30,7 @@ const catalogRow1 = [
     metric: '99.9% Uptime'
   },
   {
-    name: 'WhatsApp Business API',
+    name: 'Cloud Messaging API',
     desc: 'Instant Customer Outreach',
     category: 'MESSAGING',
     gradient: 'from-emerald-500/20 to-green-500/20 border-emerald-500/30 text-emerald-400',
@@ -48,7 +48,7 @@ const catalogRow1 = [
     metric: 'Zero Lead Loss'
   },
   {
-    name: 'OpenAI GPT-4o Copilot',
+    name: 'AI Cognitive Copilot',
     desc: 'AI Sentiment & Reply Drafts',
     category: 'AI ENGINE',
     gradient: 'from-purple-500/20 to-indigo-500/20 border-purple-500/30 text-purple-400',
@@ -57,7 +57,7 @@ const catalogRow1 = [
     metric: 'Smart Intelligence'
   },
   {
-    name: 'Google Sheets & Drive',
+    name: 'Cloud Spreadsheet Logging',
     desc: 'Live Sheet Logging & Backup',
     category: 'DATABASE',
     gradient: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30 text-emerald-400',
@@ -66,7 +66,7 @@ const catalogRow1 = [
     metric: 'Auto Archiver'
   },
   {
-    name: 'Stripe & Razorpay API',
+    name: 'Payment Gateway APIs',
     desc: 'Automated Invoice Receipts',
     category: 'PAYMENTS',
     gradient: 'from-indigo-500/20 to-blue-500/20 border-indigo-500/30 text-indigo-400',
@@ -75,7 +75,7 @@ const catalogRow1 = [
     metric: 'Instant Webhook'
   },
   {
-    name: 'Meta Lead Ads Connector',
+    name: 'Social Lead Ads Connector',
     desc: 'Form-to-CRM Auto Ingest',
     category: 'LEAD GEN',
     gradient: 'from-sky-500/20 to-blue-500/20 border-sky-500/30 text-sky-400',
@@ -96,7 +96,7 @@ const catalogRow2 = [
     metric: 'Humanlike Voice'
   },
   {
-    name: 'Gmail & Outlook Drips',
+    name: 'Email Outreach Drips',
     desc: 'Outbound Cold Outreach',
     category: 'OUTREACH',
     gradient: 'from-rose-500/20 to-pink-500/20 border-rose-500/30 text-rose-400',
@@ -105,7 +105,7 @@ const catalogRow2 = [
     metric: 'Warmup Active'
   },
   {
-    name: 'Slack & Teams Alerts',
+    name: 'Team Workspace Alerts',
     desc: 'Real-Time Team Notifications',
     category: 'NOTIFICATIONS',
     gradient: 'from-fuchsia-500/20 to-purple-500/20 border-fuchsia-500/30 text-fuchsia-400',
@@ -114,7 +114,7 @@ const catalogRow2 = [
     metric: 'Instant Alert'
   },
   {
-    name: 'PostgreSQL Enterprise DB',
+    name: 'Relational Enterprise Database',
     desc: 'High Speed Data Warehouse',
     category: 'STORAGE',
     gradient: 'from-blue-500/20 to-slate-500/20 border-blue-500/30 text-blue-300',

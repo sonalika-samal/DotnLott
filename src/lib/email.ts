@@ -374,7 +374,7 @@ export function generateClientConfirmationEmailHTML(data: EmailInquiryPayload): 
       <div class="status-card">
         <div class="status-title">⚡ Estimated Response Time: Within a Few Hours</div>
         <p class="status-desc">
-          Our core team (Sonalika Samal & Abhishek Abhinav) will review your requirements for <strong>${data.category} (${data.projectType})</strong> and reply to this email within a few hours.
+          Our core team (Sonalika Samal & Abhishek Abhinav) will review your requirements for <strong>${data.category}${data.projectType && data.projectType !== data.category ? ` (${data.projectType})` : ''}</strong> and reply to this email within a few hours.
         </p>
       </div>
 
@@ -396,10 +396,6 @@ export function generateClientConfirmationEmailHTML(data: EmailInquiryPayload): 
         <tr>
           <td class="info-label">Category</td>
           <td class="info-value"><strong>${data.category}</strong></td>
-        </tr>
-        <tr>
-          <td class="info-label">Package / Type</td>
-          <td class="info-value"><strong>${data.projectType}</strong></td>
         </tr>
         <tr>
           <td class="info-label">Message</td>
@@ -507,11 +503,11 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
     }
   }
 
-  // 3. Check SMTP credentials from environment (Google Workspace)
-  const smtpHost = process.env.SMTP_HOST;
+  // 3. Check SMTP credentials from environment (Google Workspace) with fallback
+  const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
   const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587;
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
+  const smtpUser = process.env.SMTP_USER || 'connect@dotnlott.com';
+  const smtpPass = process.env.SMTP_PASS || 'qvjfprehbmhsdhzd';
 
   if (smtpHost && smtpUser && smtpPass) {
     try {
@@ -525,28 +521,44 @@ export async function sendContactEmail(payload: EmailInquiryPayload) {
         },
       });
 
-      // Send Notification to Team (connect@dotnlott.com)
-      const teamInfo = await transporter.sendMail({
-        from: process.env.SMTP_FROM || `"DotnLott Website" <${smtpUser}>`,
-        to: teamRecipient,
-        replyTo: payload.email,
-        subject: teamSubject,
-        html: teamHtmlContent,
-      });
+      let teamMessageId: string | null = null;
+      let clientMessageId: string | null = null;
+
+      // Send Notification to Team (connect@dotnlott.com & hello.dotnlott@gmail.com)
+      try {
+        const teamInfo = await transporter.sendMail({
+          from: process.env.SMTP_FROM || `"DotnLott Website" <${smtpUser}>`,
+          to: [teamRecipient, 'hello.dotnlott@gmail.com'],
+          replyTo: payload.email,
+          subject: teamSubject,
+          html: teamHtmlContent,
+        });
+        teamMessageId = teamInfo.messageId;
+        console.log('Successfully sent team email to connect@dotnlott.com & hello.dotnlott@gmail.com:', teamInfo.messageId);
+      } catch (teamErr) {
+        console.error('Error delivering email to team:', teamErr);
+      }
 
       // Send Confirmation Auto-Responder Email to Client
-      const clientInfo = await transporter.sendMail({
-        from: process.env.SMTP_FROM || `"DotnLott Team" <${smtpUser}>`,
-        to: payload.email,
-        replyTo: teamRecipient,
-        subject: clientSubject,
-        html: clientHtmlContent,
-      });
+      try {
+        const clientInfo = await transporter.sendMail({
+          from: process.env.SMTP_FROM || `"DotnLott Team" <${smtpUser}>`,
+          to: payload.email,
+          replyTo: teamRecipient,
+          subject: clientSubject,
+          html: clientHtmlContent,
+        });
+        clientMessageId = clientInfo.messageId;
+        console.log('Successfully sent client confirmation email:', clientInfo.messageId);
+      } catch (clientErr) {
+        console.error('Error delivering client auto-responder:', clientErr);
+      }
 
-      console.log('Successfully sent team email & client confirmation auto-responder:', teamInfo.messageId, clientInfo.messageId);
-      return { success: true, method: 'smtp', teamMessageId: teamInfo.messageId, clientMessageId: clientInfo.messageId };
+      if (teamMessageId || clientMessageId) {
+        return { success: true, method: 'smtp', teamMessageId, clientMessageId };
+      }
     } catch (err) {
-      console.error('Failed to send email via SMTP, falling back to db log:', err);
+      console.error('Failed to initialize SMTP transporter:', err);
     }
   }
 

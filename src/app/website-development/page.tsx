@@ -3,11 +3,11 @@ import WebDevServicesClient from './WebDevServicesClient';
 
 export const metadata: Metadata = {
   title: 'Custom Website Engineering & Web App Studio | DotnLott',
-  description: 'High-performance Next.js web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
-  keywords: 'website development, custom web app studio, Nextjs developer, headless ecommerce, portfolio web design, DotnLott web studio',
+  description: 'High-performance custom web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
+  keywords: 'website development, custom web app studio, custom web developer, headless ecommerce, portfolio web design, DotnLott web studio',
   openGraph: {
     title: 'Custom Website Engineering & Web App Studio | DotnLott',
-    description: 'High-performance Next.js web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
+    description: 'High-performance custom web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
     type: 'website',
     images: [{ url: '/logo-v2.png', width: 512, height: 512, alt: 'DotnLott Logo' }],
   },

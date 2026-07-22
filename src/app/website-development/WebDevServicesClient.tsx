@@ -127,7 +127,7 @@ const whyChooseUsPillars = [
     icon: Zap,
     title: 'Sub-Second Speed Guarantee',
     subtitle: '100/100 Google Lighthouse',
-    desc: 'Traditional agencies build bloated WordPress sites that take 3-5 seconds to load. We engineer static-rendered Next.js 15 apps cached globally on Cloudflare Edge CDNs for under 0.4s load times.',
+    desc: 'Traditional agencies build bloated WordPress sites that take 3-5 seconds to load. We engineer custom static-rendered web applications cached globally on Cloudflare Edge CDNs for under 0.4s load times.',
     badge: '<0.4s TTFB',
     color: 'border-blue-200 hover:border-brand-blue text-brand-blue bg-blue-50/50'
   },
@@ -186,7 +186,7 @@ const webFaqs = [
 
 export default function WebDevServicesClient() {
   const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
-  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
+  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
 
   const [projectType, setProjectType] = useState<'landing' | 'fullsite' | 'webapp' | 'ecommerce'>('landing');
   const [hasCms, setHasCms] = useState(true);
@@ -242,7 +242,8 @@ export default function WebDevServicesClient() {
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 className="px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-brand-purple text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center gap-2 group hover:scale-[1.02]"
               >
                 Book Website Project Call
@@ -272,7 +273,8 @@ export default function WebDevServicesClient() {
                 </div>
               </div>
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 className="px-4 py-2 bg-slate-900 hover:bg-brand-purple text-white font-bold uppercase tracking-wider text-[10px] rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap self-start sm:self-center"
               >
                 Claim 20% OFF <ArrowRight className="w-3.5 h-3.5" />
@@ -367,8 +369,8 @@ export default function WebDevServicesClient() {
                   <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-indigo-500 to-brand-purple" />
 
                   {pkg.popular && (
-                    <span className="absolute top-3.5 right-4 bg-gradient-to-r from-brand-blue via-brand-purple to-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md leading-none animate-pulse">
-                      Most Popular 🔥
+                    <span className="absolute top-3.5 right-4 bg-gradient-to-r from-amber-300 via-amber-400 to-orange-400 text-amber-950 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md leading-none border border-amber-400/80 animate-pulse">
+                      Best Seller 🔥
                     </span>
                   )}
 
@@ -409,7 +411,8 @@ export default function WebDevServicesClient() {
                   </div>
 
                   <Link
-                    href="/booking"
+                    href="/contact?booking=true#calendar-booking"
+                    scroll={false}
                     className={`w-full py-3.5 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 mt-4 ${
                       pkg.popular
                         ? 'bg-slate-900 hover:bg-brand-purple text-white'
@@ -477,7 +480,7 @@ export default function WebDevServicesClient() {
                     <span className="flex items-center gap-1.5 text-emerald-600 font-bold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Enterprise Ready
                     </span>
-                    <span className="text-slate-400">Next.js 15</span>
+                    <span className="text-slate-400">Optimized Stack</span>
                   </div>
                 </motion.div>
               );
@@ -592,7 +595,7 @@ export default function WebDevServicesClient() {
                   ].map((t) => (
                     <button
                       key={t.id}
-                      onClick={() => setProjectType(t.id as any)}
+                      onClick={() => setProjectType(t.id as 'landing' | 'fullsite' | 'webapp' | 'ecommerce')}
                       className={`py-3 px-3.5 rounded-xl text-xs font-bold transition-all border text-left flex items-center justify-between ${
                         projectType === t.id
                           ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
@@ -626,7 +629,8 @@ export default function WebDevServicesClient() {
               </div>
 
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 className="w-full py-4 rounded-2xl bg-brand-purple hover:bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md text-center flex items-center justify-center gap-2"
               >
                 Book Scope Discovery Call <ArrowRight className="w-4 h-4" />
@@ -704,7 +708,8 @@ export default function WebDevServicesClient() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
-              href="/booking"
+              href="/contact?booking=true#calendar-booking"
+              scroll={false}
               className="px-8 py-4 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 group active:scale-95"
             >
               Book Strategy Session Now

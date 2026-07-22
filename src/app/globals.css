@@ -135,3 +135,33 @@
   pointer-events: none;
   z-index: 0;
 }
+
+/* High-Contrast Text Selection Styles */
+*::selection {
+  background-color: #9d4edd !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Dark Sections & Gradient-Text High-Contrast Highlight */
+.bg-slate-900 *::selection,
+.bg-slate-950 *::selection,
+.bg-slate-900::selection,
+.bg-slate-950::selection,
+.bg-gradient-to-r *::selection,
+.bg-gradient-to-br *::selection,
+.bg-gradient-to-b *::selection,
+.dark *::selection,
+[class*="bg-slate-9"] *::selection,
+[class*="bg-slate-950"] *::selection,
+[class*="from-slate-9"] *::selection,
+[class*="from-slate-950"] *::selection,
+[class*="to-indigo-950"] *::selection,
+[class*="to-slate-9"] *::selection,
+[class*="via-slate-9"] *::selection {
+  background-color: #38bdf8 !important; /* Bright Electric Cyan Highlight */
+  color: #020617 !important; /* Deep Crisp Text */
+  -webkit-text-fill-color: #020617 !important; /* Overrides gradient-text & text-transparent on selection! */
+}
+
+

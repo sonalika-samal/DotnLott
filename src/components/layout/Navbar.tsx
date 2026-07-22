@@ -35,6 +35,7 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
   }, [pathname]);
 
@@ -75,6 +76,14 @@ export default function Navbar() {
                 <Link
                   key={item.path}
                   href={item.path}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      if (item.path === '/contact') {
+                        window.history.replaceState(null, '', '/contact');
+                      }
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                   className="relative text-xs xl:text-sm font-medium tracking-wide text-slate-600 hover:text-slate-900 transition-colors py-2 whitespace-nowrap"
                 >
                   {item.name}
@@ -92,7 +101,8 @@ export default function Navbar() {
           {/* Desktop Call to Action */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/booking"
+              href="/contact?booking=true#calendar-booking"
+              scroll={false}
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-colors whitespace-nowrap"
             >
               Consult Now
@@ -144,7 +154,8 @@ export default function Navbar() {
               })}
               <div className="h-px bg-slate-200/80 my-1" />
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 onClick={() => setIsOpen(false)}
                 className="w-full flex items-center justify-center gap-2 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white bg-slate-900 rounded-xl hover:bg-slate-800 shadow-md active:scale-95 transition-all"
               >

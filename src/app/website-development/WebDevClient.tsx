@@ -219,7 +219,8 @@ export default function WebDevClient() {
 
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4 mt-2">
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-colors shadow-lg"
               >
                 Book Website Project Call
@@ -253,7 +254,8 @@ export default function WebDevClient() {
                 </div>
               </div>
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 className="inline-flex items-center justify-center gap-1.5 px-4.5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold uppercase tracking-wider text-[9px] rounded-xl transition-all shadow-md whitespace-nowrap relative z-10"
               >
                 Claim Offer <ArrowRight className="w-3.5 h-3.5" />
@@ -301,13 +303,13 @@ export default function WebDevClient() {
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 animate-float flex items-center justify-center">
               {/* Floating Service Bubbles */}
               
-              {/* Bubble 1: Next.js 15 Speed */}
+              {/* Bubble 1: High-Speed Web */}
               <div className="absolute -left-12 sm:-left-24 top-[15%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-slow hover:scale-105 transition-all duration-300">
                 <div className="w-8 h-8 rounded-xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-sm">
                   <Zap className="w-4.5 h-4.5 animate-pulse" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">NEXT.JS 15</span>
+                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">ULTRA-FAST</span>
                   <span className="text-[9px] font-bold text-slate-450 tracking-wider uppercase font-display mt-0.5 leading-none">FAST LOADING</span>
                 </div>
               </div>
@@ -458,7 +460,8 @@ export default function WebDevClient() {
                   </div>
 
                   <Link
-                    href="/booking"
+                    href="/contact?booking=true#calendar-booking"
+                    scroll={false}
                     className={`w-full text-center py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all mt-auto flex items-center justify-center gap-2 shadow-md hover:shadow-lg ${
                       item.popular
                         ? 'bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:brightness-110'
@@ -530,7 +533,8 @@ export default function WebDevClient() {
                 Discuss your project scope & claim your 20% discount.
               </p>
               <Link
-                href="/booking"
+                href="/contact?booking=true#calendar-booking"
+                scroll={false}
                 className="w-full py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 hover:scale-105"
               >
                 Book Call Now

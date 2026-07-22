@@ -12,13 +12,22 @@ export default function FloatingWhatsApp() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const pathname = usePathname();
 
-  // Show a little prompt box after 5 seconds to invite users to chat
+  // Show prompt box and make it automatically disappear after 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPrompt(true);
-    }, 5000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (showPrompt) {
+      const dismissTimer = setTimeout(() => {
+        setShowPrompt(false);
+      }, 1000);
+      return () => clearTimeout(dismissTimer);
+    }
+  }, [showPrompt]);
 
   // Track window scroll to toggle the "Go to Top" button
   useEffect(() => {
@@ -41,7 +50,7 @@ export default function FloatingWhatsApp() {
 
     if (pathname === '/ai-automation' || pathname === '/catalog') {
       text = 'Hey Sonalika, I was browsing your AI Automation Catalog and want to learn more about your pre-built workflows.';
-    } else if (pathname === '/booking') {
+    } else if (pathname === '/contact' || pathname.startsWith('/booking')) {
       text = 'Hey Sonalika, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
     } else if (pathname === '/contact') {
       text = 'Hey Sonalika, I am reaching out from your Contact page and would like to inquire about your services.';

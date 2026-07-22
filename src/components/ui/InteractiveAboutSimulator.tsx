@@ -326,7 +326,7 @@ export default function InteractiveAboutSimulator() {
               </div>
 
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 group"
               >
                 Claim Your Automation Blueprint

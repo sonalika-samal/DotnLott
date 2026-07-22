@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -250,7 +250,7 @@ const allSuites = [
     icon: Brain,
     title: 'AI Business Assistant Suite',
     description: 'Custom AI agents acting as customer executives, email writers, sales consultants, and technical database query helpers.',
-    popular: true,
+    popular: false,
     features: [
       'AI Sales Representative Agent',
       'AI Smart Inbox Manager',
@@ -353,6 +353,40 @@ export default function AIAutomationClient() {
   const [teamSize, setTeamSize] = useState(10);
   const [manualHoursPerWeek, setManualHoursPerWeek] = useState(12);
 
+  useEffect(() => {
+    const handleHashScroll = () => {
+      if (typeof window === 'undefined') return;
+      const href = window.location.href;
+      const rawHash = href.includes('#') ? href.split('#')[1] : '';
+      const cleanHash = rawHash.split('?')[0];
+
+      if (cleanHash && cleanHash.startsWith('suite-')) {
+        setSelectedCategory('All Suites');
+
+        const doScroll = () => {
+          const targetEl = document.getElementById(cleanHash);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetEl.classList.add('ring-2', 'ring-slate-300', 'scale-[1.01]');
+            setTimeout(() => {
+              targetEl.classList.remove('ring-2', 'ring-slate-300', 'scale-[1.01]');
+            }, 1200);
+            return true;
+          }
+          return false;
+        };
+
+        [50, 150, 300, 550, 900, 1300].forEach((delay) => {
+          setTimeout(doScroll, delay);
+        });
+      }
+    };
+
+    handleHashScroll();
+    window.addEventListener('hashchange', handleHashScroll);
+    return () => window.removeEventListener('hashchange', handleHashScroll);
+  }, []);
+
   const toggleFaq = (idx: number) => {
     setOpenFaqIdx(openFaqIdx === idx ? null : idx);
   };
@@ -402,7 +436,7 @@ export default function AIAutomationClient() {
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-brand-purple text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center gap-2 group hover:scale-[1.02]"
               >
                 Book Free Consultation
@@ -522,8 +556,9 @@ export default function AIAutomationClient() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                   key={suite.id}
+                  id={suite.id}
                   whileHover={{ y: -5 }}
-                  className={`bg-white/95 backdrop-blur-md rounded-2xl p-5 flex flex-col justify-between gap-4 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden ${
+                  className={`scroll-mt-28 bg-white/95 backdrop-blur-md rounded-2xl p-5 flex flex-col justify-between gap-4 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden ${
                     suite.popular
                       ? 'border-2 border-brand-purple ring-4 ring-brand-purple/15 shadow-md hover:border-purple-600'
                       : `border ${suite.color}`
@@ -571,12 +606,8 @@ export default function AIAutomationClient() {
                     </span>
 
                     <Link
-                      href="/booking"
-                      className={`px-3 py-1.5 text-center text-[10px] font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center gap-1 ${
-                        suite.popular
-                          ? 'bg-slate-900 text-white hover:bg-brand-purple'
-                          : 'bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200'
-                      }`}
+                      href="/contact#calendar-booking"
+                      className="px-3 py-1.5 text-center text-[10px] font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center gap-1 bg-slate-900 text-white hover:bg-brand-purple"
                     >
                       Book <ArrowRight className="w-3 h-3" />
                     </Link>
@@ -673,7 +704,7 @@ export default function AIAutomationClient() {
                   </div>
 
                   <Link
-                    href="/booking"
+                    href="/contact#calendar-booking"
                     className={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
                       plan.popular
                         ? 'bg-slate-900 text-white hover:bg-brand-purple shadow-md'
@@ -735,7 +766,7 @@ export default function AIAutomationClient() {
                 No upfront card details required. Lock your launch rate now.
               </p>
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="w-full py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5"
               >
                 Consult Now
@@ -820,7 +851,7 @@ export default function AIAutomationClient() {
               </div>
 
               <Link 
-                href="/booking" 
+                href="/contact#calendar-booking" 
                 className="w-full py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-brand-blue text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg mt-4"
               >
                 Select Managed VPS <ArrowRight className="w-4 h-4" />
@@ -868,7 +899,7 @@ export default function AIAutomationClient() {
               </div>
 
               <Link 
-                href="/booking" 
+                href="/contact#calendar-booking" 
                 className="w-full py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-brand-purple text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg mt-4"
               >
                 Select Direct VPS <ArrowRight className="w-4 h-4" />
@@ -950,11 +981,11 @@ export default function AIAutomationClient() {
 
               <div className="sm:col-span-2 bg-purple-500/10 border border-purple-500/20 rounded-2xl p-6 flex items-center justify-between gap-4">
                 <div className="flex flex-col gap-1">
-                  <span className="text-xs font-bold text-white">Ready to automate your team's workflow?</span>
+                  <span className="text-xs font-bold text-white">Ready to automate your team&apos;s workflow?</span>
                   <span className="text-xs text-slate-300 font-light">We conduct an end-to-end operational audit in 24 hours.</span>
                 </div>
                 <Link
-                  href="/booking"
+                  href="/contact#calendar-booking"
                   className="px-5 py-2.5 rounded-xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs uppercase tracking-wider transition-all whitespace-nowrap shadow-md"
                 >
                   Book Audit
@@ -1028,12 +1059,12 @@ export default function AIAutomationClient() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 font-light max-w-2xl leading-relaxed">
-            Schedule a 1-on-1 strategy session with our lead AI automation architects. We'll map out your current tech stack and present a custom blueprint for your business.
+            Schedule a 1-on-1 strategy session with our lead AI automation architects. We&apos;ll map out your current tech stack and present a custom blueprint for your business.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
-              href="/booking"
+              href="/contact#calendar-booking"
               className="px-8 py-4 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 group active:scale-95"
             >
               Book Strategy Session Now

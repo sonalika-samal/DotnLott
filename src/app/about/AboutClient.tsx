@@ -27,8 +27,6 @@ import {
   Layers,
   PhoneCall,
   Mail,
-  Copy,
-  CopyCheck,
   Target,
   HeartHandshake
 } from 'lucide-react';
@@ -40,20 +38,13 @@ import InteractiveAboutSpecialtiesShowcase from '@/components/ui/InteractiveAbou
 export default function AboutClient() {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [trustTab, setTrustTab] = useState<'trust' | 'vision' | 'guarantee'>('trust');
-  const [copiedCin, setCopiedCin] = useState<boolean>(false);
-
-  const handleCopyCin = () => {
-    navigator.clipboard.writeText('U47721BR2026PTC085973');
-    setCopiedCin(true);
-    setTimeout(() => setCopiedCin(false), 2000);
-  };
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIdx(openFaqIdx === idx ? null : idx);
   };
 
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] pt-4 sm:pt-8 pb-0 z-10 font-sans">
+    <div className="relative min-h-screen bg-[#f8fafc] pt-2 sm:pt-4 pb-0 z-10 font-sans">
       {/* Canvas particle background */}
       <InteractiveParticles density={45} particleColor="mixed" />
 
@@ -66,7 +57,7 @@ export default function AboutClient() {
         {/* ==========================================
             1. HERO SECTION: Sleek SaaS Header
            ========================================== */}
-        <div className="text-center max-w-4xl mx-auto flex flex-col gap-6 pt-4 relative">
+        <div className="text-center max-w-4xl mx-auto flex flex-col gap-4 pt-2 relative">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-slate-200/90 text-xs font-bold uppercase tracking-wider text-brand-purple justify-center w-fit mx-auto shadow-xs backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
             <Sparkles className="w-4 h-4 text-brand-blue animate-pulse" />
@@ -77,7 +68,7 @@ export default function AboutClient() {
             We Build the Digital Backbone for <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-indigo-600 to-brand-blue">Modern Growing Businesses</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-600 font-light leading-relaxed max-w-3xl mx-auto">
             From single-trigger micro-automations (<strong className="text-brand-purple font-semibold">Dot</strong> starting @ ₹499 / $6) to enterprise-grade AI platforms & custom web systems (<strong className="text-brand-blue font-semibold">Lott</strong>), we eliminate manual friction and build software that drives real revenue.
           </p>
 
@@ -91,7 +82,7 @@ export default function AboutClient() {
             </Link>
 
             <Link
-              href="/booking"
+              href="/contact#calendar-booking"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/90 border border-slate-250 hover:bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-wider rounded-2xl transition-all shadow-xs hover:shadow-md hover:-translate-y-0.5 backdrop-blur-sm"
             >
               Book Strategy Session
@@ -99,25 +90,130 @@ export default function AboutClient() {
           </div>
 
           {/* Live Metric Stats Bar */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 max-w-4xl mx-auto w-full">
-            <div className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4 max-w-4xl mx-auto w-full">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
               <span className="text-xl sm:text-2xl font-black text-slate-900 font-mono">100%</span>
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">MCA Govt Registered</span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
               <span className="text-xl sm:text-2xl font-black text-brand-purple font-mono">&lt; 1.0s</span>
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Next.js Page Speed</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Tested Page Speed</span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
               <span className="text-xl sm:text-2xl font-black text-emerald-600 font-mono">₹499+</span>
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Transparent Entry Tier</span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-2xs backdrop-blur-sm flex flex-col items-center justify-center text-center gap-1">
               <span className="text-xl sm:text-2xl font-black text-brand-blue font-mono">24/7</span>
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Autopilot Workflows</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ==========================================
+            3. THE BRAND PHILOSOPHY: Dot vs Lott
+           ========================================== */}
+        <div className="flex flex-col gap-8">
+          <div className="text-center max-w-3xl mx-auto flex flex-col gap-3">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-brand-purple font-display bg-brand-purple/10 px-3.5 py-1 rounded-full w-fit mx-auto">
+              Our Scalable Model
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
+              Why Are We Called <span className="text-brand-purple font-black">Dot</span>n<span className="text-brand-blue font-black">Lott</span>?
+            </h2>
+            <p className="text-sm text-slate-600 font-light leading-relaxed">
+              We believe digital growth shouldn&apos;t require massive upfront risk. You start with a small, high-impact quick win (<strong className="text-slate-900 font-bold">Dot</strong>) and expand into an integrated enterprise system (<strong className="text-slate-900 font-bold">Lott</strong>).
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            {/* Card A: The Dot */}
+            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-purple to-pink-500" />
+              
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-xs font-mono font-extrabold text-brand-purple uppercase">
+                    Tier 01 • Micro-Automation
+                  </span>
+                  <span className="text-xs font-mono font-bold text-slate-400">₹499+ ($6+)</span>
+                </div>
+
+                <h3 className="text-2xl font-black text-slate-900 font-display flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-brand-purple animate-ping" />
+                  The &quot;Dot&quot; Scale
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+                  Single-purpose quick wins designed to solve an immediate operational headache within 24 to 72 hours.
+                </p>
+
+                <ul className="text-xs text-slate-700 flex flex-col gap-2.5 pt-2">
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                    <span>Instant WhatsApp alert when website leads fill forms</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                    <span>Google Forms auto-sync to Excel/Sheets</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                    <span>Automated transactional email confirmation triggers</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-purple">
+                <span>Fast 1-3 Day Turnaround</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+
+            {/* Card B: The Lott */}
+            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue to-cyan-500" />
+              
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-extrabold text-brand-blue uppercase">
+                    Tier 02 • Enterprise Systems
+                  </span>
+                  <span className="text-xs font-mono font-bold text-slate-400">Custom Scope</span>
+                </div>
+
+                <h3 className="text-2xl font-black text-slate-900 font-display flex items-center gap-2">
+                  <Boxes className="w-5 h-5 text-brand-blue" />
+                  The &quot;Lott&quot; Scale
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+                  End-to-end custom web applications, multi-agent AI ecosystems, and deep multi-system CRM pipelines built to scale.
+                </p>
+
+                <ul className="text-xs text-slate-700 flex flex-col gap-2.5 pt-2">
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                    <span>Sub-second Custom Web Application with Admin Dashboard</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                    <span>Multi-Agent Autonomous AI Systems & Semantic Databases</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                    <span>Bi-directional Multi-Platform CRM & Database Syncing</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-blue">
+                <span>Enterprise SLA & Architecture</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </div>
         </div>
@@ -190,15 +286,15 @@ export default function AboutClient() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-black text-slate-900 font-display">Direct Founder Engineers</h3>
+                  <h3 className="text-lg font-black text-slate-900 font-display">Direct Developer Access</h3>
                   <p className="text-xs text-slate-600 font-light leading-relaxed">
-                    No non-technical middleman project managers. You work directly with our IIT Patna MCA software architects who design and write your code.
+                    No non-technical middleman project managers. You work and discuss directly with the developers who design and write your code.
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-purple-100">
                   <span className="text-[10px] font-extrabold text-slate-700 bg-white border border-purple-200 px-2.5 py-0.5 rounded-lg shadow-2xs">
-                    IIT Patna MCA Leads
+                    Direct Lead Developers
                   </span>
                   <span className="text-[10px] font-extrabold text-brand-purple bg-purple-50 border border-purple-200 px-2.5 py-0.5 rounded-lg">
                     0 PM Bottlenecks
@@ -341,7 +437,7 @@ export default function AboutClient() {
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-blue-100">
-                  <span className="text-[10px] font-extrabold text-slate-700 bg-white border border-blue-200 px-2.5 py-0.5 rounded-lg shadow-2xs">
+                  <span className="text-[10px] font-extrabold text-slate-700 bg-white border border-purple-200 px-2.5 py-0.5 rounded-lg shadow-2xs">
                     Odisha, India HQ
                   </span>
                   <span className="text-[10px] font-extrabold text-brand-blue bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg">
@@ -366,9 +462,9 @@ export default function AboutClient() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-black text-slate-900 font-display">&lt;1.0s Next.js Page Speed</h3>
+                  <h3 className="text-lg font-black text-slate-900 font-display">&lt;1.0s Page Load Speed</h3>
                   <p className="text-xs text-slate-600 font-light leading-relaxed">
-                    Optimized Next.js 16 App Router code built for sub-second loading speeds, zero bloatware, and 100% Google Lighthouse perfection.
+                    Optimized custom frontend architectures built for sub-second loading speeds, zero bloatware, and 100% Google Lighthouse perfection.
                   </p>
                 </div>
 
@@ -377,7 +473,7 @@ export default function AboutClient() {
                     &lt; 1.0s Load Speed
                   </span>
                   <span className="text-[10px] font-extrabold text-brand-blue bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg">
-                    Next.js 16 App Router
+                    Custom Modern Stack
                   </span>
                 </div>
               </div>
@@ -442,111 +538,6 @@ export default function AboutClient() {
         </div>
 
         {/* ==========================================
-            3. THE BRAND PHILOSOPHY: Dot vs Lott
-           ========================================== */}
-        <div className="flex flex-col gap-8">
-          <div className="text-center max-w-3xl mx-auto flex flex-col gap-3">
-            <span className="text-xs font-extrabold uppercase tracking-wider text-brand-purple font-display bg-brand-purple/10 px-3.5 py-1 rounded-full w-fit mx-auto">
-              Our Scalable Model
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
-              Why Are We Called <span className="text-brand-purple font-black">Dot</span>n<span className="text-brand-blue font-black">Lott</span>?
-            </h2>
-            <p className="text-sm text-slate-600 font-light leading-relaxed">
-              We believe digital growth shouldn&apos;t require massive upfront risk. You start with a small, high-impact quick win (<strong className="text-slate-900 font-bold">Dot</strong>) and expand into an integrated enterprise system (<strong className="text-slate-900 font-bold">Lott</strong>).
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            {/* Card A: The Dot */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-purple to-pink-500" />
-              
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-xs font-mono font-extrabold text-brand-purple uppercase">
-                    Tier 01 • Micro-Automation
-                  </span>
-                  <span className="text-xs font-mono font-bold text-slate-400">₹499+ ($6+)</span>
-                </div>
-
-                <h3 className="text-2xl font-black text-slate-900 font-display flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-brand-purple animate-ping" />
-                  The &quot;Dot&quot; Scale
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
-                  Single-purpose quick wins designed to solve an immediate operational headache within 24 to 72 hours.
-                </p>
-
-                <ul className="text-xs text-slate-700 flex flex-col gap-2.5 pt-2">
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-purple flex-shrink-0" />
-                    <span>Instant WhatsApp alert when website leads fill forms</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-purple flex-shrink-0" />
-                    <span>Google Forms auto-sync to Excel/Sheets</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-purple flex-shrink-0" />
-                    <span>Automated transactional email confirmation triggers</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-purple">
-                <span>Fast 1-3 Day Turnaround</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-
-            {/* Card B: The Lott */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between gap-6 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue to-cyan-500" />
-              
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-extrabold text-brand-blue uppercase">
-                    Tier 02 • Enterprise Systems
-                  </span>
-                  <span className="text-xs font-mono font-bold text-slate-400">Custom Scope</span>
-                </div>
-
-                <h3 className="text-2xl font-black text-slate-900 font-display flex items-center gap-2">
-                  <Boxes className="w-5 h-5 text-brand-blue" />
-                  The &quot;Lott&quot; Scale
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
-                  End-to-end custom web applications, multi-agent AI ecosystems, and deep multi-system CRM pipelines built to scale.
-                </p>
-
-                <ul className="text-xs text-slate-700 flex flex-col gap-2.5 pt-2">
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
-                    <span>Sub-second Next.js Web Application with Admin Dashboard</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
-                    <span>Multi-Agent Autonomous AI Ecosystems (n8n + Vector DBs)</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
-                    <span>Bi-directional Zoho, HubSpot & SQL CRM Pipelines</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-blue">
-                <span>Enterprise SLA & Architecture</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ==========================================
             4. FOUNDERS SHOWCASE (1 Row Side-by-Side Premium Cards)
            ========================================== */}
         <div className="flex flex-col gap-8 pt-4">
@@ -563,8 +554,8 @@ export default function AboutClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
-            {/* Founder 1: Sonalika Samal */}
-            <div className="bg-gradient-to-b from-white via-slate-50/60 to-white border border-slate-250/80 rounded-3xl p-7 flex flex-col items-center text-center gap-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full">
+            {/* Founder 1: Sonalika Samal (Thin Purple Border) */}
+            <div className="bg-gradient-to-b from-white via-slate-50/60 to-white border border-brand-purple/40 hover:border-brand-purple/70 rounded-3xl p-7 flex flex-col items-center text-center gap-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full">
               
               <div className="relative pt-2">
                 <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-[3px] border-emerald-500 overflow-hidden relative shadow-sm group-hover:scale-105 transition-transform duration-300">
@@ -584,11 +575,11 @@ export default function AboutClient() {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Automation specialist and AI workflow architect with 3+ years of experience in AI toolings, n8n webhook engines, WhatsApp API chatbots, and business process automation.
+                Automation specialist and AI workflow architect with 3+ years of experience in AI toolings, webhook automation engines, instant messaging chatbots, and business process automation.
               </p>
 
               <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {['CRM Sync', 'WhatsApp API', 'AI Agents', 'n8n Pipelines'].map((skill, i) => (
+                {['CRM Sync', 'Messaging APIs', 'AI Agents', 'Workflow Pipelines'].map((skill, i) => (
                   <span key={i} className="text-[11px] font-extrabold text-brand-purple bg-brand-purple/10 border border-brand-purple/20 px-3 py-1 rounded-xl">
                     {skill}
                   </span>
@@ -610,8 +601,8 @@ export default function AboutClient() {
               </div>
             </div>
 
-            {/* Founder 2: Abhishek Abhinav */}
-            <div className="bg-gradient-to-b from-white via-slate-50/60 to-white border border-slate-250/80 rounded-3xl p-7 flex flex-col items-center text-center gap-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full">
+            {/* Founder 2: Abhishek Abhinav (Thin Blue Border) */}
+            <div className="bg-gradient-to-b from-white via-slate-50/60 to-white border border-brand-blue/40 hover:border-brand-blue/70 rounded-3xl p-7 flex flex-col items-center text-center gap-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full">
               
               <div className="relative pt-2">
                 <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-[3px] border-emerald-500 overflow-hidden relative shadow-sm group-hover:scale-105 transition-transform duration-300">
@@ -631,11 +622,11 @@ export default function AboutClient() {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Full-stack software engineer specializing in modern Next.js 16 web applications, sub-second web performance, scalable REST APIs, cloud deployments, and system security.
+                Full-stack software engineer specializing in modern custom web applications, sub-second web performance, scalable REST APIs, cloud deployments, and system security.
               </p>
 
               <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {['Next.js / React', 'Node.js APIs', 'VPS / Cloud', 'System Infra'].map((skill, i) => (
+                {['React / Frontend', 'Node.js APIs', 'VPS / Cloud', 'System Infra'].map((skill, i) => (
                   <span key={i} className="text-[11px] font-extrabold text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-3 py-1 rounded-xl">
                     {skill}
                   </span>
@@ -660,61 +651,71 @@ export default function AboutClient() {
         </div>
 
         {/* ==========================================
-            5. CORPORATE MCA CREDENTIALS (Sleek Dark Theme)
+            5. FOUNDER'S NOTE (Clean Editorial Letter Style)
            ========================================== */}
-        <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800 flex flex-col gap-8">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-purple/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-3xl mx-auto flex flex-col gap-6 py-8 px-2 text-left relative w-full">
+          {/* Soft ambient background glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-purple/5 rounded-full blur-[100px] pointer-events-none" />
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-b border-white/10 pb-6 relative z-10">
-            <div className="flex flex-col gap-1">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-400 font-mono flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                Verified Legal Entity • Ministry of Corporate Affairs
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white font-display">A2Z Version Private Limited</h2>
-            </div>
+          <h2 className="font-display text-2xl sm:text-3xl font-black text-brand-purple border-b border-slate-250/60 pb-3 relative z-10">
+            Founder&apos;s Note
+          </h2>
+
+          <div className="flex flex-col gap-5 text-sm sm:text-base text-slate-650 font-light leading-relaxed relative z-10">
+            <p>
+              At DotnLott, we believe AI and automation shouldn&apos;t be reserved for large enterprises with massive budgets. Every business—whether it&apos;s a startup, a growing company, or a local organization—deserves access to technology that saves time, reduces costs, and helps people focus on meaningful work.
+            </p>
             
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold font-mono">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-              100% Tax Compliant & Verified
+            {/* Core Mission highlighted pull-quote with vertical border */}
+            <div className="border-l-4 border-brand-purple pl-4 py-2 my-2 bg-brand-purple/10 rounded-r-xl">
+              <p className="text-base sm:text-lg font-bold text-slate-800 italic leading-relaxed font-display">
+                We started DotnLott with a simple mission: to make AI automation practical, affordable, and accessible for everyone.
+              </p>
             </div>
+
+            <p>
+              Every day, businesses spend countless hours on repetitive tasks—copying data, sending follow-ups, managing spreadsheets, generating reports, updating CRMs, and coordinating across multiple tools. These activities consume valuable time, increase operational costs, and often require additional manpower.
+            </p>
+            <p>
+              Our vision is to help organizations replace repetitive work with intelligent automation. Instead of expanding teams just to handle routine operations, businesses can leverage AI-powered workflows to complete those tasks faster, more accurately, and at a fraction of the cost. This doesn&apos;t replace human creativity—it empowers people to spend their time on strategy, innovation, and customer relationships.
+            </p>
+            <p>
+              Beyond building automation solutions, we are committed to educating people. Through content, workshops, demonstrations, and real-world examples, we aim to spread awareness about how AI can improve both business operations and everyday life. Our goal is to help individuals and organizations confidently embrace automation, regardless of their technical background.
+            </p>
+            <p>
+              At DotnLott, we don&apos;t just build workflows—we build a future where technology works for people, not the other way around.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs relative z-10">
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all flex flex-col gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Brand Entity</span>
-              <span className="font-extrabold text-white font-display text-base text-brand-purple">DotnLott</span>
-              <span className="text-[11px] text-slate-400 font-light">AI Automation & Web Engineering</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Corporate CIN</span>
-                <button
-                  onClick={handleCopyCin}
-                  className="inline-flex items-center gap-1 text-[10px] font-bold text-brand-blue hover:text-cyan-400 transition-colors"
-                >
-                  {copiedCin ? <CopyCheck className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                  {copiedCin ? 'Copied!' : 'Copy'}
-                </button>
+          {/* Premium Sign-off Group with Cursive font & Avatars */}
+          <div className="flex items-center gap-3.5 pt-4 border-t border-slate-200/60 mt-4 relative z-10">
+            <div className="flex -space-x-2.5">
+              <div className="w-8.5 h-8.5 rounded-full border-2 border-white shadow-xs overflow-hidden relative">
+                <Image
+                  src="/sonalika.jpg"
+                  alt="Sonalika Samal"
+                  fill
+                  className="object-cover object-top"
+                  unoptimized
+                />
               </div>
-              <span className="font-mono font-bold text-white text-xs tracking-wider">U47721BR2026PTC085973</span>
-              <span className="text-[11px] text-slate-400 font-light">Government of India Registered</span>
+              <div className="w-8.5 h-8.5 rounded-full border-2 border-white shadow-xs overflow-hidden relative">
+                <Image
+                  src="/abhishek.jpg"
+                  alt="Abhishek Abhinav"
+                  fill
+                  className="object-cover object-top"
+                  unoptimized
+                />
+              </div>
             </div>
-
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all flex flex-col gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Operational Base</span>
-              <span className="font-bold text-white flex items-center gap-1 text-sm">
-                <MapPin className="w-4 h-4 text-brand-purple" /> Odisha, India
-              </span>
-              <span className="text-[11px] text-slate-400 font-light">Serving Global & Domestic Clients</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all flex flex-col gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Client Guarantees</span>
-              <span className="font-extrabold text-emerald-400 font-display text-sm">100% NDA & IP Transfer</span>
-              <span className="text-[11px] text-slate-400 font-light">Full ownership of code & workflows</span>
+            <div className="flex flex-col gap-0.5">
+              <p className="font-extrabold text-slate-800 text-xs sm:text-sm tracking-wide">
+                Build. Automate. Grow.
+              </p>
+              <p className="text-sm sm:text-base text-slate-500 font-serif italic tracking-wide" style={{ fontFamily: "'Dancing Script', 'Georgia', 'Brush Script MT', cursive" }}>
+                — Sonalika & Abhishek, Founders
+              </p>
             </div>
           </div>
         </div>
@@ -796,13 +797,13 @@ export default function AboutClient() {
             Ready to Automate Your Operations?
           </h2>
           <p className="text-xs sm:text-base text-slate-300 font-light leading-relaxed">
-            Book a direct 1-on-1 strategy call with our founders to discuss your business workflows.
+            Book a direct 1-on-1 strategy call with our lead architects to discuss your business workflows.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto relative z-10 pt-2">
           <Link
-            href="/booking"
+            href="/contact#calendar-booking"
             className="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-2xl hover:bg-slate-100 transition-all shadow-xl hover:scale-105 flex items-center justify-center gap-2"
           >
             Book Free Consultation

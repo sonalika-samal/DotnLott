@@ -2,10 +2,27 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Mail, MapPin, MessageCircle, Calendar } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
+  const isHome = pathname === '/';
+  const isAiAuto = pathname.startsWith('/ai-automation');
+  const isWebDev = pathname.startsWith('/website-development');
+  const isAbout = pathname.startsWith('/about');
+  const isContact = pathname.startsWith('/contact');
+  const isBlog = pathname.startsWith('/blog');
+  const isPrivacy = pathname.startsWith('/privacy-policy');
+  const isTerms = pathname.startsWith('/terms-of-service');
+  const isRefund = pathname.startsWith('/refund-policy');
+
+  const getPageLinkClass = (isActive: boolean) =>
+    isActive
+      ? 'font-extrabold text-slate-900 transition-colors'
+      : 'font-normal text-slate-600 hover:text-slate-900 transition-colors';
 
   return (
     <footer className="relative bg-white border-t border-slate-200/80 pt-8 pb-6 overflow-hidden z-10 text-slate-700">
@@ -113,12 +130,21 @@ export default function Footer() {
 
             {/* Quick Legal Links */}
             <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
-              <Link href="/privacy-policy" className="hover:text-brand-blue font-medium transition-colors">Privacy Policy</Link>
+              <Link href="/privacy-policy" className={isPrivacy ? 'text-slate-900 font-bold underline' : 'hover:text-slate-900 font-normal transition-colors'}>Privacy Policy</Link>
               <span>•</span>
-              <Link href="/terms-of-service" className="hover:text-brand-purple font-medium transition-colors">Terms of Service</Link>
+              <Link href="/terms-of-service" className={isTerms ? 'text-slate-900 font-bold underline' : 'hover:text-slate-900 font-normal transition-colors'}>Terms of Service</Link>
               <span>•</span>
-              <Link href="/refund-policy" className="hover:text-emerald-600 font-medium transition-colors">Refund Policy</Link>
+              <Link href="/refund-policy" className={isRefund ? 'text-slate-900 font-bold underline' : 'hover:text-slate-900 font-normal transition-colors'}>Refund Policy</Link>
             </div>
+
+            {/* Small Purple Book Meeting Button */}
+            <Link
+              href="/contact?booking=true#calendar-booking"
+              className="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-brand-purple hover:bg-brand-purple/90 text-white text-[11px] font-bold uppercase tracking-wider shadow-xs hover:shadow-md transition-all border border-purple-400/30 w-fit hover:scale-105"
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              Book Meeting
+            </Link>
           </div>
 
           {/* Column 2: PAGES Links (2 Cols - Fits Text Perfectly Without Extra Space) */}
@@ -126,26 +152,32 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-950 font-display">Pages</h4>
             <ul className="flex flex-col gap-2 text-xs text-slate-600 font-light">
               <li>
-                <Link href="/" className="hover:text-brand-blue font-normal transition-colors">Home</Link>
+                <Link href="/" className={getPageLinkClass(isHome)}>Home</Link>
               </li>
               <li>
-                <Link href="/ai-automation" className="hover:text-brand-purple font-semibold text-slate-900 transition-colors">AI Automation</Link>
+                <Link href="/ai-automation" className={getPageLinkClass(isAiAuto)}>AI Automation</Link>
               </li>
               <li>
-                <Link href="/website-development" className="hover:text-brand-blue font-semibold text-slate-900 transition-colors">Website Development</Link>
+                <Link href="/website-development" className={getPageLinkClass(isWebDev)}>Website Development</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-brand-blue font-normal transition-colors">About Us</Link>
+                <Link href="/about" className={getPageLinkClass(isAbout)}>About</Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-brand-blue font-normal transition-colors">Contact Us</Link>
+                <Link href="/blog" className={getPageLinkClass(isBlog)}>Blog</Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-brand-blue font-normal transition-colors">Engineering Blog</Link>
-              </li>
-              <li>
-                <Link href="/booking" className="hover:text-brand-purple font-bold text-brand-purple transition-colors flex items-center gap-1">
-                  Book Project Call <ArrowUpRight className="w-3 h-3" />
+                <Link
+                  href="/contact"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.history.replaceState(null, '', '/contact');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  className={getPageLinkClass(isContact)}
+                >
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -159,19 +191,17 @@ export default function Footer() {
               <li>
                 <Link href="/ai-automation#all-suites-catalog" className="hover:text-brand-purple font-medium transition-colors flex items-center justify-start gap-1.5">
                   <span className="whitespace-nowrap">Email Lead Gen & Outreach</span>
-                  <span className="text-[8px] font-black text-brand-purple bg-purple-100 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0">Popular</span>
+                  <span className="text-[8px] font-black text-amber-950 bg-amber-300/90 border border-amber-400/80 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0 shadow-2xs">Best Seller</span>
                 </Link>
               </li>
               <li>
                 <Link href="/ai-automation#all-suites-catalog" className="hover:text-brand-purple font-medium transition-colors flex items-center justify-start gap-1.5">
                   <span className="whitespace-nowrap">AI Lead Nurturing & WhatsApp</span>
-                  <span className="text-[8px] font-black text-brand-purple bg-purple-100 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0">Popular</span>
                 </Link>
               </li>
               <li>
                 <Link href="/ai-automation#all-suites-catalog" className="hover:text-brand-purple font-medium transition-colors flex items-center justify-start gap-1.5">
                   <span className="whitespace-nowrap">Social Media Autopilot</span>
-                  <span className="text-[8px] font-black text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0">High Demand</span>
                 </Link>
               </li>
 
@@ -179,25 +209,23 @@ export default function Footer() {
               <li>
                 <Link href="/website-development#pricing-packages" className="hover:text-brand-blue font-medium transition-colors flex items-center justify-start gap-1.5">
                   <span className="whitespace-nowrap">Landing Page Web Studio</span>
-                  <span className="text-[8px] font-black text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0">High Demand</span>
                 </Link>
               </li>
               <li>
                 <Link href="/website-development#pricing-packages" className="hover:text-brand-blue font-medium transition-colors flex items-center justify-start gap-1.5">
                   <span className="whitespace-nowrap">Corporate Business Website</span>
-                  <span className="text-[8px] font-black text-brand-purple bg-purple-100 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0">Most Popular</span>
+                  <span className="text-[8px] font-black text-amber-950 bg-amber-300/90 border border-amber-400/80 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0 shadow-2xs">Best Seller</span>
                 </Link>
               </li>
               <li>
                 <Link href="/website-development#pricing-packages" className="hover:text-brand-blue font-medium transition-colors flex items-center justify-start gap-1.5">
                   <span className="whitespace-nowrap">Custom Dynamic Web App</span>
-                  <span className="text-[8px] font-black text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded uppercase font-mono flex-shrink-0">High Demand</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: GET IN TOUCH Cards (3 Cols) */}
+          {/* Column 4: GET IN TOUCH Cards */}
           <div className="lg:col-span-3 flex flex-col gap-2.5">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-950 font-display mb-0.5">Get In Touch</h4>
             
@@ -212,24 +240,51 @@ export default function Footer() {
               </div>
             </div>
 
-            <a
-              href="https://wa.me/917846969508?text=Hey%20DotnLott%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-2.5 px-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              Chat on WhatsApp
-            </a>
+            {/* Email Address Text Links */}
+            <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-2.5 flex items-start gap-2.5 shadow-2xs hover:border-brand-blue/30 transition-all">
+              <div className="w-6.5 h-6.5 rounded-xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue flex-shrink-0 mt-0.5">
+                <Mail className="w-3.5 h-3.5" />
+              </div>
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email Us</span>
+                <div className="flex flex-col text-xs font-bold text-slate-900">
+                  <a href="mailto:connect@dotnlott.com" className="hover:text-brand-purple underline transition-colors truncate">
+                    connect@dotnlott.com
+                  </a>
+                  <a href="mailto:hello.dotnlott@gmail.com" className="hover:text-brand-purple underline transition-colors truncate">
+                    hello.dotnlott@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
 
-            <a
-              href="mailto:connect@dotnlott.com"
-              className="w-full py-2.5 px-3.5 rounded-2xl bg-slate-900 hover:bg-brand-blue text-white font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all"
-            >
-              <Mail className="w-3.5 h-3.5 text-slate-300" />
-              Email Us Directly
-            </a>
-
+            {/* Phone Number / WhatsApp Text Links */}
+            <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-2.5 flex items-start gap-2.5 shadow-2xs hover:border-emerald-500/30 transition-all">
+              <div className="w-6.5 h-6.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0 mt-0.5">
+                <MessageCircle className="w-3.5 h-3.5" />
+              </div>
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Phone & WhatsApp</span>
+                <div className="flex flex-col text-xs font-bold text-slate-900">
+                  <a
+                    href="https://wa.me/917846969508?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20website."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-emerald-600 underline transition-colors"
+                  >
+                    +91 78469 69508
+                  </a>
+                  <a
+                    href="https://wa.me/918544121551?text=Hey%20DotnLott%20team%2C%20I%20am%20reaching%20out%20from%20your%20website."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-emerald-600 underline transition-colors"
+                  >
+                    +91 85441 21551
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -239,7 +294,7 @@ export default function Footer() {
           <p className="max-w-7xl w-full leading-relaxed">
             © {currentYear} Dot n Lott. All rights reserved. A brand under{' '}
             <a
-              href="https://www.mca.gov.in/"
+              href="https://www.mca.gov.in/content/mca/global/en/mca/master-data/View-Companies-Directors-under-prosecution-V3.html"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-slate-800 underline hover:text-brand-blue transition-colors"

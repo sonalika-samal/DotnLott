@@ -103,7 +103,7 @@ export default function PostClient({ post }: PostClientProps) {
             </div>
 
             <Link
-              href="/booking"
+              href="/contact#calendar-booking"
               className="relative z-10 inline-flex items-center justify-center gap-2 w-full py-3.5 text-xs font-bold uppercase tracking-wider text-slate-950 bg-white hover:bg-slate-100 transition-colors rounded-xl shadow-lg"
             >
               Configure Solution

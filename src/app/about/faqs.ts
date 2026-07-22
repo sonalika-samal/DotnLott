@@ -1,42 +1,26 @@
 export const faqsList = [
   {
-    question: 'What is AI automation?',
-    answer: 'AI automation combines artificial intelligence with automated workflows to perform complex business tasks without human intervention. It enables systems to analyze data, make intelligent decisions, trigger actions across tools, and handle repetitive tasks seamlessly.',
+    question: 'Who is behind DotnLott?',
+    answer: 'DotnLott was founded by Sonalika Samal and Abhishek Abhinav, hands-on software engineers and AI system architects. We operate with a core mission to make high-performance digital systems, custom web applications, and workflow automations practical and affordable for growing businesses.',
   },
   {
-    question: 'How can automation help my business?',
-    answer: 'Automation eliminates manual data entry, speeds up response times, reduces operational errors, and runs your business 24/7. This allows your team to focus on revenue-generating activities and high-value strategy rather than routine tasks.',
+    question: 'Is DotnLott a legitimate registered company?',
+    answer: 'Yes, absolutely. DotnLott is the official digital engineering and automation brand operated under A2Z Version Private Limited (CIN: U47721BR2026PTC085973), which is fully registered under the Companies Act, Government of India. We are 100% tax compliant and operate with complete legal accountability.',
   },
   {
-    question: 'Can you customize workflows for my specific needs?',
-    answer: 'Yes. Every solution built by DotnLott is customized to match your existing business processes, software stack, and operational requirements—not a rigid, one-size-fits-all software tool.',
+    question: 'Why should I trust DotnLott over hiring random freelancers?',
+    answer: 'Unlike hiring freelancers where communication can be spotty, you deal directly with our founders and lead engineers from day one. We do not use middlemen or account managers. We sign clear legal contracts, provide 100% code ownership, offer transparent pricing, and take full accountability for deployment, hosting, and post-launch maintenance.',
   },
   {
-    question: 'Do I need technical knowledge to use your solutions?',
-    answer: 'No technical background is needed. We handle the entire engineering, setup, API connections, and deployment process, providing you with simple control panels and intuitive user interfaces.',
+    question: 'How do you guarantee the security of my data, API keys, and credentials?',
+    answer: 'Security is our absolute priority. We sign a legally binding Non-Disclosure Agreement (NDA) and Intellectual Property (IP) Transfer Agreement before writing any code. We host systems on your own private cloud VPS, encrypt credentials using bank-grade AES 256-bit encryption, and hand over the source code repository to you upon project delivery.',
   },
   {
-    question: 'What platforms do you integrate with?',
-    answer: 'We integrate with virtually all major business tools including WhatsApp API, CRM systems (HubSpot, Zoho, Salesforce), Google Workspace, Microsoft 365, Slack, email tools, and custom REST APIs or SQL databases.',
+    question: 'What happens if a workflow or API updates and breaks after deployment?',
+    answer: 'We provide comprehensive post-deployment support and proactive system monitoring. If a third-party API changes or a webhook fails, our engineering team is notified and handles the fixes. We offer dedicated maintenance SLAs to ensure your business-critical workflows run 24/7 with maximum uptime.',
   },
   {
-    question: 'How much does automation cost?',
-    answer: 'Our standardized automation suite setups start at just ₹499 ($6) on our Managed Cloud model. Custom enterprise integrations are priced transparently based on system scope and API complexity.',
-  },
-  {
-    question: 'How long does implementation take?',
-    answer: 'Standard pre-built automation suites are typically deployed within 3 to 7 business days. Custom enterprise solutions and complex multi-tool integrations are delivered in 1 to 3 weeks.',
-  },
-  {
-    question: 'Do you provide support after deployment?',
-    answer: 'Yes. We provide ongoing technical support, system maintenance, API update monitoring, and workflow optimization to ensure your systems run smoothly without downtime.',
-  },
-  {
-    question: 'Can I upgrade my plan as my business grows?',
-    answer: 'Absolutely. Our modular infrastructure allows you to start small with a single workflow and expand to complex multi-department AI automations as your operations scale.',
-  },
-  {
-    question: 'Is my business data secure with DotnLott?',
-    answer: 'Yes. We adhere to enterprise-grade data security practices, sign non-disclosure agreements (NDAs) before access, use encrypted connections, and never share or sell your business data.',
+    question: 'Do I need any technical skills to use and manage your systems?',
+    answer: 'No technical skills are required whatsoever. We handle the entire backend engineering, setup, server configuration, and API handshakes. We deliver completed solutions with user-friendly administrative dashboards, interactive chatbot controls, or clean spreadsheets so you can monitor operations with ease.',
   },
 ];

@@ -1,21 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import {
   Mail,
-  Phone,
   MapPin,
   Send,
   MessageCircle,
-  Clock,
   ShieldCheck,
-  Building2,
   ChevronDown,
   CheckCircle2,
   Sparkles,
-  ArrowRight
+  Calendar
 } from 'lucide-react';
 import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
@@ -38,36 +34,164 @@ const contactFaqs = [
   },
 ];
 
-const aiAutomationOptions = [
-  'Email Marketing Automation Suite',
-  'AI Lead Nurturing & WhatsApp Suite',
-  'Customer Success & Reviews Suite',
-  'Social Media Automation Suite',
-  'AI Voice Agent Support Suite',
-  'CRM & Lead Management Sync Suite',
-  'Order & Inventory Management Suite',
-  'Quotation & Invoice Automation Suite',
-  'HR & Employee Onboarding Suite',
-  'Custom Database & Internal Tools Suite',
-  'Travel Business Automation Suite',
-  'Website Business Automation Suite',
-  'Bespoke Custom AI Automation'
-];
-
-const websiteDevOptions = [
-  'Landing Page Website (1 Page — ₹2,999)',
-  'Business Website (5–10 Pages — ₹7,999)',
-  'Custom Dynamic Website (10–25 Pages — ₹12,999)',
-  'E-Commerce Website (20–100+ Pages — ₹19,999)'
+const countryCodes = [
+  { code: '+91', label: '🇮🇳 India (+91)' },
+  { code: '+1', label: '🇺🇸 United States (+1)' },
+  { code: '+1', label: '🇨🇦 Canada (+1)' },
+  { code: '+44', label: '🇬🇧 United Kingdom (+44)' },
+  { code: '+971', label: '🇦🇪 UAE (+971)' },
+  { code: '+93', label: '🇦🇫 Afghanistan (+93)' },
+  { code: '+355', label: '🇦🇱 Albania (+355)' },
+  { code: '+213', label: '🇩🇿 Algeria (+213)' },
+  { code: '+376', label: '🇦🇩 Andorra (+376)' },
+  { code: '+244', label: '🇦🇴 Angola (+244)' },
+  { code: '+54', label: '🇦🇷 Argentina (+54)' },
+  { code: '+374', label: '🇦🇲 Armenia (+374)' },
+  { code: '+61', label: '🇦🇺 Australia (+61)' },
+  { code: '+43', label: '🇦🇹 Austria (+43)' },
+  { code: '+994', label: '🇦🇿 Azerbaijan (+994)' },
+  { code: '+973', label: '🇧🇭 Bahrain (+973)' },
+  { code: '+880', label: '🇧🇩 Bangladesh (+880)' },
+  { code: '+375', label: '🇧🇾 Belarus (+375)' },
+  { code: '+32', label: '🇧🇪 Belgium (+32)' },
+  { code: '+501', label: '🇧🇿 Belize (+501)' },
+  { code: '+229', label: '🇧🇯 Benin (+229)' },
+  { code: '+975', label: '🇧🇹 Bhutan (+975)' },
+  { code: '+591', label: '🇧🇴 Bolivia (+591)' },
+  { code: '+387', label: '🇧🇦 Bosnia (+387)' },
+  { code: '+267', label: '🇧🇼 Botswana (+267)' },
+  { code: '+55', label: '🇧🇷 Brazil (+55)' },
+  { code: '+673', label: '🇧🇳 Brunei (+673)' },
+  { code: '+359', label: '🇧🇬 Bulgaria (+359)' },
+  { code: '+226', label: '🇧🇫 Burkina Faso (+226)' },
+  { code: '+257', label: '🇧🇮 Burundi (+257)' },
+  { code: '+855', label: '🇰🇭 Cambodia (+855)' },
+  { code: '+237', label: '🇨🇲 Cameroon (+237)' },
+  { code: '+238', label: '🇨🇻 Cape Verde (+238)' },
+  { code: '+236', label: '🇨🇫 Central African Rep (+236)' },
+  { code: '+235', label: '🇹🇩 Chad (+235)' },
+  { code: '+56', label: '🇨🇱 Chile (+56)' },
+  { code: '+86', label: '🇨🇳 China (+86)' },
+  { code: '+57', label: '🇨🇴 Colombia (+57)' },
+  { code: '+269', label: '🇰🇲 Comoros (+269)' },
+  { code: '+242', label: '🇨🇬 Congo (+242)' },
+  { code: '+506', label: '🇨🇷 Costa Rica (+506)' },
+  { code: '+385', label: '🇭🇷 Croatia (+385)' },
+  { code: '+53', label: '🇨🇺 Cuba (+53)' },
+  { code: '+357', label: '🇨🇾 Cyprus (+357)' },
+  { code: '+420', label: '🇨🇿 Czech Republic (+420)' },
+  { code: '+45', label: '🇩🇰 Denmark (+45)' },
+  { code: '+253', label: '🇩🇯 Djibouti (+253)' },
+  { code: '+593', label: '🇪🇨 Ecuador (+593)' },
+  { code: '+20', label: '🇪🇬 Egypt (+20)' },
+  { code: '+503', label: '🇸🇻 El Salvador (+503)' },
+  { code: '+372', label: '🇪🇪 Estonia (+372)' },
+  { code: '+251', label: '🇪🇹 Ethiopia (+251)' },
+  { code: '+679', label: '🇫🇯 Fiji (+679)' },
+  { code: '+358', label: '🇫🇮 Finland (+358)' },
+  { code: '+33', label: '🇫🇷 France (+33)' },
+  { code: '+241', label: '🇬🇦 Gabon (+241)' },
+  { code: '+220', label: '🇬🇲 Gambia (+220)' },
+  { code: '+995', label: '🇬🇪 Georgia (+995)' },
+  { code: '+49', label: '🇩🇪 Germany (+49)' },
+  { code: '+233', label: '🇬🇭 Ghana (+233)' },
+  { code: '+30', label: '🇬🇷 Greece (+30)' },
+  { code: '+502', label: '🇬🇹 Guatemala (+502)' },
+  { code: '+224', label: '🇬🇳 Guinea (+224)' },
+  { code: '+504', label: '🇭🇳 Honduras (+504)' },
+  { code: '+852', label: '🇭🇰 Hong Kong (+852)' },
+  { code: '+36', label: '🇭🇺 Hungary (+36)' },
+  { code: '+354', label: '🇮🇸 Iceland (+354)' },
+  { code: '+62', label: '🇮🇩 Indonesia (+62)' },
+  { code: '+964', label: '🇮🇶 Iraq (+964)' },
+  { code: '+353', label: '🇮🇪 Ireland (+353)' },
+  { code: '+972', label: '🇮🇱 Israel (+972)' },
+  { code: '+39', label: '🇮🇹 Italy (+39)' },
+  { code: '+81', label: '🇯🇵 Japan (+81)' },
+  { code: '+962', label: '🇯🇴 Jordan (+962)' },
+  { code: '+7', label: '🇰🇿 Kazakhstan (+7)' },
+  { code: '+254', label: '🇰🇪 Kenya (+254)' },
+  { code: '+82', label: '🇰🇷 South Korea (+82)' },
+  { code: '+965', label: '🇰🇼 Kuwait (+965)' },
+  { code: '+996', label: '🇰🇬 Kyrgyzstan (+996)' },
+  { code: '+856', label: '🇱🇦 Laos (+856)' },
+  { code: '+371', label: '🇱🇻 Latvia (+371)' },
+  { code: '+961', label: '🇱🇧 Lebanon (+961)' },
+  { code: '+218', label: '🇱🇾 Libya (+218)' },
+  { code: '+370', label: '🇱🇹 Lithuania (+370)' },
+  { code: '+352', label: '🇱🇺 Luxembourg (+352)' },
+  { code: '+853', label: '🇲🇴 Macau (+853)' },
+  { code: '+389', label: '🇲🇰 North Macedonia (+389)' },
+  { code: '+261', label: '🇲🇬 Madagascar (+261)' },
+  { code: '+60', label: '🇲🇾 Malaysia (+60)' },
+  { code: '+960', label: '🇲🇻 Maldives (+960)' },
+  { code: '+223', label: '🇲🇱 Mali (+223)' },
+  { code: '+356', label: '🇲🇹 Malta (+356)' },
+  { code: '+230', label: '🇲🇺 Mauritius (+230)' },
+  { code: '+52', label: '🇲🇽 Mexico (+52)' },
+  { code: '+373', label: '🇲🇩 Moldova (+373)' },
+  { code: '+377', label: '🇲🇨 Monaco (+377)' },
+  { code: '+976', label: '🇲🇳 Mongolia (+976)' },
+  { code: '+382', label: '🇲🇪 Montenegro (+382)' },
+  { code: '+212', label: '🇲🇦 Morocco (+212)' },
+  { code: '+258', label: '🇲🇿 Mozambique (+258)' },
+  { code: '+95', label: '🇲🇲 Myanmar (+95)' },
+  { code: '+264', label: '🇳🇦 Namibia (+264)' },
+  { code: '+977', label: '🇳🇵 Nepal (+977)' },
+  { code: '+31', label: '🇳🇱 Netherlands (+31)' },
+  { code: '+64', label: '🇳🇿 New Zealand (+64)' },
+  { code: '+505', label: '🇳🇮 Nicaragua (+505)' },
+  { code: '+227', label: '🇳🇪 Niger (+227)' },
+  { code: '+234', label: '🇳🇬 Nigeria (+234)' },
+  { code: '+47', label: '🇳🇴 Norway (+47)' },
+  { code: '+968', label: '🇴🇲 Oman (+968)' },
+  { code: '+92', label: '🇵🇰 Pakistan (+92)' },
+  { code: '+507', label: '🇵🇦 Panama (+507)' },
+  { code: '+595', label: '🇵🇾 Paraguay (+595)' },
+  { code: '+51', label: '🇵🇪 Peru (+51)' },
+  { code: '+63', label: '🇵🇭 Philippines (+63)' },
+  { code: '+48', label: '🇵🇱 Poland (+48)' },
+  { code: '+351', label: '🇵🇹 Portugal (+351)' },
+  { code: '+974', label: '🇶🇦 Qatar (+974)' },
+  { code: '+40', label: '🇷🇴 Romania (+40)' },
+  { code: '+7', label: '🇷🇺 Russia (+7)' },
+  { code: '+250', label: '🇷🇼 Rwanda (+250)' },
+  { code: '+966', label: '🇸🇦 Saudi Arabia (+966)' },
+  { code: '+221', label: '🇸🇳 Senegal (+221)' },
+  { code: '+381', label: '🇷🇸 Serbia (+381)' },
+  { code: '+65', label: '🇸🇬 Singapore (+65)' },
+  { code: '+421', label: '🇸🇰 Slovakia (+421)' },
+  { code: '+386', label: '🇸🇮 Slovenia (+386)' },
+  { code: '+27', label: '🇿🇦 South Africa (+27)' },
+  { code: '+34', label: '🇪🇸 Spain (+34)' },
+  { code: '+94', label: '🇱🇰 Sri Lanka (+94)' },
+  { code: '+46', label: '🇸🇪 Sweden (+46)' },
+  { code: '+41', label: '🇨🇭 Switzerland (+41)' },
+  { code: '+886', label: '🇹🇼 Taiwan (+886)' },
+  { code: '+992', label: '🇹🇯 Tajikistan (+992)' },
+  { code: '+255', label: '🇹🇿 Tanzania (+255)' },
+  { code: '+66', label: '🇹🇭 Thailand (+66)' },
+  { code: '+216', label: '🇹🇳 Tunisia (+216)' },
+  { code: '+90', label: '🇹🇷 Turkey (+90)' },
+  { code: '+993', label: '🇹🇲 Turkmenistan (+993)' },
+  { code: '+256', label: '🇺🇬 Uganda (+256)' },
+  { code: '+380', label: '🇺🇦 Ukraine (+380)' },
+  { code: '+598', label: '🇺🇾 Uruguay (+598)' },
+  { code: '+998', label: '🇺🇿 Uzbekistan (+998)' },
+  { code: '+58', label: '🇻🇪 Venezuela (+58)' },
+  { code: '+84', label: '🇻🇳 Vietnam (+84)' },
+  { code: '+967', label: '🇾🇪 Yemen (+967)' },
+  { code: '+260', label: '🇿🇲 Zambia (+260)' },
+  { code: '+263', label: '🇿🇼 Zimbabwe (+263)' }
 ];
 
 export default function ContactClient() {
+  const [countryCode, setCountryCode] = useState('+91');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     category: 'AI Automation',
-    projectType: 'Email Marketing Automation Suite',
     message: '',
   });
 
@@ -75,25 +199,54 @@ export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
 
-  const handleCategoryChange = (cat: string) => {
-    const defaultType = cat === 'AI Automation' ? aiAutomationOptions[0] : websiteDevOptions[0];
-    setFormData((prev) => ({
-      ...prev,
-      category: cat,
-      projectType: defaultType,
-    }));
-  };
+  useEffect(() => {
+    const scrollToCalendar = () => {
+      const hash = typeof window !== 'undefined' ? window.location.hash : '';
+      const search = typeof window !== 'undefined' ? window.location.search : '';
+      const isBookingParam = search.includes('booking=true');
+
+      if (hash === '#calendar-booking' || hash === '#booking' || hash === '#calendar' || isBookingParam) {
+        const el = document.getElementById('calendar-booking');
+        if (el) {
+          const yOffset = -90;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    };
+
+    scrollToCalendar();
+    const t1 = setTimeout(scrollToCalendar, 50);
+    const t2 = setTimeout(scrollToCalendar, 250);
+    const t3 = setTimeout(scrollToCalendar, 600);
+    const t4 = setTimeout(scrollToCalendar, 1200);
+
+    window.addEventListener('hashchange', scrollToCalendar);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+      window.removeEventListener('hashchange', scrollToCalendar);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // Save lead to DB & dispatch email notification to connect@dotnlott.com + client confirmation email
+      const fullPhone = `${countryCode} ${formData.phone}`.trim();
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          phone: fullPhone,
+          projectType: formData.category,
+        }),
       });
     } catch (err) {
       console.error('Contact submission error:', err);
@@ -132,39 +285,6 @@ export default function ContactClient() {
           </p>
         </div>
 
-        {/* Quick Highlights Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto w-full">
-          <div className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-            <div className="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center flex-shrink-0">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs font-bold text-slate-900">Fast Response Time</span>
-              <span className="text-[11px] text-slate-500 font-light">Replies within 2-4 hours</span>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-            <div className="w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center flex-shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs font-bold text-slate-900">NDA Protected</span>
-              <span className="text-[11px] text-slate-500 font-light">Strict confidentiality signed</span>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center flex-shrink-0">
-              <Building2 className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs font-bold text-slate-900">Verified MCA Brand</span>
-              <span className="text-[11px] text-slate-500 font-light">A2Z Version Pvt Ltd</span>
-            </div>
-          </div>
-        </div>
-
         {/* Main Content Grid: Form + Contact Info */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
@@ -201,11 +321,11 @@ export default function ContactClient() {
                       </a>
                       <span className="text-slate-300 font-normal">|</span>
                       <a
-                        href="mailto:dotnlott.connect@gmail.com"
+                        href="mailto:hello.dotnlott@gmail.com"
                         className="hover:text-brand-purple underline transition-colors"
-                        title="Email dotnlott.connect@gmail.com"
+                        title="Email hello.dotnlott@gmail.com"
                       >
-                        dotnlott.connect@gmail.com
+                        hello.dotnlott@gmail.com
                       </a>
                     </div>
                     <span className="text-[11px] text-slate-500 font-light">Formal RFPs & specs</span>
@@ -243,23 +363,6 @@ export default function ContactClient() {
                     <span className="text-[11px] text-slate-500 font-light">Instant WhatsApp chat</span>
                   </div>
                 </div>
-
-                {/* Strategy Booking Box */}
-                <Link
-                  href="/booking"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white hover:shadow-xl hover:scale-[1.01] transition-all group/item border border-white/10"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-white/10 text-white flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
-                    <Phone className="w-5 h-5 text-sky-400" />
-                  </div>
-                  <div className="flex flex-col gap-0.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-purple font-display flex items-center gap-1">
-                      Live Zoom Call <ArrowRight className="w-3 h-3 text-brand-purple group-hover/item:translate-x-1 transition-transform" />
-                    </span>
-                    <span className="text-xs font-extrabold text-white">Book 1-on-1 Strategy Session</span>
-                    <span className="text-[11px] text-slate-300 font-light">Select time on calendar</span>
-                  </div>
-                </Link>
               </div>
             </div>
 
@@ -318,7 +421,7 @@ export default function ContactClient() {
                   <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 w-full justify-center">
                     <a
                       href={`https://wa.me/917846969508?text=${encodeURIComponent(
-                        `Hey DotnLott team, I just submitted an inquiry on your website for ${formData.category} (${formData.projectType}). My name is ${formData.name}.`
+                        `Hey DotnLott team, I just submitted an inquiry on your website for ${formData.category}. My name is ${formData.name}.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -379,22 +482,37 @@ export default function ContactClient() {
                     </div>
                   </div>
 
-                  {/* Phone / WhatsApp */}
+                  {/* Phone / WhatsApp (Compulsory with Country Code) */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="contact-phone" className="text-xs font-bold text-slate-800">
-                      Phone / WhatsApp Number
+                      Phone / WhatsApp Number <span className="text-rose-500">*</span>
                     </label>
-                    <input
-                      id="contact-phone"
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all"
-                    />
+                    <div className="flex gap-2">
+                      <select
+                        value={countryCode}
+                        onChange={(e) => setCountryCode(e.target.value)}
+                        className="px-3 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs font-bold text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all flex-shrink-0 cursor-pointer max-w-[150px] truncate"
+                        aria-label="Country Code"
+                      >
+                        {countryCodes.map((c) => (
+                          <option key={c.label} value={c.code}>
+                            {c.label}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        id="contact-phone"
+                        type="tel"
+                        required
+                        placeholder="98765 43210"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-medium"
+                      />
+                    </div>
                   </div>
 
-                  {/* Service Category (Row 3 - Full Width) */}
+                  {/* Service Category */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="contact-category" className="text-xs font-bold text-slate-800">
                       Service Category <span className="text-rose-500">*</span>
@@ -402,30 +520,11 @@ export default function ContactClient() {
                     <select
                       id="contact-category"
                       value={formData.category}
-                      onChange={(e) => handleCategoryChange(e.target.value)}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-semibold"
                     >
                       <option value="AI Automation">AI Automation</option>
                       <option value="Website Development">Website Development</option>
-                    </select>
-                  </div>
-
-                  {/* Package / Solution Type (Row 4 - Full Width) */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="contact-project-type" className="text-xs font-bold text-slate-800">
-                      Package / Solution Type <span className="text-rose-500">*</span>
-                    </label>
-                    <select
-                      id="contact-project-type"
-                      value={formData.projectType}
-                      onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-semibold"
-                    >
-                      {(formData.category === 'AI Automation' ? aiAutomationOptions : websiteDevOptions).map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
                     </select>
                   </div>
 
@@ -460,11 +559,11 @@ export default function ContactClient() {
                       {isSubmitting ? (
                         <>
                           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Submitting Inquiry...
+                          Submitting...
                         </>
                       ) : (
                         <>
-                          Submit Inquiry via Email <Send className="w-4 h-4 text-brand-purple" />
+                          Submit <Send className="w-4 h-4 text-brand-purple" />
                         </>
                       )}
                     </button>
@@ -474,6 +573,41 @@ export default function ContactClient() {
             </div>
           </div>
 
+        </div>
+
+        {/* Google Calendar Appointment Scheduling Section */}
+        <div id="calendar-booking" className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-lg relative overflow-hidden flex flex-col gap-4 scroll-mt-24">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-purple via-indigo-600 to-brand-blue" />
+          
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div className="flex flex-col gap-0.5">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-brand-purple/10 text-brand-purple">
+                  <Calendar className="w-4 h-4" />
+                </span>
+                <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 font-display">
+                  Schedule a 1-on-1 Consultation
+                </h2>
+              </div>
+              <p className="text-[11px] text-slate-550 font-light">
+                Pick a convenient time slot directly on our calendar for a technical strategy session with our core team.
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/50 shadow-xs">
+            {/* Google Calendar Appointment Scheduling begin */}
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UTE7Tyix4j3_mrjSiw8hgMM5eeGEMD_czp0yPGtIUZxoJXe33s96vOJykcaVUtRqcosOzDoIt?gv=true"
+              style={{ border: 0 }}
+              width="100%"
+              height="490"
+              frameBorder="0"
+              title="Google Calendar Appointment Scheduling"
+              className="w-full h-[490px]"
+            />
+            {/* end Google Calendar Appointment Scheduling */}
+          </div>
         </div>
 
         {/* FAQ Section */}

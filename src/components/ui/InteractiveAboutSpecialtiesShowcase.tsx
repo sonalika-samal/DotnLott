@@ -33,14 +33,14 @@ const specialtiesData: Specialty[] = [
   {
     id: 'ai-workflows',
     number: '01',
-    name: 'AI Agents & n8n Pipeline Engineering',
+    name: 'AI Agents & Workflow Pipeline Engineering',
     tagline: 'Autonomous AI workflows that handle lead qualification, data parsing, and multi-app sync 24/7.',
     category: 'AI AUTOMATION',
     color: 'text-brand-purple',
     badgeBg: 'bg-purple-500/10',
     badgeBorder: 'border-purple-500/20',
     icon: Bot,
-    techs: ['n8n Engine', 'OpenAI GPT-4o', 'Claude 3.5 Sonnet', 'Webhook Routers', 'Python AI Scripts'],
+    techs: ['Workflow Orchestration', 'Generative AI', 'Large Language Models', 'Webhook Routers', 'Python AI Scripts'],
     metrics: [
       { label: 'Uptime Reliability', val: '99.9%' },
       { label: 'Execution Speed', val: 'Sub-Second' },
@@ -49,29 +49,29 @@ const specialtiesData: Specialty[] = [
     terminalLogs: [
       '> [AI AGENT] Webhook event received via POST /api/leads',
       '> [PARSE] LLM classified lead intent: Enterprise Web Development',
-      '> [PIPELINE] n8n router dispatched payload to CRM + WhatsApp node',
+      '> [PIPELINE] Workflow router dispatched payload to CRM + messaging nodes',
       '> [SUCCESS] Processed in 210ms with 0 human intervention'
     ]
   },
   {
     id: 'whatsapp-api',
     number: '02',
-    name: 'Official Meta WhatsApp Business Cloud API',
-    tagline: 'Direct WhatsApp integration for automated lead followups, appointment triggers, and interactive chatbots.',
+    name: 'Official Messaging & Notification APIs',
+    tagline: 'Direct messaging integration for automated lead followups, appointment triggers, and interactive chatbots.',
     category: 'MESSAGING ENGINE',
     color: 'text-emerald-600',
     badgeBg: 'bg-emerald-500/10',
     badgeBorder: 'border-emerald-500/20',
     icon: MessageSquare,
-    techs: ['Meta Cloud API', 'WhatsApp Webhooks', 'Interactive Buttons', 'Template Messages', 'Node.js Bot Engine'],
+    techs: ['Cloud Messaging APIs', 'Interactive Chat Webhooks', 'Interactive Buttons', 'Structured Notifications', 'Custom Bot Engine'],
     metrics: [
       { label: 'Delivery Rate', val: '99.4%' },
       { label: 'Read Ratio', val: '92% Avg' },
       { label: 'Response Delay', val: '< 0.5s' }
     ],
     terminalLogs: [
-      '> [WHATSAPP API] Dispatching verified template: "welcome_onboarding_v2"',
-      '> [META API] Message ID: wamid.HBgLOTE3ODQ2OTY5NTA4...',
+      '> [MESSAGING API] Dispatching verified template notification',
+      '> [GATEWAY API] Message ID: msg_846969508_status_sent',
       '> [DELIVERY] Webhook callback: Status = DELIVERED & READ',
       '> [BOT] Interactive CTA buttons rendered on user screen'
     ]
@@ -79,14 +79,14 @@ const specialtiesData: Specialty[] = [
   {
     id: 'web-engineering',
     number: '03',
-    name: 'Next.js 16 & Full-Stack Web Development',
-    tagline: 'High-converting, sub-second loading websites built with Next.js Turbopack, React 19, and server components.',
+    name: 'High-Performance Full-Stack Web Development',
+    tagline: 'High-converting, sub-second loading websites built with custom optimized frontends, reactive interfaces, and fast edge assets.',
     category: 'WEB PLATFORMS',
     color: 'text-brand-blue',
     badgeBg: 'bg-blue-500/10',
     badgeBorder: 'border-blue-500/20',
     icon: Code2,
-    techs: ['Next.js 16', 'React 19', 'Turbopack', 'Tailwind CSS', 'TypeScript', 'Vercel / VPS'],
+    techs: ['Custom Frontend', 'React', 'Optimized Assets', 'Tailwind CSS', 'TypeScript', 'Cloud VPS'],
     metrics: [
       { label: 'Lighthouse Speed', val: '98/100' },
       { label: 'Page Load', val: '0.3s Total' },
@@ -96,29 +96,29 @@ const specialtiesData: Specialty[] = [
       '> [TURBOPACK] Bundling static HTML & server components...',
       '> [PERFORMANCE] First Contentful Paint: 240ms',
       '> [SEO] Schema.org Organization & FAQ JSON-LD hydrated',
-      '> [BUILD] Next.js edge route rendered with sub-second response'
+      '> [BUILD] Edge compilation complete: 100% build health verified'
     ]
   },
   {
     id: 'crm-sync',
     number: '04',
     name: 'Enterprise CRM & Database Synchronization',
-    tagline: 'Seamless multi-platform data syncing between Zoho CRM, HubSpot, PostgreSQL, and Google Workspace.',
+    tagline: 'Seamless multi-platform data syncing between leading CRM systems, relational databases, and cloud workspace suites.',
     category: 'DATA INFRASTRUCTURE',
     color: 'text-indigo-600',
     badgeBg: 'bg-indigo-500/10',
     badgeBorder: 'border-indigo-500/20',
     icon: Database,
-    techs: ['Zoho CRM REST API', 'HubSpot API', 'Enterprise PostgreSQL', 'Google Sheets API', 'Redis Caching'],
+    techs: ['CRM REST APIs', 'Relational Databases', 'Spreadsheet APIs', 'In-Memory Cache Systems', 'Real-Time Syncing'],
     metrics: [
       { label: 'Data Integrity', val: '100%' },
       { label: 'Sync Latency', val: '140ms' },
       { label: 'Lead Loss', val: '0%' }
     ],
     terminalLogs: [
-      '> [CRM SYNC] OAuth2 token refreshed for Zoho API v3',
+      '> [CRM SYNC] OAuth2 token refreshed for integration API',
       '> [UPSERT] Record created: Deal_Name = "DotnLott Ingestion #892"',
-      '> [CACHE] Redis state invalidated & synced to PostgreSQL',
+      '> [CACHE] In-memory state invalidated & synced to main database',
       '> [AUDIT] Data verification passed with 0 missing fields'
     ]
   },
@@ -126,7 +126,7 @@ const specialtiesData: Specialty[] = [
     id: 'security-vps',
     number: '05',
     name: 'Private Cloud VPS & Corporate IP Security',
-    tagline: 'Dedicated hosting setups on AWS/Hetzner with 100% NDA compliance and full source code ownership.',
+    tagline: 'Dedicated private hosting setups with 100% NDA compliance and full source code ownership.',
     category: 'CLOUD & SECURITY',
     color: 'text-slate-800',
     badgeBg: 'bg-slate-500/10',
@@ -147,19 +147,6 @@ const specialtiesData: Specialty[] = [
   }
 ];
 
-const marqueeServices = [
-  '⚡ Sub-Second Next.js Web Apps',
-  '🤖 Autonomous n8n AI Pipelines',
-  '📱 Official Meta WhatsApp Cloud API',
-  '📊 Zoho CRM Real-Time Syncing',
-  '🔒 100% Code Ownership & NDA',
-  '🛡️ MCA Registered Entity (A2Z Version Pvt Ltd)',
-  '💼 Direct Founder Engineering',
-  '🚀 24/7 Automated Lead Ingestion',
-  '🌐 High-Converting Web Architecture',
-  '📈 99.9% Uptime Guarantee'
-];
-
 export default function InteractiveAboutSpecialtiesShowcase() {
   const [activeSpecialtyIdx, setActiveSpecialtyIdx] = useState<number>(0);
   const [logIndex, setLogIndex] = useState<number>(0);
@@ -178,6 +165,7 @@ export default function InteractiveAboutSpecialtiesShowcase() {
 
   // Terminal line typing effect trigger
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLogIndex(0);
     const interval = setInterval(() => {
       setLogIndex((prev) => {
@@ -188,65 +176,135 @@ export default function InteractiveAboutSpecialtiesShowcase() {
       });
     }, 500);
     return () => clearInterval(interval);
-  }, [activeSpecialtyIdx]);
+  }, [activeSpecialtyIdx, activeSpecialty.terminalLogs.length]);
+
+  const getPillarStyles = (id: string, isSelected: boolean) => {
+    switch (id) {
+      case 'ai-workflows':
+        return isSelected
+          ? {
+              btn: 'bg-purple-200 border-transparent shadow-xs translate-x-1 text-purple-950 font-extrabold z-10',
+              indicator: 'bg-brand-purple',
+              arrow: 'bg-brand-purple/20 text-brand-purple',
+              icon: 'bg-brand-purple/30 text-brand-purple border-transparent'
+            }
+          : {
+              btn: 'bg-purple-100 border-transparent hover:bg-purple-150 hover:shadow-2xs text-purple-900 z-10',
+              indicator: 'bg-transparent',
+              arrow: 'text-purple-500 group-hover:text-purple-700',
+              icon: 'bg-purple-200/60 text-purple-600 border-transparent'
+            };
+      case 'whatsapp-api':
+        return isSelected
+          ? {
+              btn: 'bg-emerald-200 border-transparent shadow-xs translate-x-1 text-emerald-950 font-extrabold z-10',
+              indicator: 'bg-emerald-500',
+              arrow: 'bg-emerald-500/20 text-emerald-600',
+              icon: 'bg-emerald-500/30 text-emerald-600 border-transparent'
+            }
+          : {
+              btn: 'bg-emerald-100 border-transparent hover:bg-emerald-150 hover:shadow-2xs text-emerald-900 z-10',
+              indicator: 'bg-transparent',
+              arrow: 'text-emerald-500 group-hover:text-emerald-700',
+              icon: 'bg-emerald-200/60 text-emerald-600 border-transparent'
+            };
+      case 'web-engineering':
+        return isSelected
+          ? {
+              btn: 'bg-sky-200 border-transparent shadow-xs translate-x-1 text-sky-950 font-extrabold z-10',
+              indicator: 'bg-brand-blue',
+              arrow: 'bg-brand-blue/20 text-brand-blue',
+              icon: 'bg-brand-blue/30 text-brand-blue border-transparent'
+            }
+          : {
+              btn: 'bg-sky-100 border-transparent hover:bg-sky-150 hover:shadow-2xs text-sky-900 z-10',
+              indicator: 'bg-transparent',
+              arrow: 'text-sky-500 group-hover:text-sky-700',
+              icon: 'bg-sky-200/60 text-sky-600 border-transparent'
+            };
+      case 'crm-sync':
+        return isSelected
+          ? {
+              btn: 'bg-indigo-200 border-transparent shadow-xs translate-x-1 text-indigo-950 font-extrabold z-10',
+              indicator: 'bg-indigo-650',
+              arrow: 'bg-indigo-500/20 text-indigo-650',
+              icon: 'bg-indigo-50/30 text-indigo-650 border-transparent'
+            }
+          : {
+              btn: 'bg-indigo-100 border-transparent hover:bg-indigo-150 hover:shadow-2xs text-indigo-900 z-10',
+              indicator: 'bg-transparent',
+              arrow: 'text-indigo-500 group-hover:text-indigo-700',
+              icon: 'bg-indigo-200/60 text-indigo-600 border-transparent'
+            };
+      case 'security-vps':
+        return isSelected
+          ? {
+              btn: 'bg-amber-200 border-transparent shadow-xs translate-x-1 text-amber-950 font-extrabold z-10',
+              indicator: 'bg-amber-500',
+              arrow: 'bg-amber-500/20 text-amber-600',
+              icon: 'bg-amber-500/30 text-amber-600 border-transparent'
+            }
+          : {
+              btn: 'bg-amber-100 border-transparent hover:bg-amber-150 hover:shadow-2xs text-amber-900 z-10',
+              indicator: 'bg-transparent',
+              arrow: 'text-amber-500 group-hover:text-amber-700',
+              icon: 'bg-amber-200/60 text-amber-600 border-transparent'
+            };
+      default:
+        return {
+          btn: 'bg-white border-transparent shadow-xs translate-x-1 text-slate-900 z-10',
+          indicator: 'bg-brand-purple',
+          arrow: 'bg-brand-purple/10 text-brand-purple',
+          icon: 'bg-brand-purple/10 text-brand-purple border-transparent'
+        };
+    }
+  };
+
+  const getCardStyles = (id: string) => {
+    switch (id) {
+      case 'ai-workflows':
+        return 'bg-white border-purple-300 shadow-purple-500/5';
+      case 'whatsapp-api':
+        return 'bg-white border-emerald-300 shadow-emerald-500/5';
+      case 'web-engineering':
+        return 'bg-white border-sky-300 shadow-blue-500/5';
+      case 'crm-sync':
+        return 'bg-white border-indigo-300 shadow-indigo-500/5';
+      case 'security-vps':
+        return 'bg-white border-amber-300 shadow-amber-500/5';
+      default:
+        return 'bg-white border-slate-200 shadow-xl';
+    }
+  };
 
   return (
-    <div className="w-full max-w-full overflow-hidden overflow-x-clip relative py-4 text-slate-900">
+    <div className="w-full max-w-full overflow-hidden overflow-x-clip relative py-2 text-slate-900">
       {/* Header Section */}
-      <div className="flex flex-col items-center text-center gap-3 relative z-10 max-w-3xl mx-auto mb-8 sm:mb-10">
+      <div className="flex flex-col items-center text-center gap-3 relative z-10 max-w-3xl mx-auto mb-6 sm:mb-8">
         <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-xs font-mono font-extrabold uppercase tracking-wider text-brand-purple">
           <Flame className="w-3.5 h-3.5 text-amber-500 animate-bounce" />
           Our Engineering Specialties
         </span>
-        <h2 className="font-display text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
+        <h2 className="font-display text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
           What Sets DotnLott Apart
         </h2>
-        <p className="text-xs sm:text-base text-slate-600 font-light leading-relaxed">
-          From sub-second Next.js web applications to autonomous AI workflows, explore our 5 core engineering pillars.
+        <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+          From sub-second custom web applications to autonomous AI workflows, explore our 5 core engineering pillars.
         </p>
       </div>
 
-      {/* TOP MOVING INFINITE MARQUEE STRIP */}
-      <div className="relative w-full max-w-full overflow-hidden mb-8 sm:mb-10 py-3 bg-white/80 border-y border-slate-200/80 backdrop-blur-md z-10 shadow-2xs rounded-2xl">
-        {/* Fade edges to match background color */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#f8fafc] to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#f8fafc] to-transparent z-20 pointer-events-none" />
-
-        <motion.div
-          className="flex gap-6 w-max"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: 35,
-              ease: 'linear',
-            },
-          }}
-        >
-          {[...marqueeServices, ...marqueeServices].map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 text-xs font-mono font-extrabold text-slate-800 whitespace-nowrap px-3.5 py-1 bg-slate-100/90 rounded-xl border border-slate-200 shadow-2xs flex-shrink-0"
-            >
-              <span>{item}</span>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
       {/* DYNAMIC TRANSPARENT INTERACTIVE SHOWCASE LAYOUT WITH EQUAL HEIGHT COLUMNS */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-stretch relative z-10">
         
         {/* Left Interactive Pillar Selector (5 cols) - Height matches right card */}
-        <div className="lg:col-span-5 flex flex-col justify-between gap-3 h-full">
+        <div className="lg:col-span-5 flex flex-col justify-between gap-2.5 h-full">
           <div className="flex items-center justify-between px-2 mb-0.5">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2">
-              <Activity className="w-3.5 h-3.5 text-brand-purple" /> Select Specialty Pillar
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <Activity className="w-3 h-3 text-brand-purple" /> Select Specialty Pillar
             </span>
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-lg transition-colors border ${
+              className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded-lg transition-colors border ${
                 isAutoPlaying
                   ? 'bg-brand-purple/10 text-brand-purple border-brand-purple/20'
                   : 'bg-slate-100 text-slate-500 border-slate-200'
@@ -256,10 +314,11 @@ export default function InteractiveAboutSpecialtiesShowcase() {
             </button>
           </div>
 
-          <div className="flex flex-col justify-between flex-1 gap-2.5">
+          <div className="flex flex-col justify-between flex-1 gap-2">
             {specialtiesData.map((specialty, idx) => {
               const isSelected = idx === activeSpecialtyIdx;
               const Icon = specialty.icon;
+              const styles = getPillarStyles(specialty.id, isSelected);
 
               return (
                 <button
@@ -268,33 +327,29 @@ export default function InteractiveAboutSpecialtiesShowcase() {
                     setActiveSpecialtyIdx(idx);
                     setIsAutoPlaying(false);
                   }}
-                  className={`flex-1 p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-300 flex items-center justify-between gap-4 border relative overflow-hidden group ${
-                    isSelected
-                      ? 'bg-white border-brand-purple/40 shadow-md ring-1 ring-brand-purple/20 translate-x-1'
-                      : 'bg-white/70 border-slate-250/80 hover:bg-white hover:border-slate-300 text-slate-600 shadow-2xs'
-                  }`}
+                  className={`flex-1 p-2.5 sm:p-3 rounded-xl text-left transition-all duration-300 flex items-center justify-between gap-3 border-[1.5px] relative overflow-hidden group ${styles.btn}`}
                 >
                   {/* Active Indicator Line */}
                   {isSelected && (
-                    <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-purple" />
+                    <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${styles.indicator}`} />
                   )}
 
-                  <div className="flex items-center gap-3.5 pl-1">
+                  <div className="flex items-center gap-3 pl-1">
                     <div
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center border transition-all ${
+                      className={`w-7.5 h-7.5 sm:w-8 h-8 rounded-lg flex items-center justify-center border transition-all ${
                         isSelected
                           ? `${specialty.badgeBg} ${specialty.color} ${specialty.badgeBorder}`
                           : 'bg-slate-100 text-slate-400 border-slate-200'
                       }`}
                     >
-                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-slate-400">
+                      <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">
                         Pillar {specialty.number} • {specialty.category}
                       </span>
-                      <span className={`text-xs sm:text-sm font-bold font-display leading-snug ${isSelected ? 'text-slate-900' : 'text-slate-700'}`}>
+                      <span className={`text-[11px] sm:text-xs font-bold font-display leading-snug ${isSelected ? 'text-slate-900' : 'text-slate-700'}`}>
                         {specialty.name}
                       </span>
                     </div>
@@ -302,11 +357,9 @@ export default function InteractiveAboutSpecialtiesShowcase() {
 
                   <div className="flex-shrink-0 pr-1">
                     <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform ${
-                        isSelected ? 'bg-brand-purple/10 text-brand-purple scale-110' : 'text-slate-400 group-hover:text-slate-600'
-                      }`}
+                      className={`w-5.5 h-5.5 rounded-full flex items-center justify-center transition-transform ${styles.arrow}`}
                     >
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3 h-3" />
                     </div>
                   </div>
                 </button>
@@ -316,35 +369,35 @@ export default function InteractiveAboutSpecialtiesShowcase() {
         </div>
 
         {/* Right Live Stage Card & Developer Terminal (7 cols) - Height matches left list */}
-        <div className="lg:col-span-7 flex flex-col justify-between bg-white border border-slate-250/90 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden h-full min-h-[460px]">
+        <div className={`lg:col-span-7 flex flex-col justify-between border-2 rounded-3xl p-4 sm:p-5 shadow-lg relative overflow-hidden h-full lg:h-[415px] transition-all duration-350 ${getCardStyles(activeSpecialty.id)}`}>
           
           {/* Top Stage Information Bar */}
-          <div className="flex flex-col gap-4 relative z-10 border-b border-slate-100 pb-5">
+          <div className="flex flex-col gap-2.5 relative z-10 border-b border-slate-100 pb-3">
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className={`text-xs font-mono font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border ${activeSpecialty.badgeBg} ${activeSpecialty.color} ${activeSpecialty.badgeBorder}`}>
-                Pillar {activeSpecialty.number} // {activeSpecialty.category}
+              <span className={`text-[9px] font-mono font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border ${activeSpecialty.badgeBg} ${activeSpecialty.color} ${activeSpecialty.badgeBorder}`}>
+                Pillar {activeSpecialty.number} {'//'} {activeSpecialty.category}
               </span>
 
-              <span className="text-[11px] font-mono text-emerald-700 flex items-center gap-1.5 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 font-bold">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              <span className="text-[9px] font-mono text-emerald-700 flex items-center gap-1.5 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                 Live Engineering Mode
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 font-display leading-snug">
+            <h3 className="text-lg sm:text-xl font-black text-slate-900 font-display leading-snug">
               {activeSpecialty.name}
             </h3>
 
-            <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+            <p className="text-xs text-slate-600 font-light leading-relaxed">
               {activeSpecialty.tagline}
             </p>
 
             {/* Tech Stack Pills */}
-            <div className="flex flex-wrap gap-2 pt-1">
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
               {activeSpecialty.techs.map((tech, i) => (
                 <span
                   key={i}
-                  className="text-[11px] font-mono font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1 rounded-xl shadow-2xs"
+                  className="text-[9px] font-mono font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-lg shadow-2xs"
                 >
                   {tech}
                 </span>
@@ -353,16 +406,16 @@ export default function InteractiveAboutSpecialtiesShowcase() {
           </div>
 
           {/* Metrics Trio Row */}
-          <div className="grid grid-cols-3 gap-3 my-5 relative z-10">
+          <div className="grid grid-cols-3 gap-2.5 my-3 relative z-10">
             {activeSpecialty.metrics.map((m, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3 flex flex-col gap-1 text-center"
+                className="bg-white border border-slate-200/60 rounded-xl p-2 flex flex-col gap-0.5 text-center shadow-3xs"
               >
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
+                <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
                   {m.label}
                 </span>
-                <span className={`text-base sm:text-lg font-black font-display ${activeSpecialty.color}`}>
+                <span className={`text-xs sm:text-sm font-black font-display ${activeSpecialty.color}`}>
                   {m.val}
                 </span>
               </div>
@@ -370,21 +423,21 @@ export default function InteractiveAboutSpecialtiesShowcase() {
           </div>
 
           {/* Interactive Terminal Execution Stream */}
-          <div className="bg-slate-950 border border-slate-900 rounded-2xl p-4 sm:p-5 relative z-10 flex flex-col gap-3 font-mono text-xs shadow-inner text-white">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2.5 text-slate-400">
-              <span className="flex items-center gap-2 text-[10px] uppercase font-bold text-slate-300">
-                <Terminal className="w-3.5 h-3.5 text-cyan-400" /> Live Terminal Stream
+          <div className="bg-slate-950 border border-slate-900 rounded-xl p-3 relative z-10 flex flex-col gap-2.5 font-mono text-[10px] shadow-inner text-white">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-2 text-slate-400">
+              <span className="flex items-center gap-1.5 text-[9px] uppercase font-bold text-slate-300">
+                <Terminal className="w-3 h-3 text-cyan-400" /> Live Terminal Stream
               </span>
-              <div className="flex items-center gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-full bg-red-500/80" />
+                <div className="w-2 h-2 rounded-full bg-amber-500/80" />
+                <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5 text-[11px] text-slate-300 min-h-[90px]">
+            <div className="flex flex-col gap-1 text-[10px] text-slate-300 h-[72px] overflow-hidden">
               {activeSpecialty.terminalLogs.slice(0, logIndex + 1).map((log, lIdx) => (
-                <div key={lIdx} className="flex items-start gap-2 leading-relaxed animate-fadeIn">
+                <div key={lIdx} className="flex items-start gap-1.5 leading-relaxed animate-fadeIn">
                   <span className="text-cyan-400 font-bold select-none">&gt;</span>
                   <span className={lIdx === logIndex ? 'text-emerald-300 font-semibold' : 'text-slate-400'}>
                     {log}

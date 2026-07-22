@@ -28,8 +28,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
-  description: 'Enterprise-grade workflow automation, n8n integration, AI-powered solutions, and custom website development. Registered Pvt Ltd company serving globally.',
-  keywords: 'workflow automation, n8n integrations, custom AI web apps, website development, lead outreach autopilot, Zoho CRM synchronizer, DotnLott',
+  description: 'Enterprise-grade workflow automation, custom integrations, AI-powered solutions, and custom website development. Registered Pvt Ltd company serving globally.',
+  keywords: 'workflow automation, custom integrations, custom AI web apps, website development, lead outreach autopilot, CRM synchronizer, DotnLott',
   openGraph: {
     title: 'DotnLott | Business Workflow Automation & Custom Web Apps',
     description: 'Transform manual operations into blazing fast automatic workflows. Custom AI & Web development.',

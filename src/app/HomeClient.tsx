@@ -19,7 +19,9 @@ import {
   Users,
   CheckCircle2,
   Share2,
-  Phone
+  Phone,
+  Target,
+  MessageSquare
 } from 'lucide-react';
 import InteractiveParticles from '@/components/ui/InteractiveParticles';
 import MovingShowcaseCatalog from '@/components/ui/MovingShowcaseCatalog';
@@ -89,7 +91,7 @@ export default function HomeClient() {
             {/* Primary Action Buttons */}
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4 mt-2">
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-colors shadow-lg"
               >
                 Book Consultation Call
@@ -123,7 +125,7 @@ export default function HomeClient() {
                 </div>
               </div>
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="inline-flex items-center justify-center gap-1.5 px-4.5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold uppercase tracking-wider text-[9px] rounded-xl transition-all shadow-md whitespace-nowrap relative z-10"
               >
                 Claim Offer <ArrowRight className="w-3.5 h-3.5" />
@@ -182,13 +184,13 @@ export default function HomeClient() {
                 </div>
               </div>
 
-              {/* Bubble 2: Next.js 15 Web */}
+              {/* Bubble 2: Custom Web Dev */}
               <div className="absolute -right-2 sm:-right-10 top-[40%] z-20 flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/60 shadow-lg px-4 py-3 rounded-2xl animate-float-medium hover:scale-105 transition-all duration-300">
                 <div className="w-8 h-8 rounded-xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-sm">
                   <Globe className="w-4.5 h-4.5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">NEXT.JS 15</span>
+                  <span className="text-[10px] font-black text-slate-800 tracking-wider uppercase font-display leading-none">CUSTOM WEB</span>
                   <span className="text-[9px] font-bold text-slate-450 tracking-wider uppercase font-display mt-0.5 leading-none">WEB DEV</span>
                 </div>
               </div>
@@ -376,168 +378,92 @@ export default function HomeClient() {
           </div>
         </div>
 
-        {/* Continuous Infinite Moving Carousel Stream */}
-        <div className="relative w-full overflow-hidden py-4">
-          <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none" />
-
-          <motion.div
-            className="flex gap-6 w-max"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: 35,
-              ease: 'linear',
-            }}
-          >
-            {[
-              {
-                num: '01 / SUITE',
-                suiteId: 'suite-email',
-                title: 'Email Marketing Automation',
-                icon: Mail,
-                desc: 'Auto-prospecting, email validation, cold email outreach, follow-up sequencing, and primary inbox warm-ups running 24/7.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-blue-200 hover:border-brand-blue/60',
-                iconBg: 'bg-blue-50 text-brand-blue border-blue-200',
-                hoverText: 'group-hover:text-brand-blue'
-              },
-              {
-                num: '02 / SUITE',
-                suiteId: 'suite-nurture',
-                title: 'AI Lead Nurturing Suite',
-                icon: Bot,
-                desc: 'Connect ads to automatic WhatsApp triggers, sequence updates, qualify leads via chatbots, and sync directly with CRMs.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-emerald-200 hover:border-emerald-500/60',
-                iconBg: 'bg-emerald-50 text-emerald-600 border-emerald-200',
-                hoverText: 'group-hover:text-emerald-600'
-              },
-              {
-                num: '03 / SUITE',
-                suiteId: 'suite-success',
-                title: 'Customer Success Suite',
-                icon: Users,
-                desc: 'Automate welcome messaging, feedback surveys, Google Review collection, referral systems, and renewal prompts.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-purple-200 hover:border-brand-purple/60',
-                iconBg: 'bg-purple-50 text-brand-purple border-purple-200',
-                hoverText: 'group-hover:text-brand-purple'
-              },
-              {
-                num: '04 / SUITE',
-                suiteId: 'suite-social',
-                title: 'Social Media Automation Suite',
-                icon: Share2,
-                desc: 'AI content creation, graphic poster generator, automated multi-channel scheduler, and daily thought leadership posts.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-rose-200 hover:border-rose-500/60',
-                iconBg: 'bg-rose-50 text-rose-600 border-rose-200',
-                hoverText: 'group-hover:text-rose-600'
-              },
-              {
-                num: '05 / SUITE',
-                suiteId: 'suite-voice-agent',
-                title: 'Voice Agent Support Suite',
-                icon: Phone,
-                desc: 'Autonomous inbound call handling, natural voice synthesis, real-time transcriptions, and instant WhatsApp callback triggers.',
-                tag: 'Dedicated VPS Only',
-                color: 'border-amber-200 hover:border-amber-500/60',
-                iconBg: 'bg-amber-50 text-amber-600 border-amber-200',
-                hoverText: 'group-hover:text-amber-600'
-              },
-              {
-                num: '01 / SUITE',
-                suiteId: 'suite-email',
-                title: 'Email Marketing Automation',
-                icon: Mail,
-                desc: 'Auto-prospecting, email validation, cold email outreach, follow-up sequencing, and primary inbox warm-ups running 24/7.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-blue-200 hover:border-brand-blue/60',
-                iconBg: 'bg-blue-50 text-brand-blue border-blue-200',
-                hoverText: 'group-hover:text-brand-blue'
-              },
-              {
-                num: '02 / SUITE',
-                suiteId: 'suite-nurture',
-                title: 'AI Lead Nurturing Suite',
-                icon: Bot,
-                desc: 'Connect ads to automatic WhatsApp triggers, sequence updates, qualify leads via chatbots, and sync directly with CRMs.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-emerald-200 hover:border-emerald-500/60',
-                iconBg: 'bg-emerald-50 text-emerald-600 border-emerald-200',
-                hoverText: 'group-hover:text-emerald-600'
-              },
-              {
-                num: '03 / SUITE',
-                suiteId: 'suite-success',
-                title: 'Customer Success Suite',
-                icon: Users,
-                desc: 'Automate welcome messaging, feedback surveys, Google Review collection, referral systems, and renewal prompts.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-purple-200 hover:border-brand-purple/60',
-                iconBg: 'bg-purple-50 text-brand-purple border-purple-200',
-                hoverText: 'group-hover:text-brand-purple'
-              },
-              {
-                num: '04 / SUITE',
-                suiteId: 'suite-social',
-                title: 'Social Media Automation Suite',
-                icon: Share2,
-                desc: 'AI content creation, graphic poster generator, automated multi-channel scheduler, and daily thought leadership posts.',
-                tag: 'Managed & Dedicated VPS',
-                color: 'border-rose-200 hover:border-rose-500/60',
-                iconBg: 'bg-rose-50 text-rose-600 border-rose-200',
-                hoverText: 'group-hover:text-rose-600'
-              },
-              {
-                num: '05 / SUITE',
-                suiteId: 'suite-voice-agent',
-                title: 'Voice Agent Support Suite',
-                icon: Phone,
-                desc: 'Autonomous inbound call handling, natural voice synthesis, real-time transcriptions, and instant WhatsApp callback triggers.',
-                tag: 'Dedicated VPS Only',
-                color: 'border-amber-200 hover:border-amber-500/60',
-                iconBg: 'bg-amber-50 text-amber-600 border-amber-200',
-                hoverText: 'group-hover:text-amber-600'
-              }
-            ].map((suite, idx) => {
-              const IconComponent = suite.icon;
-              return (
-                <Link
-                  key={`${suite.num}-${idx}`}
-                  href={`/ai-automation#${suite.suiteId}`}
-                  className={`w-[320px] sm:w-[360px] bg-white/95 backdrop-blur-md border rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between relative overflow-hidden flex-shrink-0 cursor-pointer ${suite.color}`}
-                >
-                  <div className="flex flex-col gap-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest leading-none">{suite.num}</span>
-                      <span className="inline-flex items-center gap-1 text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full uppercase">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                        24/7 Autopilot
-                      </span>
-                    </div>
-                    <h3 className={`text-base font-extrabold text-slate-900 ${suite.hoverText} transition-colors flex items-center gap-2.5`}>
-                      <span className={`w-9 h-9 rounded-xl border flex items-center justify-center flex-shrink-0 ${suite.iconBg}`}>
-                        <IconComponent className="w-5 h-5" />
-                      </span>
-                      {suite.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-light line-clamp-3">
-                      {suite.desc}
-                    </p>
-                  </div>
-                  <div className="border-t border-slate-100 pt-4 mt-6 flex justify-between items-center">
-                    <span className="text-[9px] font-bold text-brand-purple bg-brand-purple/10 border border-brand-purple/20 px-2.5 py-1 rounded-full">{suite.tag}</span>
-                    <span className={`text-slate-400 ${suite.hoverText} transition-colors`}>
-                      <ArrowUpRight className="w-5 h-5" />
+        {/* Top 4 Featured Automations Grid in White with Thin Blue & Purple Border */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {[
+            {
+              num: '01 / SUITE',
+              title: 'Email Marketing Automation',
+              icon: Mail,
+              desc: 'Auto-prospecting, email validation, cold outreach, follow-up sequencing, and primary inbox warm-ups running 24/7.',
+              tag: 'Best Seller 🔥',
+              tagClass: 'bg-amber-300/90 text-amber-950 border-amber-400/80 font-bold',
+              borderColor: 'border-blue-200/90 hover:border-brand-purple/70',
+              iconBg: 'bg-brand-blue/10 text-brand-blue border-brand-blue/20',
+              link: '/ai-automation#suite-email',
+            },
+            {
+              num: '02 / SUITE',
+              title: 'Social Media Automation',
+              icon: Share2,
+              desc: 'AI content creation, graphic poster generator, automated multi-channel scheduler, and daily thought leadership publishing.',
+              tag: 'Auto-Publish 🚀',
+              tagClass: 'bg-purple-50 text-purple-700 border-purple-200 font-mono font-bold',
+              borderColor: 'border-purple-200/90 hover:border-brand-blue/70',
+              iconBg: 'bg-brand-purple/10 text-brand-purple border-brand-purple/20',
+              link: '/ai-automation#suite-social',
+            },
+            {
+              num: '03 / SUITE',
+              title: 'Meta Ads Lead Automation',
+              icon: Target,
+              desc: 'Connect FB & Insta ads directly to automatic lead triggers, CRM pipeline routing, and instant WhatsApp alerts.',
+              tag: 'Instant Sync ⚡',
+              tagClass: 'bg-blue-50 text-blue-700 border-blue-200 font-mono font-bold',
+              borderColor: 'border-blue-200/90 hover:border-brand-purple/70',
+              iconBg: 'bg-brand-blue/10 text-brand-blue border-brand-blue/20',
+              link: '/ai-automation#suite-ads',
+            },
+            {
+              num: '04 / SUITE',
+              title: 'Website Leads Form Automation',
+              icon: MessageSquare,
+              desc: 'Instant web form-to-WhatsApp alerts, automated CRM deal creation, lead scoring, and instant customer responder workflows.',
+              tag: 'Sub-1s Alert ⚡',
+              tagClass: 'bg-purple-50 text-purple-700 border-purple-200 font-mono font-bold',
+              borderColor: 'border-purple-200/90 hover:border-brand-blue/70',
+              iconBg: 'bg-brand-purple/10 text-brand-purple border-brand-purple/20',
+              link: '/ai-automation#suite-nurture',
+            },
+          ].map((suite) => {
+            const IconComponent = suite.icon;
+            return (
+              <Link
+                key={suite.title}
+                href={suite.link}
+                className={`bg-white/95 backdrop-blur-md border rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden ${suite.borderColor}`}
+              >
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest leading-none">{suite.num}</span>
+                    <span className={`inline-flex items-center gap-1 text-[9px] px-2.5 py-0.5 rounded-full uppercase border shadow-2xs ${suite.tagClass}`}>
+                      {suite.tag}
                     </span>
                   </div>
-                </Link>
-              );
-            })}
-          </motion.div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-2xl border flex items-center justify-center group-hover:scale-105 transition-all flex-shrink-0 ${suite.iconBg}`}>
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-sm font-extrabold text-slate-900 group-hover:text-brand-purple transition-colors font-display leading-snug">
+                      {suite.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs text-slate-600 leading-relaxed font-light">
+                    {suite.desc}
+                  </p>
+                </div>
+
+                <div className="border-t border-slate-100 pt-4 mt-6 flex justify-between items-center">
+                  <span className="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">24/7 Autopilot</span>
+                  <span className="text-slate-400 group-hover:text-brand-purple group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -681,7 +607,7 @@ export default function HomeClient() {
                     <span className="text-[10px] uppercase text-slate-400 font-bold tracking-wider mt-1">Daily Automated Tasks Processed</span>
                   </div>
                   <Link
-                    href="/booking"
+                    href="/contact#calendar-booking"
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-950 font-black uppercase tracking-wider text-xs rounded-xl hover:bg-slate-100 transition-all shadow-xl hover:scale-105"
                   >
                     Consult an Expert <ArrowRight className="w-4 h-4 text-slate-950" />
@@ -732,7 +658,7 @@ export default function HomeClient() {
                 <span className="text-xl font-black text-white mt-1 text-center">Setup Session in 10 Min</span>
                 <p className="text-[10px] text-slate-300 text-center font-light mt-1">No upfront card details required. Lock your launch rate now.</p>
                 <Link
-                  href="/booking"
+                  href="/contact#calendar-booking"
                   className="w-full text-center py-3.5 bg-white text-slate-950 font-black uppercase tracking-wider text-xs rounded-xl hover:bg-slate-100 transition-all mt-4 shadow-lg flex items-center justify-center gap-2 hover:scale-105"
                 >
                   Consult Now <ArrowRight className="w-4 h-4 text-slate-950" />
@@ -767,7 +693,7 @@ export default function HomeClient() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
             <Link
-              href="/booking"
+              href="/contact#calendar-booking"
               className="inline-flex items-center gap-2 px-8 py-4 text-xs font-black uppercase tracking-wider text-slate-950 bg-white hover:bg-slate-100 transition-all rounded-full shadow-2xl hover:scale-105"
             >
               Book Strategy Session

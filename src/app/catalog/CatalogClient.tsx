@@ -378,7 +378,7 @@ export default function CatalogClient() {
 
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4 mt-2">
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-colors shadow-lg"
               >
                 Book Automation Demo
@@ -412,7 +412,7 @@ export default function CatalogClient() {
                 </div>
               </div>
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="inline-flex items-center justify-center gap-1.5 px-4.5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold uppercase tracking-wider text-[9px] rounded-xl transition-all shadow-md whitespace-nowrap relative z-10"
               >
                 Claim Offer <ArrowRight className="w-3.5 h-3.5" />
@@ -577,7 +577,7 @@ export default function CatalogClient() {
                   {/* Card Footer CTAs */}
                   <div className="flex flex-col gap-1.5 border-t border-slate-100 pt-2.5 mt-auto">
                     <Link
-                      href="/booking"
+                      href="/contact#calendar-booking"
                       className={`w-full text-center py-2 rounded-xl text-[10px] font-extrabold uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-1.5 group-hover:shadow-md ${
                         suite.popular
                           ? 'bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:brightness-110'
@@ -624,7 +624,7 @@ export default function CatalogClient() {
               </div>
             </div>
             <Link
-              href="/booking"
+              href="/contact#calendar-booking"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 text-xs font-black uppercase tracking-wider text-slate-950 bg-white hover:bg-slate-100 transition-all rounded-full flex-shrink-0 shadow-xl hover:scale-105"
             >
               Book Free Consultation
@@ -714,7 +714,7 @@ export default function CatalogClient() {
                   </div>
 
                   <Link
-                    href="/booking"
+                    href="/contact#calendar-booking"
                     className={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
                       plan.popular
                         ? 'bg-slate-900 text-white hover:bg-brand-purple shadow-md'
@@ -779,7 +779,7 @@ export default function CatalogClient() {
                 No upfront card details required. Lock your launch rate now.
               </p>
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="w-full py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5"
               >
                 Consult Now
@@ -864,7 +864,7 @@ export default function CatalogClient() {
                 </div>
 
                 <Link 
-                  href="/booking" 
+                  href="/contact#calendar-booking" 
                   className="w-full py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-brand-blue text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg mt-4"
                 >
                   Select Managed VPS <ArrowRight className="w-4 h-4" />
@@ -915,7 +915,7 @@ export default function CatalogClient() {
                 </div>
 
                 <Link 
-                  href="/booking" 
+                  href="/contact#calendar-booking" 
                   className="w-full py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-slate-900 hover:bg-brand-purple text-white transition-all shadow-md flex items-center justify-center gap-2 group-hover:shadow-lg mt-4"
                 >
                   Select Direct VPS <ArrowRight className="w-4 h-4" />

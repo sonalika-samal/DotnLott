@@ -153,7 +153,7 @@ export default function BlogClient() {
               </div>
 
               <Link
-                href="/booking"
+                href="/contact#calendar-booking"
                 className="relative z-10 inline-flex items-center justify-center gap-2 w-full py-3 bg-white text-slate-950 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors hover:bg-slate-100 shadow-md"
               >
                 Configure Solution

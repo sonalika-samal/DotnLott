@@ -3,11 +3,11 @@ import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
   title: 'DotnLott | AI Workflow Automation & Custom Web Development',
-  description: 'Enterprise-grade workflow automation, n8n integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
-  keywords: 'workflow automation, n8n integrations, custom AI web apps, website development, lead outreach autopilot, Zoho CRM synchronizer, DotnLott',
+  description: 'Enterprise-grade workflow automation, seamless integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
+  keywords: 'workflow automation, custom integrations, custom AI web apps, website development, lead outreach autopilot, CRM synchronizer, DotnLott',
   openGraph: {
     title: 'DotnLott | AI Workflow Automation & Custom Web Development',
-    description: 'Enterprise-grade workflow automation, n8n integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
+    description: 'Enterprise-grade workflow automation, seamless integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
     type: 'website',
     images: [{ url: '/home-og.png', width: 1200, height: 630, alt: 'DotnLott AI Workflow Automation' }],
   },
