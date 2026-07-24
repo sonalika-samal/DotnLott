@@ -770,13 +770,15 @@ export default function AboutClient() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto relative z-10 pt-2">
-          <Link
-            href="/contact#calendar-booking"
+          <a
+            href="/DotnLott Company Profile.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-2xl hover:bg-slate-100 transition-all shadow-xl hover:scale-105 flex items-center justify-center gap-2"
           >
-            Book Free Consultation
+            Download Brochure
             <ArrowRight className="w-4 h-4 text-brand-purple" />
-          </Link>
+          </a>
 
           <Link
             href="/contact"

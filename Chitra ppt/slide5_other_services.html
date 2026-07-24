@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitra Heart Hospital - Comprehensive Healthcare Services</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1E293B;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      max-width: 1920px;
+      max-height: 1080px;
+      aspect-ratio: 16/9;
+      background: radial-gradient(circle at 90% 10%, #E0F2FE 0%, transparent 50%), radial-gradient(circle at 10% 90%, #F5F3FF 0%, transparent 50%), #FFFFFF;
+      padding: 3% 5%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Header Styling */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-placeholder {
+      width: 45px;
+      height: 45px;
+      border: 1.5px dashed #00B5D8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 181, 214, 0.05);
+      color: #00B5D8;
+      font-size: 8px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .logo-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #2E4094;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Content Area */
+    .content-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 25px;
+      padding: 2% 0;
+    }
+
+    /* Intro section */
+    .services-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .services-title h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #2E4094;
+      margin-bottom: 8px;
+    }
+
+    .services-title p {
+      font-size: 15px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Services Grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .service-block {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: all 0.2s ease;
+    }
+
+    .service-block:hover {
+      transform: translateY(-3px);
+      border-color: #2E4094;
+      box-shadow: 0 12px 25px -5px rgba(46, 64, 148, 0.12);
+    }
+
+    .block-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(46, 64, 148, 0.06);
+      color: #2E4094;
+      transition: all 0.2s ease;
+    }
+
+    .service-block:hover .block-icon-wrapper {
+      background-color: #2E4094;
+      color: #FFFFFF;
+    }
+
+    .service-block h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #1E293B;
+    }
+
+    .service-block p {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Styling for Emergency Block */
+    .service-block.emergency {
+      border: 1.5px dashed rgba(225, 29, 72, 0.4);
+      background-color: rgba(225, 29, 72, 0.01);
+    }
+
+    .service-block.emergency:hover {
+      border-color: #E11D48;
+      background-color: rgba(225, 29, 72, 0.03);
+      box-shadow: 0 12px 25px -5px rgba(225, 29, 72, 0.12);
+    }
+
+    .service-block.emergency .block-icon-wrapper {
+      background-color: rgba(225, 29, 72, 0.08);
+      color: #E11D48;
+    }
+
+    .service-block.emergency:hover .block-icon-wrapper {
+      background-color: #E11D48;
+      color: #FFFFFF;
+    }
+
+    /* Footer / Navigation Styling */
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-top: 1.5px solid #F1F5F9;
+      padding-top: 15px;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      color: #475569;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #F8FAFC;
+      border-color: #CBD5E1;
+      color: #1E293B;
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      border: none;
+      color: #FFFFFF;
+    }
+
+    .nav-btn.primary:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .footer-page-info {
+      font-size: 14px;
+      color: #64748B;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+    
+    <!-- Slide Header -->
+    <div class="slide-header">
+      <div class="logo-container">
+        <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="logo-placeholder">LOGO</div>
+        <div class="logo-title">Chitra Heart Hospital</div>
+      </div>
+      <div class="slide-title">Healthcare Services</div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      
+      <!-- Section title and subtitle -->
+      <div class="services-title">
+        <h2>Comprehensive Medical Specialities</h2>
+        <p>Offering a complete ecosystem of clinical departments to support complex diagnoses and systemic treatment alongside our cardiology expertise.</p>
+      </div>
+
+      <!-- Services 3x2 Grid -->
+      <div class="grid-container">
+        <!-- 1. General Medicine -->
+        <div class="service-block">
+          <div class="block-icon-wrapper">
+            <!-- Medical Kit icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h3>General Medicine</h3>
+          <p>Comprehensive evaluation and treatment for multi-system disorders, fever, chronic diseases, and proactive health maintenance.</p>
+        </div>
+
+        <!-- 2. Pulmonary Medicine -->
+        <div class="service-block">
+          <div class="block-icon-wrapper">
+            <!-- Lungs/Air/Wind icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Pulmonary Medicine</h3>
+          <p>Expert care for respiratory diseases, chronic asthma, obstructive lung disease (COPD), respiratory allergies, and sleep disorders.</p>
+        </div>
+
+        <!-- 3. Endocrinology -->
+        <div class="service-block">
+          <div class="block-icon-wrapper">
+            <!-- Flask/Science icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h12M12 3v13M12 16a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+            </svg>
+          </div>
+          <h3>Endocrinology</h3>
+          <p>Specialized hormonal care, thyroid management, obesity correction, growth issues, and advanced diabetes control systems.</p>
+        </div>
+
+        <!-- 4. Nephrology -->
+        <div class="service-block">
+          <div class="block-icon-wrapper">
+            <!-- Filter/Nephron icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+          </div>
+          <h3>Nephrology</h3>
+          <p>Advanced kidney care, renal failure prevention, diagnostic nephrology, critical hypertension therapies, and supportive dialysis services.</p>
+        </div>
+
+        <!-- 5. 24/7 Emergency Care -->
+        <div class="service-block emergency">
+          <div class="block-icon-wrapper">
+            <!-- Siren/Bell icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </div>
+          <h3>24/7 Emergency & Trauma</h3>
+          <p>State-of-the-art trauma rooms, cardiac care unit, and critically responsive ambulance units operating round the clock for emergencies.</p>
+        </div>
+
+        <!-- 6. Diagnostic Facilities -->
+        <div class="service-block">
+          <div class="block-icon-wrapper">
+            <!-- Search/Scope icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3>Diagnostic & Radiology</h3>
+          <p>Fully-equipped digital pathology lab, digital radiography (X-Ray), high-precision ultrasound scans, and advanced vascular imaging equipment.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+      <div class="nav-controls">
+        <a href="slide4_cardiology.html" class="nav-btn">
+          <!-- Left Arrow -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Previous
+        </a>
+        <a href="slide1_cover.html" class="nav-btn" title="Restart Presentation" style="padding: 10px 14px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <polyline points="3 3 3 8 8 8"></polyline>
+          </svg>
+        </a>
+        <a href="slide6_doctors.html" class="nav-btn primary">
+          Next
+          <!-- Right Arrow -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="footer-page-info">Slide 5 of 8</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

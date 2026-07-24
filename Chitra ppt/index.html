@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitra Heart Hospital - Vertical Presentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important; /* Force all borders to be sharp (no rounded borders) */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #0F172A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1E293B;
+      overflow: hidden;
+    }
+
+    /* Master Slider Layout - Vertical Flow */
+    .slider-viewport {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-track {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%; /* Auto height derived from children (vh-driven track) */
+      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .slide-wrapper {
+      width: 100%;
+      height: 100vh; /* Strict viewport height */
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0F172A;
+      padding: 0; /* Remove padding to eliminate black borders */
+    }
+
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 90% 10%, #E0F2FE 0%, transparent 60%), radial-gradient(circle at 10% 90%, #F0FDF4 0%, transparent 55%), #FFFFFF;
+      padding: 4vh 6vw 11vh 6vw; /* Generous bottom padding to prevent overlap with footer */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Controls Overlay */
+    .keyboard-tips {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(15, 23, 42, 0.6);
+      color: #94A3B8;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .keyboard-tips kbd {
+      background: #334155;
+      color: #F8FAFC;
+      padding: 2px 6px;
+      border: 1px solid #475569;
+    }
+
+    /* Vertical Navigation dots on the right side */
+    .slider-dots {
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+      background-color: rgba(15, 23, 42, 0.6);
+      padding: 18px 10px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dot-btn {
+      width: 12px;
+      height: 12px;
+      background-color: #475569;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot-btn:hover {
+      background-color: #94A3B8;
+    }
+
+    .dot-btn.active {
+      background-color: #00B5D8;
+      height: 24px; /* Vertical active bar */
+    }
+
+    /* Abstract Decorative Elements */
+    .glow-dot-1 {
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(0, 181, 214, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .glow-dot-2 {
+      position: absolute;
+      bottom: 5%;
+      left: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(46, 64, 148, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Pulse wave background animation */
+    .pulse-line {
+      position: absolute;
+      bottom: 20%;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 L300,50 L320,30 L340,70 L360,10 L380,90 L400,45 L410,55 L420,50 L1000,50' fill='none' stroke='%232E4094' stroke-width='4'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      background-size: 1000px 150px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Header Nav */
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      z-index: 10;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 12px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-placeholder {
+      width: 45px;
+      height: 45px;
+      border: 1.5px dashed #00B5D8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 181, 214, 0.05);
+      color: #00B5D8;
+      font-size: 8px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .logo-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #2E4094;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, rgba(0, 181, 214, 0.1) 0%, rgba(46, 64, 148, 0.1) 100%);
+      border: 1px solid rgba(0, 181, 214, 0.2);
+      padding: 6px 14px;
+      color: #2E4094;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.8px;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Footer Details */
+    .footer-bar {
+      position: absolute;
+      bottom: 3.5vh;
+      left: 6vw;
+      width: calc(100% - 12vw);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1.5px solid #F1F5F9;
+      padding-top: 15px;
+      z-index: 10;
+      background-color: transparent;
+    }
+
+    .footer-contact {
+      display: flex;
+      gap: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748B;
+      font-weight: 600;
+    }
+
+    .contact-item svg {
+      color: #00B5D8;
+    }
+
+    .footer-page-info {
+      font-size: 14px;
+      color: #64748B;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      color: #475569;
+      padding: 8px 18px;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .nav-btn:hover {
+      background-color: #F8FAFC;
+      border-color: #CBD5E1;
+      color: #1E293B;
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      border: none;
+      color: #FFFFFF;
+    }
+
+    .nav-btn.primary:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Slide specific styles */
+    /* Cover slide content */
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 5%;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      z-index: 10;
+    }
+
+    .cover-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .cover-visual {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .pulse-glow-ring {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background-color: rgba(0, 181, 214, 0.08);
+      animation: pulse-ring 2.5s infinite ease-out;
+    }
+
+    .pulse-glow-ring.ring2 {
+      animation-delay: 1.25s;
+    }
+
+    .heart-pulse-node {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00B5D8 0%, #2E4094 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: 0 0 35px rgba(0, 181, 214, 0.45);
+      animation: heartbeat 1.25s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+      z-index: 5;
+    }
+
+    .heart-pulse-node svg {
+      width: 42px;
+      height: 42px;
+    }
+
+    .ekg-svg {
+      position: absolute;
+      width: 110%;
+      height: 140px;
+      opacity: 0.35;
+      z-index: 1;
+    }
+
+    .ekg-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw-ekg 4s infinite linear;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.5);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(2.4);
+        opacity: 0;
+      }
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(0, 181, 214, 0.4);
+      }
+      15% {
+        transform: scale(1.22);
+        box-shadow: 0 0 40px rgba(0, 181, 214, 0.65);
+      }
+      30% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(0, 181, 214, 0.4);
+      }
+      45% {
+        transform: scale(1.18);
+        box-shadow: 0 0 35px rgba(0, 181, 214, 0.55);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(0, 181, 214, 0.4);
+      }
+    }
+
+    @keyframes draw-ekg {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .welcome-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #00B5D8;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .main-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #2E4094;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .main-title span {
+      background: linear-gradient(135deg, #2E4094 0%, #00B5D8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle-text {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #475569;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    /* Multi-column layouts */
+    .grid-2col {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 5%;
+      align-items: center;
+      padding: 2% 0;
+      width: 100%;
+    }
+
+    .grid-2col-even {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5%;
+      align-items: center;
+      padding: 2% 0;
+      width: 100%;
+    }
+
+    /* MD Slide details */
+    .profile-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid #E2E8F0;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-image-placeholder {
+      width: 140px;
+      height: 140px;
+      background: #E2E8F0;
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      font-weight: 600;
+      overflow: hidden;
+    }
+
+    .profile-image-placeholder svg {
+      width: 70%;
+      height: 70%;
+      color: #94A3B8;
+      margin-top: 15px;
+    }
+
+    .profile-info h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #2E4094;
+      margin-bottom: 3px;
+    }
+
+    .profile-info p {
+      font-size: 13px;
+      color: #64748B;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .profile-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      margin-top: 5px;
+      padding-top: 12px;
+      border-top: 1px solid #E2E8F0;
+      font-size: 12.5px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .profile-contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .profile-contact-item svg {
+      color: #00B5D8;
+    }
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .quote-icon {
+      color: #00B5D8;
+      opacity: 0.3;
+      margin-bottom: -10px;
+    }
+
+    .message-text {
+      font-size: 18.5px;
+      line-height: 1.6;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .message-highlight {
+      background: linear-gradient(135deg, rgba(0, 181, 214, 0.06) 0%, rgba(46, 64, 148, 0.06) 100%);
+      border-left: 4px solid #2E4094;
+      padding: 16px 20px;
+      margin-top: 5px;
+    }
+
+    .message-highlight-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #2E4094;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .message-highlight-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    /* About slide details */
+    .about-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 25px;
+      padding: 2% 0;
+      width: 100%;
+    }
+
+    .intro-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      padding: 20px 30px;
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px -8px rgba(46, 64, 148, 0.3);
+    }
+
+    .intro-left h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .intro-left p {
+      font-size: 14.5px;
+      color: #E0E7FF;
+      font-weight: 500;
+    }
+
+    .years-badge {
+      background-color: #00B5D8;
+      padding: 10px 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: 0 5px 12px rgba(0, 181, 214, 0.25);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .pillar-card {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: #00B5D8;
+      box-shadow: 0 12px 25px -10px rgba(0, 181, 214, 0.15);
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #E2E8F0;
+      transition: background 0.3s ease;
+    }
+
+    .pillar-card:hover::before {
+      background: linear-gradient(90deg, #2E4094, #00B5D8);
+    }
+
+    .pillar-icon-container {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #EFF6FF;
+      color: #2E4094;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover .pillar-icon-container {
+      background-color: #00B5D8;
+      color: #FFFFFF;
+    }
+
+    .pillar-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #1E293B;
+    }
+
+    .pillar-card p {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Cardiology slide details */
+    .cardio-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+      padding: 1% 0;
+      width: 100%;
+    }
+
+    .dept-intro {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background-color: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      padding: 10px 20px;
+    }
+
+    .dept-icon {
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: heartbeat 1.5s infinite alternate;
+    }
+
+    .dept-text h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #2E4094;
+      margin-bottom: 1px;
+    }
+
+    .dept-text p {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .service-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.01);
+      transition: all 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-2px);
+      border-color: #00B5D8;
+      box-shadow: 0 8px 16px rgba(0, 181, 214, 0.08);
+      background-color: #F0FDF4;
+    }
+
+    .service-icon-wrapper {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 181, 214, 0.08);
+      color: #00B5D8;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .service-card:hover .service-icon-wrapper {
+      background-color: #00B5D8;
+      color: #FFFFFF;
+    }
+
+    .service-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .service-info h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #1E293B;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+    }
+
+    .service-info p {
+      font-size: 11.5px;
+      color: #64748B;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .service-card.highlight {
+      border: 1px solid rgba(225, 29, 72, 0.2);
+      background-color: rgba(225, 29, 72, 0.01);
+    }
+    .service-card.highlight:hover {
+      border-color: #E11D48;
+      background-color: #FFF1F2;
+    }
+    .service-card.highlight .service-icon-wrapper {
+      background-color: rgba(225, 29, 72, 0.08);
+      color: #E11D48;
+    }
+    .service-card.highlight:hover .service-icon-wrapper {
+      background-color: #E11D48;
+      color: #FFFFFF;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+
+    /* Services slide details */
+    .services-intro-title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 5px auto;
+    }
+
+    .services-intro-title h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #2E4094;
+      margin-bottom: 4px;
+    }
+
+    .services-intro-title p {
+      font-size: 14px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .other-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .service-block {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+      transition: all 0.2s ease;
+    }
+
+    .service-block:hover {
+      transform: translateY(-3px);
+      border-color: #2E4094;
+      box-shadow: 0 10px 20px -5px rgba(46, 64, 148, 0.1);
+    }
+
+    .block-icon-wrapper {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(46, 64, 148, 0.06);
+      color: #2E4094;
+      transition: all 0.2s ease;
+    }
+
+    .service-block:hover .block-icon-wrapper {
+      background-color: #2E4094;
+      color: #FFFFFF;
+    }
+
+    .service-block h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16.5px;
+      font-weight: 800;
+      color: #1E293B;
+    }
+
+    .service-block p {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .service-block.emergency {
+      border: 1.5px dashed rgba(225, 29, 72, 0.4);
+      background-color: rgba(225, 29, 72, 0.01);
+    }
+
+    .service-block.emergency:hover {
+      border-color: #E11D48;
+      background-color: rgba(225, 29, 72, 0.03);
+      box-shadow: 0 10px 20px -5px rgba(225, 29, 72, 0.1);
+    }
+
+    .service-block.emergency .block-icon-wrapper {
+      background-color: rgba(225, 29, 72, 0.08);
+      color: #E11D48;
+    }
+
+    .service-block.emergency:hover .block-icon-wrapper {
+      background-color: #E11D48;
+      color: #FFFFFF;
+    }
+
+    /* Contact & FAQs slide details */
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: #00B5D8;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .faq-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 850;
+      color: #2E4094;
+      margin-bottom: 3px;
+    }
+
+    .faq-item {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 10px 14px;
+    }
+
+    .faq-item h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #1E293B;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-item h4 svg {
+      color: #00B5D8;
+      flex-shrink: 0;
+    }
+
+    .faq-item p {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid #E2E8F0;
+      padding: 20px 24px;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #2E4094;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 34px;
+      height: 34px;
+      background-color: rgba(0, 181, 214, 0.08);
+      color: #00B5D8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-text h5 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .contact-text p {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .emergency-alert {
+      background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+      padding: 10px 14px;
+      color: #FFFFFF;
+      box-shadow: 0 6px 15px -4px rgba(225, 29, 72, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .emergency-alert-icon {
+      width: 34px;
+      height: 34px;
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .emergency-alert-text h6 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    .emergency-alert-text p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF !important;
+    }
+
+    /* Doctors Row/Grid */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      width: 100%;
+    }
+
+    .doctor-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+      transition: all 0.2s ease;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-3px);
+      border-color: #00B5D8;
+      box-shadow: 0 10px 20px -5px rgba(0, 181, 214, 0.12);
+    }
+
+    .doctor-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1;
+      background-color: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .doctor-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .doctor-image-wrapper svg {
+      width: 50%;
+      height: 50%;
+      color: #CBD5E1;
+    }
+
+    .doc-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-grow: 1;
+    }
+
+    .doc-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #1E293B;
+      line-height: 1.3;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .doc-dept {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #00B5D8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .doc-qual {
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748B;
+    }
+
+    .doc-desig {
+      font-size: 11px;
+      font-weight: 500;
+      color: #475569;
+      line-height: 1.4;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .book-btn {
+      display: block;
+      background-color: rgba(46, 64, 148, 0.06);
+      color: #2E4094;
+      padding: 6px 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(46, 64, 148, 0.1);
+      transition: all 0.2s ease;
+      margin-top: 5px;
+    }
+
+    .doctor-card:hover .book-btn {
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 4px 10px rgba(46, 64, 148, 0.2);
+    }
+
+    /* Insurance Layout Styles */
+    .insurance-box {
+      background-color: rgba(248, 250, 252, 0.55);
+      border: 1.5px solid #E2E8F0;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .column-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #2E4094;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .column-title span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .govt-schemes-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      flex-grow: 1;
+    }
+
+    .govt-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-left: 3px solid #2E4094;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .govt-card.highlight {
+      border-left-color: #E11D48;
+      background-color: rgba(225, 29, 72, 0.01);
+    }
+
+    .govt-card:hover {
+      border-color: #00B5D8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 181, 214, 0.05);
+    }
+
+    .govt-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #1E293B;
+      text-transform: uppercase;
+    }
+
+    .govt-card p {
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .private-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      flex-grow: 1;
+    }
+
+    .private-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .private-card:hover {
+      border-color: #00B5D8;
+      background-color: #F0FDF4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 181, 214, 0.05);
+    }
+
+    .private-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #1E293B;
+      line-height: 1.25;
+    }
+
+    .private-card p {
+      font-size: 9.5px;
+      line-height: 1.3;
+      color: #64748B;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Layout with Viewport Frame -->
+  <div class="slider-viewport">
+    
+    <!-- Keyboard Tips Overlay Removed -->
+
+    <!-- Active Indicator dots (oriented vertically) -->
+    <div class="slider-dots">
+      <button class="dot-btn active" onclick="goToSlide(0)"></button>
+      <button class="dot-btn" onclick="goToSlide(1)"></button>
+      <button class="dot-btn" onclick="goToSlide(2)"></button>
+      <button class="dot-btn" onclick="goToSlide(3)"></button>
+      <button class="dot-btn" onclick="goToSlide(4)"></button>
+      <button class="dot-btn" onclick="goToSlide(5)"></button>
+      <button class="dot-btn" onclick="goToSlide(6)"></button>
+      <button class="dot-btn" onclick="goToSlide(7)"></button>
+    </div>
+
+    <!-- Slide Container Track (Vertical) -->
+    <div class="slider-track" id="sliderTrack">
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="glow-dot-1"></div>
+          <div class="glow-dot-2"></div>
+          <div class="pulse-line"></div>
+
+          <div class="header-nav" style="border: none;">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 60px; max-width: 180px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="badge">PMJAY Empanelled</div>
+          </div>
+
+          <div class="cover-grid">
+            <div class="cover-content">
+              <div class="welcome-text">Your Heart Health is Our Top Priority</div>
+              <h1 class="main-title" style="font-size: 56px;">Excellence in<br><span>Cardiac Care</span></h1>
+              <p class="subtitle-text">Committed to providing world-class cardiac healthcare services with cutting-edge technology and compassionate care in Cuttack, Odisha.</p>
+              
+              <button class="nav-btn primary" style="padding: 14px 32px; font-size: 16px; margin-top: 15px;" onclick="goToSlide(1)">
+                Start Presentation
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Beating Heart and EKG EKG Pulse Graphics -->
+            <div class="cover-visual">
+              <div class="pulse-glow-ring"></div>
+              <div class="pulse-glow-ring ring2"></div>
+              <div class="heart-pulse-node">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <svg class="ekg-svg" viewBox="0 0 300 100" fill="none" stroke="#00B5D8" stroke-width="3">
+                <path d="M 0 50 L 50 50 L 60 30 L 70 70 L 80 50 L 110 50 L 120 10 L 130 90 L 140 50 L 180 50 L 190 35 L 200 65 L 210 50 L 300 50" class="ekg-line"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="footer-contact">
+              <div class="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Emergency: +91 9938091155
+              </div>
+              <div class="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                chitrahearthospital@gmail.com
+              </div>
+            </div>
+            <div class="footer-page-info">Slide 1 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: MD MESSAGE -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">MD's Message</div>
+          </div>
+
+          <div class="grid-2col">
+            <div class="profile-card">
+              <div class="profile-image-placeholder">
+                <img src="DIPTIRANJAN PARIDA.webp" alt="Diptiranjan Parida" style="width: 100%; height: 100%; object-fit: cover;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="profile-info">
+                <h3>Diptiranjan Parida</h3>
+                <p>Managing Director</p>
+                <p style="font-size: 11px; color: #94A3B8; font-weight: 500; margin-top: 1px;">Chitra Heart Hospital Pvt. Ltd.</p>
+              </div>
+              <div class="profile-contact">
+                <div class="profile-contact-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  parida.diptiranjan@gmail.com
+                </div>
+              </div>
+            </div>
+
+            <div class="message-container">
+              <svg class="quote-icon" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.192 15.757c0-.907-.188-1.754-.565-2.54s-.91-1.466-1.599-2.044 1.564-2.28 2.961-3.41c.783-.633.08-1.563-.78-1.07-2.56 1.48-4.57 3.39-6.02 5.73-.78 1.25-1.17 2.76-1.17 4.53 0 1.58.47 2.87 1.42 3.87s2.17 1.5 3.65 1.5c1.48 0 2.68-.48 3.59-1.43s1.37-2.18 1.37-3.69zm11 0c0-.907-.188-1.754-.565-2.54s-.91-1.466-1.599-2.044c.68-.58 1.564-2.28 2.961-3.41.783-.633.08-1.563-.78-1.07-2.56 1.48-4.57 3.39-6.02 5.73-.78 1.25-1.17 2.76-1.17 4.53 0 1.58.47 2.87 1.42 3.87s2.17 1.5 3.65 1.5c1.48 0 2.68-.48 3.59-1.43s1.37-2.18 1.37-3.69z"/>
+              </svg>
+              <p class="message-text" style="font-size:16.5px;">
+                "Since our inception, our goal has been to make world-class cardiac care accessible and affordable for everyone in Odisha. With a dedicated team of experienced cardiologists, advanced facilities, and modern technology, we strive to deliver reliable and compassionate healthcare to all."
+              </p>
+              <p class="message-text" style="font-size:15px; color:#475569; margin-top:-5px;">
+                "At Chitra Heart Hospital, we believe every patient's journey is personal. We stand beside our patients like family—combining skill, empathy, and dedication to ensure every heart receives the attention and care it truly deserves."
+              </p>
+
+              <div class="message-highlight">
+                <div class="message-highlight-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  PMJAY Empanelled Center
+                </div>
+                <p class="message-highlight-text">
+                  We are proud to be PMJAY empanelled, extending quality, cashless healthcare benefits to all sections of society, ensuring that high-quality cardiac support is accessible to those who need it most.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(0)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(2)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 2 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: ABOUT -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">About Our Hospital</div>
+          </div>
+
+          <div class="about-content">
+            <div class="intro-bar">
+              <div class="intro-left">
+                <h2>Trust, Compassion & Quality Healthcare</h2>
+                <p>Where advanced medical care meets human touch, serving the people of Odisha.</p>
+              </div>
+              <div class="years-badge">
+                25+ Years of Excellence
+              </div>
+            </div>
+
+            <div class="pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon-container">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  </svg>
+                </div>
+                <h3>Excellence in Cardiac Care</h3>
+                <p>Committed to providing world-class cardiac healthcare services with cutting-edge technology and a team of highly experienced cardiologists.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon-container">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <h3>Patient-Centric Approach</h3>
+                <p>Every patient is treated with dignity, respect, and personalized care tailored to their unique medical, physical, and emotional needs.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon-container">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                </div>
+                <h3>Quality & Innovation</h3>
+                <p>Continuous investment in advanced medical equipment, software, and regular clinical training to deliver the safest and best patient outcomes.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(1)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(3)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 3 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: CARDIOLOGY SERVICES -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Cardiology Department</div>
+          </div>
+
+          <div class="cardio-content">
+            <div class="dept-intro">
+              <div class="dept-icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <div class="dept-text">
+                <h2>Comprehensive Cardiology Services</h2>
+                <p>Our expert cardiologists use advanced technology and procedures to deliver world-class diagnosis, treatment, and prevention of cardiovascular diseases.</p>
+              </div>
+            </div>
+
+            <div class="services-grid">
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>Catheterization & Angiography</h4>
+                  <p>Advanced diagnostic imaging to detect blockages in vessels.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5v14M22 9v6M7 5v14M2 9v6"></path>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>Echocardiography & Stress Test</h4>
+                  <p>Heart ultrasound combined with stress diagnostic testing.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="6" width="18" height="12"></rect>
+                    <line x1="23" y1="11" x2="23" y2="13"></line>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>Pacemaker Implantation</h4>
+                  <p>Regulate heart rhythm using state-of-the-art implants.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>Heart Failure Management</h4>
+                  <p>Structured, patient-centric chronic cardiac therapies.</p>
+                </div>
+              </div>
+
+              <div class="service-card highlight">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>CABG (Open Heart Surgery)</h4>
+                  <p>Coronary Artery Bypass Grafting for arterial blockages.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>H.E.P (Heart Evaluation)</h4>
+                  <p>Comprehensive health evaluation and screening programs.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>IVUS (Intravascular Ultrasound)</h4>
+                  <p>High-resolution ultrasound imaging from inside the vessels.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>OCT (Arterial Imaging)</h4>
+                  <p>Optical Coherence Tomography for 3D cross-sections.</p>
+                </div>
+              </div>
+
+              <div class="service-card highlight">
+                <div class="service-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  </svg>
+                </div>
+                <div class="service-info">
+                  <h4>TAVI (Valve Implantation)</h4>
+                  <p>Minimally invasive replacement of stenosed aortic valve.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(2)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(4)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 4 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: OTHER HEALTHCARE SERVICES -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Healthcare Services</div>
+          </div>
+
+          <div class="about-content">
+            <div class="services-intro-title">
+              <h2>Comprehensive Medical Specialities</h2>
+              <p>Offering a complete ecosystem of clinical departments to support complex diagnoses and systemic treatment alongside our cardiology expertise.</p>
+            </div>
+
+            <div class="other-grid">
+              <div class="service-block">
+                <div class="block-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </div>
+                <h3>General Medicine</h3>
+                <p>Comprehensive evaluation and treatment for multi-system disorders, fever, chronic diseases, and proactive health maintenance.</p>
+              </div>
+
+              <div class="service-block">
+                <div class="block-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                </div>
+                <h3>Pulmonary Medicine</h3>
+                <p>Expert care for respiratory diseases, chronic asthma, obstructive lung disease (COPD), respiratory allergies, and sleep disorders.</p>
+              </div>
+
+              <div class="service-block">
+                <div class="block-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 3h12M12 3v13M12 16a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                  </svg>
+                </div>
+                <h3>Endocrinology</h3>
+                <p>Specialized hormonal care, thyroid management, obesity correction, growth issues, and advanced diabetes control systems.</p>
+              </div>
+
+              <div class="service-block">
+                <div class="block-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                  </svg>
+                </div>
+                <h3>Nephrology</h3>
+                <p>Advanced kidney care, renal failure prevention, diagnostic nephrology, critical hypertension therapies, and supportive dialysis services.</p>
+              </div>
+
+              <div class="service-block emergency">
+                <div class="block-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                </div>
+                <h3>24/7 Emergency & Trauma</h3>
+                <p>State-of-the-art trauma rooms, cardiac care unit, and critically responsive ambulance units operating round the clock for emergencies.</p>
+              </div>
+
+              <div class="service-block">
+                <div class="block-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </div>
+                <h3>Diagnostic & Radiology</h3>
+                <p>Fully-equipped digital pathology lab, digital radiography (X-Ray), high-precision ultrasound scans, and advanced vascular imaging equipment.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(3)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(5)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 5 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6: OUR DOCTORS -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Our Doctors</div>
+          </div>
+
+          <div class="about-content" style="gap: 15px; padding: 1% 0;">
+            <div class="services-intro-title">
+              <h2>Expert Clinical Specialists</h2>
+              <p>Our team of highly qualified cardiologists and specialized consultants is dedicated to providing world-class cardiac care.</p>
+            </div>
+
+            <!-- Doctors 5-Column Grid -->
+            <div class="doctors-grid">
+              <!-- 1. Dr. Priyaranjan Parida -->
+              <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                  <img src="Dr. Priyaranjan Parida.webp" alt="Dr. Priyaranjan Parida" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <div class="doc-name">Dr. Priyaranjan Parida</div>
+                  <div class="doc-dept">Cardiology</div>
+                  <div class="doc-qual">MD (Med), DM (Cardio)</div>
+                  <div class="doc-desig">Consultant Cardiologist</div>
+                </div>
+                <a href="#" class="book-btn">Book Appointment</a>
+              </div>
+
+              <!-- 2. Dr. Chandrakanta Mohara & Dr. Chandrakant Mishra -->
+              <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                  <img src="Dr. Chandrakanta Mohara.webp" alt="Dr. Chandrakanta Mohara" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <div class="doc-name">Dr. Chandrakanta Mohara /<br>Dr. Chandrakant Mishra</div>
+                  <div class="doc-dept">Cardiology</div>
+                  <div class="doc-qual">MD (Med), DM (Cardio)</div>
+                  <div class="doc-desig">Associate Professor</div>
+                </div>
+                <a href="#" class="book-btn">Book Appointment</a>
+              </div>
+
+              <!-- 3. Dr. Subhasmita Sahoo -->
+              <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                  <img src="Subhasmita Sahoo.webp" alt="Dr. Subhasmita Sahoo" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <div class="doc-name">Dr. Subhasmita Sahoo</div>
+                  <div class="doc-dept">Cardiology</div>
+                  <div class="doc-qual">Cardiologist</div>
+                  <div class="doc-desig">Cardiac Specialist</div>
+                </div>
+                <a href="#" class="book-btn">Book Appointment</a>
+              </div>
+
+              <!-- 4. Dr. Jasobanta Behera -->
+              <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="display:block;">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <div class="doc-name">Dr. Jasobanta Behera</div>
+                  <div class="doc-dept">Cardiology</div>
+                  <div class="doc-qual">MBBS, MD, DM (Cardio)</div>
+                  <div class="doc-desig">Visiting Consultant</div>
+                </div>
+                <a href="#" class="book-btn">Book Appointment</a>
+              </div>
+
+              <!-- 5. Dr. Dipak Ranjan Das -->
+              <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                  <img src="Dr, Dipak Ranjan Dash.webp" alt="Dr. Dipak Ranjan Das" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <div class="doc-name">Dr. Dipak Ranjan Das</div>
+                  <div class="doc-dept">Cardiology</div>
+                  <div class="doc-qual">MD (Med), DM (Cardio)</div>
+                  <div class="doc-desig">Visiting Consultant</div>
+                </div>
+                <a href="#" class="book-btn">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(4)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(6)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 6 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: INSURANCE PARTNERS -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Insurance Partners</div>
+          </div>
+
+          <div class="content-area" style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; padding: 1.5% 0; height: 82%;">
+            <!-- Government Schemes -->
+            <div class="insurance-box">
+              <div class="column-title">
+                Government Insurance <span>Schemes & Coverage</span>
+              </div>
+              <div class="govt-schemes-list">
+                <div class="govt-card highlight">
+                  <h4>Ayushman Bharat (PM-JAY)</h4>
+                  <p>Cashless coverage up to ₹5 Lakhs per family/year for secondary & tertiary treatments.</p>
+                </div>
+                <div class="govt-card">
+                  <h4>CGHS</h4>
+                  <p>Central Government Health Scheme offering comprehensive care to staff & pensioners.</p>
+                </div>
+                <div class="govt-card">
+                  <h4>ESIC</h4>
+                  <p>Insured workers receive medical, maternity, and cash benefits for families.</p>
+                </div>
+                <div class="govt-card">
+                  <h4>RSBY</h4>
+                  <p>Smart card-based cashless health insurance support for BPL families.</p>
+                </div>
+                <div class="govt-card">
+                  <h4>BKKY Scheme</h4>
+                  <p>Cashless health insurance coverage programs for cooperative and state sectors.</p>
+                </div>
+                <div class="govt-card highlight">
+                  <h4>State Health Schemes</h4>
+                  <p>Cashless specialized treatment plans via state government empanelment across India.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Private Insurance -->
+            <div class="insurance-box">
+              <div class="column-title">
+                Private Health Insurance <span>Partnered Insurers & TPAs</span>
+              </div>
+              <div class="private-grid">
+                <div class="private-card">
+                  <h4>Medi Assist TPA</h4>
+                  <p>Claims, cashless admin & policy management across 18k network hospitals.</p>
+                </div>
+                <div class="private-card">
+                  <h4>SBI General Ins.</h4>
+                  <p>Pre/post hospitalization coverage, 23k+ network, and 172% solvency ratio.</p>
+                </div>
+                <div class="private-card">
+                  <h4>TATA AIG Insurance</h4>
+                  <p>AYUSH & daycare procedures, 99% settlement ratio, 10k+ network hospitals.</p>
+                </div>
+                <div class="private-card">
+                  <h4>Universal Sompo</h4>
+                  <p>205 approved products, 98.87% settlement, 10,500+ hospitals.</p>
+                </div>
+                <div class="private-card">
+                  <h4>Ericson TPA</h4>
+                  <p>Tech-driven claims with "e-Mate" app cashless tracking across 5,000+ centers.</p>
+                </div>
+                <div class="private-card">
+                  <h4>FHPL TPA</h4>
+                  <p>Instant approvals, 27+ insurers, and 24/7 multilingual support.</p>
+                </div>
+                <div class="private-card">
+                  <h4>HDFC ERGO Health</h4>
+                  <p>Cashless hospital stay, extensive networks, and quick claim settlements.</p>
+                </div>
+                <div class="private-card">
+                  <h4>Aditya Birla Health</h4>
+                  <p>Family floaters, critical illness coverage, and active health wellness benefits.</p>
+                </div>
+                <div class="private-card">
+                  <h4>Galaxy Health Ins.</h4>
+                  <p>Tailored health packages, cashless treatment access, and preventive care focus.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(5)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(7)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 7 of 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: CONTACT & FAQ -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Contact & FAQs</div>
+          </div>
+
+          <div class="grid-2col">
+            <div class="faq-container">
+              <div>
+                <div class="section-label">Patient Information</div>
+                <h2 class="faq-title">Common Questions</h2>
+              </div>
+
+              <div class="faq-item">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  Do you accept Ayushman Yojana / PMJAY?
+                </h4>
+                <p>Yes, Chitra Heart Hospital is proud to be fully empanelled with PMJAY, extending cashless quality healthcare benefits to eligible sections of society.</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  What specialized diagnostic cardiac tests do you offer?
+                </h4>
+                <p>We provide state-of-the-art diagnostic facilities including Echocardiography, Stress Testing, Angiography, IVUS, and OCT.</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  Do you have supportive renal care like Dialysis?
+                </h4>
+                <p>Yes, our comprehensive Nephrology department provides high-quality hemodialysis and peritoneal dialysis support for kidney patients.</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <h3>Location & Contact Details</h3>
+
+              <div class="contact-row">
+                <div class="contact-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h5>Our Address</h5>
+                  <p>Plot No.: 298, Potapokhari,<br>Nayabazar, Cuttack - 753004, Odisha</p>
+                </div>
+              </div>
+
+              <div class="contact-row">
+                <div class="contact-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h5>General Email</h5>
+                  <p>chitrahearthospital@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="emergency-alert">
+                <div class="emergency-alert-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div class="emergency-alert-text">
+                  <h6>24/7 EMERGENCY HELPLINE</h6>
+                  <p>+91 9938091155</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(6)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(0)">
+                Restart
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 8 of 8</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 8;
+    const sliderTrack = document.getElementById('sliderTrack');
+    const dotBtns = document.querySelectorAll('.dot-btn');
+
+    function goToSlide(slideIndex) {
+      if (slideIndex < 0 || slideIndex >= totalSlides) return;
+      
+      currentSlide = slideIndex;
+      
+      // Shift track vertically using vh units to align exactly with viewport boundaries
+      sliderTrack.style.transform = `translateY(-${currentSlide * 100}vh)`;
+      
+      // Update dots
+      dotBtns.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    // Keyboard Navigation (Up/Down focus)
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowDown' || event.key === ' ' || event.key === 'PageDown') {
+        // Space or Down Arrow or PageDown goes to next
+        if (currentSlide < totalSlides - 1) {
+          goToSlide(currentSlide + 1);
+        } else {
+          goToSlide(0); // Loop back to start
+        }
+        event.preventDefault();
+      } else if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+        // Up Arrow or PageUp goes to previous
+        if (currentSlide > 0) {
+          goToSlide(currentSlide - 1);
+        } else {
+          goToSlide(totalSlides - 1); // Loop to end
+        }
+        event.preventDefault();
+      }
+    });
+
+    // Touch Swipe Navigation for mobile/tablets (Vertical Swipe)
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', e => {
+      touchStartY = e.changedTouches[0].screenY;
+    }, false);
+
+    document.addEventListener('touchend', e => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      const threshold = 50; // min swipe distance in px
+      if (touchStartY - touchEndY > threshold) {
+        // Swipe Up -> Next slide (finger moves up, page moves down)
+        if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
+      }
+      if (touchEndY - touchStartY > threshold) {
+        // Swipe Down -> Prev slide (finger moves down, page moves up)
+        if (currentSlide > 0) goToSlide(currentSlide - 1);
+      }
+    }
+  </script>
+</body>
+</html>

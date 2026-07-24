@@ -1063,19 +1063,15 @@ export default function AIAutomationClient() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Link
-              href="/contact#calendar-booking"
+            <a
+              href="/DotnLott Company Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 group active:scale-95"
             >
-              Book Strategy Session Now
+              Download Brochure
               <ArrowRight className="w-4 h-4 text-slate-950 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/ai-automation-latest"
-              className="px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all"
-            >
-              Explore Ad Landing Page
-            </Link>
+            </a>
           </div>
         </div>
       </section>

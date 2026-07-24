@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitra Heart Hospital - About Us</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1E293B;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      max-width: 1920px;
+      max-height: 1080px;
+      aspect-ratio: 16/9;
+      background: radial-gradient(circle at 90% 10%, #E0F2FE 0%, transparent 50%), radial-gradient(circle at 10% 90%, #F5F3FF 0%, transparent 50%), #FFFFFF;
+      padding: 3% 5%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Header Styling */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-placeholder {
+      width: 45px;
+      height: 45px;
+      border: 1.5px dashed #00B5D8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 181, 214, 0.05);
+      color: #00B5D8;
+      font-size: 8px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .logo-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #2E4094;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Content Area */
+    .content-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+      padding: 2% 0;
+    }
+
+    /* Summary Bar */
+    .intro-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      padding: 25px 40px;
+      border-radius: 18px;
+      color: #FFFFFF;
+      box-shadow: 0 10px 25px -10px rgba(46, 64, 148, 0.3);
+    }
+
+    .intro-left h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .intro-left p {
+      font-size: 15px;
+      color: #E0E7FF;
+      font-weight: 500;
+    }
+
+    .years-badge {
+      background-color: #00B5D8;
+      padding: 12px 25px;
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 181, 214, 0.3);
+    }
+
+    /* Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .pillar-card {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      border-color: #00B5D8;
+      box-shadow: 0 15px 30px -10px rgba(0, 181, 214, 0.15);
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #E2E8F0;
+      transition: background 0.3s ease;
+    }
+
+    .pillar-card:hover::before {
+      background: linear-gradient(90deg, #2E4094, #00B5D8);
+    }
+
+    .pillar-icon-container {
+      width: 55px;
+      height: 55px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #EFF6FF;
+      color: #2E4094;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover .pillar-icon-container {
+      background-color: #00B5D8;
+      color: #FFFFFF;
+    }
+
+    .pillar-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #1E293B;
+    }
+
+    .pillar-card p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Footer / Navigation Styling */
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-top: 1.5px solid #F1F5F9;
+      padding-top: 15px;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      color: #475569;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #F8FAFC;
+      border-color: #CBD5E1;
+      color: #1E293B;
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      border: none;
+      color: #FFFFFF;
+    }
+
+    .nav-btn.primary:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .footer-page-info {
+      font-size: 14px;
+      color: #64748B;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+    
+    <!-- Slide Header -->
+    <div class="slide-header">
+      <div class="logo-container">
+        <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="logo-placeholder">LOGO</div>
+        <div class="logo-title">Chitra Heart Hospital</div>
+      </div>
+      <div class="slide-title">About Our Hospital</div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      <!-- Intro Summary Bar -->
+      <div class="intro-bar">
+        <div class="intro-left">
+          <h2>Trust, Compassion & Quality Healthcare</h2>
+          <p>Where advanced medical care meets human touch, serving the people of Odisha.</p>
+        </div>
+        <div class="years-badge">
+          25+ Years of Excellence
+        </div>
+      </div>
+
+      <!-- 3 Pillars Grid -->
+      <div class="pillars-grid">
+        <!-- Pillar 1 -->
+        <div class="pillar-card">
+          <div class="pillar-icon-container">
+            <!-- Heart Rate Icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3>Excellence in Cardiac Care</h3>
+          <p>Committed to providing world-class cardiac healthcare services with cutting-edge technology and a team of highly experienced cardiologists.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="pillar-card">
+          <div class="pillar-icon-container">
+            <!-- Users/Patients Icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Patient-Centric Approach</h3>
+          <p>Every patient is treated with dignity, respect, and personalized care tailored to their unique medical, physical, and emotional needs.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar-card">
+          <div class="pillar-icon-container">
+            <!-- Activity/Award Icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <h3>Quality & Innovation</h3>
+          <p>Continuous investment in advanced medical equipment, software, and regular clinical training to deliver the safest and best patient outcomes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+      <div class="nav-controls">
+        <a href="slide2_md_message.html" class="nav-btn">
+          <!-- Left Arrow -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Previous
+        </a>
+        <a href="slide1_cover.html" class="nav-btn" title="Restart Presentation" style="padding: 10px 14px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <polyline points="3 3 3 8 8 8"></polyline>
+          </svg>
+        </a>
+        <a href="slide4_cardiology.html" class="nav-btn primary">
+          Next
+          <!-- Right Arrow -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="footer-page-info">Slide 3 of 8</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

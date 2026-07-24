@@ -48,7 +48,7 @@ export default function FloatingWhatsApp() {
     const phoneNumber = '917846969508'; // Client phone number
     let text = 'Hey Sonalika, I would like to inquire about your workflow automation services.';
 
-    if (pathname === '/ai-automation' || pathname === '/catalog') {
+    if (pathname === '/ai-automation' || pathname === '/ai-automation-latest') {
       text = 'Hey Sonalika, I was browsing your AI Automation Catalog and want to learn more about your pre-built workflows.';
     } else if (pathname === '/contact' || pathname.startsWith('/booking')) {
       text = 'Hey Sonalika, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
