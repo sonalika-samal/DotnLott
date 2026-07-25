@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DotnLott - Capabilities</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1E293B;
+      overflow: hidden;
+    }
+
+    .slide-container {
+          background: #FFFFFF !important;
+          width: 100%;
+      height: 100%;
+      max-width: 1920px;
+      max-height: 1080px;
+      aspect-ratio: 16/9;
+      
+      padding: 0 5% 11% 5%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+        }
+
+    /* Floating Circle Background Accents */
+    .dot-accent {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .dot-emerald-lg {
+      width: 135px;
+      height: 135px;
+      background: #059669;
+      opacity: 0.06;
+    }
+
+    .dot-purple-sm {
+      width: 45px;
+      height: 45px;
+      background: #7C3AED;
+      opacity: 0.1;
+    }
+
+    /* Header Nav */
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      z-index: 10;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 12px;
+    }
+
+    .logo-img {
+      height: 104px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Grids & Cards */
+    .grid-12-suites {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, auto);
+      gap: 10px;
+      width: 100%;
+      margin: 10px 0;
+      z-index: 10;
+    }
+
+    .card-blue, .card-purple, .card-emerald, .card-amber, .card-rose {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 6px !important;
+    }
+
+    .card-blue { border-color: #BFDBFE; background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%); }
+    .card-purple { border-color: #DDD6FE; background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%); }
+    .card-emerald { border-color: #A7F3D0; background: linear-gradient(135deg, #FFFFFF 0%, #ECFDF5 100%); }
+    .card-amber { border-color: #FDE68A; background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%); }
+    .card-rose { border-color: #FECDD3; background: linear-gradient(135deg, #FFFFFF 0%, #FFF1F2 100%); }
+
+    /* Timeline Process Design */
+    .timeline-container {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 10px 0 0 0;
+      padding: 0 10px;
+      width: 100%;
+      z-index: 5;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background: #E2E8F0;
+      z-index: 1;
+    }
+
+    .timeline-step {
+      position: relative;
+      z-index: 2;
+      width: 22%;
+      text-align: center;
+    }
+
+    .timeline-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2.5px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px auto;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: #64748B;
+      border-radius: 50% !important;
+    }
+
+    .timeline-step:nth-child(1) .timeline-dot { border-color: #2E4094; color: #2E4094; }
+    .timeline-step:nth-child(2) .timeline-dot { border-color: #7C3AED; color: #7C3AED; }
+    .timeline-step:nth-child(3) .timeline-dot { border-color: #059669; color: #059669; }
+    .timeline-step:nth-child(4) .timeline-dot { border-color: #D97706; color: #D97706; }
+
+    .timeline-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 750;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc {
+      font-size: 11px;
+      color: #64748B;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      color: #0F172A;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2E4094 0%, #00B5D8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    /* Footer Details */
+    .footer-bar {
+      position: absolute;
+      bottom: 3.5vh;
+      left: 6vw;
+      width: calc(100% - 12vw);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #2E4094 0%, #7C3AED 100%);
+      padding: 10px 20px;
+      z-index: 100;
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 13px;
+      box-shadow: 0 4px 20px rgba(46, 64, 148, 0.15);
+    }
+
+    .footer-brand-text {
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-page-info {
+      text-align: right;
+      font-size: 14px;
+      color: #64748B;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .footer-page-info {
+      font-size: 14px;
+      color: #64748B;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FFFFFF !important;
+      border: none !important;
+      color: #2E4094 !important;
+      padding: 6px 12px !important;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      border: none;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+    <div class="dot-accent dot-emerald-lg" style="top: 15%; left: 6%;"></div>
+    <div class="dot-accent dot-purple-sm" style="top: 60%; left: 4%;"></div>
+
+    <div class="header-nav">
+      <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+      <div class="slide-title">capabilities</div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1% 0;">
+      <div style="text-align: left;">
+        <h2 style="font-size: 22px; font-weight: 800; color: #0F172A; margin-bottom: 2px;">
+          12 Production-Ready <span class="gradient-text">AI Automation Suites</span>
+        </h2>
+        <p style="font-size: 13px; color: #475569; font-weight: 500;">
+          Our modular architectures operate 24/7 connecting your CRMs, channels, databases, and spreadsheets automatically.
+        </p>
+      </div>
+
+                                          <!-- 12 Capabilities Grid -->
+            <div class="grid-12-suites">
+              <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">⚡ AI Workflow</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Multi-app API routing, webhooks &amp; logic loops.</p>
+              </div>
+              <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🔄 CRM Automations</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Database sync, lead updates &amp; warning alerts.</p>
+              </div>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">💬 WhatsApp API</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Official API triggers, campaigns &amp; chatbot flows.</p>
+              </div>
+              <div class="card-amber" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🎙️ AI Voice Agents</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Natural voice inbound handlers and CRM logs.</p>
+              </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🤖 AI Chatbots</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Custom support widgets trained on company DB.</p>
+              </div>
+              <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">📧 Outreach Autopilot</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Scraping, drip sequences &amp; warmup setups.</p>
+              </div>
+              <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🎯 Lead Management</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Intake forms, lead scoring &amp; rep routing.</p>
+              </div>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🧾 Invoice Engine</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Dynamic PDF quotes, billing sync &amp; receipts.</p>
+              </div>
+              <div class="card-amber" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">👥 HR &amp; Ops</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Leave tracking, SLA alerts &amp; check-in flows.</p>
+              </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">📱 Social Autopilot</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">AI graphic posters &amp; multi-channel scheduling.</p>
+              </div>
+              <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">✈️ Travel Business</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Rate lookup triggers &amp; traveler itineraries.</p>
+              </div>
+              <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🧩 Custom AI Coding</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Bespoke scripts, LLM agents &amp; APIs.</p>
+              </div>
+            </div>
+
+      <!-- Timeline -->
+      <div style="border-top: 1.5px solid #F1F5F9; padding-top: 8px;">
+        <div class="timeline-container">
+          <div class="timeline-step">
+            <div class="timeline-dot" style="border-radius: 50% !important;">01</div>
+            <div class="timeline-title">Discovery Call</div>
+            <div class="timeline-desc">Map bottlenecks &amp; project goals.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot" style="border-radius: 50% !important;">02</div>
+            <div class="timeline-title">System Blueprint</div>
+            <div class="timeline-desc">Architect schemas &amp; UI wires.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot" style="border-radius: 50% !important;">03</div>
+            <div class="timeline-title">Agile Engineering</div>
+            <div class="timeline-desc">Fast sprints with developer updates.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot" style="border-radius: 50% !important;">04</div>
+            <div class="timeline-title">Deploy &amp; Handover</div>
+            <div class="timeline-desc">Full code IP transfer &amp; support.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar" style="border-top: none;">
+      <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+        <a href="slide3_founders_message.html" class="nav-btn" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+          Previous
+        </a>
+        <a href="slide1_cover.html" class="nav-btn" title="Restart Presentation" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 10px !important; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+        </a>
+        <a href="slide5_automation_pricing.html" class="nav-btn primary" style="background: #FFFFFF !important; color: #7C3AED !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+          Next
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+        </a>
+      </div>
+      <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+        ⚙️ 24/7 Autopilot Background Operations & Sub-Second Edge Rendered Platforms. &nbsp;&bull;&nbsp; Slide 4 of 7
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
