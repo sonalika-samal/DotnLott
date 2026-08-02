@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'DotnLott | AI Workflow Automation & Custom Web Development',
     description: 'Enterprise-grade workflow automation, seamless integrations, custom AI web apps, and bespoke website development. Transform your manual processes with DotnLott.',
     type: 'website',
-    images: [{ url: '/home-og.png', width: 1200, height: 630, alt: 'DotnLott AI Workflow Automation' }],
+    images: [{ url: '/home-og.jpg', width: 1024, height: 1024, alt: 'DotnLott AI Workflow Automation' }],
   },
 };
 
