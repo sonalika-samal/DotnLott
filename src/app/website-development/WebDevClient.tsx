@@ -283,7 +283,7 @@ export default function WebDevClient() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="lg:col-span-5 flex flex-col items-center justify-center relative"
+            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-24 lg:mt-0"
           >
             <div className="absolute w-72 h-72 rounded-full bg-brand-purple/5 blur-[80px] pointer-events-none" />
             
