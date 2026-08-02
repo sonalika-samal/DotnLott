@@ -310,7 +310,7 @@ const pricingPlans = [
   }
 ];
 
-export default function CatalogClient() {
+export default function AiAutoClient() {
   const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
 

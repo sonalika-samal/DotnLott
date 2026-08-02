@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import CatalogClient from '../catalog/CatalogClient';
+import AiAutoClient from '../catalog/AiAutoClient';
 
 export const metadata: Metadata = {
   title: 'AI Automation Suites & Pricing | DotnLott Landing Page',
@@ -63,7 +63,7 @@ export default function AiAutomationLatestPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <CatalogClient />
+      <AiAutoClient />
     </>
   );
 }
