@@ -418,6 +418,21 @@ export default function CatalogClient() {
                 Claim Offer <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
+
+            {/* Corporate trust banner */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-wrap items-center gap-6 mt-6 border-t border-slate-200 pt-6 text-slate-500 text-xs"
+            >
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4.5 h-4.5 text-brand-blue" />
+                <span>Registered Private Limited Company</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="w-4.5 h-4.5 text-brand-purple" />
+                <span>Enterprise SLA & Priority Support</span>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Mascot Visual */}
