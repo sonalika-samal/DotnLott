@@ -426,9 +426,9 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, auto);
-      gap: 10px;
+      gap: 16px;
       width: 100%;
-      margin: 10px 0;
+      margin: 18px 0;
     }
 
     /* Dynamic Brochure Cards */
@@ -978,12 +978,17 @@
   <!-- Vertical Dots Indicators -->
   <div class="slider-dots">
     <button class="dot-btn active" onclick="goToSlide(0)" title="Cover Page"></button>
-    <button class="dot-btn" onclick="goToSlide(1)" title="Philosophy & Advantages"></button>
-    <button class="dot-btn" onclick="goToSlide(2)" title="Founders' Message / Vision & Mission"></button>
-    <button class="dot-btn" onclick="goToSlide(3)" title="Capabilities"></button>
-    <button class="dot-btn" onclick="goToSlide(4)" title="Automation Pricing"></button>
-    <button class="dot-btn" onclick="goToSlide(5)" title="Web Packages"></button>
-    <button class="dot-btn" onclick="goToSlide(6)" title="Contact & FAQs"></button>
+    <button class="dot-btn" onclick="goToSlide(1)" title="About Us"></button>
+    <button class="dot-btn" onclick="goToSlide(2)" title="The Problem"></button>
+    <button class="dot-btn" onclick="goToSlide(3)" title="Imagine if..."></button>
+    <button class="dot-btn" onclick="goToSlide(4)" title="What We Do"></button>
+    <button class="dot-btn" onclick="goToSlide(5)" title="Industries We Can Help"></button>
+    <button class="dot-btn" onclick="goToSlide(6)" title="Typical Automation Journey"></button>
+    <button class="dot-btn" onclick="goToSlide(7)" title="Live Examples"></button>
+    <button class="dot-btn" onclick="goToSlide(8)" title="AI Agents"></button>
+    <button class="dot-btn" onclick="goToSlide(9)" title="Benefits"></button>
+    <button class="dot-btn" onclick="goToSlide(10)" title="How We Work"></button>
+    <button class="dot-btn" onclick="goToSlide(11)" title="Let's Build Your Autopilot"></button>
   </div>
 
   <div class="slider-viewport">
@@ -1064,7 +1069,7 @@
 
           <div class="footer-bar" style="border-top: none;">
             <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
-              <button class="nav-btn" onclick="goToSlide(6)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+              <button class="nav-btn" onclick="goToSlide(11)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
                 Previous
               </button>
@@ -1077,11 +1082,13 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              ⚡ Next-Gen Software Engineering & AI Operations - Built for Scale, Speed, and Sub-Second Execution. &nbsp;&bull;&nbsp; Slide 1 of 7
+              ⚡ Next-Gen Software Engineering &amp; AI Operations - Built for Scale, Speed, and Sub-Second Execution. &nbsp;&bull;&nbsp; Slide 1 of 12
             </div>
           </div>
         </div>
-      </div><!-- SLIDE 2: PHILOSOPHY & CORE ADVANTAGES -->
+      </div>
+
+      <!-- SLIDE 2: ABOUT US (PHILOSOPHY & CORE ADVANTAGES) -->
       <div class="slide-wrapper">
         <div class="slide-container" style="background: radial-gradient(circle at 90% 90%, #EFF6FF 0%, transparent 40%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
           <div class="dot-accent dot-teal-lg" style="bottom: 12%; right: 7%;"></div>
@@ -1091,7 +1098,7 @@
             <div class="logo-container">
               <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
             </div>
-            <div class="slide-title">Philosophy &amp; Advantages</div>
+            <div class="slide-title">About Us</div>
           </div>
 
           <div class="grid-2" style="padding: 2.2% 0; align-items: stretch;">
@@ -1114,7 +1121,7 @@
               </div>
             </div>
 
-                        <!-- Right: 6 Core Engineering Advantages in a grid -->
+            <!-- Right: 6 Core Engineering Advantages in a grid -->
             <div class="grid-6">
               <div class="card-blue" style="padding: 8px 12px; border-radius: 8px; justify-content: center;">
                 <div style="font-size: 13.5px; font-weight: 800; color: #2563EB; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">👨‍💻 Direct Devs</div>
@@ -1143,9 +1150,6 @@
             </div>
           </div>
 
-          <!-- Bottom band -->
-          
-
           <div class="footer-bar" style="border-top: none;">
             <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
               <button class="nav-btn" onclick="goToSlide(0)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
@@ -1161,73 +1165,71 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              💡 100% Transparency & Direct Developer Access - Zero Middlemen, Zero Hidden Retainers. &nbsp;&bull;&nbsp; Slide 2 of 7
+              💡 100% Transparency &amp; Direct Developer Access - Zero Middlemen, Zero Hidden Retainers. &nbsp;&bull;&nbsp; Slide 2 of 12
             </div>
           </div>
         </div>
-      </div><!-- SLIDE 3: CO-FOUNDERS' MESSAGE & VISION/MISSION -->
+      </div>
+
+      <!-- SLIDE 3: THE PROBLEM -->
       <div class="slide-wrapper">
-        <div class="slide-container" style="background: radial-gradient(circle at 10% 10%, #EFF6FF 0%, transparent 40%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
-          <div class="dot-accent dot-purple-lg" style="top: 18%; right: 5%;"></div>
-          <div class="dot-accent dot-purple-sm" style="top: 40%; left: 3%;"></div>
+        <div class="slide-container" style="background: radial-gradient(circle at 10% 20%, #FFF5F5 0%, transparent 50%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
+          <div class="dot-accent dot-rose-lg" style="top: 15%; right: 5%;"></div>
+          <div class="dot-accent dot-rose-sm" style="bottom: 20%; left: 3%;"></div>
           
           <div class="header-nav">
             <div class="logo-container">
               <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
             </div>
-            <div class="slide-title">Co-Founders' message</div>
+            <div class="slide-title">The Problem</div>
           </div>
 
-          <div class="grid-2" style="padding: 2% 0; align-items: stretch;">
-            
-            <!-- Left Side: Vision & Mission Side-by-Side Blocks -->
-            <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%;">
-              <!-- Vision Card -->
-              <div class="card-solid-blue" style="flex: 1; padding: 16px 18px; border-radius: 8px; background: #2E4094; color: #FFFFFF; box-shadow: 0 6px 20px rgba(46, 64, 148, 0.15); display: flex; flex-direction: column; justify-content: center; text-align: left;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                  <span style="font-size: 14px;">🎯</span>
-                  <h4 style="font-size: 15px; font-weight: 800; color: #FFFFFF; font-family: 'Outfit', sans-serif; margin: 0;">Our Vision</h4>
-                </div>
-                <p style="font-size: 13.5px; line-height: 1.5; color: #E0E7FF; font-weight: 500; margin: 0;">To democratize business automation and sub-second web technology, making enterprise-grade execution accessible, simple, and completely risk-free for ambitious businesses globally. We envision a future where operational friction is entirely eliminated, allowing companies of all sizes to leverage artificial intelligence and custom backbones to compete at the highest level without high overheads or developer dependency.</p>
-              </div>
-
-              <!-- Mission Card -->
-              <div class="card-solid-teal" style="flex: 1; padding: 16px 18px; border-radius: 8px; background: #00B5D8; color: #FFFFFF; box-shadow: 0 6px 20px rgba(0, 181, 214, 0.15); display: flex; flex-direction: column; justify-content: center; text-align: left;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                  <span style="font-size: 14px;">🚀</span>
-                  <h4 style="font-size: 15px; font-weight: 800; color: #FFFFFF; font-family: 'Outfit', sans-serif; margin: 0;">Our Mission</h4>
-                </div>
-                <p style="font-size: 13.5px; line-height: 1.5; color: #ECFEFF; font-weight: 500; margin: 0;">To engineer robust, self-healing background automation pipelines and lightning-fast custom web applications that eliminate manual labor, lower overheads, and scale customer revenue. By building modular, direct-to-developer systems, we empower organizations to begin with low-risk micro-sprints and progressively scale into fully customized autopilot ecosystems.</p>
-              </div>
+          <div class="grid-2" style="padding: 2% 0; align-items: center; gap: 40px;">
+            <!-- Left: Problem Statement -->
+            <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; gap: 15px;">
+              <span class="badge badge-rose" style="width: max-content; background: #FFE4E6; color: #E11D48; border-color: #FECDD3;">OPERATIONAL BOTTLENECK</span>
+              <h2 style="font-size: 32px; font-weight: 900; color: #9F1239; line-height: 1.25;">
+                Does this sound familiar?
+              </h2>
+              <p style="font-size: 14.5px; color: #475569; line-height: 1.55;">
+                Every day, businesses bleed revenue not because they lack leads, but because their day-to-day operations depend on human memory and repetitive work.
+              </p>
             </div>
 
-            <!-- Right Side: Founders Letter & Note -->
-            <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 15px; text-align: left; border-left: 1.5px solid #F1F5F9; padding-left: 20px;">
-              <div>
-                <span class="badge badge-purple" style="width: max-content;">FOUNDERS' LETTER</span>
-                <h2 style="font-size: 26px; font-weight: 800; color: #0F172A; line-height: 1.2; margin-top: 5px;">
-                  Technology Built to <span class="gradient-text">Eliminate Friction</span>
-                </h2>
-                
-                <p style="font-size: 14px; line-height: 1.55; color: #475569; margin-top: 8px;">
-                  DotnLott was established to solve a critical market disconnect: mid-sized companies either settle for rigid off-the-shelf software or face massive financial risks with expensive digital agency retainers. We deliver modular, risk-free software engineering and AI automation suites tailored to your exact operational requirements.
-                </p>
+            <!-- Right: 6 Problem Cards with Red Crosses -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;">
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #E11D48;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; margin-bottom: 2px;">❌ Missing Enquiries</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Leads go cold before anyone can reply.</p>
               </div>
-
-              <div class="card-purple" style="border-left: 4.5px solid #7C3AED; padding: 14px 20px; background: #FFFFFF; border-radius: 0 8px 8px 0; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03); margin-top: 5px;">
-                <p style="font-size: 13.5px; line-height: 1.45; color: #1E293B; font-weight: 600; font-style: italic; margin-bottom: 8px;">
-                  "We make AI and Business Automation accessible through modular, low-risk solutions—allowing businesses to automate confidently and scale progressively."
-                </p>
-                <div style="border-top: 1px solid #E2E8F0; padding-top: 8px; margin-top: 8px;">
-                  <div style="font-size: 13.5px; font-weight: 800; color: #0F172A; font-family: 'Outfit', sans-serif;">
-                    Sonalika Samal &amp; Abhishek Abhinav
-                  </div>
-                  <div style="font-size: 11px; color: #2563EB; font-weight: 700; margin-top: 1px;">Co-Founders, DotnLott</div>
-                  <div style="font-size: 10.5px; color: #64748B; font-weight: 600; margin-top: 1px;">MCA, IIT Patna Alum &amp; Software Engineers</div>
-                </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #E11D48;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; margin-bottom: 2px;">❌ Forgotten Follow-ups</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Staff misses crucial client touchpoints.</p>
+              </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #E11D48;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; margin-bottom: 2px;">❌ Repetitive Tasks</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Hours lost manually moving data around.</p>
+              </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #E11D48;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; margin-bottom: 2px;">❌ Manual Billing</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Quotes &amp; invoices created one-by-one.</p>
+              </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #E11D48;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; margin-bottom: 2px;">❌ Scattered Data</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Info split across sheets, CRMs &amp; chats.</p>
+              </div>
+              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #E11D48;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; margin-bottom: 2px;">❌ Human Dependency</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Everything breaks if key staff are away.</p>
               </div>
             </div>
+          </div>
 
+          <!-- Bottom Quote Banner -->
+          <div style="background: linear-gradient(95deg, #FEF2F2 0%, #FFF1F2 100%); border-left: 5px solid #EF4444; padding: 12px 20px; text-align: center; margin-top: 5px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.02); z-index: 10;">
+            <p style="font-size: 14.5px; color: #9F1239; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+              "Businesses don't lose money because they lack customers. They lose money because of inefficient processes."
+            </p>
           </div>
 
           <div class="footer-bar" style="border-top: none;">
@@ -1245,110 +1247,71 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              🤝 Built on Trust & Long-Term Operational Integration - Zero Hidden Technical Debt. &nbsp;&bull;&nbsp; Slide 3 of 7
+              ⚠️ Inefficient Processes Cost 20-30% of Annual Revenue. &nbsp;&bull;&nbsp; Slide 3 of 12
             </div>
           </div>
         </div>
-      </div><!-- SLIDE 4: CAPABILITIES (12 AI SUITES & TIMELINE) -->
+      </div>
+
+      <!-- SLIDE 4: IMAGINE IF... -->
       <div class="slide-wrapper">
-        <div class="slide-container" style="background: radial-gradient(circle at 80% 80%, #ECFDF5 0%, transparent 40%), #FFFFFF;">
-          <div class="dot-accent dot-emerald-lg" style="top: 15%; left: 6%;"></div>
-          <div class="dot-accent dot-purple-sm" style="top: 60%; left: 4%;"></div>
+        <div class="slide-container" style="background: radial-gradient(circle at 80% 20%, #ECFDF5 0%, transparent 50%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
+          <div class="dot-accent dot-emerald-lg" style="top: 15%; left: 5%;"></div>
+          <div class="dot-accent dot-teal-sm" style="bottom: 20%; right: 3%;"></div>
           
           <div class="header-nav">
             <div class="logo-container">
               <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
             </div>
-            <div class="slide-title">capabilities</div>
+            <div class="slide-title">Imagine If...</div>
           </div>
 
-          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1% 0;">
-            <div style="text-align: left;">
-              <h2 style="font-size: 22px; font-weight: 800; color: #0F172A; margin-bottom: 2px;">
-                12 Production-Ready <span class="gradient-text">AI Automation Suites</span>
+          <div class="grid-2" style="padding: 2% 0; align-items: center; gap: 40px;">
+            <!-- Left: The Vision -->
+            <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; gap: 15px;">
+              <span class="badge badge-emerald" style="width: max-content;">THE FUTURE OF WORK</span>
+              <h2 style="font-size: 32px; font-weight: 900; color: #047857; line-height: 1.25;">
+                Imagine having a digital employee that...
               </h2>
-              <p style="font-size: 13px; color: #475569; font-weight: 500;">
-                Our modular architectures operate 24/7 connecting your CRMs, channels, databases, and spreadsheets automatically.
+              <p style="font-size: 14.5px; color: #475569; line-height: 1.55;">
+                What if your core administration, outreach, customer service, and report structures ran perfectly on autopilot?
               </p>
             </div>
 
-                                                <!-- 12 Capabilities Grid -->
-            <div class="grid-12-suites">
-              <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">⚡ AI Workflow</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Multi-app API routing, webhooks &amp; logic loops.</p>
+            <!-- Right: 6 Success Cards with Green Checkmarks -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;">
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; margin-bottom: 2px;">✓ Works 24×7</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Processes run overnight and on weekends.</p>
               </div>
-              <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🔄 CRM Automations</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Database sync, lead updates &amp; warning alerts.</p>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; margin-bottom: 2px;">✓ Never Forgets</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Zero human memory lapses or overlooked clients.</p>
               </div>
-              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">💬 WhatsApp API</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Official API triggers, campaigns &amp; chatbot flows.</p>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; margin-bottom: 2px;">✓ Replies Instantly</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Responds to hot leads in under 2 minutes.</p>
               </div>
-              <div class="card-amber" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🎙️ AI Voice Agents</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Natural voice inbound handlers and CRM logs.</p>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; margin-bottom: 2px;">✓ Never Takes Leave</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Always active, keeping operations running.</p>
               </div>
-              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🤖 AI Chatbots</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Custom support widgets trained on company DB.</p>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; margin-bottom: 2px;">✓ Handles Follow-ups</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Closes more deals through automatic drips.</p>
               </div>
-              <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">📧 Outreach Autopilot</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Scraping, drip sequences &amp; warmup setups.</p>
-              </div>
-              <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🎯 Lead Management</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Intake forms, lead scoring &amp; rep routing.</p>
-              </div>
-              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🧾 Invoice Engine</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Dynamic PDF quotes, billing sync &amp; receipts.</p>
-              </div>
-              <div class="card-amber" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">👥 HR &amp; Ops</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Leave tracking, SLA alerts &amp; check-in flows.</p>
-              </div>
-              <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">📱 Social Autopilot</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">AI graphic posters &amp; multi-channel scheduling.</p>
-              </div>
-              <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">✈️ Travel Business</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Rate lookup triggers &amp; traveler itineraries.</p>
-              </div>
-              <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; min-height: 76px; justify-content: center;">
-                <div style="font-size: 12.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 2px;">🧩 Custom AI Coding</div>
-                <p style="font-size: 11px; color: #64748B; line-height: 1.35; font-weight: 550;">Bespoke scripts, LLM agents &amp; APIs.</p>
+              <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; margin-bottom: 2px;">✓ Fits Your Tooling</div>
+                <p style="font-size: 11.5px; color: #64748B; line-height: 1.35; font-weight: 550;">Hooks right into your existing sheets &amp; apps.</p>
               </div>
             </div>
+          </div>
 
-            <!-- Timeline -->
-            <div style="border-top: 1.5px solid #F1F5F9; padding-top: 8px;">
-              <div class="timeline-container">
-                <div class="timeline-step">
-                  <div class="timeline-dot">01</div>
-                  <div class="timeline-title">Discovery Call</div>
-                  <div class="timeline-desc">Map bottlenecks &amp; project goals.</div>
-                </div>
-                <div class="timeline-step">
-                  <div class="timeline-dot">02</div>
-                  <div class="timeline-title">System Blueprint</div>
-                  <div class="timeline-desc">Architect schemas &amp; UI wires.</div>
-                </div>
-                <div class="timeline-step">
-                  <div class="timeline-dot">03</div>
-                  <div class="timeline-title">Agile Engineering</div>
-                  <div class="timeline-desc">Fast sprints with developer updates.</div>
-                </div>
-                <div class="timeline-step">
-                  <div class="timeline-dot">04</div>
-                  <div class="timeline-title">Deploy &amp; Handover</div>
-                  <div class="timeline-desc">Full code IP transfer &amp; support.</div>
-                </div>
-              </div>
-            </div>
+          <!-- Bottom Callout Strip -->
+          <div style="background: linear-gradient(95deg, #ECFDF5 0%, #D1FAE5 100%); border-left: 5px solid #10B981; padding: 12px 20px; text-align: center; margin-top: 5px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.02); z-index: 10;">
+            <p style="font-size: 14.5px; color: #047857; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+              ⚡ No replacement of staff. Only smarter operations.
+            </p>
           </div>
 
           <div class="footer-bar" style="border-top: none;">
@@ -1366,116 +1329,89 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              ⚙️ 24/7 Autopilot Background Operations & Sub-Second Edge Rendered Platforms. &nbsp;&bull;&nbsp; Slide 4 of 7
+              🚀 Empower Your Staff by Offloading Boring Work. &nbsp;&bull;&nbsp; Slide 4 of 12
             </div>
           </div>
         </div>
-      </div><!-- SLIDE 5: AUTOMATION PRICING -->
+      </div>
+
+      <!-- SLIDE 5: WHAT WE DO (12 AI SUITES) -->
       <div class="slide-wrapper">
-        <div class="slide-container">
-    <div class="dot-accent dot-purple-lg" style="top: 12%; right: 7%;"></div>
-    <div class="dot-accent dot-blue-sm" style="top: 32%; left: 4%;"></div>
-
-    <div class="header-nav">
-      <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
-      <div class="slide-title">Automation Pricing</div>
-    </div>
-
-    <div class="grid-2">
-      <!-- Left: Pricing Plans -->
-      <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-        <div style="text-align: left; margin-bottom: 8px;">
-          <h2 style="font-size: 22px; font-weight: 800; color: #0F172A; margin-bottom: 2px;">
-            Automation Suite <span class="gradient-text">Pricing &amp; Plans</span>
-          </h2>
-          <p style="font-size: 13px; color: #475569; font-weight: 500;">
-            Flat, transparent setup fees. Maintain 100% ownership of your code, data, and hosting servers without mandatory platform licenses.
-          </p>
-        </div>
-
-        <div class="grid-2-equal">
-          <div class="card-blue">
-            <div style="font-size: 12px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">STARTER</div>
-            <div style="font-size: 22px; font-weight: 900; color: #0F172A; margin: 2px 0;">₹499 <span style="font-size: 11px; color: #64748B; font-weight: 500;">one-time</span></div>
-            <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin-bottom: 4px;">1 selected micro-workflow suite on managed cloud.</p>
-            <span style="font-size: 10px; color: #2563EB; font-weight: 800;">✓ Managed Cloud • Standard Support</span>
+        <div class="slide-container" style="background: radial-gradient(circle at 50% 50%, #F5F3FF 0%, transparent 60%), #FFFFFF;">
+          <div class="dot-accent dot-purple-lg" style="top: 15%; left: 6%;"></div>
+          <div class="dot-accent dot-blue-sm" style="top: 60%; right: 4%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">What We Do</div>
           </div>
 
-          <div class="card-purple">
-            <div style="font-size: 12px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">GROWTH</div>
-            <div style="font-size: 22px; font-weight: 900; color: #0F172A; margin: 2px 0;">₹999 <span style="font-size: 11px; color: #64748B; font-weight: 500;">one-time</span></div>
-            <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin-bottom: 4px;">3 operational pipelines deployed on cloud or client VPS.</p>
-            <span style="font-size: 10px; color: #7C3AED; font-weight: 800;">✓ Cloud/VPS • Priority Support</span>
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1% 0;">
+            <div style="text-align: left; margin-top: -1vh;">
+              <h2 style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 4px;">
+                We automate your business processes using <span class="gradient-text">AI</span>
+              </h2>
+              <p style="font-size: 15px; color: #475569; font-weight: 600;">
+                Our modular architectures operate 24/7 connecting your CRMs, channels, databases, and spreadsheets automatically.
+              </p>
+            </div>
+
+            <!-- 12 Capabilities Grid -->
+            <div class="grid-12-suites" style="margin: 12px 0;">
+              <div class="card-blue" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(46, 64, 148, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">📧 Email Marketing Automation Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• AI Lead Prospecting &amp; Verification<br>• Email Outreach Autopilot<br>• Smart Follow-up Sequencer</p>
+              </div>
+              <div class="card-purple" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">📱 Social Media Automation Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• AI Graphic Poster Creator<br>• Auto Multi-Channel Scheduler<br>• AI Content &amp; Copywriting</p>
+              </div>
+              <div class="card-emerald" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">🎯 Meta Ads Automation Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Facebook/Instagram Lead Collection<br>• Instant Lead Qualification<br>• Instant WhatsApp CRM Alert</p>
+              </div>
+              <div class="card-amber" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">🔄 AI Lead Nurturing Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Custom WhatsApp Flows<br>• Conversational AI Chatbot<br>• Automated Email Drips</p>
+              </div>
+              <div class="card-rose" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">👥 Customer Success Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Automated Welcome &amp; Onboarding<br>• Feedback &amp; CSAT Collection<br>• Automated Google Reviews Boost</p>
+              </div>
+              <div class="card-blue" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(46, 64, 148, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">💼 Office Productivity Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• SLA Ticket Delay Alerts<br>• Overdue Task Checklists<br>• Daily Team Shift Reminders</p>
+              </div>
+              <div class="card-purple" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">⚙️ CRM Automation Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Google Calendar Integration<br>• Enterprise CRM Sync Drivers<br>• Lead Status Age Warnings</p>
+              </div>
+              <div class="card-emerald" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">🤖 AI Business Assistant Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• AI Sales Representative Agent<br>• AI Smart Inbox Manager<br>• AI Customer Success Copilot</p>
+              </div>
+              <div class="card-amber" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">✈️ Travel Business Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Travel Rate Intelligence Lookups<br>• AI Booking Assistant Chatbots<br>• Outbound Lead Journey Drips</p>
+              </div>
+              <div class="card-rose" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">🌐 Website Business Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Form-to-WhatsApp Instants<br>• Calendar Consultation Scheduling<br>• Contact Form CRM Routing</p>
+              </div>
+              <div class="card-blue" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(46, 64, 148, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">🎙️ Voice Agent Support Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Autonomous Inbound Call Handler<br>• Real-time Conversation Transcriber<br>• Natural Language Voice Synthesis</p>
+              </div>
+              <div class="card-purple" style="padding: 16px 14px; border-radius: 8px; min-height: 105px; justify-content: center; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 5px; line-height: 1.25;">🧾 Invoice Automation Suite</div>
+                <p style="font-size: 11px; color: #64748B; line-height: 1.45; font-weight: 550; margin: 0;">• Dynamic PDF Quote Builder<br>• Automated Recurring Invoices<br>• Smart Payment Reminder Autopilot</p>
+              </div>
+            </div>
           </div>
 
-          <div class="card-amber">
-            <div style="font-size: 12px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif;">BUSINESS</div>
-            <div style="font-size: 22px; font-weight: 900; color: #0F172A; margin: 2px 0;">₹1,999 <span style="font-size: 11px; color: #64748B; font-weight: 500;">one-time</span></div>
-            <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin-bottom: 4px;">Unlock automated workflows across all 12 suites on dedicated VPS.</p>
-            <span style="font-size: 10px; color: #D97706; font-weight: 800;">✓ Dedicated VPS • Root Control</span>
-          </div>
-
-          <div class="card-emerald">
-            <div style="font-size: 12px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif;">ENTERPRISE</div>
-            <div style="font-size: 22px; font-weight: 900; color: #0F172A; margin: 2px 0;">Custom <span style="font-size: 11px; color: #64748B; font-weight: 500;">bespoke</span></div>
-            <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin-bottom: 4px;">Bespoke scopes, custom LLMs, dedicated SLA on private cloud array.</p>
-            <span style="font-size: 10px; color: #059669; font-weight: 800;">✓ Private Cloud • 24/7 Dedicated SLA</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Comparison Matrix -->
-      <div style="text-align: left; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-              <h4 style="font-size: 14px; font-weight: 800; color: #0F172A; margin-bottom: 4px;">Infrastructure &amp; Specs Matrix</h4>
-        <table class="matrix-table" style="margin-top: 0; width: 100%; height: 100%; flex: 1;">
-          <thead>
-            <tr>
-              <th style="width: 25%;">Feature</th>
-              <th style="width: 25%;">Starter</th>
-              <th style="width: 25%;">Growth</th>
-              <th style="width: 25%;">Business</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Suites</strong></td>
-              <td>1 Selected</td>
-              <td>3 Selected</td>
-              <td>All 12 Suites</td>
-            </tr>
-            <tr>
-              <td><strong>Hosting</strong></td>
-              <td>Managed Cloud</td>
-              <td>Cloud / Client VPS</td>
-              <td>Dedicated VPS</td>
-            </tr>
-            <tr>
-              <td><strong>Control</strong></td>
-              <td>Shared</td>
-              <td>Isolated Tenant</td>
-              <td>100% Root Control</td>
-            </tr>
-            <tr>
-              <td><strong>Data</strong></td>
-              <td>Encrypted</td>
-              <td>Client Owned</td>
-              <td>Client Owned</td>
-            </tr>
-            <tr>
-              <td><strong>Support</strong></td>
-              <td>Standard Email</td>
-              <td>Priority Chat</td>
-              <td>Dedicated Call</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Bottom band -->
-    
-
-    <div class="footer-bar" style="border-top: none;">
+          <div class="footer-bar" style="border-top: none;">
             <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
               <button class="nav-btn" onclick="goToSlide(3)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
@@ -1490,115 +1426,94 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              💎 Pure Setup Investments - No Mandatory Subscriptions or Recurring Software Fees. &nbsp;&bull;&nbsp; Slide 5 of 7
+              ⚙️ 12 Core Capabilities to Power Your Business Autopilot. &nbsp;&bull;&nbsp; Slide 5 of 12
             </div>
           </div>
         </div>
-      </div><!-- SLIDE 6: WEB ENGINEERING PACKAGES -->
+      </div>
+
+      <!-- SLIDE 6: INDUSTRIES WE CAN HELP -->
       <div class="slide-wrapper">
-        <div class="slide-container">
-    <div class="dot-accent dot-blue-lg" style="top: 15%; right: 8%;"></div>
-    <div class="dot-accent dot-emerald-sm" style="top: 82%; left: 8%;"></div>
+        <div class="slide-container" style="background: radial-gradient(circle at 10% 90%, #EFF6FF 0%, transparent 50%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
+          <div class="dot-accent dot-blue-lg" style="top: 15%; right: 8%;"></div>
+          <div class="dot-accent dot-purple-sm" style="bottom: 22%; left: 3%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">Industries We Help</div>
+          </div>
 
-    <div class="header-nav">
-      <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
-      <div class="slide-title">web packages</div>
-    </div>
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5% 0;">
+            <div style="text-align: left; margin-bottom: 8px;">
+              <h2 style="font-size: 24px; font-weight: 800; color: #0F172A;">
+                Industries We Can <span class="gradient-text">Help</span>
+              </h2>
+              <p style="font-size: 13.5px; color: #475569; font-weight: 550;">
+                No matter the vertical, if your business has repetitive computer tasks, we can automate it.
+              </p>
+            </div>
 
-    <div class="grid-2">
-      <!-- Left: Web Packages -->
-      <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px;">
-        <div style="text-align: left; margin-bottom: 8px;">
-          <h2 style="font-size: 22px; font-weight: 800; color: #0F172A; margin-bottom: 2px;">
-            Custom Web Engineering &amp; <span class="gradient-text">Packages</span>
-          </h2>
-          <p style="font-size: 13px; color: #475569; font-weight: 500;">
-            Custom edge-rendered, static distributed sites for maximum SEO ranking and sub-second execution speed.
-          </p>
-        </div>
+            <!-- Industries 4x3 Grid -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; margin-bottom: 10px;">
+              <div class="card-blue" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">✈️</span>
+                <div style="font-size: 12px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">Travel &amp; Tourism</div>
+              </div>
+              <div class="card-purple" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🏥</span>
+                <div style="font-size: 12px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">Healthcare</div>
+              </div>
+              <div class="card-emerald" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🎓</span>
+                <div style="font-size: 12px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif;">Education</div>
+              </div>
+              <div class="card-amber" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🏢</span>
+                <div style="font-size: 12px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif;">Real Estate</div>
+              </div>
+              <div class="card-rose" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🏭</span>
+                <div style="font-size: 12px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif;">Manufacturing</div>
+              </div>
+              <div class="card-blue" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🛍️</span>
+                <div style="font-size: 12px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">Retail &amp; Ecomm</div>
+              </div>
+              <div class="card-purple" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">💳</span>
+                <div style="font-size: 12px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">Finance &amp; Banking</div>
+              </div>
+              <div class="card-emerald" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">💼</span>
+                <div style="font-size: 12px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif;">Consultants</div>
+              </div>
+              <div class="card-amber" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">⚖️</span>
+                <div style="font-size: 12px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif;">Law Firms</div>
+              </div>
+              <div class="card-rose" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🚀</span>
+                <div style="font-size: 12px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif;">Agencies</div>
+              </div>
+              <div class="card-blue" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🍽️</span>
+                <div style="font-size: 12px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">Restaurants</div>
+              </div>
+              <div class="card-purple" style="padding: 10px; border-radius: 8px; align-items: center; justify-content: center; text-align: center;">
+                <span style="font-size: 18px; margin-bottom: 2px;">🔄</span>
+                <div style="font-size: 12px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">Any Service Biz</div>
+              </div>
+            </div>
 
-        <table class="matrix-table" style="margin-top: 0; width: 100%; height: 100%; flex: 1;">
-          <thead>
-            <tr>
-              <th style="width: 25%;">Package</th>
-              <th style="width: 25%;">Starting Price</th>
-              <th style="width: 25%;">Timeline</th>
-              <th style="width: 25%;">Scope</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Landing Page</strong></td>
-              <td style="color: #2E4094; font-weight: 750;">₹2,999</td>
-              <td>2 - 3 Days</td>
-              <td>1 Page (Ad converting)</td>
-            </tr>
-            <tr>
-              <td><strong>Business Site</strong></td>
-              <td style="color: #2E4094; font-weight: 750;">₹7,999</td>
-              <td>1 - 2 Weeks</td>
-              <td>5 - 10 Pages (Corporate)</td>
-            </tr>
-            <tr>
-              <td><strong>Dynamic Site</strong></td>
-              <td style="color: #2E4094; font-weight: 750;">₹12,999</td>
-              <td>2 - 3 Weeks</td>
-              <td>10-25 Pages (Custom DB/CMS)</td>
-            </tr>
-            <tr>
-              <td><strong>E-Commerce</strong></td>
-              <td style="color: #2E4094; font-weight: 750;">₹19,999</td>
-              <td>2 - 3 Weeks</td>
-              <td>Payment Gateways &amp; Cart</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <!-- Bottom band -->
+            <div class="benefit-band" style="margin-top: 5px;">
+              ⚡ Every business has repetitive work. That's what we automate.
+            </div>
+          </div>
 
-            <!-- Right: Web Guarantees -->
-      <div style="text-align: left; display: flex; flex-direction: column; height: 100%; border-left: 1.5px solid #F1F5F9; padding-left: 20px; box-sizing: border-box;">
-        <h4 style="font-size: 14px; font-weight: 800; color: #0F172A; margin: 0;">Standard Engineering Guarantees</h4>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 1fr); gap: 10px; flex: 1; margin-top: 10px;">
-          <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">📱 Mobile Fluid</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">Fully Responsive</div>
-          </div>
-          <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">🔍 Advanced SEO</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">JSON-LD Rich Tags</div>
-          </div>
-          <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif;">⚡ Speed Opt</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">100/100 Lighthouse</div>
-          </div>
-          <div class="card-amber" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif;">🖥️ Custom CMS</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">Clean Admin Panel</div>
-          </div>
-          <div class="card-rose" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif;">💻 Code Owner</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">100% GitHub IP</div>
-          </div>
-          <div class="card-blue" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">🔒 Secure</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">Zero Plugin Risks</div>
-          </div>
-          <div class="card-purple" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">🛠️ Support</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">30-Day Post Launch</div>
-          </div>
-          <div class="card-emerald" style="padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <div style="font-size: 11.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif;">⚡ Edge CDN</div>
-            <div style="font-size: 10px; color: #64748B; margin-top: 2px; font-weight: 550;">Cloudflare Hosting</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Bottom band -->
-    
-
-    <div class="footer-bar" style="border-top: none;">
+          <div class="footer-bar" style="border-top: none;">
             <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
               <button class="nav-btn" onclick="goToSlide(4)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
@@ -1613,11 +1528,598 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              🚀 Sub-Second LCP Speed Guarantee - High-Converting, Zero-Maintenance Static Edge UI Architectures. &nbsp;&bull;&nbsp; Slide 6 of 7
+              💼 Autopilot Operations for Over 12 Unique Business Categories. &nbsp;&bull;&nbsp; Slide 6 of 12
             </div>
           </div>
         </div>
-      </div><!-- SLIDE 7: CONTACT & FAQ -->
+      </div>
+
+      <!-- SLIDE 7: TYPICAL AUTOMATION JOURNEY -->
+      <div class="slide-wrapper">
+        <div class="slide-container" style="background: radial-gradient(circle at 90% 10%, #FDF4FF 0%, transparent 50%), #FFFFFF; padding: 0 6vw 9vh 6vw;">
+          <div class="dot-accent dot-purple-lg" style="bottom: 15%; right: 10%;"></div>
+          <div class="dot-accent dot-teal-sm" style="top: 25%; left: 3%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">Automation Journey</div>
+          </div>
+
+          <div class="grid-2" style="padding: 1% 0; align-items: center; gap: 35px; margin-top: -35px; margin-bottom: 15px;">
+            <!-- Left: Journey List Flow -->
+            <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; height: 100%;">
+              <span class="badge badge-purple" style="width: max-content; font-size: 12px; padding: 5px 10px; font-weight: 700;">VISUAL WORKFLOW</span>
+              <h2 style="font-size: 30px; font-weight: 800; color: #0F172A; margin-bottom: 12px;">
+                How Visual <span class="gradient-text">Autopilot</span> Works
+              </h2>
+              
+              <!-- 10 Step Journey Flow (Aligned Row-by-Row in a Single Grid to Ensure Equal Spacing and Perfect Alignment) -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; row-gap: 0; margin-bottom: 16px;">
+                <!-- Row 1: Steps 1 & 6 -->
+                <div style="font-size: 15px; font-weight: 800; color: #2E4094; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #2E4094; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">1</span>
+                  Customer Enquiry
+                </div>
+                <div style="font-size: 15px; font-weight: 800; color: #2E4094; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #2E4094; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">6</span>
+                  Meeting Scheduled
+                </div>
+
+                <!-- Row 2: Arrows for Steps 1 & 6 -->
+                <div style="font-size: 12px; color: #A5B4FC; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+                <div style="font-size: 12px; color: #A5B4FC; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+
+                <!-- Row 3: Steps 2 & 7 -->
+                <div style="font-size: 15px; font-weight: 800; color: #7C3AED; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #7C3AED; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">2</span>
+                  Instant WhatsApp Reply
+                </div>
+                <div style="font-size: 15px; font-weight: 800; color: #7C3AED; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #7C3AED; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">7</span>
+                  Quotation Sent
+                </div>
+
+                <!-- Row 4: Arrows for Steps 2 & 7 -->
+                <div style="font-size: 12px; color: #C4B5FD; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+                <div style="font-size: 12px; color: #C4B5FD; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+
+                <!-- Row 5: Steps 3 & 8 -->
+                <div style="font-size: 15px; font-weight: 800; color: #059669; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #059669; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">3</span>
+                  Data Saved Automatically
+                </div>
+                <div style="font-size: 15px; font-weight: 800; color: #059669; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #059669; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">8</span>
+                  Invoice Generated
+                </div>
+
+                <!-- Row 6: Arrows for Steps 3 & 8 -->
+                <div style="font-size: 12px; color: #A7F3D0; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+                <div style="font-size: 12px; color: #A7F3D0; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+
+                <!-- Row 7: Steps 4 & 9 -->
+                <div style="font-size: 15px; font-weight: 800; color: #D97706; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #D97706; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">4</span>
+                  Sales Team Notified
+                </div>
+                <div style="font-size: 15px; font-weight: 800; color: #D97706; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #D97706; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">9</span>
+                  Customer Support
+                </div>
+
+                <!-- Row 8: Arrows for Steps 4 & 9 -->
+                <div style="font-size: 12px; color: #FDE68A; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+                <div style="font-size: 12px; color: #FDE68A; margin: 4px 0 4px 9px; font-weight: 800; line-height: 1;">↓</div>
+
+                <!-- Row 9: Steps 5 & 10 -->
+                <div style="font-size: 15px; font-weight: 800; color: #E11D48; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #E11D48; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">5</span>
+                  Automatic Follow-up
+                </div>
+                <div style="font-size: 15px; font-weight: 800; color: #E11D48; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #E11D48; color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">10</span>
+                  Reports Generated
+                </div>
+              </div>
+
+              <!-- Journey visual subtitle callout -->
+              <div class="card-purple" style="padding: 12px 16px; border-left: 4.5px solid #7C3AED; background: #FFFFFF; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.05);">
+                <p style="font-size: 14.5px; color: #1E293B; font-weight: 750; margin: 0;">
+                  "This entire process happens automatically."
+                </p>
+              </div>
+            </div>
+
+            <!-- Right: Screenshots Stacked Vertically & Tangled/Overlapped -->
+            <div style="position: relative; width: 100%; height: 290px; display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+              <!-- Top Image (wf ss 1.jpeg) -->
+              <div style="position: absolute; left: 0; top: -15px; width: 68%; border: 3px solid #E2E8F0; padding: 4px; background: #FFFFFF; box-shadow: 0 12px 30px rgba(0,0,0,0.12); border-radius: 8px; transform: rotate(-4deg); z-index: 1;">
+                <img src="wf ss 1.jpeg" alt="Workflow Dashboard 1" style="width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px;">
+              </div>
+              <!-- Bottom Image (wf ss 2.jpeg) -->
+              <div style="position: absolute; right: 0; bottom: -5px; width: 68%; border: 3px solid #E2E8F0; padding: 4px; background: #FFFFFF; box-shadow: 0 18px 45px rgba(0,0,0,0.18); border-radius: 8px; transform: rotate(5deg); z-index: 2;">
+                <img src="wf ss 2.jpeg" alt="Workflow Dashboard 2" style="width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar" style="border-top: none;">
+            <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+              <button class="nav-btn" onclick="goToSlide(5)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 10px !important; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(7)" style="background: #FFFFFF !important; color: #7C3AED !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </button>
+            </div>
+            <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+              ⚙️ Full Lead-to-Report Autopilot Execution Visual Flow. &nbsp;&bull;&nbsp; Slide 7 of 12
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: LIVE EXAMPLES -->
+      <div class="slide-wrapper">
+        <div class="slide-container" style="background: radial-gradient(circle at 10% 10%, #F5F3FF 0%, transparent 40%), #FFFFFF; padding: 0 6vw 9vh 6vw;">
+          <div class="dot-accent dot-blue-lg" style="bottom: 12%; right: 7%;"></div>
+          <div class="dot-accent dot-purple-sm" style="top: 25%; left: 4%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">Live Examples</div>
+          </div>
+
+          <div class="grid-2" style="padding: 1% 0; align-items: stretch; gap: 30px;">
+            <!-- Left: Subtitle and info -->
+            <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; gap: 12px; height: 100%;">
+              <span class="badge badge-purple" style="width: max-content; font-size: 12px; padding: 5px 10px; font-weight: 700;">OPERATIONAL BLUEPRINTS</span>
+              <h2 style="font-size: 30px; font-weight: 800; color: #0F172A; line-height: 1.25;">
+                Automation Suite <span class="gradient-text">Packages</span>
+              </h2>
+              <p style="font-size: 15px; color: #475569; line-height: 1.5; margin-bottom: 4px;">
+                Choose a setup blueprint tailored to your organizational scale. From high-impact micro-automations to private enterprise server clusters.
+              </p>
+              <div class="card-blue" style="border-left: 4.5px solid #2E4094; padding: 15px 18px; background: #FFFFFF; box-shadow: 0 4px 12px rgba(46, 64, 148, 0.05);">
+                <div style="font-size: 15px; font-weight: 800; color: #0F172A; margin-bottom: 4px; font-family: 'Outfit', sans-serif;">100% Code Ownership Included</div>
+                <p style="font-size: 12.5px; color: #64748B; margin: 0; line-height: 1.45;">No mandatory platform subscriptions, licensing lock-ins, or developer dependency fees.</p>
+              </div>
+            </div>
+
+            <!-- Right: 4 Packages Grid -->
+            <div class="grid-2-equal" style="gap: 15px; align-self: center; width: 100%;">
+              <div class="card-blue" style="border-radius: 8px; justify-content: space-between; padding: 18px 20px; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(46, 64, 148, 0.05);">
+                <div>
+                  <div style="font-size: 15px; font-weight: 900; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 6px; letter-spacing: 0.5px;">STARTER</div>
+                  <p style="font-size: 12.5px; color: #475569; line-height: 1.4; margin: 0;">1 selected micro-workflow suite on managed cloud infrastructure.</p>
+                </div>
+                <div style="font-size: 11px; color: #2563EB; font-weight: 800; border-top: 1.5px solid #E2E8F0; padding-top: 8px; margin-top: 8px;">✓ Managed Cloud • Standard Support</div>
+              </div>
+
+              <div class="card-purple" style="border-radius: 8px; justify-content: space-between; padding: 18px 20px; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.05);">
+                <div>
+                  <div style="font-size: 15px; font-weight: 900; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 6px; letter-spacing: 0.5px;">GROWTH</div>
+                  <p style="font-size: 12.5px; color: #475569; line-height: 1.4; margin: 0;">3 operational pipelines deployed on cloud or client VPS instances.</p>
+                </div>
+                <div style="font-size: 11px; color: #7C3AED; font-weight: 800; border-top: 1.5px solid #E2E8F0; padding-top: 8px; margin-top: 8px;">✓ Cloud/VPS • Priority Support</div>
+              </div>
+
+              <div class="card-amber" style="border-radius: 8px; justify-content: space-between; padding: 18px 20px; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.05);">
+                <div>
+                  <div style="font-size: 15px; font-weight: 900; color: #D97706; font-family: 'Outfit', sans-serif; margin-bottom: 6px; letter-spacing: 0.5px;">BUSINESS</div>
+                  <p style="font-size: 12.5px; color: #475569; line-height: 1.4; margin: 0;">Unlock automated workflows across all 12 suites on a dedicated client VPS.</p>
+                </div>
+                <div style="font-size: 11px; color: #D97706; font-weight: 800; border-top: 1.5px solid #E2E8F0; padding-top: 8px; margin-top: 8px;">✓ Dedicated VPS • Root Control</div>
+              </div>
+
+              <div class="card-emerald" style="border-radius: 8px; justify-content: space-between; padding: 18px 20px; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.05);">
+                <div>
+                  <div style="font-size: 15px; font-weight: 900; color: #059669; font-family: 'Outfit', sans-serif; margin-bottom: 6px; letter-spacing: 0.5px;">ENTERPRISE</div>
+                  <p style="font-size: 12.5px; color: #475569; line-height: 1.4; margin: 0;">Bespoke integrations, custom LLM fine-tuning, and dedicated SLA array.</p>
+                </div>
+                <div style="font-size: 11px; color: #059669; font-weight: 800; border-top: 1.5px solid #E2E8F0; padding-top: 8px; margin-top: 8px;">✓ Private Cloud • 24/7 Dedicated SLA</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar" style="border-top: none;">
+            <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+              <button class="nav-btn" onclick="goToSlide(6)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 10px !important; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(8)" style="background: #FFFFFF !important; color: #7C3AED !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </button>
+            </div>
+            <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+              💎 Modular Pricing Blueprints Constructed for Scalable Execution. &nbsp;&bull;&nbsp; Slide 8 of 12
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 9: AI AGENTS & VPS DEPLOYMENT -->
+      <div class="slide-wrapper">
+        <div class="slide-container" style="background: radial-gradient(circle at 90% 10%, #ECFDF5 0%, transparent 40%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
+          <div class="dot-accent dot-emerald-lg" style="top: 15%; left: 8%;"></div>
+          <div class="dot-accent dot-blue-sm" style="bottom: 22%; right: 5%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">AI Agents &amp; Hosting</div>
+          </div>
+
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5% 0;">
+            <div style="text-align: left; margin-bottom: 8px; margin-top: -1vh;">
+              <h2 style="font-size: 24px; font-weight: 800; color: #0F172A;">
+                Flexible <span class="gradient-text">VPS Deployment</span> Models
+              </h2>
+              <p style="font-size: 13.5px; color: #475569; font-weight: 550;">
+                Host your automations on our managed servers, or deploy to your own private VPS for total isolation.
+              </p>
+            </div>
+
+            <!-- Two Columns for Hosting vs Self-Hosted -->
+            <div class="grid-2-equal" style="gap: 25px; flex: 1; align-items: stretch; margin-bottom: 10px;">
+              <!-- Left Card: Managed hosting rental -->
+              <div class="card-solid-blue" style="border-radius: 8px; justify-content: space-between; padding: 30px; text-align: left; box-shadow: 0 8px 24px rgba(46, 64, 148, 0.1); display: flex; flex-direction: column;">
+                <div>
+                  <h3 style="font-size: 23px; font-weight: 900; color: #FFFFFF; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    ☁️ Managed VPS Hosting
+                  </h3>
+                  <div style="font-size: 14.5px; color: #E0E7FF; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.5px;">Monthly Rental Model</div>
+                  
+                  <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #EFF6FF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Deployed instantly on secure DotnLott VPS nodes.
+                    </li>
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #EFF6FF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Low-cost monthly subscription starting.
+                    </li>
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #EFF6FF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Full maintenance (backups, updates &amp; security).
+                    </li>
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #EFF6FF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Zero server configuration or setup required by you.
+                    </li>
+                  </ul>
+                </div>
+                <div style="font-size: 13.5px; color: #EFF6FF; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; font-weight: 750; margin-top: 15px;">
+                  Best for: Businesses wanting a completely hands-off setup.
+                </div>
+              </div>
+
+              <!-- Right Card: Self hosted setup -->
+              <div class="card-solid-teal" style="border-radius: 8px; justify-content: space-between; padding: 30px; text-align: left; box-shadow: 0 8px 24px rgba(0, 181, 214, 0.1); display: flex; flex-direction: column;">
+                <div>
+                  <h3 style="font-size: 23px; font-weight: 900; color: #FFFFFF; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    🔒 Self-Hosted Client VPS
+                  </h3>
+                  <div style="font-size: 14.5px; color: #ECFEFF; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.5px;">One-Time Setup Payment</div>
+                  
+                  <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #ECFEFF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Configured on your own server (AWS, DigitalOcean, etc.).
+                    </li>
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #ECFEFF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Flat, one-time engineering configuration fee.
+                    </li>
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #ECFEFF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Absolute full root access, data isolation, and privacy.
+                    </li>
+                    <li style="font-size: 16px; display: flex; align-items: flex-start; gap: 8px; color: #ECFEFF; line-height: 1.4;">
+                      <span style="color: #FF4D4D; font-weight: 800;">✓</span> Zero ongoing server configuration rental to DotnLott.
+                    </li>
+                  </ul>
+                </div>
+                <div style="font-size: 13.5px; color: #ECFEFF; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; font-weight: 750; margin-top: 15px;">
+                  Best for: Teams with internal IT or strict data governance needs.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar" style="border-top: none;">
+            <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+              <button class="nav-btn" onclick="goToSlide(7)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 10px !important; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(9)" style="background: #FFFFFF !important; color: #7C3AED !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </button>
+            </div>
+            <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+              ⚙️ Isolated Infrastructures Deployed to Client Cloud Nodes. &nbsp;&bull;&nbsp; Slide 9 of 12
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 10: BENEFITS -->
+      <div class="slide-wrapper">
+        <div class="slide-container" style="background: radial-gradient(circle at 10% 90%, #F5F3FF 0%, transparent 40%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
+          <div class="dot-accent dot-purple-lg" style="top: 15%; right: 7%;"></div>
+          <div class="dot-accent dot-teal-sm" style="bottom: 22%; left: 4%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">Benefits</div>
+          </div>
+
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5% 0;">
+            <div style="text-align: left; margin-bottom: 8px; margin-top: -1vh;">
+              <h2 style="font-size: 24px; font-weight: 800; color: #0F172A;">
+                Why Businesses Choose <span class="gradient-text">Automation</span>
+              </h2>
+              <p style="font-size: 13.5px; color: #475569; font-weight: 550;">
+                By moving repetitive tasks to automated code blocks, companies transform their margins and productivity.
+              </p>
+            </div>
+
+            <!-- 7 Benefit Cards Layout (Overlapping Bubble Cluster) -->
+            <div style="position: relative; width: 100%; height: 355px; margin: 0 auto; margin-top: 15px;">
+              <!-- Left Side Blank Decorative Bubbles & Mascot Bubble -->
+              <div style="position: absolute; left: 4%; top: 40px; width: 35px; height: 35px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+              <div style="position: absolute; left: 11%; top: 90px; width: 85px; height: 85px; border-radius: 50% !important; background: #F5F3FF !important; border: 2px solid #DDD6FE !important; box-shadow: 0 6px 16px rgba(124, 58, 237, 0.12); display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: none; overflow: hidden !important;">
+                <img src="floto.png" alt="Floto Mascot" style="width: 80%; height: 80%; object-fit: contain; transform: scale(1.1); margin-top: 5px;">
+              </div>
+              <div style="position: absolute; left: 5%; top: 270px; width: 42px; height: 42px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+              <div style="position: absolute; left: 17%; top: 20px; width: 28px; height: 28px; border-radius: 50% !important; background: #F5F3FF !important; border: 1.5px solid #DDD6FE !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.05); opacity: 0.8; z-index: 0; pointer-events: none;"></div>
+
+              <!-- Right Side Blank Decorative Bubbles -->
+              <div style="position: absolute; left: 80%; top: 30px; width: 45px; height: 45px; border-radius: 50% !important; background: #F5F3FF !important; border: 1.5px solid #DDD6FE !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+              <div style="position: absolute; left: 88%; top: 150px; width: 22px; height: 22px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.8; z-index: 0; pointer-events: none;"></div>
+              <div style="position: absolute; left: 77%; top: 240px; width: 38px; height: 38px; border-radius: 50% !important; background: #F5F3FF !important; border: 1.5px solid #DDD6FE !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+              <div style="position: absolute; left: 85%; top: 280px; width: 26px; height: 26px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.8; z-index: 0; pointer-events: none;"></div>
+
+              <!-- Bubble 1: Save Time (Blue) -->
+              <div class="card-blue" style="position: absolute; left: 32%; top: 10px; width: 145px; height: 145px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; box-sizing: border-box; background: #EFF6FF !important; border: 2px solid #BFDBFE !important; box-shadow: 0 8px 20px rgba(46, 64, 148, 0.08); z-index: 2;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">⏳ Save<br>Time</div>
+                <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin: 0; max-width: 120px; text-align: center;">Reclaim hours spent on data entry.</p>
+              </div>
+
+              <!-- Bubble 2: Reduce Errors (Purple) -->
+              <div class="card-purple" style="position: absolute; left: 22%; top: 105px; width: 145px; height: 145px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; box-sizing: border-box; background: #F5F3FF !important; border: 2px solid #DDD6FE !important; box-shadow: 0 8px 20px rgba(124, 58, 237, 0.08); z-index: 1;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">🎯 Reduce<br>Errors</div>
+                <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin: 0; max-width: 120px; text-align: center;">Remove human typing mistakes.</p>
+              </div>
+
+              <!-- Bubble 3: Response Speed (Blue) -->
+              <div class="card-blue" style="position: absolute; left: 32%; top: 200px; width: 145px; height: 145px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; box-sizing: border-box; background: #EFF6FF !important; border: 2px solid #BFDBFE !important; box-shadow: 0 8px 20px rgba(46, 64, 148, 0.08); z-index: 2;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">⚡ Response<br>Speed</div>
+                <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin: 0; max-width: 120px; text-align: center;">Convert leads while they are hot.</p>
+              </div>
+
+              <!-- Bubble 4: Team Output (Purple) -->
+              <div class="card-purple" style="position: absolute; left: 55%; top: 10px; width: 145px; height: 145px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; box-sizing: border-box; background: #F5F3FF !important; border: 2px solid #DDD6FE !important; box-shadow: 0 8px 20px rgba(124, 58, 237, 0.08); z-index: 2;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">📈 Team<br>Output</div>
+                <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin: 0; max-width: 120px; text-align: center;">Focus staff on high-value tasks.</p>
+              </div>
+
+              <!-- Bubble 5: Cut Costs (Blue) -->
+              <div class="card-blue" style="position: absolute; left: 65%; top: 105px; width: 145px; height: 145px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; box-sizing: border-box; background: #EFF6FF !important; border: 2px solid #BFDBFE !important; box-shadow: 0 8px 20px rgba(46, 64, 148, 0.08); z-index: 1;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">💰 Cut<br>Costs</div>
+                <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin: 0; max-width: 120px; text-align: center;">Lower operations costs via code.</p>
+              </div>
+
+              <!-- Bubble 6: Better UX (Purple) -->
+              <div class="card-purple" style="position: absolute; left: 55%; top: 200px; width: 145px; height: 145px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; box-sizing: border-box; background: #F5F3FF !important; border: 2px solid #DDD6FE !important; box-shadow: 0 8px 20px rgba(124, 58, 237, 0.08); z-index: 2;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">💎 Better<br>UX</div>
+                <p style="font-size: 10.5px; color: #475569; line-height: 1.3; margin: 0; max-width: 120px; text-align: center;">Smooth, rapid user interactions.</p>
+              </div>
+
+              <!-- Bubble 7: Scale Without Hiring (Purple Center Highlight) -->
+              <div class="card-purple" style="position: absolute; left: 42.5%; top: 85px; width: 185px; height: 185px; border-radius: 50% !important; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 18px; box-sizing: border-box; background: #F5F3FF !important; border: 2px solid #DDD6FE !important; box-shadow: 0 12px 28px rgba(124, 58, 237, 0.15); z-index: 3;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 4px;">🚀 Scale<br>Without Hiring</div>
+                <p style="font-size: 11px; color: #475569; line-height: 1.4; margin: 0; max-width: 155px; text-align: center;">Double active lead volume without expanding administrative or sales personnel.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar" style="border-top: none;">
+            <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+              <button class="nav-btn" onclick="goToSlide(8)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 10px !important; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(10)" style="background: #FFFFFF !important; color: #7C3AED !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </button>
+            </div>
+            <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+              📊 Multiply Operational Margin and Output Through Modern AI Workflows. &nbsp;&bull;&nbsp; Slide 10 of 12
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 11: HOW WE WORK -->
+      <div class="slide-wrapper">
+        <div class="slide-container" style="background: radial-gradient(circle at 10% 10%, #EFF6FF 0%, transparent 40%), #FFFFFF; padding: 0 6vw 14vh 6vw;">
+          <div class="dot-accent dot-blue-lg" style="top: 15%; right: 7%;"></div>
+          <div class="dot-accent dot-purple-sm" style="bottom: 22%; left: 4%;"></div>
+          
+          <div class="header-nav">
+            <div class="logo-container">
+              <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+            </div>
+            <div class="slide-title">How We Work</div>
+          </div>
+
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5% 0;">
+            <div style="text-align: left; margin-bottom: 8px; margin-top: -1vh;">
+              <h2 style="font-size: 24px; font-weight: 800; color: #0F172A;">
+                Our Collaborative <span class="gradient-text">Onboarding Timeline</span>
+              </h2>
+              <p style="font-size: 13.5px; color: #475569; font-weight: 550;">
+                A simple, systematic implementation pipeline from first call to active 24/7 automation support.
+              </p>
+            </div>
+
+            <!-- Horizontal / Grid Onboarding steps (8 steps) -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 28px; width: 100%; margin-bottom: 15px; position: relative;">
+              <div class="card-blue" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #EFF6FF !important; border: 2px solid #BFDBFE !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #2E4094; color: #2E4094;">1</span>
+                  Discovery Call
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Initial call to identify core bottlenecks.</p>
+                <!-- Arrow -->
+                <div class="flow-arrow" style="position: absolute; right: -25px; top: 50%; transform: translateY(-50%); z-index: 10; color: #94A3B8; background: #FFFFFF; border-radius: 50% !important; padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-purple" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #F5F3FF !important; border: 2px solid #DDD6FE !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #7C3AED; color: #7C3AED;">2</span>
+                  Understand Business
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Deep dive into current tooling ecosystem.</p>
+                <!-- Arrow -->
+                <div class="flow-arrow" style="position: absolute; right: -25px; top: 50%; transform: translateY(-50%); z-index: 10; color: #94A3B8; background: #FFFFFF; border-radius: 50% !important; padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-emerald" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #ECFDF5 !important; border: 2px solid #A7F3D0 !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #059669; color: #059669;">3</span>
+                  Identify Tasks
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Isolate manual &amp; repetitive processes.</p>
+                <!-- Arrow -->
+                <div class="flow-arrow" style="position: absolute; right: -25px; top: 50%; transform: translateY(-50%); z-index: 10; color: #94A3B8; background: #FFFFFF; border-radius: 50% !important; padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-amber" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #FFFBEB !important; border: 2px solid #FDE68A !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #D97706; color: #D97706;">4</span>
+                  Build Automation
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Design robust backend pipelines &amp; integrations.</p>
+              </div>
+
+              <div class="card-rose" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #FFF1F2 !important; border: 2px solid #FECDD3 !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #E11D48; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #E11D48; color: #E11D48;">5</span>
+                  Rigorous Testing
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Simulate flow scenarios and validate logic.</p>
+                <!-- Arrow -->
+                <div class="flow-arrow" style="position: absolute; right: -25px; top: 50%; transform: translateY(-50%); z-index: 10; color: #94A3B8; background: #FFFFFF; border-radius: 50% !important; padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-blue" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #EFF6FF !important; border: 2px solid #BFDBFE !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #2E4094; color: #2E4094;">6</span>
+                  Deployment
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Launch on managed hosting or private VPS.</p>
+                <!-- Arrow -->
+                <div class="flow-arrow" style="position: absolute; right: -25px; top: 50%; transform: translateY(-50%); z-index: 10; color: #94A3B8; background: #FFFFFF; border-radius: 50% !important; padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-purple" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #F5F3FF !important; border: 2px solid #DDD6FE !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #7C3AED; color: #7C3AED;">7</span>
+                  Team Training
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">Walkthrough configurations with your team.</p>
+                <!-- Arrow -->
+                <div class="flow-arrow" style="position: absolute; right: -25px; top: 50%; transform: translateY(-50%); z-index: 10; color: #94A3B8; background: #FFFFFF; border-radius: 50% !important; padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-emerald" style="padding: 18px 20px; border-radius: 30px !important; text-align: left; min-height: 120px; position: relative; overflow: visible !important; justify-content: center; background: #ECFDF5 !important; border: 2px solid #A7F3D0 !important;">
+                <div style="font-size: 14.5px; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #FFFFFF !important; width: 24px; height: 24px; border-radius: 50% !important; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; border: 1.5px solid #059669; color: #059669;">8</span>
+                  Active Support
+                </div>
+                <p style="font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.4;">30-day maintenance monitoring &amp; feedback loop.</p>
+              </div>
+            </div>
+
+            <!-- Bottom band -->
+            <div class="benefit-band" style="margin-top: 5px;">
+              ⚡ Straightforward, professional, and transparent onboarding from Day 1.
+            </div>
+          </div>
+
+          <div class="footer-bar" style="border-top: none;">
+            <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+              <button class="nav-btn" onclick="goToSlide(9)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 10px !important; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(11)" style="background: #FFFFFF !important; color: #7C3AED !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </button>
+            </div>
+            <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+              ⚙️ Direct Dev Collaboration with Zero Agency Bloat. &nbsp;&bull;&nbsp; Slide 11 of 12
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 12: LET'S BUILD YOUR FIRST AUTOMATION -->
       <div class="slide-wrapper">
         <div class="slide-container" style="background: radial-gradient(circle at 30% 20%, #E0F2FE 0%, transparent 60%), radial-gradient(circle at 90% 80%, #F5F3FF 0%, transparent 50%), #FFFFFF;">
           <div class="dot-accent dot-blue-lg" style="top: 15%; left: 8%;"></div>
@@ -1627,7 +2129,7 @@
             <div class="logo-container">
               <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
             </div>
-            <div class="slide-title">Contact &amp; FAQs</div>
+            <div class="slide-title">Let's Build Your First Automation</div>
           </div>
 
           <div class="grid-2" style="padding: 1.5% 0; align-items: center;">
@@ -1635,7 +2137,7 @@
             <div class="faq-container">
               <div style="margin-bottom: 4px;">
                 <span class="badge badge-purple" style="margin-bottom: 2px;">support &amp; trust</span>
-                <h2 style="font-size: 22px; font-weight: 800; color: #2E4094;">Common Questions</h2>
+                <h2 style="font-size: 22px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif;">Common Questions</h2>
               </div>
 
               <div class="faq-item">
@@ -1659,7 +2161,7 @@
                   </svg>
                   Are there ongoing monthly fees?
                 </h4>
-                <p>No mandatory ongoing platform subscriptions or licensing fees. We charge flat, one-time setups. You only pay for your own direct server hosting costs.</p>
+                <p>No mandatory ongoing platform subscriptions or licensing fees. We charge flat setups. You only pay for your own direct server hosting costs.</p>
               </div>
 
               <div class="faq-item">
@@ -1678,8 +2180,8 @@
             <!-- Right: Contact & QR -->
             <div class="contact-card-right">
               <div style="text-align: center;">
-                <h3 style="font-size: 16px; font-weight: 800; color: #2E4094; margin-bottom: 2px;">Let's build your autopilot</h3>
-                <p style="font-size: 11.5px; color: #64748B;">Scan QR code to schedule a free 24h operational audit.</p>
+                <h3 style="font-size: 16px; font-weight: 800; color: #2E4094; margin-bottom: 2px;">Let's explore your business needs</h3>
+                <p style="font-size: 11.5px; color: #64748B;">Scan QR code to schedule a call and create a roadmap.</p>
               </div>
 
               <!-- QR Centerpiece -->
@@ -1734,7 +2236,7 @@
 
           <div class="footer-bar" style="border-top: none;">
             <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
-              <button class="nav-btn" onclick="goToSlide(5)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
+              <button class="nav-btn" onclick="goToSlide(10)" style="background: #FFFFFF !important; color: #2E4094 !important; border: none !important; padding: 6px 12px !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; font-family: 'Outfit', sans-serif; cursor: pointer; text-decoration: none;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
                 Previous
               </button>
@@ -1747,17 +2249,18 @@
               </button>
             </div>
             <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
-              📅 Schedule a 1-on-1 Strategy Sprint & Secure Your Autonomous Ecosystem. &nbsp;&bull;&nbsp; Slide 7 of 7
+              📅 Schedule a 1-on-1 Strategy Sprint &amp; Secure Your Autonomous Ecosystem. &nbsp;&bull;&nbsp; Slide 12 of 12
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
   <script>
     let currentSlide = 0;
-    const totalSlides = 7;
+    const totalSlides = 12;
     const sliderTrack = document.getElementById('sliderTrack');
     const dotBtns = document.querySelectorAll('.dot-btn');
 
