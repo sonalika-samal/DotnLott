@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benefits of Automation - DotnLott</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1E293B;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      background: #FFFFFF !important;
+      width: 100%;
+      height: 100%;
+      max-width: 1920px;
+      max-height: 1080px;
+      aspect-ratio: 16/9;
+      
+      padding: 0 6% 14% 6%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .dot-accent {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .dot-purple-lg { width: 130px; height: 130px; background: #7C3AED; opacity: 0.06; }
+    .dot-teal-sm { width: 45px; height: 45px; background: #00B5D8; opacity: 0.1; }
+
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      z-index: 10;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 12px;
+    }
+
+    .logo-img {
+      height: 104px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 850;
+      color: #0F172A;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .card-blue, .card-purple {
+      width: 165px;
+      height: 165px;
+      border-radius: 50% !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 16px;
+      box-sizing: border-box;
+      aspect-ratio: 1/1;
+      margin: 0 auto;
+    }
+
+    .card-blue { border: 2px solid #BFDBFE !important; background: #EFF6FF !important; }
+    .card-purple { border: 2px solid #DDD6FE !important; background: #F5F3FF !important; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      color: #0F172A;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2E4094 0%, #00B5D8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 11px;
+      line-height: 1.3;
+      color: #475569;
+      font-weight: 550;
+      text-align: center;
+      max-width: 140px;
+    }
+
+    .footer-bar {
+      position: absolute;
+      bottom: 3.5vh;
+      left: 6vw;
+      width: calc(100% - 12vw);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #2E4094 0%, #7C3AED 100%);
+      padding: 10px 20px;
+      z-index: 100;
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 13px;
+      box-shadow: 0 4px 20px rgba(46, 64, 148, 0.15);
+    }
+
+    .footer-brand-text {
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FFFFFF !important;
+      border: none !important;
+      color: #2E4094 !important;
+      padding: 6px 12px !important;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #2E4094 0%, #1E3A8A 100%);
+      border: none;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container" style="background: radial-gradient(circle at 10% 90%, #F5F3FF 0%, transparent 40%), #FFFFFF;">
+    <div class="dot-accent dot-purple-lg" style="top: 15%; right: 7%;"></div>
+    <div class="dot-accent dot-teal-sm" style="bottom: 22%; left: 4%;"></div>
+
+    <div class="header-nav">
+      <img src="DotnLott Logo PNG.png" alt="DotnLott Logo" class="logo-img">
+      <div class="slide-title">Benefits</div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5% 0;">
+      <div style="text-align: left; margin-bottom: 8px; margin-top: -1vh;">
+        <h2 style="font-size: 24px; font-weight: 800; color: #0F172A;">
+          Why Businesses Choose <span class="gradient-text">Automation</span>
+        </h2>
+        <p style="font-size: 13.5px; color: #475569; font-weight: 555; text-align: left;">
+          By moving repetitive tasks to automated code blocks, companies transform their margins and productivity.
+        </p>
+      </div>
+
+      <!-- 7 Benefit Cards Layout (Overlapping Bubble Cluster) -->
+      <div style="position: relative; width: 100%; height: 355px; margin: 0 auto; margin-top: 15px;">
+        <!-- Left Side Blank Decorative Bubbles & Mascot Bubble -->
+        <div style="position: absolute; left: 4%; top: 40px; width: 35px; height: 35px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+        <div style="position: absolute; left: 11%; top: 90px; width: 85px; height: 85px; border-radius: 50% !important; background: #F5F3FF !important; border: 2px solid #DDD6FE !important; box-shadow: 0 6px 16px rgba(124, 58, 237, 0.12); display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: none; overflow: hidden !important;">
+          <img src="floto.png" alt="Floto Mascot" style="width: 80%; height: 80%; object-fit: contain; transform: scale(1.1); margin-top: 5px;">
+        </div>
+        <div style="position: absolute; left: 5%; top: 270px; width: 42px; height: 42px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+        <div style="position: absolute; left: 17%; top: 20px; width: 28px; height: 28px; border-radius: 50% !important; background: #F5F3FF !important; border: 1.5px solid #DDD6FE !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.05); opacity: 0.8; z-index: 0; pointer-events: none;"></div>
+
+        <!-- Right Side Blank Decorative Bubbles -->
+        <div style="position: absolute; left: 80%; top: 30px; width: 45px; height: 45px; border-radius: 50% !important; background: #F5F3FF !important; border: 1.5px solid #DDD6FE !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+        <div style="position: absolute; left: 88%; top: 150px; width: 22px; height: 22px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.8; z-index: 0; pointer-events: none;"></div>
+        <div style="position: absolute; left: 77%; top: 240px; width: 38px; height: 38px; border-radius: 50% !important; background: #F5F3FF !important; border: 1.5px solid #DDD6FE !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.05); opacity: 0.85; z-index: 0; pointer-events: none;"></div>
+        <div style="position: absolute; left: 85%; top: 280px; width: 26px; height: 26px; border-radius: 50% !important; background: #EFF6FF !important; border: 1.5px solid #BFDBFE !important; box-shadow: 0 4px 10px rgba(46, 64, 148, 0.05); opacity: 0.8; z-index: 0; pointer-events: none;"></div>
+
+        <!-- Bubble 1: Save Time (Blue) -->
+        <div class="card-blue" style="position: absolute; left: 32%; top: 10px; z-index: 2;">
+          <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">⏳ Save<br>Time</div>
+          <p>Reclaim hours spent on data entry.</p>
+        </div>
+
+        <!-- Bubble 2: Reduce Errors (Purple) -->
+        <div class="card-purple" style="position: absolute; left: 22%; top: 105px; z-index: 1;">
+          <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">🎯 Reduce<br>Errors</div>
+          <p>Remove human typing mistakes.</p>
+        </div>
+
+        <!-- Bubble 3: Response Speed (Blue) -->
+        <div class="card-blue" style="position: absolute; left: 32%; top: 200px; z-index: 2;">
+          <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">⚡ Response<br>Speed</div>
+          <p>Convert leads while they are hot.</p>
+        </div>
+
+        <!-- Bubble 4: Team Output (Purple) -->
+        <div class="card-purple" style="position: absolute; left: 55%; top: 10px; z-index: 2;">
+          <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">📈 Team<br>Output</div>
+          <p>Focus staff on high-value tasks.</p>
+        </div>
+
+        <!-- Bubble 5: Cut Costs (Blue) -->
+        <div class="card-blue" style="position: absolute; left: 65%; top: 105px; z-index: 1;">
+          <div style="font-size: 13.5px; font-weight: 800; color: #2E4094; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">💰 Cut<br>Costs</div>
+          <p>Lower operations costs via code.</p>
+        </div>
+
+        <!-- Bubble 6: Better UX (Purple) -->
+        <div class="card-purple" style="position: absolute; left: 55%; top: 200px; z-index: 2;">
+          <div style="font-size: 13.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 3px;">💎 Better<br>UX</div>
+          <p>Smooth, rapid user interactions.</p>
+        </div>
+
+        <!-- Bubble 7: Scale Without Hiring (Purple Center Highlight) -->
+        <div class="card-purple" style="position: absolute; left: 42.5%; top: 85px; width: 185px; height: 185px; padding: 18px; z-index: 3; box-shadow: 0 12px 28px rgba(124, 58, 237, 0.15);">
+          <div style="font-size: 14.5px; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif; margin-bottom: 4px;">🚀 Scale<br>Without Hiring</div>
+          <p style="max-width: 155px;">Double active lead volume without expanding administrative or sales personnel.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar" style="border-top: none;">
+      <div class="nav-controls" style="display: flex; gap: 10px; align-items: center;">
+        <a href="slide9_ai_agents.html" class="nav-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+          Previous
+        </a>
+        <a href="slide1_cover.html" class="nav-btn" title="Restart Presentation">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+        </a>
+        <a href="slide11_how_we_work.html" class="nav-btn primary">
+          Next
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+        </a>
+      </div>
+      <div class="footer-brand-text" style="text-align: right; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF;">
+        📊 Multiply Operational Margin and Output Through Modern AI Workflows. &nbsp;&bull;&nbsp; Slide 10 of 12
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
