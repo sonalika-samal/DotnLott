@@ -1064,12 +1064,12 @@ export default function AIAutomationClient() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
-              href="/DotnLott Company Profile.pdf"
+              href="/DotnLott Brand Profile.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 group active:scale-95"
             >
-              Download Brochure
+              Download Brand Profile
               <ArrowRight className="w-4 h-4 text-slate-950 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

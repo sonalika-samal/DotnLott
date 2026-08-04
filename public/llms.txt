@@ -1,0 +1,36 @@
+# DotnLott
+
+> Enterprise-grade business workflow automation, custom integrations, AI-powered solutions, and premium website development.
+
+DotnLott (A2Z Version Private Limited) is a registered Private Limited company based in Cuttack, Odisha, India, serving clients globally. We specialize in transforming manual operations into blazing fast automated workflows.
+
+## Key Services
+
+- **Workflow Automation & Integrations**: CRM synchronization, lead outreach autopilots, and API integrations.
+- **AI Automation**: Custom AI agents, chatbot development, and email/sales pipeline automation.
+- **Custom Website Development**: Next-generation web applications, headless commerce, and high-performance landing pages.
+
+## Main Navigation
+
+- [Home](https://dotnlott.com/): Overview of services, testimonials, and portfolio.
+- [AI Automation](https://dotnlott.com/ai-automation): Details on custom AI solutions and workflow automation.
+- [Website Development](https://dotnlott.com/website-development): Custom design and full-stack development details.
+- [About](https://dotnlott.com/about): Our brand profile, story, mission, and registration details.
+- [Contact](https://dotnlott.com/contact): Connect with the engineering team.
+- [Booking](https://dotnlott.com/booking): Book a 1-on-1 strategy call.
+- [Blog](https://dotnlott.com/blog): In-depth articles on CRM automation, WhatsApp APIs, and headless commerce.
+
+## Company Details
+
+- **Official Name**: A2Z Version Private Limited
+- **CIN (Corporate Identification Number)**: U47721BR2026PTC085973
+- **Primary Email**: connect@dotnlott.com
+- **Phone numbers**: +91-78469-69508 | +91-85441-21551
+- **Location**: Cuttack, Odisha, India (753001)
+
+---
+
+## Technical Resources
+
+- [Full Profile & Documentation](https://dotnlott.com/llms-full.txt): Detailed factual outline of services, technology stacks, delivery processes, and complete FAQ index.
+

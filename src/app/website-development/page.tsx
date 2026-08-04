@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import WebDevServicesClient from './WebDevServicesClient';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/website-development',
+  },
   title: 'Custom Website Engineering & Web App Studio | DotnLott',
   description: 'High-performance custom web applications, corporate brand portfolios, and headless e-commerce platforms engineered for sub-second speed.',
   keywords: 'website development, custom web app studio, custom web developer, headless ecommerce, portfolio web design, DotnLott web studio',

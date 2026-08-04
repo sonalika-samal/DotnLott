@@ -3,6 +3,9 @@ import AboutClient from './AboutClient';
 import { faqsList } from './faqs';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/about',
+  },
   title: 'About DotnLott | AI Automation & Workflow Solutions Company',
   description: 'DotnLott builds affordable AI automation & workflow solutions for startups and SMEs. Backed by A2Z Version Pvt Ltd. Explore our story and services.',
   keywords: 'AI automation company, business process automation, workflow automation solutions, affordable AI automation India, AI agents, chatbot development, CRM automation, WhatsApp automation, Google Workspace automation',

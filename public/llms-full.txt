@@ -1,0 +1,93 @@
+# DotnLott - Full Profile & Technical Documentation
+
+> Enterprise-grade business workflow automation, custom integrations, AI-powered solutions, and premium website development. Backed by A2Z Version Private Limited.
+
+This file provides comprehensive context and direct factual documentation for AI search engines, RAG systems, and developers regarding DotnLott's operations, service capabilities, tech stacks, delivery processes, and FAQs.
+
+---
+
+## 1. Company Overview
+
+- **Legal Entity Name**: A2Z Version Private Limited
+- **Brand Name**: DotnLott
+- **Founding Year**: 2026
+- **Registration CIN**: U47721BR2026PTC085973
+- **Headquarters Location**: Cuttack, Odisha, India (753001)
+- **Primary Contacts**:
+  - Email: connect@dotnlott.com
+  - Phone 1: +91-78469-69508
+  - Phone 2: +91-85441-21551
+- **Founding Team**:
+  - **Sonalika Samal**: Founder & Systems Architect. Specialist in cloud system architecture, API routing, database synchronization, and n8n orchestration.
+  - **Abhishek Abhinav**: Founder & Software Engineer. Specialist in React/Next.js frontend optimization, secure full-stack API design, and cloud VPS deployments.
+
+---
+
+## 2. Core Service Offerings
+
+### A. Business Workflow Automation & Integrations
+DotnLott designs and deploys secure, scalable workflow automations to eliminate manual operations and redundant data entry.
+- **Key Integrations**: 
+  - CRM platforms: Zoho CRM, Salesforce, HubSpot.
+  - Communications: WhatsApp Business API, Slack, Telegram, Gmail/Outlook.
+  - Productivity: Google Workspace (Sheets, Drive, Docs), Notion, Trello, Asana.
+  - Payment Gateways: Razorpay, Stripe, PayPal.
+- **Architectures**: Custom webhook endpoints, cron triggers, event-driven state synchronizers, self-healing retries.
+- **Orchestration Tools**: n8n (Self-hosted or Cloud), Make.com, custom Node.js/Python server workers.
+
+### B. Custom AI Agent & RAG Architectures
+We develop context-aware AI systems that interface with your company's proprietary data under strict privacy rules.
+- **AI Agents**: Lead generation agents, automated customer support handlers, and sales pipeline assistants.
+- **RAG Systems**: Retrieval-Augmented Generation using high-speed vector databases (Pinecone, pgvector) to query private business databases and documentation securely.
+- **LLM Integrations**: OpenAI GPT-4o, Anthropic Claude 3.5, Google Gemini, and open-source models (Llama 3) running on private cloud GPU servers.
+- **Security**: Endpoint encryption, API key vaulting, prompt guardrails, and role-based data access.
+
+### C. Full-Stack Web Development & Engineering
+We build bespoke web applications and high-conversion marketing portals optimized for speed, scalability, and UX.
+- **Tech Stack**: Next.js (React 19), Tailwind CSS, TypeScript, Node.js, PostgreSQL, Prisma ORM.
+- **Headless Commerce**: Custom fast checkout interfaces decoupled from Shopify, WooCommerce, or custom databases to achieve sub-second load times.
+- **Performance Optimization**: Sub-second TTFB, 100/100 Lighthouse performance scores, static page generation (SSG) with ISR (Incremental Static Regeneration).
+- **Hosting & Infrastructure**: Managed cloud (Vercel, AWS) or custom clusters on Hetzner Cloud and DigitalOcean VPS arrays.
+
+---
+
+## 3. Our 4-Step Delivery Process
+
+1. **Discover (Scoping & Analysis)**: We map your team's manual steps, identify repetitive data entry patterns, gather API credentials, and write exact system requirements.
+2. **Design (Architecture & Flowcharts)**: We model data structures, draft API mapping schemas, design wireframes, and outline event-driven webhook flows.
+3. **Deploy (System Launch)**: We build components, run end-to-end tests, deploy code to Vercel/VPS clusters, and establish automatic error-monitoring webhooks.
+4. **Support (Monitoring & Scaling)**: We review execution logs, keep API dependencies updated, adjust rate limits, and provide active maintenance options to ensure near-zero downtime.
+
+---
+
+## 4. Frequently Asked Questions (FAQs)
+
+### General & Automation FAQs
+- **Q: How much does business workflow automation cost?**
+  - **A**: Standardized automation setups at DotnLott start at ₹499 ($6) on our Managed Cloud model. Custom enterprise integrations are scoped and quoted after a consultation call.
+- **Q: How long does it take to deploy an automation suite?**
+  - **A**: Managed Cloud suites are configured, tested, and active in 3 to 7 business days. Complex enterprise multi-app web hooks take 2 to 4 weeks.
+- **Q: Can you integrate legacy CRM databases?**
+  - **A**: Yes. We design custom Node.js connectors to sync legacy systems (SQL Server, private REST APIs) with modern CRM and messaging platforms.
+- **Q: Is our corporate data secure in custom automations?**
+  - **A**: Yes. We do not store your data on intermediate servers unless required. API connections are end-to-end encrypted, credentials are vault-stored, and we support self-hosting options where you maintain 100% control of the host environment.
+
+### Web Development FAQs
+- **Q: How long does website development take?**
+  - **A**: Standard marketing websites take 2 to 4 weeks. Full-stack custom web applications with portals and database states take 4 to 8 weeks.
+- **Q: Do you build custom e-commerce systems?**
+  - **A**: Yes. We build high-performance e-commerce storefronts using headless architectures connected to secure checkout gateways (Razorpay, Stripe) and inventory APIs.
+- **Q: Why use custom Next.js code instead of WordPress or Shopify?**
+  - **A**: Next.js offers superior loading speeds (under 1 second), absolute design freedom, higher conversion rates, robust security, and seamless custom backend API integrations that WordPress cannot support cleanly.
+
+---
+
+## 5. Official Navigation Index
+
+- **Main Website**: [https://dotnlott.com](https://dotnlott.com)
+- **Services Catalog**: [https://dotnlott.com/ai-automation](https://dotnlott.com/ai-automation)
+- **Web App Engineering**: [https://dotnlott.com/website-development](https://dotnlott.com/website-development)
+- **Company About**: [https://dotnlott.com/about](https://dotnlott.com/about)
+- **Contact Channels**: [https://dotnlott.com/contact](https://dotnlott.com/contact)
+- **1-on-1 Consultation Booking**: [https://dotnlott.com/booking](https://dotnlott.com/booking)
+- **Technical Blog**: [https://dotnlott.com/blog](https://dotnlott.com/blog)

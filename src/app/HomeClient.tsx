@@ -694,12 +694,12 @@ export default function HomeClient() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
             <a
-              href="/DotnLott Company Profile.pdf"
+              href="/DotnLott Brand Profile.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 text-xs font-black uppercase tracking-wider text-slate-950 bg-white hover:bg-slate-100 transition-all rounded-full shadow-2xl hover:scale-105"
             >
-              Download Brochure
+              Download Brand Profile
               <ArrowRight className="w-4 h-4 text-slate-950" />
             </a>
           </div>
