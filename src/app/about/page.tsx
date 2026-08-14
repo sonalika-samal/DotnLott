@@ -29,7 +29,7 @@ const organizationSchema = {
   'founders': [
     {
       '@type': 'Person',
-      'name': 'Sonalika Samal',
+      'name': 'Sujata Sinha',
       'jobTitle': 'Founder & Systems Architect',
     },
     {

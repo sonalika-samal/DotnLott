@@ -52,7 +52,7 @@ export default async function Page({ params }: PageProps) {
     'datePublished': post.date,
     'author': {
       '@type': 'Person',
-      'name': 'Sonalika Samal',
+      'name': 'Sujata Sinha',
       'jobTitle': 'Lead Systems Architect',
     },
     'publisher': {

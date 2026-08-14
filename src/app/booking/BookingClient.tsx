@@ -399,11 +399,11 @@ export default function BookingClient() {
                               +91 78469 69508
                             </a>
                             <a
-                              href="https://wa.me/917846969508?text=Hey%20Sonalika%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
+                              href="https://wa.me/917846969508?text=Hey%20Sujata%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 px-1 py-0.5 rounded leading-none uppercase transition-colors"
-                              title="WhatsApp Sonalika"
+                              title="WhatsApp Sujata"
                             >
                               WhatsApp
                             </a>

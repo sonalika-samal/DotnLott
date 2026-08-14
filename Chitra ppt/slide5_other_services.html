@@ -98,27 +98,29 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 25px;
-      padding: 2% 0;
+      gap: 15px; /* Reduced gap to save vertical space */
+      padding: 1% 0; /* Reduced padding */
+      min-height: 0;
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
     }
 
     /* Intro section */
     .services-title {
       text-align: center;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .services-title h2 {
       font-family: 'Outfit', sans-serif;
-      font-size: 28px;
+      font-size: 24px; /* More compact header */
       font-weight: 800;
       color: #2E4094;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .services-title p {
-      font-size: 15px;
+      font-size: 14px;
       color: #64748B;
       font-weight: 500;
     }
@@ -127,31 +129,32 @@
     .grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: 12px; /* Tighter gap */
     }
 
     .service-block {
       background-color: #FFFFFF;
       border: 1.5px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 25px;
+      border-radius: 12px;
+      padding: 8px 12px; /* Tighter padding to prevent footer overflow */
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      gap: 4px; /* Tighter gap */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
       transition: all 0.2s ease;
+      box-sizing: border-box;
     }
 
     .service-block:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: #2E4094;
-      box-shadow: 0 12px 25px -5px rgba(46, 64, 148, 0.12);
+      box-shadow: 0 8px 16px -5px rgba(46, 64, 148, 0.08);
     }
 
     .block-icon-wrapper {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
+      width: 32px; /* Tighter icon wrapper */
+      height: 32px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -167,14 +170,14 @@
 
     .service-block h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 18px;
+      font-size: 14.5px; /* Tighter title */
       font-weight: 800;
       color: #1E293B;
     }
 
     .service-block p {
-      font-size: 13.5px;
-      line-height: 1.5;
+      font-size: 11px; /* Tighter description */
+      line-height: 1.35;
       color: #64748B;
       font-weight: 500;
     }
@@ -378,7 +381,7 @@
             <polyline points="3 3 3 8 8 8"></polyline>
           </svg>
         </a>
-        <a href="slide6_doctors.html" class="nav-btn primary">
+        <a href="slide_statistics.html" class="nav-btn primary">
           Next
           <!-- Right Arrow -->
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -387,7 +390,7 @@
           </svg>
         </a>
       </div>
-      <div class="footer-page-info">Slide 5 of 8</div>
+      <div class="footer-page-info">Slide 5 of 10</div>
     </div>
 
   </div>

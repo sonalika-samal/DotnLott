@@ -355,22 +355,22 @@
 
     .heart-pulse-node {
       position: absolute;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #00B5D8 0%, #2E4094 100%);
+      width: 130px; /* Taller & wider to frame the transparent logo perfectly */
+      height: 130px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #FFFFFF;
-      box-shadow: 0 0 35px rgba(0, 181, 214, 0.45);
+      background: transparent; /* Transparent background */
+      box-shadow: none; /* Remove background shadow */
       animation: heartbeat 1.25s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
       z-index: 5;
     }
 
-    .heart-pulse-node svg {
-      width: 42px;
-      height: 42px;
+    .heart-pulse-node img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(46, 64, 148, 0.2)); /* Sleek drop shadow on the transparent logo outline */
     }
 
     .ekg-svg {
@@ -470,6 +470,7 @@
       align-items: center;
       padding: 2% 0;
       width: 100%;
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
     }
 
     .grid-2col-even {
@@ -480,6 +481,7 @@
       align-items: center;
       padding: 2% 0;
       width: 100%;
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
     }
 
     /* MD Slide details */
@@ -608,9 +610,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 25px;
-      padding: 2% 0;
+      gap: 15px; /* Reduced gap to save vertical space */
+      padding: 1% 0; /* Reduced padding */
       width: 100%;
+      min-height: 0; /* Shrinking safety */
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
     }
 
     .intro-bar {
@@ -725,6 +729,7 @@
       gap: 15px;
       padding: 1% 0;
       width: 100%;
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
     }
 
     .dept-intro {
@@ -868,29 +873,30 @@
     .other-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      gap: 12px; /* Tighter gap */
     }
 
     .service-block {
       background-color: #FFFFFF;
       border: 1.5px solid #E2E8F0;
-      padding: 14px 18px;
+      padding: 8px 12px; /* Tighter padding to prevent footer overflow */
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 4px; /* Tighter gap */
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
       transition: all 0.2s ease;
+      box-sizing: border-box;
     }
 
     .service-block:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: #2E4094;
-      box-shadow: 0 10px 20px -5px rgba(46, 64, 148, 0.1);
+      box-shadow: 0 8px 16px -5px rgba(46, 64, 148, 0.08);
     }
 
     .block-icon-wrapper {
-      width: 42px;
-      height: 42px;
+      width: 32px; /* Tighter icon wrapper */
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -906,14 +912,14 @@
 
     .service-block h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 16.5px;
+      font-size: 14.5px; /* Tighter title */
       font-weight: 800;
       color: #1E293B;
     }
 
     .service-block p {
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: 11px; /* Tighter description */
+      line-height: 1.35;
       color: #64748B;
       font-weight: 500;
     }
@@ -1092,11 +1098,11 @@
     .doctor-card {
       background-color: #FFFFFF;
       border: 1px solid #E2E8F0;
-      padding: 15px;
+      padding: 10px; /* Reduced from 15px */
       text-align: center;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px; /* Reduced from 10px */
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
       transition: all 0.2s ease;
     }
@@ -1140,11 +1146,11 @@
 
     .doc-name {
       font-family: 'Outfit', sans-serif;
-      font-size: 13.5px;
+      font-size: 12.5px; /* Reduced from 13.5px */
       font-weight: 800;
       color: #1E293B;
       line-height: 1.3;
-      min-height: 36px;
+      min-height: 32px; /* Reduced from 36px */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1165,11 +1171,11 @@
     }
 
     .doc-desig {
-      font-size: 11px;
+      font-size: 10px; /* Reduced from 11px */
       font-weight: 500;
       color: #475569;
-      line-height: 1.4;
-      min-height: 32px;
+      line-height: 1.3;
+      min-height: 28px; /* Reduced from 32px */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1314,6 +1320,209 @@
       color: #64748B;
       font-weight: 500;
     }
+
+    /* Statistics Slide Styles */
+    .stats-layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; /* Reduced gap to keep layout tight */
+      align-items: stretch;
+      padding: 1% 0; /* Tightened padding to fit in viewport */
+      width: 100%;
+      min-height: 0; /* Flexbox safety key: lets grid shrink inside flex parent */
+      box-sizing: border-box;
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
+    }
+
+    .stats-panel {
+      background-color: rgba(248, 250, 252, 0.55);
+      border: 1.5px solid #E2E8F0;
+      padding: 12px 18px; /* Tighter padding */
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Reduced gap */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      overflow: hidden; /* Removed vertical scrollbars! */
+      box-sizing: border-box;
+    }
+
+    .stats-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 6px;
+    }
+
+    .stats-panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px; /* Slightly more compact header */
+      font-weight: 800;
+      color: #2E4094;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-stat-badge {
+      background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+      color: #FFFFFF;
+      padding: 4px 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      box-shadow: 0 3px 8px rgba(225, 29, 72, 0.2);
+    }
+    .hero-stat-badge.cyan {
+      background: linear-gradient(135deg, #00B5D8 0%, #2E4094 100%);
+      box-shadow: 0 3px 8px rgba(0, 181, 214, 0.2);
+    }
+
+    .stats-sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr); /* 3 equal-height rows to fill panel */
+      gap: 8px; /* Compact sub-grid gaps */
+      flex: 1; /* Stretch to fill available panel height */
+      min-height: 0; /* Shrinking safety */
+    }
+
+    .stat-metric-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 6px 10px; /* Highly compact card padding */
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      justify-content: center; /* Center metrics vertically in card */
+      height: 100%; /* Stretch to fill grid row height */
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .stat-metric-card:hover {
+      border-color: #00B5D8;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0, 181, 214, 0.04);
+    }
+
+    .stat-metric-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px; /* Smaller metric val to prevent wrap & vertical stretch */
+      font-weight: 800;
+      color: #2E4094;
+      line-height: 1.1;
+    }
+
+    .stat-metric-label {
+      font-size: 9px; /* Tighter label font size */
+      line-height: 1.25;
+      color: #64748B;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+    }
+
+    /* Gallery Slide Styles */
+    /* Gallery Slide - 3x2 Grid Styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 15px; /* Reduced gap to remove unnecessary spacing */
+      width: 100%;
+      flex: 1; /* Fluid vertical sizing matching the slide height */
+      min-height: 0; /* Grid shrinking safety inside flex parent */
+      padding: 1% 0; /* Reduced padding to lift layout and close gaps */
+      box-sizing: border-box;
+      margin-bottom: 3.5vh; /* Keep spacing above footer */
+    }
+
+    .gallery-card {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* Stretch to fill grid cell height */
+      overflow: hidden;
+      box-sizing: border-box;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .gallery-card:hover {
+      border-color: #2E4094;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(46, 64, 148, 0.08);
+    }
+
+    .gallery-card-image-wrapper {
+      width: 100%;
+      flex: 3.2; /* Takes 3.2 parts of card height dynamically */
+      min-height: 0; /* Allows shrinking below content size */
+      padding: 2px; /* Very thin gradient border lines */
+      background: linear-gradient(135deg, #2E4094 0%, #E11D48 100%);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .gallery-card-image-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .gallery-card-image-inner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1.5px solid #FFFFFF; /* Very thin inner white outline */
+      box-sizing: border-box;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .gallery-card-image-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.28); /* Crop embedded borders completely */
+      display: block;
+    }
+
+    .gallery-card-info {
+      flex: 1; /* Takes 1 part of card height dynamically */
+      min-height: 0; /* Allows shrinking */
+      padding: 8px 12px; /* Compact padding to remove unnecessary gaps */
+      display: flex;
+      flex-direction: column;
+      gap: 3px; /* Smaller inner gap */
+      justify-content: center;
+      background-color: #FFFFFF;
+      border-top: 1px solid #F1F5F9;
+      box-sizing: border-box;
+    }
+
+    .gallery-card-info h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #2E4094;
+      line-height: 1.2;
+    }
+
+    .gallery-card-info p {
+      font-size: 11px;
+      color: #64748B;
+      font-weight: 500;
+      line-height: 1.3;
+    }
   </style>
 </head>
 <body>
@@ -1333,6 +1542,8 @@
       <button class="dot-btn" onclick="goToSlide(5)"></button>
       <button class="dot-btn" onclick="goToSlide(6)"></button>
       <button class="dot-btn" onclick="goToSlide(7)"></button>
+      <button class="dot-btn" onclick="goToSlide(8)"></button>
+      <button class="dot-btn" onclick="goToSlide(9)"></button>
     </div>
 
     <!-- Slide Container Track (Vertical) -->
@@ -1374,9 +1585,7 @@
               <div class="pulse-glow-ring"></div>
               <div class="pulse-glow-ring ring2"></div>
               <div class="heart-pulse-node">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
+                <img src="logo.webp" alt="Chitra Heart Hospital Logo">
               </div>
               <svg class="ekg-svg" viewBox="0 0 300 100" fill="none" stroke="#00B5D8" stroke-width="3">
                 <path d="M 0 50 L 50 50 L 60 30 L 70 70 L 80 50 L 110 50 L 120 10 L 130 90 L 140 50 L 180 50 L 190 35 L 200 65 L 210 50 L 300 50" class="ekg-line"></path>
@@ -1400,7 +1609,7 @@
                 chitrahearthospital@gmail.com
               </div>
             </div>
-            <div class="footer-page-info">Slide 1 of 8</div>
+            <div class="footer-page-info">Slide 1 of 10</div>
           </div>
         </div>
       </div>
@@ -1489,7 +1698,7 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 2 of 8</div>
+            <div class="footer-page-info">Slide 2 of 10</div>
           </div>
         </div>
       </div>
@@ -1577,7 +1786,7 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 3 of 8</div>
+            <div class="footer-page-info">Slide 3 of 10</div>
           </div>
         </div>
       </div>
@@ -1744,7 +1953,7 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 4 of 8</div>
+            <div class="footer-page-info">Slide 4 of 10</div>
           </div>
         </div>
       </div>
@@ -1856,12 +2065,272 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 5 of 8</div>
+            <div class="footer-page-info">Slide 5 of 10</div>
           </div>
         </div>
       </div>
 
-      <!-- SLIDE 6: OUR DOCTORS -->
+      <!-- SLIDE 6 (NEW): CLINICAL STATISTICS -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Annual Case Volume</div>
+          </div>
+
+          <div class="stats-layout">
+            <!-- Cardiology Panel -->
+            <div class="stats-panel">
+              <div class="stats-panel-header">
+                <div class="stats-panel-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #00B5D8;">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  </svg>
+                  Interventional Cardiology & Cathlab
+                </div>
+                <div class="hero-stat-badge cyan">
+                  4,395 Total Procedures
+                </div>
+              </div>
+              <div class="stats-sub-grid">
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">2,542</div>
+                  <div class="stat-metric-label">Coronary Angiogram</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">1,822</div>
+                  <div class="stat-metric-label">Coronary Angioplasty (incl. primary)</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">787</div>
+                  <div class="stat-metric-label">AMI Patients Admitted</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">289</div>
+                  <div class="stat-metric-label">Primary PCI (incl. rescue)</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">254</div>
+                  <div class="stat-metric-label">OCT Guided Angioplasty</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">36</div>
+                  <div class="stat-metric-label">Orbital Angioplasty</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">22</div>
+                  <div class="stat-metric-label">Adult Structural Devices</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">08</div>
+                  <div class="stat-metric-label">Peripheral Angioplasty</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">01</div>
+                  <div class="stat-metric-label">TAVR / TAVI Procedure</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTVS Panel -->
+            <div class="stats-panel">
+              <div class="stats-panel-header">
+                <div class="stats-panel-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #E11D48;">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  </svg>
+                  Cardiothoracic & Vascular Surgery (CTVS)
+                </div>
+                <div class="hero-stat-badge">
+                  196 Total CTVS Cases
+                </div>
+              </div>
+              <div class="stats-sub-grid">
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">49</div>
+                  <div class="stat-metric-label">Mitral Valve Replacement (MVR)</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">48</div>
+                  <div class="stat-metric-label">Coronary Artery Bypass (CABG)</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">27</div>
+                  <div class="stat-metric-label">Thoracic and Vascular</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">23</div>
+                  <div class="stat-metric-label">Aortic Valve Replacement (AVR)</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">22</div>
+                  <div class="stat-metric-label">Double Valve Replacement (DVR)</div>
+                </div>
+                <div class="stat-metric-card">
+                  <div class="stat-metric-val">16</div>
+                  <div class="stat-metric-label">Cardiac Tumor Excision</div>
+                </div>
+                <div class="stat-metric-card" style="grid-column: span 3;">
+                  <div class="stat-metric-val">11</div>
+                  <div class="stat-metric-label">Congenital Heart Disease Procedures</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(4)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(6)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 6 of 10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7 (NEW): INFRASTRUCTURE GALLERY -->
+      <div class="slide-wrapper">
+        <div class="slide-container">
+          <div class="slide-header">
+            <div class="logo-container">
+              <img src="logo.webp" alt="Chitra Heart Hospital Logo" style="height: 40px; max-width: 120px; object-fit: contain; display: block;" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+              <div class="logo-placeholder">LOGO</div>
+              <div class="logo-title">Chitra Heart Hospital</div>
+            </div>
+            <div class="slide-title">Infrastructure Gallery</div>
+          </div>
+
+          <div class="gallery-grid">
+            <!-- Card 1 -->
+            <div class="gallery-card">
+              <div class="gallery-card-image-wrapper">
+                <div class="gallery-card-image-inner">
+                  <img src="A CATHLAB DEDICATE TO CARDIOLOGY.jpg" alt="Dedicated Cardiology Cathlab">
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h3>Dedicated Cathlab</h3>
+                <p>A Cathlab dedicated to Cardiology</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="gallery-card">
+              <div class="gallery-card-image-wrapper">
+                <div class="gallery-card-image-inner">
+                  <img src="C.T.V.S (OPERATION THEATER).jpg" alt="C.T.V.S. Operation Theater">
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h3>C.T.V.S Operation Theater</h3>
+                <p>Advanced cardiac surgery operating room</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="gallery-card">
+              <div class="gallery-card-image-wrapper">
+                <div class="gallery-card-image-inner">
+                  <img src="CARDIAC CARE UNIT (C.C.U).jpg" alt="Cardiac Care Unit (C.C.U)">
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h3>Cardiac Care Unit (C.C.U)</h3>
+                <p>Critical coronary care facility</p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="gallery-card">
+              <div class="gallery-card-image-wrapper">
+                <div class="gallery-card-image-inner">
+                  <img src="CASUALITY.jpg" alt="Emergency Casualty Ward">
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h3>Casualty Ward</h3>
+                <p>24/7 Emergency response setup</p>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="gallery-card">
+              <div class="gallery-card-image-wrapper">
+                <div class="gallery-card-image-inner">
+                  <img src="SPECIALLY DESIGNED CABIN FOR CARDIOLOGY.jpg" alt="Specially Designed Cabin">
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h3>Special Cardiology Cabin</h3>
+                <p>Designed private cabin for patient comfort</p>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="gallery-card">
+              <div class="gallery-card-image-wrapper">
+                <div class="gallery-card-image-inner">
+                  <img src="WAITING LOBBY FOR ATTENDANTS.jpg" alt="Attendant Waiting Lobby">
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h3>Waiting Lobby</h3>
+                <p>Comfortable seating lounge for attendants</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="nav-controls">
+              <button class="nav-btn" onclick="goToSlide(5)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Previous
+              </button>
+              <button class="nav-btn" onclick="goToSlide(0)" title="Restart Presentation" style="padding: 10px 14px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <polyline points="3 3 3 8 8 8"></polyline>
+                </svg>
+              </button>
+              <button class="nav-btn primary" onclick="goToSlide(7)">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="footer-page-info">Slide 7 of 10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: OUR DOCTORS -->
       <div class="slide-wrapper">
         <div class="slide-container">
           <div class="slide-header">
@@ -1969,7 +2438,7 @@
 
           <div class="footer-bar">
             <div class="nav-controls">
-              <button class="nav-btn" onclick="goToSlide(4)">
+              <button class="nav-btn" onclick="goToSlide(6)">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="12" y1="19" x2="12" y2="5"></line>
                   <polyline points="5 12 12 5 19 12"></polyline>
@@ -1982,7 +2451,7 @@
                   <polyline points="3 3 3 8 8 8"></polyline>
                 </svg>
               </button>
-              <button class="nav-btn primary" onclick="goToSlide(6)">
+              <button class="nav-btn primary" onclick="goToSlide(8)">
                 Next
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -1990,7 +2459,7 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 6 of 8</div>
+            <div class="footer-page-info">Slide 8 of 10</div>
           </div>
         </div>
       </div>
@@ -2007,7 +2476,7 @@
             <div class="slide-title">Insurance Partners</div>
           </div>
 
-          <div class="content-area" style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; padding: 1.5% 0; height: 82%;">
+          <div class="content-area" style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; padding: 1.5% 0; flex: 1; min-height: 0; margin-bottom: 3.5vh;">
             <!-- Government Schemes -->
             <div class="insurance-box">
               <div class="column-title">
@@ -2089,7 +2558,7 @@
 
           <div class="footer-bar">
             <div class="nav-controls">
-              <button class="nav-btn" onclick="goToSlide(5)">
+              <button class="nav-btn" onclick="goToSlide(7)">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="12" y1="19" x2="12" y2="5"></line>
                   <polyline points="5 12 12 5 19 12"></polyline>
@@ -2102,7 +2571,7 @@
                   <polyline points="3 3 3 8 8 8"></polyline>
                 </svg>
               </button>
-              <button class="nav-btn primary" onclick="goToSlide(7)">
+              <button class="nav-btn primary" onclick="goToSlide(9)">
                 Next
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -2110,7 +2579,7 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 7 of 8</div>
+            <div class="footer-page-info">Slide 9 of 10</div>
           </div>
         </div>
       </div>
@@ -2216,7 +2685,7 @@
 
           <div class="footer-bar">
             <div class="nav-controls">
-              <button class="nav-btn" onclick="goToSlide(6)">
+              <button class="nav-btn" onclick="goToSlide(8)">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="12" y1="19" x2="12" y2="5"></line>
                   <polyline points="5 12 12 5 19 12"></polyline>
@@ -2230,7 +2699,7 @@
                 </svg>
               </button>
             </div>
-            <div class="footer-page-info">Slide 8 of 8</div>
+            <div class="footer-page-info">Slide 10 of 10</div>
           </div>
         </div>
       </div>
@@ -2240,7 +2709,7 @@
 
   <script>
     let currentSlide = 0;
-    const totalSlides = 8;
+    const totalSlides = 10;
     const sliderTrack = document.getElementById('sliderTrack');
     const dotBtns = document.querySelectorAll('.dot-btn');
 

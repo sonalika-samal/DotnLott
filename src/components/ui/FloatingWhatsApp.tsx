@@ -46,16 +46,16 @@ export default function FloatingWhatsApp() {
   // Helper to generate dynamic prefilled WhatsApp message based on current page
   const getWhatsAppLink = () => {
     const phoneNumber = '917846969508'; // Client phone number
-    let text = 'Hey Sonalika, I would like to inquire about your workflow automation services.';
+    let text = 'Hey Sujata, I would like to inquire about your workflow automation services.';
 
     if (pathname === '/ai-automation' || pathname === '/ai-automation-latest') {
-      text = 'Hey Sonalika, I was browsing your AI Automation Catalog and want to learn more about your pre-built workflows.';
+      text = 'Hey Sujata, I was browsing your AI Automation Catalog and want to learn more about your pre-built workflows.';
     } else if (pathname === '/contact' || pathname.startsWith('/booking')) {
-      text = 'Hey Sonalika, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
+      text = 'Hey Sujata, I would like to schedule a 1-on-1 consultation session for AI & workflow integrations.';
     } else if (pathname === '/contact') {
-      text = 'Hey Sonalika, I am reaching out from your Contact page and would like to inquire about your services.';
+      text = 'Hey Sujata, I am reaching out from your Contact page and would like to inquire about your services.';
     } else if (pathname === '/website-development') {
-      text = 'Hey Sonalika, I am interested in building a high-performance custom website or web app with DotnLott.';
+      text = 'Hey Sujata, I am interested in building a high-performance custom website or web app with DotnLott.';
     }
 
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
@@ -100,19 +100,13 @@ export default function FloatingWhatsApp() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="relative w-8 h-8 flex-shrink-0">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
-                    <Image
-                      src="/sonalika.jpg"
-                      alt="Sonalika Samal Avatar"
-                      width={32}
-                      height={32}
-                      className="object-cover w-full h-full"
-                    />
+                  <div className="w-full h-full rounded-full bg-brand-purple text-white flex items-center justify-center font-bold text-xs">
+                    SS
                   </div>
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full translate-x-0.5 translate-y-0.5 animate-pulse z-10" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-slate-900 leading-none">Sonalika Samal</span>
+                  <span className="text-xs font-bold text-slate-900 leading-none">Sujata Sinha</span>
                   <span className="text-[10px] text-slate-500 mt-1">DotnLott Core Team</span>
                 </div>
               </div>

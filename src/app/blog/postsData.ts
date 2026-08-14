@@ -13,7 +13,7 @@ export interface BlogPost {
 }
 
 const authors = [
-  { name: 'Sonalika Samal', role: 'Lead Systems Architect', initials: 'SS' },
+  { name: 'Sujata Sinha', role: 'Lead Systems Architect', initials: 'SS' },
   { name: 'Abhishek Abhinav', role: 'Lead Software Engineer', initials: 'AA' },
   { name: 'Priya Sharma', role: 'Lead UI/UX Designer', initials: 'PS' },
   { name: 'Rahul Verma', role: 'DevOps & Security Specialist', initials: 'RV' },
@@ -29,13 +29,13 @@ const detailedPosts = [
     category: 'Automation',
     readTime: '7 min read',
     date: 'July 12, 2026',
-    author: 'Sonalika Samal',
+    author: 'Sujata Sinha',
     summary: 'An engineering deep-dive into synchronizing Zoho CRM contacts and automatic webhook routing using n8n workflow nodes.',
     keywords: 'Zoho CRM, n8n automation, B2B sales automation, API sync, workflow routing, DotnLott guides',
     metaDescription: 'Step-by-step engineering architecture on synchronizing contact logs and qualification triggers between Zoho CRM and n8n.',
     glow: 'hover:border-brand-blue/30',
     content: `
-      <p><em>Published on July 12, 2026 • Written by <strong>Sonalika Samal</strong> (Lead Systems Architect)</em></p>
+      <p><em>Published on July 12, 2026 • Written by <strong>Sujata Sinha</strong> (Lead Systems Architect)</em></p>
       
       <h2>Introduction: The Manual Overhead Bottleneck</h2>
       <p>Modern B2B sales organizations require rapid response rates to remain competitive. However, in many corporate environments, valuable sales executives spend hours performing manual data entry: log-sorting incoming leads from Excel spreadsheets, copy-pasting customer details into Zoho CRM, and sending custom introductory emails. These friction points slow down customer outreach and lead to human typing mistakes. Decoupled, event-driven pipelines solve these issues. By leveraging <a href="https://docs.n8n.io/" target="_blank" rel="noopener noreferrer">n8n's visual node-based engine</a> alongside the robust database API parameters of Zoho, we can build custom self-healing pipelines that manage lead qualification, instant notifications, and task assignments automatically.</p>
@@ -62,13 +62,13 @@ const detailedPosts = [
     category: 'Outreach',
     readTime: '6 min read',
     date: 'June 28, 2026',
-    author: 'Sonalika Samal',
+    author: 'Sujata Sinha',
     summary: 'A complete guide on configuring Meta developer templates and webhook listeners to achieve 28% response rates.',
     keywords: 'WhatsApp API, Meta developer, lead qualification, conversational automation, WhatsApp CRM India, customer response rates',
     metaDescription: 'How businesses achieve 28% response rates using automated WhatsApp Business API integrations and trigger systems.',
     glow: 'hover:border-emerald-500/30',
     content: `
-      <p><em>Published on June 28, 2026 • Written by <strong>Sonalika Samal</strong> (Lead Systems Architect)</em></p>
+      <p><em>Published on June 28, 2026 • Written by <strong>Sujata Sinha</strong> (Lead Systems Architect)</em></p>
 
       <h2>Introduction: The Shift to Conversational Messaging</h2>
       <p>In high-growth markets like India, traditional channels (like email and cold phone outreach) are losing effectiveness. Average email open rates have dropped below 15%, and call-blocking tools have lowered pickup rates significantly. To address this, modern businesses are transitioning to conversational automation. Integrating the official <a href="https://developers.facebook.com/docs/whatsapp/" target="_blank" rel="noopener noreferrer">Meta WhatsApp Business Platform API</a> lets you contact prospective leads directly on their primary messaging app, yielding response rates up to 28% when messages are sent within five minutes of an initial inquiry.</p>
@@ -92,13 +92,13 @@ const detailedPosts = [
     category: 'Web Dev',
     readTime: '8 min read',
     date: 'May 15, 2026',
-    author: 'Sonalika Samal',
+    author: 'Sujata Sinha',
     summary: 'A technical analysis of page load times, SEO indexability, and API customization comparing custom headless setups to Shopify templates.',
     keywords: 'headless commerce, Nextjs, Shopify API, Google Lighthouse speed, custom checkout, payment API, SEO rankings',
     metaDescription: 'A technical analysis of page load times, SEO indexability, and API customization comparing custom headless setups to Shopify templates.',
     glow: 'hover:border-brand-purple/30',
     content: `
-      <p><em>Published on May 15, 2026 • Written by <strong>Sonalika Samal</strong> (Lead Systems Architect)</em></p>
+      <p><em>Published on May 15, 2026 • Written by <strong>Sujata Sinha</strong> (Lead Systems Architect)</em></p>
 
       <h2>Introduction: The Monolithic Speed Ceiling</h2>
       <p>Traditional e-commerce platforms like Shopify, WooCommerce, and Magento offer simple setups but introduce performance bottlenecks. Their template engines rely on heavy script bundles, unoptimized CSS sheets, and slow database queries. This impacts your Core Web Vitals, leading to higher bounce rates and lower search engine rankings. Headless commerce solves this by separating the client-side design from the back-end database engines. This allows developers to build fast fronts while utilizing secure APIs to handle inventory and checkout.</p>
@@ -122,13 +122,13 @@ const detailedPosts = [
     category: 'AI & Data',
     readTime: '9 min read',
     date: 'April 20, 2026',
-    author: 'Sonalika Samal',
+    author: 'Sujata Sinha',
     summary: 'Understanding the backend process of embedding documents, configuring RAG queries, and securing private customer data.',
     keywords: 'RAG, vector database, Pinecone, Supabase, Claude API, semantic search, AI data security, enterprise AI chatbot',
     metaDescription: 'Understanding the backend process of embedding documents, configuring RAG queries, and securing private customer data.',
     glow: 'hover:border-rose-500/30',
     content: `
-      <p><em>Published on April 20, 2026 • Written by <strong>Sonalika Samal</strong> (Lead Systems Architect)</em></p>
+      <p><em>Published on April 20, 2026 • Written by <strong>Sujata Sinha</strong> (Lead Systems Architect)</em></p>
 
       <h2>Introduction: The Limitation of Fine-Tuning</h2>
       <p>Enterprise AI projects often struggle with context limits and data inaccuracies. While fine-tuning is useful for teaching models specific writing styles, it is expensive and unsuitable for updating dynamic facts. Copy-pasting database files directly into prompts also risks exposing private customer records. Retrieval-Augmented Generation (RAG) paired with a high-speed vector database provides a secure, context-aware solution that queries internal documents safely.</p>

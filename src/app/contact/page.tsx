@@ -3,11 +3,11 @@ import ContactClient from './ContactClient';
 
 export const metadata: Metadata = {
   title: 'Contact Us | DotnLott AI Automation & Website Development',
-  description: 'Get in touch with DotnLott. Reach out to Sonalika Samal & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
-  keywords: 'contact DotnLott, AI automation inquiry, website development company contact, Sonalika Samal, Abhishek Abhinav, Odisha tech company, Odisha web developer',
+  description: 'Get in touch with DotnLott. Reach out to Sujata Sinha & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
+  keywords: 'contact DotnLott, AI automation inquiry, website development company contact, Sujata Sinha, Abhishek Abhinav, Odisha tech company, Odisha web developer',
   openGraph: {
     title: 'Contact Us | DotnLott AI Automation & Website Development',
-    description: 'Get in touch with DotnLott. Reach out to Sonalika Samal & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
+    description: 'Get in touch with DotnLott. Reach out to Sujata Sinha & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
     type: 'website',
   },
 };

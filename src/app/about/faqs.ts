@@ -1,7 +1,7 @@
 export const faqsList = [
   {
     question: 'Who is behind DotnLott?',
-    answer: 'DotnLott was founded by Sonalika Samal and Abhishek Abhinav, hands-on software engineers and AI system architects. We operate with a core mission to make high-performance digital systems, custom web applications, and workflow automations practical and affordable for growing businesses.',
+    answer: 'DotnLott was founded by Sujata Sinha and Abhishek Abhinav, hands-on software engineers and AI system architects. We operate with a core mission to make high-performance digital systems, custom web applications, and workflow automations practical and affordable for growing businesses.',
   },
   {
     question: 'Is DotnLott a legitimate registered company?',

@@ -38,11 +38,11 @@ import InteractiveAboutSpecialtiesShowcase from '@/components/ui/InteractiveAbou
 export default function AboutClient() {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [trustTab, setTrustTab] = useState<'trust' | 'vision' | 'guarantee'>('trust');
-  const [sonalikaOnTop, setSonalikaOnTop] = useState(true);
+  const [sujataOnTop, setSujataOnTop] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSonalikaOnTop((prev) => !prev);
+      setSujataOnTop((prev) => !prev);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -558,26 +558,20 @@ export default function AboutClient() {
           {/* Left Side: Overlapping tilted sliding cards */}
           <div className="lg:col-span-5 flex justify-center items-center h-[370px] relative w-full max-w-[360px] mx-auto overflow-visible">
             
-            {/* Sonalika Card */}
+            {/* Sujata Card */}
             <div 
               className={`absolute left-1/2 top-6 w-[240px] h-[320px] rounded-3xl p-5 border-0 transition-all duration-700 ease-in-out flex flex-col items-center text-center justify-between shadow-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 ${
-                sonalikaOnTop 
+                sujataOnTop 
                   ? "z-20 scale-100 -translate-x-1/2 translate-y-0 opacity-100 shadow-purple-900/40 rotate-[-2.5deg]" 
                   : "z-10 scale-90 -translate-x-[100%] translate-y-[20px] opacity-100 rotate-[-5deg]"
               }`}
             >
               <div className="flex flex-col items-center gap-2">
-                <div className="w-32 h-32 rounded-full border-4 border-slate-950/20 overflow-hidden relative shadow-sm">
-                  <Image
-                    src="/sonalika.jpg"
-                    alt="Ms. Sonalika Samal"
-                    fill
-                    className="object-cover object-top"
-                    unoptimized
-                  />
+                <div className="w-32 h-32 rounded-full border-4 border-slate-950/20 bg-slate-950/5 flex items-center justify-center relative shadow-sm">
+                  <span className="text-3xl font-black tracking-wider text-slate-800">SS</span>
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <h3 className="text-base font-black font-display tracking-tight">Ms. Sonalika Samal</h3>
+                  <h3 className="text-base font-black font-display tracking-tight">Ms. Sujata Sinha</h3>
                   <span className="text-[9px] font-extrabold uppercase tracking-widest opacity-80 font-mono">Founder & Systems Architect</span>
                   <span className="text-[8px] font-bold uppercase opacity-85 font-mono">MCA, IIT Patna • 3+ Years Exp</span>
                 </div>
@@ -585,7 +579,7 @@ export default function AboutClient() {
               <div className="flex flex-col items-center gap-2 w-full border-t border-slate-950/15 pt-2">
                 <span className="text-[8px] font-extrabold bg-slate-950/10 text-slate-950 px-2.5 py-0.5 rounded-full uppercase tracking-wider font-mono">Systems & AI Lead</span>
                 <a
-                  href="https://www.linkedin.com/in/sonalikasamal/"
+                  href="https://www.linkedin.com/company/dotnlott"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-[10px] font-black text-white bg-slate-950 hover:bg-slate-900 px-4 py-2 rounded-xl transition-all shadow-xs leading-none"
@@ -603,7 +597,7 @@ export default function AboutClient() {
             {/* Abhishek Card */}
             <div 
               className={`absolute left-1/2 top-6 w-[240px] h-[320px] rounded-3xl p-5 border-0 transition-all duration-700 ease-in-out flex flex-col items-center text-center justify-between shadow-2xl bg-gradient-to-br from-blue-600 to-blue-700 text-white ${
-                sonalikaOnTop 
+                sujataOnTop 
                   ? "z-10 scale-90 translate-x-[0%] translate-y-[20px] opacity-100 rotate-[5deg]" 
                   : "z-20 scale-100 -translate-x-1/2 translate-y-0 opacity-100 shadow-blue-900/40 rotate-[2.5deg]"
               }`}
@@ -655,7 +649,7 @@ export default function AboutClient() {
 
             <div className="flex flex-col gap-4 text-purple-100 text-xs sm:text-sm leading-relaxed font-light font-sans">
               <p>
-                Our founders Ms. Sonalika and Mr. Abhishek, with <strong>3+ years of industrial experience</strong> in AI and Automation, deeply understand client risks. While others simply charge you <strong>lakhs</strong> for setups, they know your biggest <strong>fear</strong> remains: <em>what if systems clash and you <strong>lose everything</strong>?</em>
+                Our founders Ms. Sujata and Mr. Abhishek, with <strong>3+ years of industrial experience</strong> in AI and Automation, deeply understand client risks. While others simply charge you <strong>lakhs</strong> for setups, they know your biggest <strong>fear</strong> remains: <em>what if systems clash and you <strong>lose everything</strong>?</em>
               </p>
               
               <div className="border-l-4 border-amber-300 pl-4 py-2 bg-white/5 rounded-r-xl">
@@ -673,7 +667,7 @@ export default function AboutClient() {
                 </p>
                 <div className="pt-2 border-t border-white/10 flex flex-col gap-0.5 items-start">
                   <p className="text-[12px] text-purple-100 font-serif italic" style={{ fontFamily: "'Dancing Script', 'Georgia', 'Brush Script MT', cursive" }}>
-                    — Sonalika & Abhishek
+                    — Sujata & Abhishek
                   </p>
                   <span className="text-[8px] font-bold text-purple-200/80 uppercase tracking-widest font-mono pl-3">
                     Co-founders, DotnLott
