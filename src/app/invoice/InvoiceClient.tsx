@@ -70,6 +70,7 @@ interface QuotationDetails {
   validityDays: number;
   clientNote: string;
   advancePercentage?: number;
+  scopeSummary?: string;
 }
 
 interface SharedState {
@@ -256,6 +257,7 @@ export default function InvoiceClient() {
     validityDays: 30,
     clientNote: 'Payment Milestones & Delivery Conditions:\n1. 50% Advance Upfront payment required to kick-start the development phase.\n2. 50% Balance payment upon completion and final production launch.\n3. This price quote is valid for a period of 30 days.',
     advancePercentage: 50,
+    scopeSummary: 'Workflow & automation engine specifications prepared by team DotnLott for the client. Valid standard limits apply.',
   });
 
   // Line items state
@@ -613,6 +615,11 @@ export default function InvoiceClient() {
               border: none !important;
               box-shadow: none !important;
             }
+            .preview-scroll-container {
+              overflow: visible !important;
+              width: auto !important;
+              max-width: none !important;
+            }
             .print-wrapper {
               position: relative !important;
               width: 100% !important;
@@ -650,20 +657,15 @@ export default function InvoiceClient() {
         `}</style>
 
         {/* Client Top Actions Bar */}
-        <div className="top-actions-bar no-print border-b border-slate-200 bg-white/85 backdrop-blur-md px-6 py-4 flex items-center justify-between z-10 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-white p-1 flex items-center justify-center border border-slate-100 shadow-sm">
-              <Image src="/logo-v2.png" alt="Logo" width={24} height={24} className="object-contain" />
-            </div>
-            <div>
-              <h2 className="text-sm font-bold tracking-tight text-slate-800 font-display">DotnLott Secure Vault</h2>
-              <p className="text-[10px] text-slate-500">Official {docType === 'invoice' ? 'Commercial Invoice' : 'Price Quotation'}</p>
-            </div>
+        <div className="top-actions-bar no-print border-b border-slate-200 bg-white/85 backdrop-blur-md px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-4 items-center justify-between z-10 shadow-sm">
+          <div className="text-center sm:text-left">
+            <h2 className="text-sm font-bold tracking-tight text-slate-800 font-display">DotnLott Secure Vault</h2>
+            <p className="text-[10px] text-slate-500">Official {docType === 'invoice' ? 'Commercial Invoice' : 'Price Quotation'}</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
             <button
               onClick={() => window.print()}
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-all cursor-pointer shadow-md shadow-brand-purple/10 hover:brightness-110 active:scale-[0.98]"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-all cursor-pointer shadow-md shadow-brand-purple/10 hover:brightness-110 active:scale-[0.98] w-full sm:w-auto"
             >
               <Printer className="w-3.5 h-3.5" />
               Download / Print PDF
@@ -672,9 +674,12 @@ export default function InvoiceClient() {
         </div>
 
         {/* A4 Center Container */}
-        <div className="flex-grow flex justify-center p-4 sm:p-8 overflow-y-auto z-10 bg-slate-50">
-          <div className="w-full max-w-[210mm] mx-auto shadow-xl shadow-slate-200/50 rounded-xl border border-slate-200/60 bg-white overflow-hidden my-4">
-            <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text">
+        <div className="flex-grow flex flex-col items-center justify-start p-4 sm:p-8 pb-16 overflow-y-auto z-10 bg-slate-50 w-full">
+
+
+          <div className="w-full max-w-[794px] flex justify-center pb-12">
+            <div className="w-[794px] shadow-xl shadow-slate-200/50 rounded-xl border border-slate-200/60 bg-white overflow-hidden mt-0 mb-8 responsive-zoom-preview">
+              <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text">
               
               {/* Header: Brand & Issuer Details */}
               <div className="space-y-6">
@@ -746,7 +751,7 @@ export default function InvoiceClient() {
                   ) : (
                     <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg flex flex-col justify-center">
                       <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Proposal Scope Summary:</p>
-                      <p className="text-slate-700 leading-relaxed">Workflow & automation engine specifications prepared by team {companyProfile.brandName} for {clientDetails.customerName || 'the client'}. Valid standard limits apply.</p>
+                      <p className="text-slate-700 leading-relaxed">{quotationDetails?.scopeSummary || `Workflow & automation engine specifications prepared by team ${companyProfile.brandName} for ${clientDetails.customerName || 'the client'}. Valid standard limits apply.`}</p>
                     </div>
                   )}
                 </div>
@@ -962,7 +967,7 @@ export default function InvoiceClient() {
 
                 {/* Our Services Banner */}
                 <div className="mt-3 pt-2 border-t border-dashed border-slate-200">
-                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 text-center">Our Core Capabilities & Services</p>
+                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 text-center">Our Core Capabilities & Services</p>
                   <div className="flex justify-center items-center gap-4 text-[9px]">
                     <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-purple animate-pulse" />
@@ -982,7 +987,7 @@ export default function InvoiceClient() {
                 {/* Signatures & Declarations */}
                 <div className="mt-3 border-t border-slate-200 pt-3 space-y-3 no-break">
                   <div className="grid grid-cols-12 gap-4 text-[10px] items-end">
-                  <div className="col-span-8 space-y-0.5 text-slate-500">
+                  <div className={`${docType === 'invoice' ? 'col-span-8' : 'col-span-12'} space-y-0.5 text-slate-500`}>
                     <p className="font-bold text-slate-700 uppercase tracking-wider text-[8px]">Declaration / Conditions:</p>
                     <p className="leading-relaxed whitespace-pre-wrap text-[8.5px] text-slate-500">
                       {docType === 'invoice' 
@@ -991,25 +996,27 @@ export default function InvoiceClient() {
                     </p>
                   </div>
 
-                  <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
-                    <div className="text-slate-800 mb-1">
-                      <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
+                  {docType === 'invoice' && (
+                    <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
+                      <div className="text-slate-800 mb-1">
+                        <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
+                      </div>
+                      <div className="h-10 flex items-center justify-center relative">
+                        {companyProfile.signatureImage ? (
+                          <img 
+                            src={companyProfile.signatureImage} 
+                            alt="CEO Signature" 
+                            className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
+                          />
+                        ) : (
+                          <div className="h-10" />
+                        )}
+                      </div>
+                      <div className="border-t border-slate-300 pt-1.5 mt-1">
+                        <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
+                      </div>
                     </div>
-                    <div className="h-10 flex items-center justify-center relative">
-                      {companyProfile.signatureImage ? (
-                        <img 
-                          src={companyProfile.signatureImage} 
-                          alt="CEO Signature" 
-                          className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
-                        />
-                      ) : (
-                        <div className="h-10" />
-                      )}
-                    </div>
-                    <div className="border-t border-slate-300 pt-1.5 mt-1">
-                      <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
 
@@ -1017,8 +1024,9 @@ export default function InvoiceClient() {
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   // ADMIN LOGIN PORTAL
   if (!isAuthenticated) {
@@ -1105,30 +1113,31 @@ export default function InvoiceClient() {
   // PORTAL SELECTION DASHBOARD
   if (docType === 'select') {
     return (
-      <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex items-center justify-center p-6 relative overflow-hidden select-none">
+      <div className="min-h-[70vh] bg-[#f8fafc] text-slate-800 flex flex-col items-center justify-start pt-6 pb-12 px-6 relative overflow-hidden select-none">
         {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-purple/[0.03] rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-blue/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
-        {/* Floating Logout Button */}
-        <button
-          onClick={handleLogout}
-          className="absolute top-6 right-6 flex items-center gap-1.5 text-slate-505 hover:text-red-500 border border-slate-200 hover:border-red-200 bg-white hover:bg-red-50/10 px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition-all cursor-pointer z-20"
-        >
-          <LogOut className="w-3.5 h-3.5" />
-          Logout
-        </button>
-
-        {/* Dash contents - Vertically Centered */}
-        <div className="max-w-4xl w-full text-center space-y-8 relative z-10">
+        {/* Dash contents - Top Aligned */}
+        <div className="max-w-4xl w-full text-center space-y-8 relative z-10 pt-4">
           <div className="space-y-3">
-              <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 font-display">
-                DotnLott Operations Portal
-              </h1>
-              <p className="text-slate-500 text-sm max-w-lg mx-auto">
-                Choose a generator tool below to create client-facing documentation with automatic GST calculation.
-              </p>
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 font-display">
+              DotnLott Operations Portal
+            </h1>
+            <p className="text-slate-500 text-sm max-w-lg mx-auto">
+              Choose a generator tool below to create client-facing documentation with automatic GST calculation.
+            </p>
+            {/* Inline Logout Button to avoid absolute overlap on mobile */}
+            <div className="pt-2">
+              <button
+                onClick={handleLogout}
+                className="inline-flex items-center gap-1.5 text-slate-505 hover:text-red-500 border border-slate-200 hover:border-red-200 bg-white hover:bg-red-50/10 px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition-all cursor-pointer"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                Logout Portal
+              </button>
             </div>
+          </div>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-4">
               {/* Quotation Card */}
@@ -1198,6 +1207,14 @@ export default function InvoiceClient() {
       {/* Styled block injection for printing */}
       <style jsx global>{`
         @media print {
+          * {
+            overflow: visible !important;
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+          }
+          *::-webkit-scrollbar {
+            display: none !important;
+          }
           header, 
           footer, 
           nav, 
@@ -1235,17 +1252,28 @@ export default function InvoiceClient() {
             border: none !important;
             box-shadow: none !important;
           }
+          .responsive-zoom-preview {
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
           .print-wrapper {
             position: relative !important;
             width: 100% !important;
-            max-width: 210mm !important;
+            max-width: 190mm !important;
             height: auto !important;
             min-height: auto !important;
-            padding: 8mm !important;
+            padding: 6mm 6mm !important;
             background: #ffffff !important;
-            border: none !important;
-            box-shadow: none !important;
-            margin: 0 auto !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+            margin: 8mm auto 0 auto !important;
             color: #000000 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
@@ -1269,26 +1297,61 @@ export default function InvoiceClient() {
           size: A4;
           margin: 0;
         }
+        @media screen and (min-width: 1024px) and (max-width: 1200px) {
+          .responsive-zoom-preview {
+            zoom: 0.72;
+          }
+        }
+        @media screen and (min-width: 1201px) and (max-width: 1400px) {
+          .responsive-zoom-preview {
+            zoom: 0.85;
+          }
+        }
+        @media screen and (max-width: 840px) {
+          .responsive-zoom-preview {
+            zoom: 0.95;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          .responsive-zoom-preview {
+            zoom: 0.88;
+          }
+        }
+        @media screen and (max-width: 640px) {
+          .responsive-zoom-preview {
+            zoom: 0.72;
+          }
+        }
+        @media screen and (max-width: 480px) {
+          .responsive-zoom-preview {
+            zoom: 0.52;
+          }
+        }
+        @media screen and (max-width: 380px) {
+          .responsive-zoom-preview {
+            zoom: 0.42;
+          }
+        }
+        @media screen and (max-width: 320px) {
+          .responsive-zoom-preview {
+            zoom: 0.35;
+          }
+        }
       `}</style>
 
       {/* Top Header */}
-      <div className="dashboard-hdr no-print border-b border-slate-200 bg-white/80 backdrop-blur-md px-6 py-4 flex items-center justify-between z-10 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-white p-1 flex items-center justify-center border border-slate-100 shadow-sm">
-            <Image src="/logo-v2.png" alt="Logo" width={24} height={24} className="object-contain" />
-          </div>
-          <div>
-            <h2 className="text-sm font-bold tracking-tight text-slate-900 flex items-center gap-2 font-display">
-              DotnLott {docType === 'invoice' ? 'Invoice' : 'Quotation'} Panel
-            </h2>
-            <p className="text-[10px] text-slate-500">Configure and preview company documentation</p>
-          </div>
+      <div className="dashboard-hdr no-print border-b border-slate-200 bg-white/80 backdrop-blur-md px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-4 items-center justify-between z-10 shadow-sm">
+        <div className="text-center sm:text-left">
+          <h2 className="text-sm font-bold tracking-tight text-slate-900 flex items-center justify-center sm:justify-start gap-2 font-display">
+            DotnLott {docType === 'invoice' ? 'Invoice' : 'Quotation'} Panel
+          </h2>
+          <p className="text-[10px] text-slate-500">Configure and preview company documentation</p>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
           <button
             onClick={() => setDocType('select')}
-            className="flex items-center gap-1.5 text-slate-650 hover:text-slate-900 text-xs font-semibold bg-white border border-slate-200 hover:bg-slate-50 px-3 py-1.5 rounded-lg transition-all cursor-pointer shadow-sm"
+            className="flex items-center justify-center gap-1.5 text-slate-650 hover:text-slate-900 text-xs font-semibold bg-white border border-slate-200 hover:bg-slate-50 px-3 py-1.5 rounded-lg transition-all cursor-pointer shadow-sm flex-1 sm:flex-none"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Dashboard
@@ -1296,7 +1359,7 @@ export default function InvoiceClient() {
           
           <button
             onClick={handleLogout}
-            className="flex items-center gap-1 text-slate-500 hover:text-red-500 hover:border-red-200 text-xs font-semibold bg-white border border-slate-200 px-3 py-1.5 rounded-lg transition-all cursor-pointer shadow-sm"
+            className="flex items-center justify-center gap-1 text-slate-500 hover:text-red-500 hover:border-red-200 text-xs font-semibold bg-white border border-slate-200 px-3 py-1.5 rounded-lg transition-all cursor-pointer shadow-sm flex-1 sm:flex-none"
           >
             <LogOut className="w-3.5 h-3.5" />
             Logout
@@ -1312,38 +1375,38 @@ export default function InvoiceClient() {
           <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
             
             {/* Form tab selector */}
-            <div className="flex bg-slate-50 p-1 rounded-lg border border-slate-200 mb-6">
+            <div className="flex bg-slate-50 p-1 rounded-lg border border-slate-200 mb-6 w-full">
               <button
                 onClick={() => setActiveTab('client')}
-                className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                className={`flex-1 min-w-0 flex items-center justify-center gap-1.5 py-2 px-1 text-[10px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
                   activeTab === 'client' 
                     ? 'bg-white text-slate-900 border border-slate-200 shadow-sm' 
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
-                <User className="w-3.5 h-3.5" />
+                <User className="w-3.5 h-3.5 flex-shrink-0" />
                 Customer & Config
               </button>
               <button
                 onClick={() => setActiveTab('items')}
-                className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                className={`flex-1 min-w-0 flex items-center justify-center gap-1.5 py-2 px-1 text-[10px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
                   activeTab === 'items' 
                     ? 'bg-white text-slate-900 border border-slate-200 shadow-sm' 
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
-                <FileText className="w-3.5 h-3.5" />
+                <FileText className="w-3.5 h-3.5 flex-shrink-0" />
                 Line Items
               </button>
               <button
                 onClick={() => setActiveTab('profile')}
-                className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                className={`flex-1 min-w-0 flex items-center justify-center gap-1.5 py-2 px-1 text-[10px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
                   activeTab === 'profile' 
                     ? 'bg-white text-slate-900 border border-slate-200 shadow-sm' 
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
-                <Building className="w-3.5 h-3.5" />
+                <Building className="w-3.5 h-3.5 flex-shrink-0" />
                 Company & Settings
               </button>
             </div>
@@ -1359,7 +1422,7 @@ export default function InvoiceClient() {
                   {docType === 'invoice' ? (
                     // INVOICE METADATA FORM
                     <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Invoice No <span className="text-red-500">*</span></label>
                           <input
@@ -1410,7 +1473,7 @@ export default function InvoiceClient() {
                   ) : (
                     // QUOTATION METADATA FORM
                     <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Quote Ref No <span className="text-red-500">*</span></label>
                           <input
@@ -1432,7 +1495,7 @@ export default function InvoiceClient() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Validity Days <span className="text-red-500">*</span></label>
                           <input
@@ -1455,6 +1518,17 @@ export default function InvoiceClient() {
                             className="w-full bg-white border border-slate-200 focus:border-brand-purple focus:ring-1 focus:ring-brand-purple rounded-lg px-3 py-2 text-slate-800 text-sm outline-none transition-all"
                           />
                         </div>
+                      </div>
+
+                      <div className="mt-4">
+                        <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Proposal Scope Summary</label>
+                        <textarea
+                          rows={2}
+                          value={quotationDetails.scopeSummary || ''}
+                          onChange={(e) => setQuotationDetails({...quotationDetails, scopeSummary: e.target.value})}
+                          placeholder="Describe the scope of services..."
+                          className="w-full bg-white border border-slate-200 focus:border-brand-purple focus:ring-1 focus:ring-brand-purple rounded-lg px-3 py-2 text-slate-800 text-sm outline-none transition-all resize-none"
+                        />
                       </div>
                     </div>
                   )}
@@ -1598,7 +1672,7 @@ export default function InvoiceClient() {
                           />
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <div>
                             <label className="block text-[10px] font-semibold text-slate-550 uppercase tracking-wider mb-1">Quantity <span className="text-red-500">*</span></label>
                             <input
@@ -1646,7 +1720,7 @@ export default function InvoiceClient() {
                           </div>
 
                           {companyProfile.applyGst && (
-                            <div className="col-span-2">
+                            <div className="col-span-1 sm:col-span-2">
                               <label className="block text-[10px] font-semibold text-slate-550 uppercase tracking-wider mb-1">GST Rate (%) <span className="text-red-500">*</span></label>
                               <select
                                 value={item.gstRate}
@@ -1720,7 +1794,7 @@ export default function InvoiceClient() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">PAN / CIN Number <span className="text-red-500">*</span></label>
                       <input
@@ -1758,7 +1832,7 @@ export default function InvoiceClient() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Account Number</label>
                       <input
@@ -1877,7 +1951,7 @@ export default function InvoiceClient() {
                       Update the username and password used to access this admin panel. These values are saved to your local browser storage.
                     </p>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">New Login ID <span className="text-red-500">*</span></label>
                         <input
@@ -1972,18 +2046,21 @@ export default function InvoiceClient() {
         </div>
 
         {/* Right Side live print page visualizer */}
-        <div className="w-full lg:w-[55%] flex justify-center">
-          <div className="w-full max-w-[210mm] mx-auto sticky top-28 mb-12">
-            <div className="no-print w-full bg-slate-100 border border-slate-200 px-4 py-2 rounded-t-xl flex justify-between items-center text-xs text-slate-500">
-              <span className="flex items-center gap-1.5 font-medium">
-                <span className={`w-2 h-2 rounded-full ${docType === 'invoice' ? 'bg-brand-blue' : 'bg-brand-purple'}`} />
-                Live {docType === 'invoice' ? 'Invoice' : 'Quotation'} Preview (A4 Paper Layout)
-              </span>
-              <span>210mm × 297mm</span>
-            </div>
+        <div className="w-full lg:w-[55%] flex flex-col items-center">
 
-            {/* Print wrapper simulation */}
-            <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 shadow-xl rounded-b-xl border border-slate-200 flex flex-col justify-between select-text">
+
+          <div className="w-full max-w-[794px] flex justify-center items-start no-print sticky top-28 mb-16 pb-12">
+            <div className="w-[794px] shadow-xl rounded-xl border border-slate-200 bg-white overflow-hidden mt-0 mb-8 responsive-zoom-preview">
+              <div className="no-print w-full bg-slate-100 px-4 py-2.5 flex justify-between items-center text-xs text-slate-500 border-b border-slate-200">
+                <span className="flex items-center gap-1.5 font-medium">
+                  <span className={`w-2 h-2 rounded-full ${docType === 'invoice' ? 'bg-brand-blue' : 'bg-brand-purple'}`} />
+                  Live {docType === 'invoice' ? 'Invoice' : 'Quotation'} Preview (A4 Paper Layout)
+                </span>
+                <span>210mm × 297mm</span>
+              </div>
+
+              {/* Print wrapper simulation */}
+              <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text">
               
               {/* Top Section */}
               <div className="space-y-6">
@@ -2055,7 +2132,7 @@ export default function InvoiceClient() {
                   ) : (
                     <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg flex flex-col justify-center">
                       <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Proposal Scope Summary:</p>
-                      <p className="text-slate-700 leading-relaxed">Workflow & automation engine specifications prepared by team {companyProfile.brandName} for {clientDetails.customerName || 'the client'}. Valid standard limits apply.</p>
+                      <p className="text-slate-700 leading-relaxed">{quotationDetails.scopeSummary || `Workflow & automation engine specifications prepared by team ${companyProfile.brandName} for ${clientDetails.customerName || 'the client'}. Valid standard limits apply.`}</p>
                     </div>
                   )}
                 </div>
@@ -2272,7 +2349,7 @@ export default function InvoiceClient() {
 
                 {/* Our Services Banner */}
                 <div className="mt-3 pt-2 border-t border-dashed border-slate-200">
-                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 text-center">Our Core Capabilities & Services</p>
+                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 text-center">Our Core Capabilities & Services</p>
                   <div className="flex justify-center items-center gap-4 text-[9px]">
                     <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-purple animate-pulse" />
@@ -2292,7 +2369,7 @@ export default function InvoiceClient() {
                 {/* Signatures & Declarations */}
                 <div className="mt-3 border-t border-slate-200 pt-3 space-y-3 no-break">
                   <div className="grid grid-cols-12 gap-4 text-[10px] items-end">
-                  <div className="col-span-8 space-y-0.5 text-slate-500">
+                  <div className={`${docType === 'invoice' ? 'col-span-8' : 'col-span-12'} space-y-0.5 text-slate-500`}>
                     <p className="font-bold text-slate-700 uppercase tracking-wider text-[8px]">Declaration / Conditions:</p>
                     <p className="leading-relaxed whitespace-pre-wrap text-[8.5px] text-slate-500">
                       {docType === 'invoice' 
@@ -2301,31 +2378,34 @@ export default function InvoiceClient() {
                     </p>
                   </div>
 
-                  <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
-                    <div className="text-slate-800 mb-1">
-                      <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
+                  {docType === 'invoice' && (
+                    <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
+                      <div className="text-slate-800 mb-1">
+                        <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
+                      </div>
+                      <div className="h-10 flex items-center justify-center relative">
+                        {companyProfile.signatureImage ? (
+                          <img 
+                            src={companyProfile.signatureImage} 
+                            alt="CEO Signature" 
+                            className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
+                          />
+                        ) : (
+                          <div className="h-10" />
+                        )}
+                      </div>
+                      <div className="border-t border-slate-300 pt-1.5 mt-1">
+                        <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
+                      </div>
                     </div>
-                    <div className="h-10 flex items-center justify-center relative">
-                      {companyProfile.signatureImage ? (
-                        <img 
-                          src={companyProfile.signatureImage} 
-                          alt="CEO Signature" 
-                          className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
-                        />
-                      ) : (
-                        <div className="h-10" />
-                      )}
-                    </div>
-                    <div className="border-t border-slate-300 pt-1.5 mt-1">
-                      <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
 
             </div>
           </div>
         </div>
+      </div>
 
       </div>
     </div>
