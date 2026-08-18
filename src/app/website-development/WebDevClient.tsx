@@ -23,7 +23,8 @@ import {
   CheckCircle2,
   ChevronDown,
   Brain,
-  Zap
+  Zap,
+  LayoutDashboard
 } from 'lucide-react';
 import InteractiveParticles from '@/components/ui/InteractiveParticles';
 import MovingShowcaseWebDev from '@/components/ui/MovingShowcaseWebDev';
@@ -66,25 +67,6 @@ const pricingData = [
     ],
   },
   {
-    type: '⚙️ Custom Dynamic Website',
-    pages: '10–25 Pages',
-    icon: Cpu,
-    bgClass: 'bg-emerald-50 border border-emerald-200 text-emerald-600',
-    startingPrice: '₹12,999',
-    features: [
-      'Responsive Design',
-      'Advanced SEO',
-      'Admin Dashboard',
-      'Dynamic Content Management',
-      'User Login/Registration',
-      'Database Integration',
-      'Blog/News Module',
-      'API Integration',
-      'Booking/Inquiry Forms',
-      'Analytics Integration',
-    ],
-  },
-  {
     type: '🛒 E-Commerce Website',
     pages: '20–100+ Pages (Products)',
     icon: ShoppingCart,
@@ -103,6 +85,25 @@ const pricingData = [
       'Shipping Integration',
       'Analytics Dashboard',
       'WhatsApp & Email Notifications',
+    ],
+  },
+  {
+    type: '⚙️ Custom Dynamic Web App & Dashboard',
+    pages: 'Custom scale',
+    icon: LayoutDashboard,
+    bgClass: 'bg-emerald-50 border border-emerald-200 text-emerald-600',
+    startingPrice: '₹29,999',
+    features: [
+      'Interactive Custom Dashboards',
+      'AI Integration & Agents',
+      'Frontend & Backend Integration',
+      'Inventory & Task Force Mgmt',
+      'Pricing & Lead Dashboards',
+      'Database Integration (Postgres/MongoDB)',
+      'Secure User Authentication',
+      'Real-Time WebSockets',
+      'Advanced Charts & Visuals',
+      'Code & Data Ownership',
     ],
   },
 ];
@@ -150,8 +151,8 @@ export default function WebDevClient() {
     if (currency === 'INR') return priceInr;
     if (priceInr.includes('2,999')) return '$39';
     if (priceInr.includes('7,999')) return '$99';
-    if (priceInr.includes('12,999')) return '$159';
     if (priceInr.includes('19,999')) return '$249';
+    if (priceInr.includes('29,999')) return '$369';
     return priceInr;
   };
 

@@ -25,7 +25,8 @@ import {
   CheckCircle2,
   Clock,
   Layers,
-  Server
+  Server,
+  LayoutDashboard
 } from 'lucide-react';
 
 const webPackages = [
@@ -73,29 +74,6 @@ const webPackages = [
     ],
   },
   {
-    id: 'dynamic-site',
-    type: '⚙️ Custom Dynamic Website',
-    pages: '10–25 Pages',
-    icon: Cpu,
-    bgClass: 'bg-emerald-50 border border-emerald-200 text-emerald-600',
-    priceINR: '₹12,999',
-    priceUSD: '$159',
-    popular: false,
-    color: 'border-emerald-200 hover:border-emerald-500/60 text-emerald-600',
-    features: [
-      'Responsive High-Speed Design',
-      'Advanced Search Engine Optimization',
-      'Custom Admin Control Dashboard',
-      'Dynamic Content Management',
-      'User Authentication & Login',
-      'Database Architecture (Postgres/SQL)',
-      'Blog & Publishing Engine',
-      'Third-Party API Integrations',
-      'Booking & Inquiry Workflows',
-      'Google Analytics Dashboard'
-    ],
-  },
-  {
     id: 'ecommerce-site',
     type: '🛒 E-Commerce Website',
     pages: '20–100+ Pages (Products)',
@@ -118,6 +96,29 @@ const webPackages = [
       'Shipping Rate Provider Integration',
       'Sales & Conversion Analytics',
       'WhatsApp & Email Order Receipts'
+    ],
+  },
+  {
+    id: 'dashboard-app',
+    type: '⚙️ Custom Dynamic Web App & Dashboard',
+    pages: 'Custom scale',
+    icon: LayoutDashboard,
+    bgClass: 'bg-emerald-50 border border-emerald-200 text-emerald-600',
+    priceINR: '₹29,999',
+    priceUSD: '$369',
+    popular: false,
+    color: 'border-emerald-200 hover:border-emerald-500/60 text-emerald-600',
+    features: [
+      'Interactive Custom Dashboards',
+      'AI Integration & Autonomous Agents',
+      'Frontend & Backend Integration',
+      'Inventory, Task Force & Leads Management',
+      'Pricing & Lead Management Systems',
+      'Database Architecture (Postgres/MongoDB)',
+      'Secure User Authentication, Logins & Roles',
+      'Real-Time WebSockets & Notifications',
+      'Advanced Interactive Charts & Data Visuals',
+      'Complete Code & Data Ownership'
     ],
   },
 ];
@@ -202,7 +203,7 @@ export default function WebDevServicesClient() {
     } else if (projectType === 'fullsite') {
       baseTime = '1 to 2 Weeks';
     } else if (projectType === 'webapp') {
-      baseTime = '2 to 3 Weeks';
+      baseTime = '3 to 4 Weeks';
     } else if (projectType === 'ecommerce') {
       baseTime = '2 to 3 Weeks';
     }
@@ -590,7 +591,7 @@ export default function WebDevServicesClient() {
                   {[
                     { id: 'landing', label: '🚀 Landing Page (1 Pg)' },
                     { id: 'fullsite', label: '💼 Corporate Site (5-10 Pg)' },
-                    { id: 'webapp', label: '⚙️ SaaS Web App' },
+                    { id: 'webapp', label: '⚙️ Custom Web App & Dashboard' },
                     { id: 'ecommerce', label: '🛒 E-Commerce Store' },
                   ].map((t) => (
                     <button

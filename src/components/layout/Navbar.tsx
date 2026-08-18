@@ -5,12 +5,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', path: '/' },
   { name: 'AI Automation', path: '/ai-automation' },
   { name: 'Website Development', path: '/website-development' },
+  {
+    name: 'Softwares',
+    path: '#',
+    dropdownItems: [
+      { name: 'Setu', path: '/softwares/setu', desc: 'Taskforce Management Software' },
+    ],
+  },
   { name: 'About', path: '/about' },
   { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
@@ -19,6 +26,7 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileSoftwaresOpen, setMobileSoftwaresOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -33,10 +41,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
+    setMobileSoftwaresOpen(false);
   }, [pathname]);
 
   return (
@@ -71,6 +79,32 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => {
+              if (item.dropdownItems) {
+                return (
+                  <div key={item.name} className="relative group py-2">
+                    <button className="flex items-center gap-1 text-xs xl:text-sm font-medium tracking-wide text-slate-600 hover:text-slate-900 transition-colors whitespace-nowrap">
+                      <span>{item.name}</span>
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-700 transition-colors" />
+                    </button>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-60 bg-white border border-slate-200/80 rounded-2xl p-2 shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50 flex flex-col gap-0.5">
+                      {item.dropdownItems.map((subItem) => (
+                        <Link
+                          key={subItem.path}
+                          href={subItem.path}
+                          className="flex flex-col text-left hover:bg-slate-50 rounded-xl p-2.5 transition-colors group/sub"
+                        >
+                          <span className="text-xs font-bold text-slate-800 group-hover/sub:text-brand-purple transition-colors">
+                            {subItem.name}
+                          </span>
+                          <span className="text-[10px] text-slate-500 font-light mt-0.5">
+                            {subItem.desc}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
               const isActive = pathname === item.path;
               return (
                 <Link
@@ -135,6 +169,42 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-3">
               {navItems.map((item) => {
+                if (item.dropdownItems) {
+                  return (
+                    <div key={item.name} className="flex flex-col">
+                      <button
+                        onClick={() => setMobileSoftwaresOpen(!mobileSoftwaresOpen)}
+                        className="text-sm font-bold py-3 px-4 rounded-xl text-slate-700 hover:bg-slate-100 hover:text-slate-950 flex items-center justify-between transition-all animate-none"
+                      >
+                        <span>{item.name}</span>
+                        <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${mobileSoftwaresOpen ? 'rotate-180 text-brand-purple' : ''}`} />
+                      </button>
+                      <AnimatePresence>
+                        {mobileSoftwaresOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden pl-4 flex flex-col gap-1 mt-1"
+                          >
+                            {item.dropdownItems.map((subItem) => (
+                              <Link
+                                key={subItem.path}
+                                href={subItem.path}
+                                onClick={() => setIsOpen(false)}
+                                className="text-xs font-semibold py-2.5 px-4 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 flex flex-col gap-0.5 text-left"
+                              >
+                                <span className="text-slate-800 font-bold">{subItem.name}</span>
+                                <span className="text-[10px] text-slate-500 font-light">{subItem.desc}</span>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
                 const isActive = pathname === item.path;
                 return (
                   <Link
