@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { 
   Lock, 
@@ -213,6 +213,25 @@ export default function InvoiceClient() {
   // Active mode selection
   const [docType, setDocType] = useState<'select' | 'invoice' | 'quotation'>('select');
   const [isSharedView, setIsSharedView] = useState<boolean>(false);
+
+  // Height and page state of preview container for screen borders
+  const [contentHeight, setContentHeight] = useState<number>(0);
+  const resizeObserverRef = useRef<ResizeObserver | null>(null);
+  const printWrapperRef = useCallback((node: HTMLDivElement | null) => {
+    if (resizeObserverRef.current) {
+      resizeObserverRef.current.disconnect();
+      resizeObserverRef.current = null;
+    }
+    if (node) {
+      const observer = new ResizeObserver(entries => {
+        for (let entry of entries) {
+          setContentHeight(entry.contentRect.height);
+        }
+      });
+      observer.observe(node);
+      resizeObserverRef.current = observer;
+    }
+  }, []);
 
   // App workspace active tab inside editor
   const [activeTab, setActiveTab] = useState<'profile' | 'client' | 'items'>('client');
@@ -519,6 +538,446 @@ export default function InvoiceClient() {
     });
   };
 
+  // Estimate page count for quotation preview
+  const estimateQuotationPages = (): number => {
+    const headerHeight = 45;
+    const addressesHeight = 25;
+    const tableHeaderHeight = 10;
+    
+    let itemsHeight = 0;
+    lineItems.forEach(item => {
+      const descLines = Math.ceil((item.description || '').length / 50);
+      itemsHeight += Math.max(12, 8 + descLines * 4.5);
+    });
+    
+    const totalsHeight = 15;
+    const calculationsHeight = companyProfile.applyGst ? 55 : 40;
+    
+    const noteText = quotationDetails.clientNote || '';
+    const noteLines = noteText.split('\n').length;
+    const noteChars = noteText.length;
+    const estimatedNoteLines = Math.max(noteLines, Math.ceil(noteChars / 60));
+    const milestonesHeight = noteText ? (15 + estimatedNoteLines * 4.5) : 0;
+    
+    const servicesHeight = 15;
+    const signaturesHeight = 35;
+    const paddingHeight = 28; // 14mm top + 14mm bottom
+    
+    const totalEstimatedHeight = 
+      headerHeight + 
+      addressesHeight + 
+      tableHeaderHeight + 
+      itemsHeight + 
+      totalsHeight + 
+      calculationsHeight + 
+      milestonesHeight + 
+      servicesHeight + 
+      signaturesHeight + 
+      paddingHeight;
+      
+    return totalEstimatedHeight > 290 ? 2 : 1;
+  };
+
+  const renderScreenBorders = () => {
+    const borders = [];
+    const pageCount = Math.max(1, Math.ceil(contentHeight / 1123));
+    for (let i = 0; i < pageCount; i++) {
+      borders.push(
+        <div 
+          key={i}
+          className="print-page-border-screen no-print"
+          style={{
+            position: 'absolute',
+            top: `${i * 1123 + 8}px`,
+            height: '1107px',
+            left: '8px',
+            right: '8px',
+            border: '1px solid #cbd5e1',
+            borderRadius: '8px',
+            pointerEvents: 'none',
+            zIndex: 10,
+          }}
+        />
+      );
+    }
+    return borders;
+  };
+
+  const renderScreenPageBreaks = () => {
+    const lines = [];
+    const pageCount = Math.max(1, Math.ceil(contentHeight / 1123));
+    for (let i = 1; i < pageCount; i++) {
+      lines.push(
+        <div 
+          key={i}
+          className="absolute left-0 right-0 no-print flex items-center justify-center"
+          style={{
+            top: `${i * 1123 - 12}px`,
+            height: '24px',
+            zIndex: 20,
+            pointerEvents: 'none',
+          }}
+        >
+          <div className="w-full border-t border-dashed border-slate-350" />
+          <span className="absolute bg-slate-100 text-slate-500 text-[9px] px-2 py-0.5 rounded border border-slate-200 font-bold uppercase tracking-wider">
+            Page {i} / Page {i + 1} Break
+          </span>
+        </div>
+      );
+    }
+    return lines;
+  };
+
+  // Helper render functions for preview and printing
+  const renderPreviewHeader = () => (
+    <div className="flex justify-between items-start border-b border-slate-200 pb-6 no-break">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <div className="relative w-8 h-8 flex items-center justify-center bg-white border border-slate-150 rounded p-1 shadow-sm">
+            <Image src="/logo-v2.png" alt="Logo" width={24} height={24} className="object-contain" />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-slate-900 font-display">
+            {companyProfile.brandName}
+          </span>
+        </div>
+        <div className="text-[11px] text-slate-600 leading-relaxed max-w-sm">
+          <p className="font-bold text-slate-800">{companyProfile.companyName}</p>
+          <p className="whitespace-pre-wrap">{companyProfile.registeredOfficeAddress}</p>
+          <p className="font-semibold text-slate-700 mt-1">PAN: {companyProfile.panNumber}</p>
+        </div>
+      </div>
+
+      <div className="text-right space-y-1">
+        <h1 className="text-xl font-extrabold tracking-tight text-slate-800 uppercase font-display">
+          {docType === 'invoice' ? companyProfile.documentTitle : 'Quotation'}
+        </h1>
+        <div className="text-[11px] text-slate-600 pt-1">
+          {docType === 'invoice' ? (
+            <>
+              <p><span className="font-semibold text-slate-700">Invoice No:</span> {invoiceDetails.invoiceNumber}</p>
+              <p><span className="font-semibold text-slate-700">Date of Issue:</span> {invoiceDetails.dateOfIssue}</p>
+            </>
+          ) : (
+            <>
+              <p><span className="font-semibold text-slate-700">Quote Ref:</span> {quotationDetails.quoteNumber}</p>
+              <p><span className="font-semibold text-slate-700">Quote Date:</span> {quotationDetails.dateOfIssue}</p>
+              <p><span className="font-semibold text-slate-700">Validity:</span> {quotationDetails.validityDays} Days (Until {calculateExpiryDate(quotationDetails.dateOfIssue, quotationDetails.validityDays)})</p>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderPreviewAddresses = () => (
+    <div className="grid grid-cols-2 gap-3 text-[10.5px] no-break">
+      <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg">
+        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Bill To:</span>
+        <div className="text-slate-800 leading-relaxed">
+          <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
+          <p className="whitespace-pre-wrap mt-1">{clientDetails.billingAddress || '—'}</p>
+        </div>
+      </div>
+
+      {docType === 'invoice' ? (
+        <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg">
+          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Ship To:</span>
+          <div className="text-slate-800 leading-relaxed">
+            {clientDetails.sameAsBilling ? (
+              <>
+                <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
+                <p className="whitespace-pre-wrap mt-1">{clientDetails.billingAddress || '—'}</p>
+              </>
+            ) : (
+              <>
+                <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
+                <p className="whitespace-pre-wrap mt-1">{clientDetails.shippingAddress || '—'}</p>
+              </>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg flex flex-col justify-center">
+          <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Proposal Scope Summary:</p>
+          <p className="text-slate-700 leading-relaxed">{quotationDetails.scopeSummary || `Workflow & automation engine specifications prepared by team ${companyProfile.brandName} for ${clientDetails.customerName || 'the client'}. Valid standard limits apply.`}</p>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderPreviewItemsTable = () => (
+    <div className="border border-slate-200 rounded-lg overflow-hidden">
+      <table className="invoice-table w-full text-left border-collapse text-[11px]">
+        <thead>
+          <tr className="bg-slate-100 border-b border-slate-200 text-slate-800 font-bold">
+            <th className="py-2.5 px-3 w-12 text-center">#</th>
+            <th className="py-2.5 px-3">Description of Service</th>
+            <th className="py-2.5 px-3 text-center w-16">Qty</th>
+            <th className="py-2.5 px-3 text-right w-24">Unit Price</th>
+            {totalTaxAmount > 0 && <th className="py-2.5 px-3 text-center w-16">GST (%)</th>}
+            <th className="py-2.5 px-3 text-right w-28">Amount</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-slate-200">
+          {lineItems.map((item, idx) => {
+             const baseAmount = item.quantity * item.unitPrice;
+             const discountAmt = baseAmount * ((item.discountPct || 0) / 100);
+             const amount = baseAmount - discountAmt;
+             return (
+               <tr key={item.id} className="hover:bg-slate-50/50 text-slate-700">
+                 <td className="py-2.5 px-3 text-center text-slate-500">{idx + 1}</td>
+                 <td className="py-2.5 px-3 font-medium text-slate-900 whitespace-pre-wrap">
+                   <div>{item.description || '—'}</div>
+                   {(item.period || (item.discountPct || 0) > 0) && (
+                     <div className="text-[9px] text-slate-400 mt-0.5 font-normal flex items-center gap-2">
+                       {item.period && (
+                         <span>Period: <span className="font-semibold text-slate-550">{item.period}</span></span>
+                       )}
+                       {item.period && (item.discountPct || 0) > 0 && <span className="text-slate-350">|</span>}
+                       {(item.discountPct || 0) > 0 && (
+                         <span className="text-emerald-600 font-medium">Discount: {item.discountPct}% Off</span>
+                       )}
+                     </div>
+                   )}
+                 </td>
+                 <td className="py-2.5 px-3 text-center">{item.quantity}</td>
+                 <td className="py-2.5 px-3 text-right">
+                   {(item.discountPct || 0) > 0 ? (
+                     <div>
+                       <span className="text-slate-400 line-through text-[9px] mr-1">{formatIndianCurrency(item.unitPrice)}</span>
+                       <span>{formatIndianCurrency(item.unitPrice * (1 - (item.discountPct || 0) / 100))}</span>
+                     </div>
+                   ) : (
+                     formatIndianCurrency(item.unitPrice)
+                   )}
+                 </td>
+                 {totalTaxAmount > 0 && <td className="py-2.5 px-3 text-center">{item.gstRate}%</td>}
+                 <td className="py-2.5 px-3 text-right font-semibold text-slate-900">{formatIndianCurrency(amount)}</td>
+               </tr>
+             );
+           })}
+        </tbody>
+      </table>
+    </div>
+  );
+
+  const renderPreviewTotalsPanel = () => (
+    <div className="flex justify-between items-center p-3 bg-slate-50 border border-slate-150 rounded-lg text-[10px] no-break">
+      <span className="font-bold text-slate-500 uppercase tracking-wider">Total Amount in Words:</span>
+      <span className="font-semibold text-slate-800 italic">{numberToIndianWords(grandTotal)}</span>
+    </div>
+  );
+
+  const renderPreviewCalculationsAndPayment = () => (
+    <div className="grid grid-cols-12 gap-4 no-break">
+      <div className="col-span-7 space-y-4">
+        {docType === 'invoice' ? (
+          <div className="p-3.5 border border-emerald-200 bg-emerald-50/40 rounded-lg text-emerald-800 space-y-1">
+            <div className="flex items-center gap-1.5 font-bold text-[10px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+              Payment Status: PAID
+            </div>
+            <p className="text-[9px] text-emerald-700 leading-relaxed font-medium">
+              Payment has been successfully received and processed. Thank you for your business!
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-1.5 text-[10px] border border-slate-200 p-3 rounded-lg bg-slate-50/50">
+            <p className="font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200 pb-1 flex items-center gap-1 font-display">
+              <CreditCard className="w-3.5 h-3.5 text-slate-400" />
+              UPI Payment Option
+            </p>
+            <div className="flex flex-col items-center gap-2 pt-1.5 text-center">
+              {companyProfile.qrCodeImage && (
+                <div className="w-20 h-20 overflow-hidden border border-slate-200 rounded-lg p-1 bg-white flex items-center justify-center relative shadow-sm">
+                  <img 
+                    src={companyProfile.qrCodeImage} 
+                    alt="UPI QR Code" 
+                    className="w-full h-full object-contain" 
+                  />
+                </div>
+              )}
+              <div className="text-[10px] text-slate-750 font-medium leading-relaxed">
+                Scan QR Code or pay to UPI:
+                <p className="font-bold text-brand-purple text-xs mt-0.5 select-all">{companyProfile.upiId || 'a2zversion@ybl'}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="col-span-5 flex flex-col justify-end text-[11px] space-y-2 no-break">
+        {totalDiscountGiven > 0 ? (
+          <>
+            <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+              <span>Subtotal (Pre-Discount):</span>
+              <span className="font-medium">{formatIndianCurrency(baseSubtotal)}</span>
+            </div>
+            <div className="flex justify-between py-1 border-b border-slate-100 text-emerald-655 font-bold">
+              <span>Total Discount Given:</span>
+              <span>-{formatIndianCurrency(totalDiscountGiven)}</span>
+            </div>
+            {companyProfile.applyGst ? (
+              <div className="flex justify-between py-1 border-b border-slate-100 text-slate-650">
+                <span>Taxable Value:</span>
+                <span className="font-semibold text-slate-800">{formatIndianCurrency(itemsSubtotal)}</span>
+              </div>
+            ) : (
+              <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+                <span>Subtotal:</span>
+                <span className="font-semibold text-slate-800">{formatIndianCurrency(itemsSubtotal)}</span>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+            <span>Subtotal:</span>
+            <span className="font-medium">{formatIndianCurrency(itemsSubtotal)}</span>
+          </div>
+        )}
+
+        {companyProfile.applyGst && totalTaxAmount > 0 ? (
+          docType === 'invoice' && invoiceDetails.gstType === 'intra' ? (
+            <>
+              <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+                <span>CGST:</span>
+                <span className="font-medium">{formatIndianCurrency(cgstTotal)}</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+                <span>SGST:</span>
+                <span className="font-medium">{formatIndianCurrency(sgstTotal)}</span>
+              </div>
+            </>
+          ) : (
+            <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+              <span>IGST:</span>
+              <span className="font-medium">{formatIndianCurrency(igstTotal)}</span>
+            </div>
+          )
+        ) : (
+          !companyProfile.applyGst && (
+            <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
+              <span>Taxes & Duties:</span>
+              <span className="font-semibold text-slate-500">Nil / Exempt</span>
+            </div>
+          )
+        )}
+
+        {companyProfile.applyGst && totalTaxAmount > 0 && (
+          <div className="flex justify-between py-1 border-b border-slate-200 text-slate-600">
+            <span>Total GST:</span>
+            <span className="font-medium">{formatIndianCurrency(totalTaxAmount)}</span>
+          </div>
+        )}
+
+        <div className="flex justify-between py-2 text-slate-900 font-bold bg-slate-100 px-3 rounded-lg text-xs">
+          <span>Grand Total:</span>
+          <span>{formatIndianCurrency(grandTotal)}</span>
+        </div>
+
+        {docType === 'invoice' && (invoiceDetails.advanceAmountPaid || 0) > 0 && (
+          <>
+            <div className="flex justify-between py-1.5 px-3 text-slate-600 border-b border-slate-100 text-[10px] font-medium mt-1">
+              <span>Less: Advance Paid:</span>
+              <span className="text-slate-500">-{formatIndianCurrency(invoiceDetails.advanceAmountPaid || 0)}</span>
+            </div>
+            <div className="flex justify-between py-2 text-brand-blue font-extrabold bg-blue-50/50 px-3 rounded-lg text-xs mt-1 border border-blue-100/50">
+              <span>Balance Due:</span>
+              <span>{formatIndianCurrency(Math.max(0, grandTotal - (invoiceDetails.advanceAmountPaid || 0)))}</span>
+            </div>
+          </>
+        )}
+
+        {docType === 'quotation' && (quotationDetails.advancePercentage || 0) > 0 && (
+          <>
+            <div className="flex justify-between py-1.5 px-3 text-slate-600 border-b border-slate-100 text-[10px] font-medium mt-1">
+              <span>Advance Payable ({quotationDetails.advancePercentage}%):</span>
+              <span className="text-slate-800 font-bold">{formatIndianCurrency(grandTotal * (quotationDetails.advancePercentage || 0) / 100)}</span>
+            </div>
+            <div className="flex justify-between py-2 text-brand-purple font-extrabold bg-purple-50/50 px-3 rounded-lg text-xs mt-1 border border-purple-100/50">
+              <span>Balance on Completion ({100 - (quotationDetails.advancePercentage || 0)}%):</span>
+              <span>{formatIndianCurrency(grandTotal * (1 - (quotationDetails.advancePercentage || 0) / 100))}</span>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+
+  const renderPreviewMilestones = (theme: 'indigo' | 'purple') => {
+    return (
+      <div className="mt-4 space-y-2 text-[10px]">
+        <p className="font-bold text-brand-purple uppercase tracking-wider border-b pb-1 font-display border-slate-200">
+          Payment Milestones & Proposal Notes
+        </p>
+        <div className="space-y-1 pl-0.5">
+          {(quotationDetails.clientNote || '—').split('\n').map((line, idx) => (
+            <p key={idx} className="whitespace-pre-wrap leading-relaxed text-slate-700 font-medium font-display no-break min-h-[1em]">
+              {line || ' '}
+            </p>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderPreviewServicesBanner = () => (
+    <div className="mt-3 pt-2 border-t border-dashed border-slate-200 no-break">
+      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 text-center">Our Core Capabilities & Services</p>
+      <div className="flex justify-center items-center gap-4 text-[9px]">
+        <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-purple animate-pulse" />
+          AI Tools Integration
+        </span>
+        <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
+          Business Automation
+        </span>
+        <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          Website Development
+        </span>
+      </div>
+    </div>
+  );
+
+  const renderPreviewSignatures = () => (
+    <div className="mt-3 border-t border-slate-200 pt-3 space-y-3 no-break">
+      <div className="grid grid-cols-12 gap-4 text-[10px] items-end">
+        <div className={`${docType === 'invoice' ? 'col-span-8' : 'col-span-12'} space-y-0.5 text-slate-500`}>
+          <p className="font-bold text-slate-700 uppercase tracking-wider text-[8px]">Declaration / Conditions:</p>
+          <p className="leading-relaxed whitespace-pre-wrap text-[8.5px] text-slate-500">
+            {docType === 'invoice' 
+              ? companyProfile.gstDeclaration 
+              : 'This document constitutes a business proposal estimate. Actual invoices will match finalized scopes. Standard terms apply.'}
+          </p>
+        </div>
+
+        {docType === 'invoice' && (
+          <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
+            <div className="text-slate-800 mb-1">
+              <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
+            </div>
+            <div className="h-10 flex items-center justify-center relative">
+              {companyProfile.signatureImage ? (
+                <img 
+                  src={companyProfile.signatureImage} 
+                  alt="CEO Signature" 
+                  className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
+                />
+              ) : (
+                <div className="h-10" />
+              )}
+            </div>
+            <div className="border-t border-slate-300 pt-1.5 mt-1">
+              <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
   // Trigger WhatsApp share
   const handleShareWhatsApp = () => {
     const url = getShareUrl();
@@ -577,6 +1036,17 @@ export default function InvoiceClient() {
 
         {/* Global styles block for printable page wrapper */}
         <style jsx global>{`
+          .print-page-border {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 10;
+          }
           @media print {
             header, 
             footer, 
@@ -620,13 +1090,57 @@ export default function InvoiceClient() {
               width: auto !important;
               max-width: none !important;
             }
+            .responsive-zoom-preview {
+              display: block !important;
+              border: none !important;
+              box-shadow: none !important;
+              background: transparent !important;
+              border-radius: 0 !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            .print-page-border {
+              display: block !important;
+              position: absolute !important;
+              top: 8mm !important;
+              left: 8mm !important;
+              right: 8mm !important;
+              bottom: 8mm !important;
+              border: 1.5px solid #cbd5e1 !important;
+              border-radius: 8px !important;
+              pointer-events: none !important;
+              z-index: 9999 !important;
+            }
+            .print-page {
+              position: relative !important;
+              box-sizing: border-box !important;
+            }
+            @media print {
+              .print-page {
+                page-break-after: always !important;
+                break-after: always !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
+                margin: 0 auto !important;
+                box-sizing: border-box !important;
+                background: #ffffff !important;
+              }
+              .print-page.print-wrapper {
+                height: 297mm !important;
+                min-height: 297mm !important;
+                padding: 14mm 14mm !important;
+              }
+            }
             .print-wrapper {
+              display: block !important;
               position: relative !important;
               width: 100% !important;
               max-width: 210mm !important;
               height: auto !important;
               min-height: auto !important;
-              padding: 8mm !important;
+              padding: 14mm 14mm !important;
               background: #ffffff !important;
               border: none !important;
               box-shadow: none !important;
@@ -634,6 +1148,7 @@ export default function InvoiceClient() {
               color: #000000 !important;
               -webkit-print-color-adjust: exact !important;
               print-color-adjust: exact !important;
+              box-sizing: border-box !important;
             }
             .invoice-table th {
               background-color: #f1f5f9 !important;
@@ -678,355 +1193,57 @@ export default function InvoiceClient() {
 
 
           <div className="w-full max-w-[794px] flex justify-center pb-12">
-            <div className="w-[794px] shadow-xl shadow-slate-200/50 rounded-xl border border-slate-200/60 bg-white overflow-hidden mt-0 mb-8 responsive-zoom-preview">
-              <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text">
-              
-              {/* Header: Brand & Issuer Details */}
-              <div className="space-y-6">
-                <div className="flex justify-between items-start border-b border-slate-200 pb-6">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="relative w-8 h-8 flex items-center justify-center bg-white border border-slate-150 rounded p-1 shadow-sm">
-                        <Image src="/logo-v2.png" alt="Logo" width={24} height={24} className="object-contain" />
-                      </div>
-                      <span className="text-xl font-bold tracking-tight text-slate-900 font-display">
-                        {companyProfile.brandName}
-                      </span>
+            <div className="w-[794px] shadow-xl shadow-slate-200/50 rounded-xl border border-slate-200/60 bg-white overflow-hidden mt-0 mb-8 responsive-zoom-preview relative">
+              {docType === 'quotation' && estimateQuotationPages() === 2 ? (
+                <>
+                  {/* Page 1 */}
+                  <div className="print-page print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text relative mb-8 shadow-sm">
+                    <div className="print-page-border" />
+                    <div className="space-y-6">
+                      {renderPreviewHeader()}
+                      {renderPreviewAddresses()}
+                      {renderPreviewItemsTable()}
+                      {renderPreviewTotalsPanel()}
+                      {renderPreviewCalculationsAndPayment()}
                     </div>
-                    <div className="text-[11px] text-slate-600 leading-relaxed max-w-sm">
-                      <p className="font-bold text-slate-800">{companyProfile.companyName}</p>
-                      <p className="whitespace-pre-wrap">{companyProfile.registeredOfficeAddress}</p>
-                      <p className="font-semibold text-slate-700 mt-1">PAN: {companyProfile.panNumber}</p>
-                    </div>
+                    <div />
                   </div>
 
-                  <div className="text-right space-y-1">
-                    <h1 className="text-xl font-extrabold tracking-tight text-slate-800 uppercase font-display">
-                      {docType === 'invoice' ? companyProfile.documentTitle : 'Quotation'}
-                    </h1>
-                    <div className="text-[11px] text-slate-600 pt-1">
-                      {docType === 'invoice' ? (
-                        <>
-                          <p><span className="font-semibold text-slate-700">Invoice No:</span> {invoiceDetails.invoiceNumber}</p>
-                          <p><span className="font-semibold text-slate-700">Date of Issue:</span> {invoiceDetails.dateOfIssue}</p>
-                        </>
-                      ) : (
-                        <>
-                          <p><span className="font-semibold text-slate-700">Quote Ref:</span> {quotationDetails.quoteNumber}</p>
-                          <p><span className="font-semibold text-slate-700">Quote Date:</span> {quotationDetails.dateOfIssue}</p>
-                          <p><span className="font-semibold text-slate-700">Validity:</span> {quotationDetails.validityDays} Days (Until {calculateExpiryDate(quotationDetails.dateOfIssue, quotationDetails.validityDays)})</p>
-                        </>
-                      )}
+                  {/* Page 2 */}
+                  <div className="print-page print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text relative shadow-sm">
+                    <div className="print-page-border" />
+                    <div className="space-y-6">
+                      {renderPreviewMilestones('indigo')}
+                    </div>
+                    <div className="space-y-6">
+                      {renderPreviewServicesBanner()}
+                      {renderPreviewSignatures()}
                     </div>
                   </div>
-                </div>
-
-                {/* Client / Bill addresses */}
-                <div className="grid grid-cols-2 gap-3 text-[10.5px]">
-                  <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg">
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Bill To:</span>
-                    <div className="text-slate-800 leading-relaxed">
-                      <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
-                      <p className="whitespace-pre-wrap mt-1">{clientDetails.billingAddress || '—'}</p>
-                    </div>
+                </>
+              ) : (
+                <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text relative">
+                  <div className="print-page-border" />
+                  <div className="space-y-6">
+                    {renderPreviewHeader()}
+                    {renderPreviewAddresses()}
+                    {renderPreviewItemsTable()}
+                    {renderPreviewTotalsPanel()}
+                    {renderPreviewCalculationsAndPayment()}
+                    {docType === 'quotation' && renderPreviewMilestones('indigo')}
                   </div>
-
-                  {docType === 'invoice' ? (
-                    <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg">
-                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Ship To:</span>
-                      <div className="text-slate-800 leading-relaxed">
-                        {clientDetails.sameAsBilling ? (
-                          <>
-                            <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
-                            <p className="whitespace-pre-wrap mt-1">{clientDetails.billingAddress || '—'}</p>
-                          </>
-                        ) : (
-                          <>
-                            <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
-                            <p className="whitespace-pre-wrap mt-1">{clientDetails.shippingAddress || '—'}</p>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg flex flex-col justify-center">
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Proposal Scope Summary:</p>
-                      <p className="text-slate-700 leading-relaxed">{quotationDetails?.scopeSummary || `Workflow & automation engine specifications prepared by team ${companyProfile.brandName} for ${clientDetails.customerName || 'the client'}. Valid standard limits apply.`}</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Items Table */}
-                <div className="border border-slate-200 rounded-lg overflow-hidden">
-                  <table className="invoice-table w-full text-left border-collapse text-[11px]">
-                    <thead>
-                      <tr className="bg-slate-100 border-b border-slate-200 text-slate-800 font-bold">
-                        <th className="py-2.5 px-3 w-12 text-center">#</th>
-                        <th className="py-2.5 px-3">Description of Service</th>
-                        <th className="py-2.5 px-3 text-center w-16">Qty</th>
-                        <th className="py-2.5 px-3 text-right w-24">Unit Price</th>
-                        {totalTaxAmount > 0 && <th className="py-2.5 px-3 text-center w-16">GST (%)</th>}
-                        <th className="py-2.5 px-3 text-right w-28">Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-200 text-slate-700">
-                      {lineItems.map((item, idx) => {
-                        const baseAmount = item.quantity * item.unitPrice;
-                        const discountAmt = baseAmount * ((item.discountPct || 0) / 100);
-                        const amount = baseAmount - discountAmt;
-                        return (
-                          <tr key={item.id} className="hover:bg-slate-50/50">
-                            <td className="py-2.5 px-3 text-center text-slate-500">{idx + 1}</td>
-                            <td className="py-2.5 px-3 font-medium text-slate-900 whitespace-pre-wrap">
-                              <div>{item.description || '—'}</div>
-                              {(item.period || (item.discountPct || 0) > 0) && (
-                                <div className="text-[9px] text-slate-400 mt-0.5 font-normal flex items-center gap-2">
-                                  {item.period && (
-                                    <span>Period: <span className="font-semibold text-slate-550">{item.period}</span></span>
-                                  )}
-                                  {item.period && (item.discountPct || 0) > 0 && <span className="text-slate-300">|</span>}
-                                  {(item.discountPct || 0) > 0 && (
-                                    <span className="text-emerald-600 font-medium">Discount: {item.discountPct}% Off</span>
-                                  )}
-                                </div>
-                              )}
-                            </td>
-                            <td className="py-2.5 px-3 text-center">{item.quantity}</td>
-                            <td className="py-2.5 px-3 text-right">
-                              {(item.discountPct || 0) > 0 ? (
-                                <div>
-                                  <span className="text-slate-400 line-through text-[9px] mr-1">{formatIndianCurrency(item.unitPrice)}</span>
-                                  <span>{formatIndianCurrency(item.unitPrice * (1 - (item.discountPct || 0) / 100))}</span>
-                                </div>
-                              ) : (
-                                formatIndianCurrency(item.unitPrice)
-                              )}
-                            </td>
-                            {totalTaxAmount > 0 && <td className="py-2.5 px-3 text-center">{item.gstRate}%</td>}
-                            <td className="py-2.5 px-3 text-right font-semibold text-slate-900">{formatIndianCurrency(amount)}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Total Amount in Words (Full Width, Single Row) */}
-                <div className="flex justify-between items-center p-3 bg-slate-50 border border-slate-150 rounded-lg text-[10px] mt-4">
-                  <span className="font-bold text-slate-500 uppercase tracking-wider">Total Amount in Words:</span>
-                  <span className="font-semibold text-slate-800 italic">{numberToIndianWords(grandTotal)}</span>
-                </div>
-
-                {/* Calculations & Instructions Side-by-Side */}
-                <div className="grid grid-cols-12 gap-4 mt-4">
-                  <div className="col-span-7 space-y-4">
-                    {docType === 'invoice' ? (
-                      <div className="p-3.5 border border-emerald-200 bg-emerald-50/40 rounded-lg text-emerald-800 space-y-1">
-                        <div className="flex items-center gap-1.5 font-bold text-[10px]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                          Payment Status: PAID
-                        </div>
-                        <p className="text-[9px] text-emerald-700 leading-relaxed font-medium">
-                          Payment has been successfully received and processed. Thank you for your business!
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="space-y-1.5 text-[10px] border border-slate-200 p-3 rounded-lg bg-slate-50/50 animate-fade-in">
-                        <p className="font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200 pb-1 flex items-center gap-1">
-                          <CreditCard className="w-3.5 h-3.5 text-slate-400" />
-                          UPI Payment Option
-                        </p>
-                        <div className="flex flex-col items-center gap-2 pt-1.5 text-center">
-                          {companyProfile.qrCodeImage && (
-                            <div className="w-20 h-20 overflow-hidden border border-slate-200 rounded-lg p-1 bg-white flex items-center justify-center relative shadow-sm">
-                              <img 
-                                src={companyProfile.qrCodeImage} 
-                                alt="UPI QR Code" 
-                                className="w-full h-full object-contain" 
-                              />
-                            </div>
-                          )}
-                          <div className="text-[10px] text-slate-750 font-medium leading-relaxed">
-                            Scan QR Code or pay to UPI:
-                            <p className="font-bold text-brand-purple text-xs mt-0.5 select-all">{companyProfile.upiId || 'a2zversion@ybl'}</p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="col-span-5 flex flex-col justify-end text-[11px] space-y-2 no-break">
-                    {totalDiscountGiven > 0 ? (
-                      <>
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                          <span>Subtotal (Pre-Discount):</span>
-                          <span className="font-medium">{formatIndianCurrency(baseSubtotal)}</span>
-                        </div>
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-emerald-600 font-bold">
-                          <span>Total Discount Given:</span>
-                          <span>-{formatIndianCurrency(totalDiscountGiven)}</span>
-                        </div>
-                        {companyProfile.applyGst ? (
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>Taxable Value:</span>
-                            <span className="font-semibold text-slate-800">{formatIndianCurrency(itemsSubtotal)}</span>
-                          </div>
-                        ) : (
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>Subtotal:</span>
-                            <span className="font-semibold text-slate-800">{formatIndianCurrency(itemsSubtotal)}</span>
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                        <span>Subtotal:</span>
-                        <span className="font-medium">{formatIndianCurrency(itemsSubtotal)}</span>
-                      </div>
-                    )}
-
-                    {companyProfile.applyGst && totalTaxAmount > 0 ? (
-                      docType === 'invoice' && invoiceDetails.gstType === 'intra' ? (
-                        <>
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>CGST:</span>
-                            <span className="font-medium">{formatIndianCurrency(cgstTotal)}</span>
-                          </div>
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>SGST:</span>
-                            <span className="font-medium">{formatIndianCurrency(sgstTotal)}</span>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                          <span>IGST:</span>
-                          <span className="font-medium">{formatIndianCurrency(igstTotal)}</span>
-                        </div>
-                      )
-                    ) : (
-                      !companyProfile.applyGst && (
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                          <span>Taxes & Duties:</span>
-                          <span className="font-semibold text-slate-500">Nil / Exempt</span>
-                        </div>
-                      )
-                    )}
-
-                    {companyProfile.applyGst && totalTaxAmount > 0 && (
-                      <div className="flex justify-between py-1 border-b border-slate-200 text-slate-600">
-                        <span>Total GST:</span>
-                        <span className="font-medium">{formatIndianCurrency(totalTaxAmount)}</span>
-                      </div>
-                    )}
-
-                    <div className="flex justify-between py-2 text-slate-900 font-bold bg-slate-100 px-3 rounded-lg text-xs">
-                      <span>Grand Total:</span>
-                      <span>{formatIndianCurrency(grandTotal)}</span>
-                    </div>
-
-                    {docType === 'invoice' && (invoiceDetails.advanceAmountPaid || 0) > 0 && (
-                      <>
-                        <div className="flex justify-between py-1.5 px-3 text-slate-600 border-b border-slate-100 text-[10px] font-medium mt-1">
-                          <span>Less: Advance Paid:</span>
-                          <span className="text-slate-500">-{formatIndianCurrency(invoiceDetails.advanceAmountPaid || 0)}</span>
-                        </div>
-                        <div className="flex justify-between py-2 text-brand-blue font-extrabold bg-blue-50/50 px-3 rounded-lg text-xs mt-1 border border-blue-100/50">
-                          <span>Balance Due:</span>
-                          <span>{formatIndianCurrency(Math.max(0, grandTotal - (invoiceDetails.advanceAmountPaid || 0)))}</span>
-                        </div>
-                      </>
-                    )}
-
-                    {docType === 'quotation' && (quotationDetails.advancePercentage || 0) > 0 && (
-                      <>
-                        <div className="flex justify-between py-1.5 px-3 text-slate-600 border-b border-slate-100 text-[10px] font-medium mt-1">
-                          <span>Advance Payable ({quotationDetails.advancePercentage}%):</span>
-                          <span className="text-slate-800 font-bold">{formatIndianCurrency(grandTotal * (quotationDetails.advancePercentage || 0) / 100)}</span>
-                        </div>
-                        <div className="flex justify-between py-2 text-brand-purple font-extrabold bg-purple-50/50 px-3 rounded-lg text-xs mt-1 border border-purple-100/50">
-                          <span>Balance on Completion ({100 - (quotationDetails.advancePercentage || 0)}%):</span>
-                          <span>{formatIndianCurrency(grandTotal * (1 - (quotationDetails.advancePercentage || 0) / 100))}</span>
-                        </div>
-                      </>
-                    )}
+                  <div className="space-y-6">
+                    {renderPreviewServicesBanner()}
+                    {renderPreviewSignatures()}
                   </div>
                 </div>
-
-                {/* Milestones & Proposal Notes (Full Width, Bottom) */}
-                {docType === 'quotation' && (
-                  <div className="mt-4 space-y-1.5 text-[10px] border border-slate-200 p-3 rounded-lg bg-indigo-50/10">
-                    <p className="font-bold text-brand-purple uppercase tracking-wider border-b border-purple-100 pb-1">
-                      Payment Milestones & Proposal Notes
-                    </p>
-                    <p className="whitespace-pre-wrap leading-relaxed text-slate-700 font-medium font-display">
-                      {quotationDetails.clientNote || '—'}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-                {/* Our Services Banner */}
-                <div className="mt-3 pt-2 border-t border-dashed border-slate-200">
-                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 text-center">Our Core Capabilities & Services</p>
-                  <div className="flex justify-center items-center gap-4 text-[9px]">
-                    <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-purple animate-pulse" />
-                      AI Tools Integration
-                    </span>
-                    <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
-                      Business Automation
-                    </span>
-                    <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Website Development
-                    </span>
-                  </div>
-                </div>
-
-                {/* Signatures & Declarations */}
-                <div className="mt-3 border-t border-slate-200 pt-3 space-y-3 no-break">
-                  <div className="grid grid-cols-12 gap-4 text-[10px] items-end">
-                  <div className={`${docType === 'invoice' ? 'col-span-8' : 'col-span-12'} space-y-0.5 text-slate-500`}>
-                    <p className="font-bold text-slate-700 uppercase tracking-wider text-[8px]">Declaration / Conditions:</p>
-                    <p className="leading-relaxed whitespace-pre-wrap text-[8.5px] text-slate-500">
-                      {docType === 'invoice' 
-                        ? companyProfile.gstDeclaration 
-                        : 'This document constitutes a business proposal estimate. Actual invoices will match finalized scopes. Standard terms apply.'}
-                    </p>
-                  </div>
-
-                  {docType === 'invoice' && (
-                    <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
-                      <div className="text-slate-800 mb-1">
-                        <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
-                      </div>
-                      <div className="h-10 flex items-center justify-center relative">
-                        {companyProfile.signatureImage ? (
-                          <img 
-                            src={companyProfile.signatureImage} 
-                            alt="CEO Signature" 
-                            className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
-                          />
-                        ) : (
-                          <div className="h-10" />
-                        )}
-                      </div>
-                      <div className="border-t border-slate-300 pt-1.5 mt-1">
-                        <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
+              )}
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
   // ADMIN LOGIN PORTAL
   if (!isAuthenticated) {
@@ -1206,6 +1423,17 @@ export default function InvoiceClient() {
 
       {/* Styled block injection for printing */}
       <style jsx global>{`
+        .print-page-border {
+          position: absolute;
+          top: 8px;
+          left: 8px;
+          right: 8px;
+          bottom: 8px;
+          border: 1px solid #cbd5e1;
+          border-radius: 8px;
+          pointer-events: none;
+          z-index: 10;
+        }
         @media print {
           * {
             overflow: visible !important;
@@ -1253,6 +1481,7 @@ export default function InvoiceClient() {
             box-shadow: none !important;
           }
           .responsive-zoom-preview {
+            display: block !important;
             border: none !important;
             box-shadow: none !important;
             background: transparent !important;
@@ -1262,21 +1491,55 @@ export default function InvoiceClient() {
             margin: 0 !important;
             padding: 0 !important;
           }
+          .print-page-border {
+            display: block !important;
+            position: absolute !important;
+            top: 8mm !important;
+            left: 8mm !important;
+            right: 8mm !important;
+            bottom: 8mm !important;
+            border: 1.5px solid #cbd5e1 !important;
+            border-radius: 8px !important;
+            pointer-events: none !important;
+            z-index: 9999 !important;
+          }
+          .print-page {
+            position: relative !important;
+            box-sizing: border-box !important;
+          }
+          @media print {
+            .print-page {
+              page-break-after: always !important;
+              break-after: always !important;
+              height: 297mm !important;
+              min-height: 297mm !important;
+              margin: 0 auto !important;
+              box-sizing: border-box !important;
+              background: #ffffff !important;
+            }
+            .print-page.print-wrapper {
+              height: 297mm !important;
+              min-height: 297mm !important;
+              padding: 14mm 14mm !important;
+            }
+          }
           .print-wrapper {
+            display: block !important;
             position: relative !important;
             width: 100% !important;
-            max-width: 190mm !important;
+            max-width: 210mm !important;
             height: auto !important;
             min-height: auto !important;
-            padding: 6mm 6mm !important;
+            padding: 14mm 14mm !important;
             background: #ffffff !important;
-            border: 1px solid #cbd5e1 !important;
-            border-radius: 12px !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
-            margin: 8mm auto 0 auto !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            margin: 0 auto !important;
             color: #000000 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+            box-sizing: border-box !important;
           }
           .invoice-table th {
             background-color: #f1f5f9 !important;
@@ -2060,354 +2323,56 @@ export default function InvoiceClient() {
               </div>
 
               {/* Print wrapper simulation */}
-              <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text">
-              
-              {/* Top Section */}
-              <div className="space-y-6">
-                <div className="flex justify-between items-start border-b border-slate-200 pb-6">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="relative w-8 h-8 flex items-center justify-center bg-white border border-slate-150 rounded p-1 shadow-sm">
-                        <Image src="/logo-v2.png" alt="Logo" width={24} height={24} className="object-contain" />
-                      </div>
-                      <span className="text-xl font-bold tracking-tight text-slate-900 font-display">
-                        {companyProfile.brandName}
-                      </span>
+              {docType === 'quotation' && estimateQuotationPages() === 2 ? (
+                <>
+                  {/* Page 1 */}
+                  <div className="print-page print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text relative mb-8 shadow-sm">
+                    <div className="print-page-border" />
+                    <div className="space-y-6">
+                      {renderPreviewHeader()}
+                      {renderPreviewAddresses()}
+                      {renderPreviewItemsTable()}
+                      {renderPreviewTotalsPanel()}
+                      {renderPreviewCalculationsAndPayment()}
                     </div>
-                    <div className="text-[11px] text-slate-600 leading-relaxed max-w-sm">
-                      <p className="font-bold text-slate-800">{companyProfile.companyName}</p>
-                      <p className="whitespace-pre-wrap">{companyProfile.registeredOfficeAddress}</p>
-                      <p className="font-semibold text-slate-700 mt-1">PAN: {companyProfile.panNumber}</p>
-                    </div>
+                    <div />
                   </div>
 
-                  <div className="text-right space-y-1">
-                    <h1 className="text-xl font-extrabold tracking-tight text-slate-800 uppercase font-display">
-                      {docType === 'invoice' ? companyProfile.documentTitle : 'Quotation'}
-                    </h1>
-                    <div className="text-[11px] text-slate-600 pt-1">
-                      {docType === 'invoice' ? (
-                        <>
-                          <p><span className="font-semibold text-slate-700">Invoice No:</span> {invoiceDetails.invoiceNumber}</p>
-                          <p><span className="font-semibold text-slate-700">Date of Issue:</span> {invoiceDetails.dateOfIssue}</p>
-                        </>
-                      ) : (
-                        <>
-                          <p><span className="font-semibold text-slate-700">Quote Ref:</span> {quotationDetails.quoteNumber}</p>
-                          <p><span className="font-semibold text-slate-700">Quote Date:</span> {quotationDetails.dateOfIssue}</p>
-                          <p><span className="font-semibold text-slate-700">Validity:</span> {quotationDetails.validityDays} Days (Until {calculateExpiryDate(quotationDetails.dateOfIssue, quotationDetails.validityDays)})</p>
-                        </>
-                      )}
+                  {/* Page 2 */}
+                  <div className="print-page print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text relative shadow-sm">
+                    <div className="print-page-border" />
+                    <div className="space-y-6">
+                      {renderPreviewMilestones('purple')}
+                    </div>
+                    <div className="space-y-6">
+                      {renderPreviewServicesBanner()}
+                      {renderPreviewSignatures()}
                     </div>
                   </div>
-                </div>
-
-                {/* Addresses */}
-                <div className="grid grid-cols-2 gap-3 text-[10.5px]">
-                  <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg">
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Bill To:</span>
-                    <div className="text-slate-800 leading-relaxed">
-                      <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
-                      <p className="whitespace-pre-wrap mt-1">{clientDetails.billingAddress || '—'}</p>
-                    </div>
+                </>
+              ) : (
+                <div className="print-wrapper w-full min-h-[297mm] bg-white text-slate-900 p-6 sm:p-8 flex flex-col justify-between select-text relative">
+                  <div className="print-page-border" />
+                  <div className="space-y-6">
+                    {renderPreviewHeader()}
+                    {renderPreviewAddresses()}
+                    {renderPreviewItemsTable()}
+                    {renderPreviewTotalsPanel()}
+                    {renderPreviewCalculationsAndPayment()}
+                    {docType === 'quotation' && renderPreviewMilestones('purple')}
                   </div>
-
-                  {docType === 'invoice' ? (
-                    <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg">
-                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Ship To:</span>
-                      <div className="text-slate-800 leading-relaxed">
-                        {clientDetails.sameAsBilling ? (
-                          <>
-                            <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
-                            <p className="whitespace-pre-wrap mt-1">{clientDetails.billingAddress || '—'}</p>
-                          </>
-                        ) : (
-                          <>
-                            <p className="font-bold text-slate-900 text-xs">{clientDetails.customerName || '—'}</p>
-                            <p className="whitespace-pre-wrap mt-1">{clientDetails.shippingAddress || '—'}</p>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-1 p-2 bg-slate-50 border border-slate-100 rounded-lg flex flex-col justify-center">
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Proposal Scope Summary:</p>
-                      <p className="text-slate-700 leading-relaxed">{quotationDetails.scopeSummary || `Workflow & automation engine specifications prepared by team ${companyProfile.brandName} for ${clientDetails.customerName || 'the client'}. Valid standard limits apply.`}</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Items list */}
-                <div className="border border-slate-200 rounded-lg overflow-hidden">
-                  <table className="invoice-table w-full text-left border-collapse text-[11px]">
-                    <thead>
-                      <tr className="bg-slate-100 border-b border-slate-200 text-slate-800 font-bold">
-                        <th className="py-2.5 px-3 w-12 text-center">#</th>
-                        <th className="py-2.5 px-3">Description of Service</th>
-                        <th className="py-2.5 px-3 text-center w-16">Qty</th>
-                        <th className="py-2.5 px-3 text-right w-24">Unit Price</th>
-                        {totalTaxAmount > 0 && <th className="py-2.5 px-3 text-center w-16">GST (%)</th>}
-                        <th className="py-2.5 px-3 text-right w-28">Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-200">
-                      {lineItems.map((item, idx) => {
-                         const baseAmount = item.quantity * item.unitPrice;
-                         const discountAmt = baseAmount * ((item.discountPct || 0) / 100);
-                         const amount = baseAmount - discountAmt;
-                         return (
-                           <tr key={item.id} className="hover:bg-slate-50/50 text-slate-700">
-                             <td className="py-2.5 px-3 text-center text-slate-500">{idx + 1}</td>
-                             <td className="py-2.5 px-3 font-medium text-slate-900 whitespace-pre-wrap">
-                               <div>{item.description || '—'}</div>
-                               {(item.period || (item.discountPct || 0) > 0) && (
-                                 <div className="text-[9px] text-slate-400 mt-0.5 font-normal flex items-center gap-2">
-                                   {item.period && (
-                                     <span>Period: <span className="font-semibold text-slate-550">{item.period}</span></span>
-                                   )}
-                                   {item.period && (item.discountPct || 0) > 0 && <span className="text-slate-350">|</span>}
-                                   {(item.discountPct || 0) > 0 && (
-                                     <span className="text-emerald-600 font-medium">Discount: {item.discountPct}% Off</span>
-                                   )}
-                                 </div>
-                               )}
-                             </td>
-                             <td className="py-2.5 px-3 text-center">{item.quantity}</td>
-                             <td className="py-2.5 px-3 text-right">
-                               {(item.discountPct || 0) > 0 ? (
-                                 <div>
-                                   <span className="text-slate-400 line-through text-[9px] mr-1">{formatIndianCurrency(item.unitPrice)}</span>
-                                   <span>{formatIndianCurrency(item.unitPrice * (1 - (item.discountPct || 0) / 100))}</span>
-                                 </div>
-                               ) : (
-                                 formatIndianCurrency(item.unitPrice)
-                               )}
-                             </td>
-                             {totalTaxAmount > 0 && <td className="py-2.5 px-3 text-center">{item.gstRate}%</td>}
-                             <td className="py-2.5 px-3 text-right font-semibold text-slate-900">{formatIndianCurrency(amount)}</td>
-                           </tr>
-                         );
-                       })}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Totals panel */}
-                {/* Total Amount in Words (Full Width, Single Row) */}
-                <div className="flex justify-between items-center p-3 bg-slate-50 border border-slate-150 rounded-lg text-[10px] mt-4">
-                  <span className="font-bold text-slate-500 uppercase tracking-wider">Total Amount in Words:</span>
-                  <span className="font-semibold text-slate-800 italic">{numberToIndianWords(grandTotal)}</span>
-                </div>
-
-                {/* Calculations & Instructions Side-by-Side */}
-                <div className="grid grid-cols-12 gap-4 mt-4">
-                  <div className="col-span-7 space-y-4">
-                    {docType === 'invoice' ? (
-                      <div className="p-3.5 border border-emerald-200 bg-emerald-50/40 rounded-lg text-emerald-800 space-y-1">
-                        <div className="flex items-center gap-1.5 font-bold text-[10px]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                          Payment Status: PAID
-                        </div>
-                        <p className="text-[9px] text-emerald-700 leading-relaxed font-medium">
-                          Payment has been successfully received and processed. Thank you for your business!
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="space-y-1.5 text-[10px] border border-slate-200 p-3 rounded-lg bg-slate-50/50">
-                        <p className="font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200 pb-1 flex items-center gap-1 font-display">
-                          <CreditCard className="w-3.5 h-3.5 text-slate-400" />
-                          UPI Payment Option
-                        </p>
-                        <div className="flex flex-col items-center gap-2 pt-1.5 text-center">
-                          {companyProfile.qrCodeImage && (
-                            <div className="w-20 h-20 overflow-hidden border border-slate-200 rounded-lg p-1 bg-white flex items-center justify-center relative shadow-sm">
-                              <img 
-                                src={companyProfile.qrCodeImage} 
-                                alt="UPI QR Code" 
-                                className="w-full h-full object-contain" 
-                              />
-                            </div>
-                          )}
-                          <div className="text-[10px] text-slate-750 font-medium leading-relaxed">
-                            Scan QR Code or pay to UPI:
-                            <p className="font-bold text-brand-purple text-xs mt-0.5 select-all">{companyProfile.upiId || 'a2zversion@ybl'}</p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="col-span-5 flex flex-col justify-end text-[11px] space-y-2 no-break">
-                    {totalDiscountGiven > 0 ? (
-                      <>
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                          <span>Subtotal (Pre-Discount):</span>
-                          <span className="font-medium">{formatIndianCurrency(baseSubtotal)}</span>
-                        </div>
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-emerald-655 font-bold">
-                          <span>Total Discount Given:</span>
-                          <span>-{formatIndianCurrency(totalDiscountGiven)}</span>
-                        </div>
-                        {companyProfile.applyGst ? (
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-650">
-                            <span>Taxable Value:</span>
-                            <span className="font-semibold text-slate-800">{formatIndianCurrency(itemsSubtotal)}</span>
-                          </div>
-                        ) : (
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>Subtotal:</span>
-                            <span className="font-semibold text-slate-800">{formatIndianCurrency(itemsSubtotal)}</span>
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                        <span>Subtotal:</span>
-                        <span className="font-medium">{formatIndianCurrency(itemsSubtotal)}</span>
-                      </div>
-                    )}
-
-                    {companyProfile.applyGst && totalTaxAmount > 0 ? (
-                      docType === 'invoice' && invoiceDetails.gstType === 'intra' ? (
-                        <>
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>CGST:</span>
-                            <span className="font-medium">{formatIndianCurrency(cgstTotal)}</span>
-                          </div>
-                          <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                            <span>SGST:</span>
-                            <span className="font-medium">{formatIndianCurrency(sgstTotal)}</span>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                          <span>IGST:</span>
-                          <span className="font-medium">{formatIndianCurrency(igstTotal)}</span>
-                        </div>
-                      )
-                    ) : (
-                      !companyProfile.applyGst && (
-                        <div className="flex justify-between py-1 border-b border-slate-100 text-slate-600">
-                          <span>Taxes & Duties:</span>
-                          <span className="font-semibold text-slate-500">Nil / Exempt</span>
-                        </div>
-                      )
-                    )}
-
-                    {companyProfile.applyGst && totalTaxAmount > 0 && (
-                      <div className="flex justify-between py-1 border-b border-slate-200 text-slate-600">
-                        <span>Total GST:</span>
-                        <span className="font-medium">{formatIndianCurrency(totalTaxAmount)}</span>
-                      </div>
-                    )}
-
-                    <div className="flex justify-between py-2 text-slate-900 font-bold bg-slate-100 px-3 rounded-lg text-xs">
-                      <span>Grand Total:</span>
-                      <span>{formatIndianCurrency(grandTotal)}</span>
-                    </div>
-
-                    {docType === 'invoice' && (invoiceDetails.advanceAmountPaid || 0) > 0 && (
-                      <>
-                        <div className="flex justify-between py-1.5 px-3 text-slate-600 border-b border-slate-100 text-[10px] font-medium mt-1">
-                          <span>Less: Advance Paid:</span>
-                          <span className="text-slate-500">-{formatIndianCurrency(invoiceDetails.advanceAmountPaid || 0)}</span>
-                        </div>
-                        <div className="flex justify-between py-2 text-brand-blue font-extrabold bg-blue-50/50 px-3 rounded-lg text-xs mt-1 border border-blue-100/50">
-                          <span>Balance Due:</span>
-                          <span>{formatIndianCurrency(Math.max(0, grandTotal - (invoiceDetails.advanceAmountPaid || 0)))}</span>
-                        </div>
-                      </>
-                    )}
-
-                    {docType === 'quotation' && (quotationDetails.advancePercentage || 0) > 0 && (
-                      <>
-                        <div className="flex justify-between py-1.5 px-3 text-slate-600 border-b border-slate-100 text-[10px] font-medium mt-1">
-                          <span>Advance Payable ({quotationDetails.advancePercentage}%):</span>
-                          <span className="text-slate-800 font-bold">{formatIndianCurrency(grandTotal * (quotationDetails.advancePercentage || 0) / 100)}</span>
-                        </div>
-                        <div className="flex justify-between py-2 text-brand-purple font-extrabold bg-purple-50/50 px-3 rounded-lg text-xs mt-1 border border-purple-100/50">
-                          <span>Balance on Completion ({100 - (quotationDetails.advancePercentage || 0)}%):</span>
-                          <span>{formatIndianCurrency(grandTotal * (1 - (quotationDetails.advancePercentage || 0) / 100))}</span>
-                        </div>
-                      </>
-                    )}
+                  <div className="space-y-6">
+                    {renderPreviewServicesBanner()}
+                    {renderPreviewSignatures()}
                   </div>
                 </div>
-
-                {/* Milestones & Proposal Notes (Full Width, Bottom) */}
-                {docType === 'quotation' && (
-                  <div className="mt-4 space-y-1.5 text-[10px] border border-purple-200/50 p-3 rounded-lg bg-purple-50/30">
-                    <p className="font-bold text-brand-purple uppercase tracking-wider border-b border-purple-100 pb-1 font-display">
-                      Payment Milestones & Proposal Notes
-                    </p>
-                    <p className="whitespace-pre-wrap leading-relaxed text-slate-700 font-medium">
-                      {quotationDetails.clientNote || '—'}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-                {/* Our Services Banner */}
-                <div className="mt-3 pt-2 border-t border-dashed border-slate-200">
-                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 text-center">Our Core Capabilities & Services</p>
-                  <div className="flex justify-center items-center gap-4 text-[9px]">
-                    <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-purple animate-pulse" />
-                      AI Tools Integration
-                    </span>
-                    <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
-                      Business Automation
-                    </span>
-                    <span className="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Website Development
-                    </span>
-                  </div>
-                </div>
-
-                {/* Signatures & Declarations */}
-                <div className="mt-3 border-t border-slate-200 pt-3 space-y-3 no-break">
-                  <div className="grid grid-cols-12 gap-4 text-[10px] items-end">
-                  <div className={`${docType === 'invoice' ? 'col-span-8' : 'col-span-12'} space-y-0.5 text-slate-500`}>
-                    <p className="font-bold text-slate-700 uppercase tracking-wider text-[8px]">Declaration / Conditions:</p>
-                    <p className="leading-relaxed whitespace-pre-wrap text-[8.5px] text-slate-500">
-                      {docType === 'invoice' 
-                        ? companyProfile.gstDeclaration 
-                        : 'This document constitutes a business proposal estimate. Actual invoices will match finalized scopes. Standard terms apply.'}
-                    </p>
-                  </div>
-
-                  {docType === 'invoice' && (
-                    <div className="col-span-4 text-center flex flex-col justify-end min-h-[50px]">
-                      <div className="text-slate-800 mb-1">
-                        <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">For {companyProfile.companyName}</p>
-                      </div>
-                      <div className="h-10 flex items-center justify-center relative">
-                        {companyProfile.signatureImage ? (
-                          <img 
-                            src={companyProfile.signatureImage} 
-                            alt="CEO Signature" 
-                            className="max-h-10 max-w-[100px] object-contain animate-fade-in" 
-                          />
-                        ) : (
-                          <div className="h-10" />
-                        )}
-                      </div>
-                      <div className="border-t border-slate-300 pt-1.5 mt-1">
-                        <p className="font-semibold text-slate-700 font-display">Authorized Signatory</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+              )}
 
             </div>
           </div>
         </div>
       </div>
 
-      </div>
     </div>
   );
 }
