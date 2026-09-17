@@ -879,10 +879,7 @@ export default function CareerClient() {
                   <span>Confirmation Mail Dispatched</span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed font-light">
-                  A confirmation email has been sent to <strong>{submittedData.email}</strong> stating:{' '}
-                  <span className="italic text-slate-700 font-medium">
-                    &quot;Thanks for applying! We will review and reach out if your profile gets shortlisted.&quot;
-                  </span>
+                  A confirmation email has been sent to <strong>{submittedData.email}</strong>. Our hiring team will review your profile and reach out to you shortly.
                 </p>
               </div>
 
