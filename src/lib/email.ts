@@ -1431,15 +1431,10 @@ export interface EmailCareerPayload {
 }
 
 /**
- * Generates an auto-responder confirmation HTML email template for the job applicant
+ * Generates an executive, professional acknowledgment email for the candidate
+ * (Structured like top IT & technology companies: 2 clean paragraphs, no box-cards, no data summary tables)
  */
 export function generateCareerCandidateConfirmationHTML(data: EmailCareerPayload): string {
-  const timestamp = new Date().toLocaleString('en-IN', {
-    timeZone: 'Asia/Kolkata',
-    dateStyle: 'full',
-    timeStyle: 'short',
-  });
-
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -1452,117 +1447,72 @@ export function generateCareerCandidateConfirmationHTML(data: EmailCareerPayload
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background-color: #f8fafc;
       margin: 0;
-      padding: 24px 12px;
+      padding: 32px 16px;
       color: #0f172a;
+      -webkit-font-smoothing: antialiased;
     }
     .email-container {
-      max-width: 600px;
+      max-width: 580px;
       margin: 0 auto;
       background: #ffffff;
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
       border: 1px solid #e2e8f0;
     }
     .header-accent {
-      height: 6px;
+      height: 4px;
       background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
     }
     .header {
-      padding: 32px 32px 24px 32px;
-      background: #ffffff;
+      padding: 32px 32px 20px 32px;
       border-bottom: 1px solid #f1f5f9;
     }
-    .brand-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #10b981;
-      background-color: #ecfdf5;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-    }
-    .title {
-      font-size: 22px;
+    .brand-title {
+      font-size: 20px;
       font-weight: 800;
       color: #0f172a;
-      margin: 0 0 6px 0;
+      letter-spacing: -0.5px;
+      margin: 0 0 2px 0;
     }
-    .subtitle {
-      font-size: 13px;
-      color: #64748b;
+    .brand-tagline {
+      font-size: 10px;
+      font-weight: 700;
+      color: #6366f1;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
       margin: 0;
-      line-height: 1.5;
     }
     .content {
       padding: 32px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #334155;
     }
-    .status-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-left: 4px solid #10b981;
-      padding: 16px 20px;
-      border-radius: 12px;
-      margin-bottom: 24px;
-    }
-    .status-title {
-      font-size: 14px;
+    .greeting {
+      font-size: 15px;
       font-weight: 700;
       color: #0f172a;
-      margin-bottom: 4px;
+      margin: 0 0 16px 0;
     }
-    .status-desc {
-      font-size: 13px;
+    .body-p {
+      margin: 0 0 18px 0;
+    }
+    .role-highlight {
+      color: #0f172a;
+      font-weight: 600;
+    }
+    .signoff {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 13.5px;
       color: #475569;
-      margin: 0;
       line-height: 1.6;
     }
-    .info-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-bottom: 24px;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .info-table tr:not(:last-child) td {
-      border-bottom: 1px solid #f1f5f9;
-    }
-    .info-label {
-      width: 38%;
-      padding: 12px 16px;
-      font-size: 12px;
+    .signoff-name {
       font-weight: 700;
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background-color: #f8fafc;
-    }
-    .info-value {
-      padding: 12px 16px;
-      font-size: 13px;
       color: #0f172a;
-    }
-    .btn-container {
-      text-align: center;
-      margin-top: 24px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-    }
-    .btn-whatsapp {
-      background-color: #10b981;
-      color: #ffffff;
     }
     .footer {
       padding: 20px 32px;
@@ -1570,54 +1520,22 @@ export function generateCareerCandidateConfirmationHTML(data: EmailCareerPayload
       border-top: 1px solid #e2e8f0;
       font-size: 11px;
       color: #94a3b8;
-      text-align: center;
       line-height: 1.6;
+      text-align: center;
     }
     @media only screen and (max-width: 480px) {
-      .email-container {
-        border-radius: 8px !important;
+      body {
+        padding: 16px 8px !important;
       }
       .header {
         padding: 24px 20px 16px 20px !important;
       }
       .content {
-        padding: 20px !important;
-      }
-      .info-table, .info-table tbody, .info-table tr, .info-table td {
-        display: block !important;
-        width: 100% !important;
-      }
-      .info-table tr:not(:last-child) td {
-        border-bottom: none !important;
-      }
-      .info-table tr td {
-        box-sizing: border-box !important;
-      }
-      .info-label {
-        width: 100% !important;
-        padding: 12px 16px 4px 16px !important;
-        background-color: #f8fafc !important;
-        border-bottom: none !important;
-      }
-      .info-value {
-        width: 100% !important;
-        padding: 4px 16px 12px 16px !important;
-        border-bottom: 1px solid #f1f5f9 !important;
-      }
-      .info-table tr:last-child .info-value {
-        border-bottom: none !important;
-      }
-      .btn-container {
-        margin-top: 16px !important;
-      }
-      .btn-whatsapp, .btn {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-        box-sizing: border-box !important;
-        padding: 14px 16px !important;
-        text-align: center !important;
+        padding: 24px 20px !important;
         font-size: 14px !important;
+      }
+      .footer {
+        padding: 16px 20px !important;
       }
     }
   </style>
@@ -1626,67 +1544,32 @@ export function generateCareerCandidateConfirmationHTML(data: EmailCareerPayload
   <div class="email-container">
     <div class="header-accent"></div>
     <div class="header">
-      <div class="brand-badge">✓ Application Received</div>
-      <h1 class="title">Thanks for Applying to DotnLott!</h1>
-      <p class="subtitle">Hi ${data.name}, thanks for applying. We have received your profile for the <strong>${data.position}</strong> position.</p>
+      <div class="brand-title">DotnLott</div>
+      <div class="brand-tagline">DREAM. BUILD. REPEAT.</div>
     </div>
 
     <div class="content">
-      <div class="status-card">
-        <div class="status-title">🎯 Profile Under Evaluation</div>
-        <p class="status-desc">
-          Thanks for applying! We will review your profile and reach out to you if your profile gets shortlisted.
-        </p>
-      </div>
+      <p class="greeting">Dear ${data.name},</p>
 
-      <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 12px;">Submitted Application Summary</h4>
-      
-      <table class="info-table">
-        <tr>
-          <td class="info-label">Candidate Name</td>
-          <td class="info-value"><strong>${data.name}</strong></td>
-        </tr>
-        <tr>
-          <td class="info-label">Role Applied For</td>
-          <td class="info-value"><strong style="color: #6366f1;">${data.position}</strong></td>
-        </tr>
-        <tr>
-          <td class="info-label">Email Address</td>
-          <td class="info-value">${data.email}</td>
-        </tr>
-        <tr>
-          <td class="info-label">Phone / WhatsApp</td>
-          <td class="info-value">${data.phone}</td>
-        </tr>
-        <tr>
-          <td class="info-label">Current Location</td>
-          <td class="info-value">${data.location}</td>
-        </tr>
-        <tr>
-          <td class="info-label">Experience</td>
-          <td class="info-value">${data.experience}</td>
-        </tr>
-        ${data.noticePeriod ? `
-        <tr>
-          <td class="info-label">Notice Period</td>
-          <td class="info-value">${data.noticePeriod}</td>
-        </tr>
-        ` : ''}
-        <tr>
-          <td class="info-label">Submitted On</td>
-          <td class="info-value">${timestamp} (IST)</td>
-        </tr>
-      </table>
+      <p class="body-p">
+        Thank you for your interest in career opportunities with <strong>DotnLott</strong>. We have successfully received your application for the <span class="role-highlight">${data.position}</span> role.
+      </p>
 
-      <div class="btn-container" style="text-align: center; margin-top: 24px;">
-        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Got Questions? Chat With Us on WhatsApp</a>
+      <p class="body-p">
+        Our talent acquisition team is currently reviewing your profile and qualifications against the role requirements. If your background aligns with our current openings, we will contact you directly regarding the next steps in our hiring process.
+      </p>
+
+      <div class="signoff">
+        Warm regards,<br>
+        <span class="signoff-name">Talent Acquisition Team</span><br>
+        DotnLott AI & Web Studio<br>
+        <a href="mailto:connect@dotnlott.com" style="color: #6366f1; text-decoration: none;">connect@dotnlott.com</a> &bull; <a href="https://dotnlott.com" style="color: #6366f1; text-decoration: none;">dotnlott.com</a>
       </div>
     </div>
 
     <div class="footer">
-      <strong>DotnLott AI Automation & Web Studio</strong><br>
-      A brand under A2Z Version Private Limited (CIN: U47721BR2026PTC085973)<br>
-      Operational Address: Odisha, India | Careers: <a href="mailto:connect@dotnlott.com" style="color: #6366f1; text-decoration: none;">connect@dotnlott.com</a>
+      This is an automated acknowledgment confirming receipt of your candidacy at DotnLott.<br>
+      A brand under A2Z Version Private Limited &bull; Odisha, India
     </div>
   </div>
 </body>
