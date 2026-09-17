@@ -648,15 +648,15 @@ export default function CareerClient() {
                   </div>
 
                   {/* Field: Phone / WhatsApp Number */}
-                  <div>
+                  <div className="min-w-0">
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                       Phone / WhatsApp <span className="text-rose-500">*</span>
                     </label>
-                    <div className="flex gap-2">
+                    <div className="flex items-center gap-2 w-full min-w-0">
                       <select
                         value={countryCode}
                         onChange={(e) => setCountryCode(e.target.value)}
-                        className="w-28 px-2 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-medium focus:outline-none focus:border-brand-purple"
+                        className="w-20 sm:w-24 flex-shrink-0 px-2 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-medium focus:outline-none focus:border-brand-purple cursor-pointer"
                       >
                         {countryCodes.map((item) => (
                           <option key={item.code} value={item.code}>
@@ -670,7 +670,7 @@ export default function CareerClient() {
                         placeholder="98765 43210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 transition-all"
+                        className="flex-1 min-w-0 w-full px-3 sm:px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 transition-all"
                       />
                     </div>
                   </div>

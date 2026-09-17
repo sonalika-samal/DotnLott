@@ -1898,10 +1898,113 @@ export async function sendCareerEmail(payload: EmailCareerPayload) {
 
   const candidateSubject = `Application Received: ${payload.position} - DotnLott`;
   const candidateHtmlContent = generateCareerCandidateConfirmationHTML(payload);
+  const candidateTextContent = `Dear ${payload.name},
 
-  // 1. Check Web3Forms Access Key
+Thank you for your interest in career opportunities with DotnLott. We have successfully received your application for the ${payload.position} role.
+
+Our talent acquisition team is currently reviewing your profile and qualifications against the role requirements. If your background aligns with our current openings, we will contact you directly regarding the next steps in our hiring process.
+
+Warm regards,
+Talent Acquisition Team
+DotnLott AI & Web Studio
+connect@dotnlott.com • dotnlott.com`;
+
+  let candidateSent = false;
+  let teamSent = false;
+
+  // 1. Google Workspace SMTP (Primary delivery for Candidate & Team)
+  const transporter = getTransporter();
+  if (transporter) {
+    try {
+      const smtpUser = process.env.SMTP_USER || 'connect@dotnlott.com';
+
+      // Always send to Candidate
+      try {
+        const candidateInfo = await transporter.sendMail({
+          from: process.env.SMTP_FROM || `"DotnLott Talent Team" <${smtpUser}>`,
+          to: payload.email,
+          replyTo: teamRecipient,
+          subject: candidateSubject,
+          text: candidateTextContent,
+          html: candidateHtmlContent,
+        });
+        if (candidateInfo?.messageId) {
+          candidateSent = true;
+          console.log(`[SMTP] Candidate confirmation sent to ${payload.email} (${candidateInfo.messageId})`);
+        }
+      } catch (candidateErr) {
+        console.error('[SMTP] Candidate delivery error:', candidateErr);
+      }
+
+      // Send to Hiring Team
+      try {
+        const teamInfo = await transporter.sendMail({
+          from: process.env.SMTP_FROM || `"DotnLott Careers" <${smtpUser}>`,
+          to: [teamRecipient, 'hello.dotnlott@gmail.com'],
+          replyTo: payload.email,
+          subject: teamSubject,
+          html: teamHtmlContent,
+        });
+        if (teamInfo?.messageId) {
+          teamSent = true;
+          console.log(`[SMTP] Team notification sent to ${teamRecipient} (${teamInfo.messageId})`);
+        }
+      } catch (teamErr) {
+        console.error('[SMTP] Team delivery error:', teamErr);
+      }
+    } catch (err) {
+      console.error('[SMTP] Transport error:', err);
+    }
+  }
+
+  // 2. Resend API Backup (if candidate or team failed)
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey && (!candidateSent || !teamSent)) {
+    try {
+      if (!candidateSent) {
+        const resCandidate = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${resendKey}`,
+          },
+          body: JSON.stringify({
+            from: process.env.RESEND_FROM || 'DotnLott Careers <onboarding@resend.dev>',
+            to: [payload.email],
+            reply_to: teamRecipient,
+            subject: candidateSubject,
+            text: candidateTextContent,
+            html: candidateHtmlContent,
+          }),
+        });
+        if (resCandidate.ok) candidateSent = true;
+      }
+
+      if (!teamSent) {
+        const resTeam = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${resendKey}`,
+          },
+          body: JSON.stringify({
+            from: process.env.RESEND_FROM || 'DotnLott Careers <onboarding@resend.dev>',
+            to: [teamRecipient],
+            reply_to: payload.email,
+            subject: teamSubject,
+            html: teamHtmlContent,
+          }),
+        });
+        if (resTeam.ok) teamSent = true;
+      }
+    } catch (resendErr) {
+      console.error('[Resend] Backup error:', resendErr);
+    }
+  }
+
+  // 3. Web3Forms Backup for Team Notification (if team notification not delivered yet)
   const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
-  if (web3Key) {
+  if (web3Key && !teamSent) {
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -1925,123 +2028,17 @@ export async function sendCareerEmail(payload: EmailCareerPayload) {
       });
       const data = await res.json();
       if (data.success) {
-        console.log('Successfully delivered career application via Web3Forms!');
-        return { success: true, method: 'web3forms' };
+        teamSent = true;
       }
     } catch (err) {
       console.error('Web3Forms career dispatch error:', err);
     }
   }
 
-  // 2. Check Resend API Key
-  const resendKey = process.env.RESEND_API_KEY;
-  if (resendKey) {
-    try {
-      // Send to Team
-      const resTeam = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${resendKey}`,
-        },
-        body: JSON.stringify({
-          from: process.env.RESEND_FROM || 'DotnLott Careers <onboarding@resend.dev>',
-          to: [teamRecipient],
-          reply_to: payload.email,
-          subject: teamSubject,
-          html: teamHtmlContent,
-        }),
-      });
-
-      if (!resTeam.ok) {
-        const errText = await resTeam.text();
-        throw new Error(`Resend Career Team delivery failed: ${resTeam.status} ${errText}`);
-      }
-
-      // Send Confirmation to Candidate
-      const resCandidate = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${resendKey}`,
-        },
-        body: JSON.stringify({
-          from: process.env.RESEND_FROM || 'DotnLott Careers <onboarding@resend.dev>',
-          to: [payload.email],
-          reply_to: 'connect@dotnlott.com',
-          subject: candidateSubject,
-          html: candidateHtmlContent,
-        }),
-      });
-
-      if (!resCandidate.ok) {
-        const errText = await resCandidate.text();
-        throw new Error(`Resend Candidate confirmation failed: ${resCandidate.status} ${errText}`);
-      }
-
-      console.log('Successfully delivered career application emails via Resend!');
-      return { success: true, method: 'resend' };
-    } catch (err) {
-      console.error('Resend career dispatch error (falling back):', err);
-    }
-  }
-
-  // 3. Check SMTP credentials from environment (Google Workspace) with fallback
-  const transporter = getTransporter();
-  if (transporter) {
-    try {
-      const smtpUser = process.env.SMTP_USER || 'connect@dotnlott.com';
-
-      // Send both emails in parallel
-      const [teamInfo, candidateInfo] = await Promise.all([
-        transporter.sendMail({
-          from: process.env.SMTP_FROM || `"DotnLott Careers" <${smtpUser}>`,
-          to: [teamRecipient, 'hello.dotnlott@gmail.com'],
-          replyTo: payload.email,
-          subject: teamSubject,
-          html: teamHtmlContent,
-        }).catch((teamErr: any) => {
-          console.error('Error delivering career email to team:', teamErr);
-          throw teamErr;
-        }),
-        transporter.sendMail({
-          from: process.env.SMTP_FROM || `"DotnLott Talent Team" <${smtpUser}>`,
-          to: payload.email,
-          replyTo: teamRecipient,
-          subject: candidateSubject,
-          html: candidateHtmlContent,
-        }).catch((candidateErr: any) => {
-          console.error('Error delivering candidate auto-responder:', candidateErr);
-          return null;
-        }),
-      ]);
-
-      const teamMessageId = teamInfo?.messageId || null;
-      const candidateMessageId = candidateInfo?.messageId || null;
-
-      if (teamMessageId || candidateMessageId) {
-        return { success: true, method: 'smtp', teamMessageId, candidateMessageId };
-      }
-    } catch (err) {
-      console.error('Failed to send SMTP career email (falling back to log):', err);
-    }
-  }
-
-  // Fallback: Log email details cleanly in console & server logs
-  console.log('====================================================');
-  console.log(`[CAREER APPLICATION TO: ${teamRecipient}]`);
-  console.log(`[CANDIDATE CONFIRMATION TO: ${payload.email}]`);
-  console.log(`Subject: ${teamSubject}`);
-  console.log(`From: ${payload.name} <${payload.email}>`);
-  console.log(`Phone: ${payload.phone}`);
-  console.log(`Position: ${payload.position}`);
-  console.log(`Location: ${payload.location}`);
-  console.log(`Experience: ${payload.experience}`);
-  console.log(`Portfolio: ${payload.portfolioUrl}`);
-  console.log(`Notice Period: ${payload.noticePeriod || 'N/A'}`);
-  console.log(`Message: ${payload.message}`);
-  console.log('====================================================');
-
-  return { success: false, method: 'log', error: 'Email delivery failed, written to server logs only.' };
+  return {
+    success: candidateSent || teamSent,
+    candidateSent,
+    teamSent,
+  };
 }
 
