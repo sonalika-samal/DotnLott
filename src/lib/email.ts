@@ -1709,6 +1709,24 @@ export function generateCareerAdminNotificationHTML(data: EmailCareerPayload): s
     ? `https://wa.me/${whatsappCleanPhone.startsWith('91') ? whatsappCleanPhone : '91' + whatsappCleanPhone}`
     : `https://wa.me/917846969508`;
 
+  const forwardWhatsAppText = [
+    `*Candidate Application - DotnLott*`,
+    ``,
+    `*Candidate Name:* ${data.name}`,
+    `*Role Applied:* ${data.position}`,
+    `*Email:* ${data.email}`,
+    `*Phone:* ${data.phone}`,
+    `*Location:* ${data.location}`,
+    `*Experience:* ${data.experience}`,
+    data.noticePeriod ? `*Notice Period:* ${data.noticePeriod}` : null,
+    `*Resume / Portfolio Link:* ${data.portfolioUrl}`,
+    ``,
+    `*Cover Note:*`,
+    `${data.message}`,
+  ].filter(Boolean).join('\n');
+
+  const forwardToPartnerWhatsAppUrl = `https://wa.me/918544121551?text=${encodeURIComponent(forwardWhatsAppText)}`;
+
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -1959,13 +1977,18 @@ export function generateCareerAdminNotificationHTML(data: EmailCareerPayload): s
       </div>
 
       <div class="btn-container" style="text-align: center; margin-top: 24px;">
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 480px; margin: 0 auto; border-collapse: separate;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px; margin: 0 auto; border-collapse: separate;">
+          <tr>
+            <td colspan="2" align="center" style="padding: 6px 6px 10px 6px;">
+              <a href="${forwardToPartnerWhatsAppUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981; box-shadow: 0 2px 6px rgba(16,185,129,0.3);">📲 Forward Details to WhatsApp (+91 85441 21551)</a>
+            </td>
+          </tr>
           <tr>
             <td class="mobile-btn-stack" align="center" style="padding: 6px;">
               <a href="mailto:${data.email}?subject=Regarding%20your%20application%20for%20${encodeURIComponent(data.position)}%20at%20DotnLott" class="btn btn-primary" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #6366f1; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #6366f1;">✉️ Reply to Candidate</a>
             </td>
             <td class="mobile-btn-stack" align="center" style="padding: 6px;">
-              <a href="${candidateWhatsAppUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Chat on WhatsApp</a>
+              <a href="${candidateWhatsAppUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #059669; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #059669;">💬 Chat with Candidate</a>
             </td>
           </tr>
         </table>
