@@ -229,13 +229,21 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
       .btn-container {
         margin-top: 16px !important;
       }
-      .btn {
+      .mobile-btn-stack {
         display: block !important;
         width: 100% !important;
-        margin-right: 0 !important;
+        box-sizing: border-box !important;
+        padding: 0 0 10px 0 !important;
+      }
+      .btn-primary, .btn-whatsapp, .btn {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
         margin-bottom: 10px !important;
         box-sizing: border-box !important;
-        padding: 12px 16px !important;
+        padding: 14px 16px !important;
+        text-align: center !important;
+        font-size: 14px !important;
       }
     }
   </style>
@@ -278,9 +286,17 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
         <p class="message-body">${data.message}</p>
       </div>
 
-      <div class="btn-container">
-        <a href="mailto:${data.email}?subject=Re:%20DotnLott%20Inquiry%20-%20${encodeURIComponent(data.category)}" class="btn btn-primary" style="margin-right: 8px; color: #ffffff !important; text-decoration: none;">Reply via Email</a>
-        <a href="${whatsappUrl}" class="btn btn-whatsapp" style="color: #ffffff !important; text-decoration: none;">Chat on WhatsApp</a>
+      <div class="btn-container" style="text-align: center; margin-top: 24px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 480px; margin: 0 auto; border-collapse: separate;">
+          <tr>
+            <td class="mobile-btn-stack" align="center" style="padding: 6px;">
+              <a href="mailto:${data.email}?subject=Re:%20DotnLott%20Inquiry%20-%20${encodeURIComponent(data.category)}" class="btn btn-primary" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #6366f1; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #6366f1;">✉️ Reply via Email</a>
+            </td>
+            <td class="mobile-btn-stack" align="center" style="padding: 6px;">
+              <a href="${whatsappUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Chat on WhatsApp</a>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
 
@@ -525,8 +541,8 @@ export function generateClientConfirmationEmailHTML(data: EmailInquiryPayload): 
         </tr>
       </table>
 
-      <div class="btn-container">
-        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="color: #ffffff !important; text-decoration: none;">Need Immediate Help? Chat on WhatsApp</a>
+      <div class="btn-container" style="text-align: center; margin-top: 24px;">
+        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Need Immediate Help? Chat on WhatsApp</a>
       </div>
     </div>
 
@@ -894,13 +910,21 @@ export function generateBookingEmailHTML(data: EmailBookingPayload): string {
       .btn-container {
         margin-top: 16px !important;
       }
-      .btn {
+      .mobile-btn-stack {
         display: block !important;
         width: 100% !important;
-        margin-right: 0 !important;
+        box-sizing: border-box !important;
+        padding: 0 0 10px 0 !important;
+      }
+      .btn-primary, .btn-whatsapp, .btn {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
         margin-bottom: 10px !important;
         box-sizing: border-box !important;
-        padding: 12px 16px !important;
+        padding: 14px 16px !important;
+        text-align: center !important;
+        font-size: 14px !important;
       }
     }
   </style>
@@ -949,9 +973,17 @@ export function generateBookingEmailHTML(data: EmailBookingPayload): string {
       </div>
       ` : ''}
 
-      <div class="btn-container">
-        <a href="mailto:${data.email}?subject=Re:%20DotnLott%20Consultation%20-%20${encodeURIComponent(data.name)}" class="btn btn-primary" style="margin-right: 8px; color: #ffffff !important; text-decoration: none;">Email Lead</a>
-        <a href="${whatsappUrl}" class="btn btn-whatsapp" style="color: #ffffff !important; text-decoration: none;">Chat on WhatsApp</a>
+      <div class="btn-container" style="text-align: center; margin-top: 24px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 480px; margin: 0 auto; border-collapse: separate;">
+          <tr>
+            <td class="mobile-btn-stack" align="center" style="padding: 6px;">
+              <a href="mailto:${data.email}?subject=Re:%20DotnLott%20Consultation%20-%20${encodeURIComponent(data.name)}" class="btn btn-primary" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #6366f1; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #6366f1;">✉️ Email Lead</a>
+            </td>
+            <td class="mobile-btn-stack" align="center" style="padding: 6px;">
+              <a href="${whatsappUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Chat on WhatsApp</a>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
 
@@ -1217,8 +1249,8 @@ export function generateClientBookingConfirmationEmailHTML(data: EmailBookingPay
         ` : ''}
       </table>
 
-      <div class="btn-container">
-        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="color: #ffffff !important; text-decoration: none;">Need to Reschedule? Chat on WhatsApp</a>
+      <div class="btn-container" style="text-align: center; margin-top: 24px;">
+        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Need to Reschedule? Chat on WhatsApp</a>
       </div>
     </div>
 
@@ -1385,3 +1417,725 @@ export async function sendBookingEmail(payload: EmailBookingPayload) {
 
   return { success: false, method: 'log', error: 'Email delivery failed, written to server logs only.' };
 }
+
+export interface EmailCareerPayload {
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  position: string;
+  experience: string;
+  portfolioUrl: string;
+  noticePeriod?: string;
+  message: string;
+}
+
+/**
+ * Generates an auto-responder confirmation HTML email template for the job applicant
+ */
+export function generateCareerCandidateConfirmationHTML(data: EmailCareerPayload): string {
+  const timestamp = new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    dateStyle: 'full',
+    timeStyle: 'short',
+  });
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Received - DotnLott</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 24px 12px;
+      color: #0f172a;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .header-accent {
+      height: 6px;
+      background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+    }
+    .header {
+      padding: 32px 32px 24px 32px;
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .brand-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #10b981;
+      background-color: #ecfdf5;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 6px 0;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .content {
+      padding: 32px;
+    }
+    .status-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #10b981;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .status-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .status-desc {
+      font-size: 13px;
+      color: #475569;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-bottom: 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .info-table tr:not(:last-child) td {
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .info-label {
+      width: 38%;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+    }
+    .info-value {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #0f172a;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+    .btn-whatsapp {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+    .footer {
+      padding: 20px 32px;
+      background-color: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      font-size: 11px;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1.6;
+    }
+    @media only screen and (max-width: 480px) {
+      .email-container {
+        border-radius: 8px !important;
+      }
+      .header {
+        padding: 24px 20px 16px 20px !important;
+      }
+      .content {
+        padding: 20px !important;
+      }
+      .info-table, .info-table tbody, .info-table tr, .info-table td {
+        display: block !important;
+        width: 100% !important;
+      }
+      .info-table tr:not(:last-child) td {
+        border-bottom: none !important;
+      }
+      .info-table tr td {
+        box-sizing: border-box !important;
+      }
+      .info-label {
+        width: 100% !important;
+        padding: 12px 16px 4px 16px !important;
+        background-color: #f8fafc !important;
+        border-bottom: none !important;
+      }
+      .info-value {
+        width: 100% !important;
+        padding: 4px 16px 12px 16px !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+      }
+      .info-table tr:last-child .info-value {
+        border-bottom: none !important;
+      }
+      .btn-container {
+        margin-top: 16px !important;
+      }
+      .btn-whatsapp, .btn {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+        padding: 14px 16px !important;
+        text-align: center !important;
+        font-size: 14px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header-accent"></div>
+    <div class="header">
+      <div class="brand-badge">✓ Application Received</div>
+      <h1 class="title">Thanks for Applying to DotnLott!</h1>
+      <p class="subtitle">Hi ${data.name}, thanks for applying. We have received your profile for the <strong>${data.position}</strong> position.</p>
+    </div>
+
+    <div class="content">
+      <div class="status-card">
+        <div class="status-title">🎯 Profile Under Evaluation</div>
+        <p class="status-desc">
+          Thanks for applying! We will review your profile and reach out to you if your profile gets shortlisted.
+        </p>
+      </div>
+
+      <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 12px;">Submitted Application Summary</h4>
+      
+      <table class="info-table">
+        <tr>
+          <td class="info-label">Candidate Name</td>
+          <td class="info-value"><strong>${data.name}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Role Applied For</td>
+          <td class="info-value"><strong style="color: #6366f1;">${data.position}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Email Address</td>
+          <td class="info-value">${data.email}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Phone / WhatsApp</td>
+          <td class="info-value">${data.phone}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Current Location</td>
+          <td class="info-value">${data.location}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Experience</td>
+          <td class="info-value">${data.experience}</td>
+        </tr>
+        ${data.noticePeriod ? `
+        <tr>
+          <td class="info-label">Notice Period</td>
+          <td class="info-value">${data.noticePeriod}</td>
+        </tr>
+        ` : ''}
+        <tr>
+          <td class="info-label">Submitted On</td>
+          <td class="info-value">${timestamp} (IST)</td>
+        </tr>
+      </table>
+
+      <div class="btn-container" style="text-align: center; margin-top: 24px;">
+        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Got Questions? Chat With Us on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <strong>DotnLott AI Automation & Web Studio</strong><br>
+      A brand under A2Z Version Private Limited (CIN: U47721BR2026PTC085973)<br>
+      Operational Address: Odisha, India | Careers: <a href="mailto:connect@dotnlott.com" style="color: #6366f1; text-decoration: none;">connect@dotnlott.com</a>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Generates an HTML notification email for DotnLott recruitment team
+ */
+export function generateCareerAdminNotificationHTML(data: EmailCareerPayload): string {
+  const timestamp = new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    dateStyle: 'full',
+    timeStyle: 'medium',
+  });
+
+  const whatsappCleanPhone = data.phone ? data.phone.replace(/[^0-9]/g, '') : '';
+  const candidateWhatsAppUrl = whatsappCleanPhone
+    ? `https://wa.me/${whatsappCleanPhone.startsWith('91') ? whatsappCleanPhone : '91' + whatsappCleanPhone}`
+    : `https://wa.me/917846969508`;
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Job Application: ${data.name} - ${data.position}</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f1f5f9;
+      margin: 0;
+      padding: 24px 12px;
+      color: #0f172a;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .header-accent {
+      height: 6px;
+      background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+    }
+    .header {
+      padding: 32px 32px 24px 32px;
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .brand-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #6366f1;
+      background-color: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 6px 0;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+    }
+    .content {
+      padding: 32px;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-bottom: 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .info-table tr:not(:last-child) td {
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .info-label {
+      width: 38%;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+    }
+    .info-value {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #0f172a;
+    }
+    .message-box {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .message-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+    .message-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1e293b;
+      white-space: pre-wrap;
+      margin: 0;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background-color: #6366f1;
+      color: #ffffff;
+    }
+    .btn-whatsapp {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+    .footer {
+      padding: 20px 32px;
+      background-color: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      font-size: 11px;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1.5;
+    }
+    @media only screen and (max-width: 480px) {
+      .email-container {
+        border-radius: 8px !important;
+      }
+      .header {
+        padding: 24px 20px 16px 20px !important;
+      }
+      .content {
+        padding: 20px !important;
+      }
+      .info-table, .info-table tbody, .info-table tr, .info-table td {
+        display: block !important;
+        width: 100% !important;
+      }
+      .info-table tr:not(:last-child) td {
+        border-bottom: none !important;
+      }
+      .info-table tr td {
+        box-sizing: border-box !important;
+      }
+      .info-label {
+        width: 100% !important;
+        padding: 12px 16px 4px 16px !important;
+        background-color: #f8fafc !important;
+        border-bottom: none !important;
+      }
+      .info-value {
+        width: 100% !important;
+        padding: 4px 16px 12px 16px !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+      }
+      .info-table tr:last-child .info-value {
+        border-bottom: none !important;
+      }
+      .btn-container {
+        margin-top: 16px !important;
+      }
+      .mobile-btn-stack {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 0 10px 0 !important;
+      }
+      .btn-primary, .btn-whatsapp, .btn {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        padding: 14px 16px !important;
+        text-align: center !important;
+        font-size: 14px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header-accent"></div>
+    <div class="header">
+      <div class="brand-badge">💼 New Candidate Application</div>
+      <h1 class="title">${data.name} — ${data.position}</h1>
+      <p class="subtitle">Received via DotnLott /career portal</p>
+    </div>
+
+    <div class="content">
+      <table class="info-table">
+        <tr>
+          <td class="info-label">Candidate Name</td>
+          <td class="info-value"><strong>${data.name}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Position Applied</td>
+          <td class="info-value"><strong style="color: #6366f1;">${data.position}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Email Address</td>
+          <td class="info-value"><a href="mailto:${data.email}" style="color: #6366f1; text-decoration: none;">${data.email}</a></td>
+        </tr>
+        <tr>
+          <td class="info-label">Phone / WhatsApp</td>
+          <td class="info-value"><strong>${data.phone}</strong></td>
+        </tr>
+        <tr>
+          <td class="info-label">Current City</td>
+          <td class="info-value">${data.location}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Experience</td>
+          <td class="info-value"><strong>${data.experience}</strong></td>
+        </tr>
+        ${data.noticePeriod ? `
+        <tr>
+          <td class="info-label">Notice Period</td>
+          <td class="info-value">${data.noticePeriod}</td>
+        </tr>
+        ` : ''}
+        <tr>
+          <td class="info-label">Resume / Portfolio</td>
+          <td class="info-value"><a href="${data.portfolioUrl}" target="_blank" style="color: #6366f1; font-weight: bold; text-decoration: underline;">Open Link / Resume ↗</a></td>
+        </tr>
+        <tr>
+          <td class="info-label">Applied At</td>
+          <td class="info-value">${timestamp}</td>
+        </tr>
+      </table>
+
+      <div class="message-box">
+        <div class="message-title">Candidate Introduction / Why DotnLott?</div>
+        <p class="message-body">${data.message}</p>
+      </div>
+
+      <div class="btn-container" style="text-align: center; margin-top: 24px;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 480px; margin: 0 auto; border-collapse: separate;">
+          <tr>
+            <td class="mobile-btn-stack" align="center" style="padding: 6px;">
+              <a href="mailto:${data.email}?subject=Regarding%20your%20application%20for%20${encodeURIComponent(data.position)}%20at%20DotnLott" class="btn btn-primary" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #6366f1; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #6366f1;">✉️ Reply to Candidate</a>
+            </td>
+            <td class="mobile-btn-stack" align="center" style="padding: 6px;">
+              <a href="${candidateWhatsAppUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 13px 20px; font-size: 13px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Chat on WhatsApp</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      Dispatched by DotnLott Talent Management System.<br>
+      Admin Inboxes: <strong>connect@dotnlott.com, hello.dotnlott@gmail.com</strong>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Sends career application emails to DotnLott team and candidate auto-responder
+ */
+export async function sendCareerEmail(payload: EmailCareerPayload) {
+  const teamRecipient = 'connect@dotnlott.com';
+  const teamSubject = `🎯 New Application: ${payload.name} - ${payload.position}`;
+  const teamHtmlContent = generateCareerAdminNotificationHTML(payload);
+
+  const candidateSubject = `Application Received: ${payload.position} - DotnLott`;
+  const candidateHtmlContent = generateCareerCandidateConfirmationHTML(payload);
+
+  // 1. Check Web3Forms Access Key
+  const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
+  if (web3Key) {
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: web3Key,
+          to: teamRecipient,
+          subject: teamSubject,
+          from_name: payload.name,
+          replyto: payload.email,
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          position: payload.position,
+          location: payload.location,
+          experience: payload.experience,
+          portfolioUrl: payload.portfolioUrl,
+          noticePeriod: payload.noticePeriod || 'N/A',
+          message: payload.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log('Successfully delivered career application via Web3Forms!');
+        return { success: true, method: 'web3forms' };
+      }
+    } catch (err) {
+      console.error('Web3Forms career dispatch error:', err);
+    }
+  }
+
+  // 2. Check Resend API Key
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey) {
+    try {
+      // Send to Team
+      const resTeam = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendKey}`,
+        },
+        body: JSON.stringify({
+          from: process.env.RESEND_FROM || 'DotnLott Careers <onboarding@resend.dev>',
+          to: [teamRecipient],
+          reply_to: payload.email,
+          subject: teamSubject,
+          html: teamHtmlContent,
+        }),
+      });
+
+      if (!resTeam.ok) {
+        const errText = await resTeam.text();
+        throw new Error(`Resend Career Team delivery failed: ${resTeam.status} ${errText}`);
+      }
+
+      // Send Confirmation to Candidate
+      const resCandidate = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendKey}`,
+        },
+        body: JSON.stringify({
+          from: process.env.RESEND_FROM || 'DotnLott Careers <onboarding@resend.dev>',
+          to: [payload.email],
+          reply_to: 'connect@dotnlott.com',
+          subject: candidateSubject,
+          html: candidateHtmlContent,
+        }),
+      });
+
+      if (!resCandidate.ok) {
+        const errText = await resCandidate.text();
+        throw new Error(`Resend Candidate confirmation failed: ${resCandidate.status} ${errText}`);
+      }
+
+      console.log('Successfully delivered career application emails via Resend!');
+      return { success: true, method: 'resend' };
+    } catch (err) {
+      console.error('Resend career dispatch error (falling back):', err);
+    }
+  }
+
+  // 3. Check SMTP credentials from environment (Google Workspace) with fallback
+  const transporter = getTransporter();
+  if (transporter) {
+    try {
+      const smtpUser = process.env.SMTP_USER || 'connect@dotnlott.com';
+
+      // Send both emails in parallel
+      const [teamInfo, candidateInfo] = await Promise.all([
+        transporter.sendMail({
+          from: process.env.SMTP_FROM || `"DotnLott Careers" <${smtpUser}>`,
+          to: [teamRecipient, 'hello.dotnlott@gmail.com'],
+          replyTo: payload.email,
+          subject: teamSubject,
+          html: teamHtmlContent,
+        }).catch((teamErr: any) => {
+          console.error('Error delivering career email to team:', teamErr);
+          throw teamErr;
+        }),
+        transporter.sendMail({
+          from: process.env.SMTP_FROM || `"DotnLott Talent Team" <${smtpUser}>`,
+          to: payload.email,
+          replyTo: teamRecipient,
+          subject: candidateSubject,
+          html: candidateHtmlContent,
+        }).catch((candidateErr: any) => {
+          console.error('Error delivering candidate auto-responder:', candidateErr);
+          return null;
+        }),
+      ]);
+
+      const teamMessageId = teamInfo?.messageId || null;
+      const candidateMessageId = candidateInfo?.messageId || null;
+
+      if (teamMessageId || candidateMessageId) {
+        return { success: true, method: 'smtp', teamMessageId, candidateMessageId };
+      }
+    } catch (err) {
+      console.error('Failed to send SMTP career email (falling back to log):', err);
+    }
+  }
+
+  // Fallback: Log email details cleanly in console & server logs
+  console.log('====================================================');
+  console.log(`[CAREER APPLICATION TO: ${teamRecipient}]`);
+  console.log(`[CANDIDATE CONFIRMATION TO: ${payload.email}]`);
+  console.log(`Subject: ${teamSubject}`);
+  console.log(`From: ${payload.name} <${payload.email}>`);
+  console.log(`Phone: ${payload.phone}`);
+  console.log(`Position: ${payload.position}`);
+  console.log(`Location: ${payload.location}`);
+  console.log(`Experience: ${payload.experience}`);
+  console.log(`Portfolio: ${payload.portfolioUrl}`);
+  console.log(`Notice Period: ${payload.noticePeriod || 'N/A'}`);
+  console.log(`Message: ${payload.message}`);
+  console.log('====================================================');
+
+  return { success: false, method: 'log', error: 'Email delivery failed, written to server logs only.' };
+}
+

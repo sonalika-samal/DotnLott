@@ -29,6 +29,18 @@ export interface ContactInput {
   message: string;
 }
 
+export interface CareerApplicationInput {
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  position: string;
+  experience: string;
+  portfolioUrl: string;
+  noticePeriod?: string;
+  message: string;
+}
+
 /**
  * Gets or creates a lead by email address.
  * Simulates lead generation locally.
@@ -60,3 +72,17 @@ export async function saveContactSubmission(input: ContactInput) {
   const { id: leadId } = await getOrCreateLead(input.lead);
   return { success: true, isMock: true, submissionId: uuidv4() };
 }
+
+/**
+ * Saves a career job application.
+ */
+export async function saveCareerApplication(input: CareerApplicationInput) {
+  const { id: leadId } = await getOrCreateLead({
+    name: input.name,
+    email: input.email,
+    phone: input.phone,
+    company: `Applicant: ${input.position}`,
+  });
+  return { success: true, isMock: true, applicationId: uuidv4(), leadId };
+}
+

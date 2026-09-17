@@ -18,6 +18,7 @@ export default function Footer() {
   const isPrivacy = pathname.startsWith('/privacy-policy');
   const isTerms = pathname.startsWith('/terms-of-service');
   const isRefund = pathname.startsWith('/refund-policy');
+  const isCareer = pathname.startsWith('/career');
 
   const getPageLinkClass = (isActive: boolean) =>
     isActive
@@ -165,6 +166,9 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/blog" className={getPageLinkClass(isBlog)}>Blog</Link>
+              </li>
+              <li>
+                <Link href="/career" className={getPageLinkClass(isCareer)}>Careers</Link>
               </li>
               <li>
                 <Link
