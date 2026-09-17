@@ -264,15 +264,6 @@ export default function CareerClient() {
         setIsFormModalOpen(false);
         setIsSuccessModalOpen(true);
 
-        // Auto open WhatsApp link in new tab if permitted by browser
-        if (whatsappUrl && typeof window !== 'undefined') {
-          try {
-            window.open(whatsappUrl, '_blank');
-          } catch {
-            // Popup blocker might block window.open; the modal button provides the manual link
-          }
-        }
-
         // Reset form data
         setFormData({
           name: '',
@@ -895,34 +886,14 @@ export default function CareerClient() {
                 </p>
               </div>
 
-              {/* WhatsApp Notification Direct Trigger */}
-              <div className="space-y-3">
-                <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-950 text-xs text-left leading-relaxed">
-                  <div className="font-bold flex items-center gap-1.5 text-emerald-800 mb-1">
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp Recruiter Alert (+91 7846969508)</span>
-                  </div>
-                  <p className="text-[11px] text-emerald-800 font-normal">
-                    Tap the button below to open WhatsApp with your candidate application pre-filled, then tap the <strong>Send arrow</strong> in WhatsApp to dispatch directly to the hiring manager.
-                  </p>
-                </div>
-
-                <a
-                  href={submittedData.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba56] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99]"
-                >
-                  <MessageSquare className="w-4 h-4 flex-shrink-0" />
-                  <span>Open WhatsApp & Send to 7846969508</span>
-                </a>
-
+              {/* Done / Close CTA */}
+              <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => setIsSuccessModalOpen(false)}
-                  className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors"
+                  className="w-full py-3.5 px-6 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg active:scale-[0.99] cursor-pointer"
                 >
-                  Close & Continue Browsing
+                  Done & Continue Browsing
                 </button>
               </div>
             </motion.div>

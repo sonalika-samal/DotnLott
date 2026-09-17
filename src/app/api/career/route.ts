@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       message,
     });
 
-    // 3. Build structured WhatsApp pre-filled message for recruiter at 7846969508
+    // 3. Send automated WhatsApp alert directly to 7846969508
     const cleanRecruiterNumber = '917846969508';
     const whatsappLines = [
       `*New Job Application - DotnLott*`,
@@ -71,14 +71,47 @@ export async function POST(request: Request) {
     ].filter(Boolean);
 
     const whatsappMessage = whatsappLines.join('\n');
-    const whatsappUrl = `https://wa.me/${cleanRecruiterNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    let whatsappDispatched = false;
+
+    // Server-Side WhatsApp Dispatch via CallMeBot or Webhook Gateway
+    const callmebotKey = process.env.CALLMEBOT_API_KEY || process.env.WHATSAPP_API_KEY;
+    if (callmebotKey) {
+      try {
+        const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${cleanRecruiterNumber}&text=${encodeURIComponent(whatsappMessage)}&apikey=${callmebotKey}`;
+        const cmbRes = await fetch(callmebotUrl);
+        if (cmbRes.ok) {
+          whatsappDispatched = true;
+          console.log('Automated WhatsApp alert sent to 7846969508 via CallMeBot!');
+        }
+      } catch (cmbErr) {
+        console.error('CallMeBot WhatsApp dispatch error:', cmbErr);
+      }
+    }
+
+    const whatsappWebhookUrl = process.env.WHATSAPP_WEBHOOK_URL;
+    if (whatsappWebhookUrl && !whatsappDispatched) {
+      try {
+        await fetch(whatsappWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            phone: cleanRecruiterNumber,
+            message: whatsappMessage,
+            applicant: { name, email, phone, position, location, experience, portfolioUrl, message },
+          }),
+        });
+        whatsappDispatched = true;
+      } catch (hookErr) {
+        console.error('WhatsApp webhook dispatch error:', hookErr);
+      }
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Applied successfully! Your profile has been received.',
       dbResult,
       emailResult,
-      whatsappUrl,
+      whatsappDispatched,
       application: {
         name,
         email,
