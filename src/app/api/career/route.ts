@@ -52,8 +52,8 @@ export async function POST(request: Request) {
       message,
     });
 
-    // 3. Send automated WhatsApp alert directly to 7846969508
-    const cleanRecruiterNumber = '917846969508';
+    // 3. Send automated WhatsApp alert directly to +91 92348 32331
+    const cleanRecruiterNumber = '919234832331';
     const whatsappLines = [
       `*New Job Application - DotnLott*`,
       ``,

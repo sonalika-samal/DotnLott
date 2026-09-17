@@ -1725,7 +1725,7 @@ export function generateCareerAdminNotificationHTML(data: EmailCareerPayload): s
     `${data.message}`,
   ].filter(Boolean).join('\n');
 
-  const forwardToPartnerWhatsAppUrl = `https://wa.me/918544121551?text=${encodeURIComponent(forwardWhatsAppText)}`;
+  const forwardToPartnerWhatsAppUrl = `https://wa.me/919234832331?text=${encodeURIComponent(forwardWhatsAppText)}`;
 
   return `
 <!DOCTYPE html>
@@ -1980,7 +1980,7 @@ export function generateCareerAdminNotificationHTML(data: EmailCareerPayload): s
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px; margin: 0 auto; border-collapse: separate;">
           <tr>
             <td colspan="2" align="center" style="padding: 6px 6px 10px 6px;">
-              <a href="${forwardToPartnerWhatsAppUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981; box-shadow: 0 2px 6px rgba(16,185,129,0.3);">📲 Forward Details to WhatsApp (+91 85441 21551)</a>
+              <a href="${forwardToPartnerWhatsAppUrl}" class="btn btn-whatsapp" style="display: block; width: 100%; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981; box-shadow: 0 2px 6px rgba(16,185,129,0.3);">📲 Forward Details to WhatsApp (+91 92348 32331)</a>
             </td>
           </tr>
           <tr>
