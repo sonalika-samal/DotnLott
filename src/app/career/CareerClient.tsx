@@ -347,28 +347,36 @@ export default function CareerClient() {
             cutting-edge web applications. Enjoy remote flexibility, fast ownership, and competitive rewards.
           </motion.p>
 
-          {/* Quick Perks Pill Strip */}
+          {/* Quick Perks: 2*2 on mobile, 4*1 on desktop */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-medium text-slate-700"
+            className="mt-8 grid grid-cols-2 lg:flex lg:flex-row lg:flex-nowrap items-stretch lg:items-center justify-center gap-2.5 sm:gap-3 max-w-sm sm:max-w-md lg:max-w-none mx-auto text-xs sm:text-sm font-medium text-slate-700"
           >
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
-              <Check className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Remote & Hybrid Flexibility</span>
+            <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 lg:px-4 lg:py-2 rounded-xl bg-white border border-slate-200/80 shadow-xs text-center h-full whitespace-normal lg:whitespace-nowrap">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+              <span className="text-[11px] sm:text-xs md:text-sm leading-tight font-semibold">
+                Remote & Hybrid Flexibility
+              </span>
             </div>
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
-              <Check className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Cutting-Edge AI & Web Tech</span>
+            <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 lg:px-4 lg:py-2 rounded-xl bg-white border border-slate-200/80 shadow-xs text-center h-full whitespace-normal lg:whitespace-nowrap">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+              <span className="text-[11px] sm:text-xs md:text-sm leading-tight font-semibold">
+                Cutting-Edge AI & Web Tech
+              </span>
             </div>
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
-              <Check className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Performance Incentives</span>
+            <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 lg:px-4 lg:py-2 rounded-xl bg-white border border-slate-200/80 shadow-xs text-center h-full whitespace-normal lg:whitespace-nowrap">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+              <span className="text-[11px] sm:text-xs md:text-sm leading-tight font-semibold">
+                Performance Incentives
+              </span>
             </div>
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
-              <Check className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Rapid Career Growth</span>
+            <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 lg:px-4 lg:py-2 rounded-xl bg-white border border-slate-200/80 shadow-xs text-center h-full whitespace-normal lg:whitespace-nowrap">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+              <span className="text-[11px] sm:text-xs md:text-sm leading-tight font-semibold">
+                Rapid Career Growth
+              </span>
             </div>
           </motion.div>
         </section>
@@ -889,14 +897,24 @@ export default function CareerClient() {
 
               {/* WhatsApp Notification Direct Trigger */}
               <div className="space-y-3">
+                <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-950 text-xs text-left leading-relaxed">
+                  <div className="font-bold flex items-center gap-1.5 text-emerald-800 mb-1">
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>WhatsApp Recruiter Alert (+91 7846969508)</span>
+                  </div>
+                  <p className="text-[11px] text-emerald-800 font-normal">
+                    Tap the button below to open WhatsApp with your candidate application pre-filled, then tap the <strong>Send arrow</strong> in WhatsApp to dispatch directly to the hiring manager.
+                  </p>
+                </div>
+
                 <a
                   href={submittedData.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba56] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01]"
+                  className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba56] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99]"
                 >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Send Details to Recruiter WhatsApp (7846969508)</span>
+                  <MessageSquare className="w-4 h-4 flex-shrink-0" />
+                  <span>Open WhatsApp & Send to 7846969508</span>
                 </a>
 
                 <button

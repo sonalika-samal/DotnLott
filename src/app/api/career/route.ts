@@ -55,18 +55,18 @@ export async function POST(request: Request) {
     // 3. Build structured WhatsApp pre-filled message for recruiter at 7846969508
     const cleanRecruiterNumber = '917846969508';
     const whatsappLines = [
-      `🎯 *New Job Application - DotnLott*`,
+      `*New Job Application - DotnLott*`,
       ``,
-      `👤 *Candidate Name:* ${name}`,
-      `💼 *Role Applied:* ${position}`,
-      `📧 *Email:* ${email}`,
-      `📱 *Phone / WhatsApp:* ${phone}`,
-      `📍 *Current Location:* ${location || 'N/A'}`,
-      `⏳ *Experience:* ${experience}`,
-      noticePeriod ? `⏱️ *Notice Period:* ${noticePeriod}` : null,
-      `🔗 *Resume / Portfolio Link:* ${portfolioUrl}`,
+      `*Candidate Name:* ${name}`,
+      `*Role Applied:* ${position}`,
+      `*Email:* ${email}`,
+      `*Phone / WhatsApp:* ${phone}`,
+      `*Current Location:* ${location || 'N/A'}`,
+      `*Experience:* ${experience}`,
+      noticePeriod ? `*Notice Period:* ${noticePeriod}` : null,
+      `*Resume / Portfolio Link:* ${portfolioUrl}`,
       ``,
-      `📝 *Candidate Note:*`,
+      `*Candidate Note:*`,
       `${message}`,
     ].filter(Boolean);
 
