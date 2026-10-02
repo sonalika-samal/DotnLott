@@ -381,10 +381,14 @@ export default function BookingClient() {
                     <div className="flex items-start gap-2.5">
                       <Mail className="w-4 h-4 text-brand-blue flex-shrink-0 mt-0.5" />
                       <div className="flex flex-col gap-0.5">
-                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-none">Email Us</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-none">Email (Default Mode of Contact)</span>
+                          <span className="text-[8px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1 py-0.5 rounded leading-none">Primary</span>
+                        </div>
                         <a href="mailto:connect@dotnlott.com" className="font-bold text-slate-900 hover:text-brand-blue transition-colors">
                           connect@dotnlott.com
                         </a>
+                        <span className="text-[10px] text-slate-400 font-light">Direct channel for scheduling & technical queries</span>
                       </div>
                     </div>
 

@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   Check,
   X,
+  Mail,
 } from 'lucide-react';
 import InteractiveParticles from '@/components/ui/InteractiveParticles';
 
@@ -557,6 +558,38 @@ export default function CareerClient() {
             </div>
           </div>
         </section>
+
+        {/* DIRECT EMAIL HIRING BANNER - DEFAULT MODE OF CONTACT */}
+        <div className="max-w-4xl mx-auto mt-14 p-6 sm:p-8 rounded-3xl bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-slate-800 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex items-center gap-4 relative z-10">
+            <div className="w-12 h-12 rounded-2xl bg-brand-purple/20 text-brand-purple flex items-center justify-center flex-shrink-0 border border-brand-purple/30">
+              <Mail className="w-6 h-6 text-purple-300" />
+            </div>
+            <div className="flex flex-col gap-1 text-left">
+              <div className="flex items-center gap-2">
+                <h4 className="text-base sm:text-lg font-bold text-white font-display">Email is Our Default Mode of Contact</h4>
+                <span className="text-[9px] font-extrabold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  Primary Channel
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                Prefer applying or asking questions directly? Send your CV, portfolio, and target role to{' '}
+                <a href="mailto:connect@dotnlott.com" className="text-amber-300 font-semibold underline hover:text-amber-200">
+                  connect@dotnlott.com
+                </a>
+                . Our hiring team reviews inbound emails within 24–48 hours.
+              </p>
+            </div>
+          </div>
+          <a
+            href="mailto:connect@dotnlott.com?subject=Job%20Application%20-%20DotnLott"
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 flex-shrink-0 relative z-10 hover:scale-105 active:scale-95"
+          >
+            <Mail className="w-4 h-4 text-brand-purple" />
+            <span>Email Resume Directly</span>
+          </a>
+        </div>
       </div>
 
       {/* APPLICATION FORM POPUP MODAL */}

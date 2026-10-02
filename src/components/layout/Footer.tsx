@@ -237,7 +237,10 @@ export default function Footer() {
                 <Mail className="w-3.5 h-3.5" />
               </div>
               <div className="flex flex-col gap-0.5 min-w-0">
-                <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email Us</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email (Default Mode of Contact)</span>
+                  <span className="text-[8px] font-bold text-emerald-700 bg-emerald-100/90 px-1.5 py-0.2 rounded font-mono">Primary</span>
+                </div>
                 <div className="flex flex-col text-xs font-bold text-slate-900">
                   <a href="mailto:connect@dotnlott.com" className="hover:text-brand-purple transition-colors truncate no-underline">
                     connect@dotnlott.com
