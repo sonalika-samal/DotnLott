@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Mail,
   MapPin,
@@ -352,31 +353,20 @@ export default function ContactClient() {
                   </div>
                 </div>
 
-                {/* Phone Box */}
+                {/* Schedule a Call Box */}
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-emerald-500/50 hover:bg-white hover:shadow-md transition-all group/item border-l-4 border-l-emerald-500">
                   <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
-                    <Phone className="w-5 h-5 text-emerald-600" />
+                    <Calendar className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Call Us</span>
-                    <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 sm:gap-2.5 text-[10.5px] sm:text-xs font-extrabold text-slate-900 min-w-0">
-                      <a
-                        href="tel:+917846969508"
-                        className="hover:text-emerald-600 transition-colors no-underline"
-                        title="Call +91 78469 69508"
-                      >
-                        +91 78469 69508
-                      </a>
-                      <span className="text-slate-300 font-normal">|</span>
-                      <a
-                        href="tel:+918544121551"
-                        className="hover:text-emerald-600 transition-colors no-underline"
-                        title="Call +91 85441 21551"
-                      >
-                        +91 85441 21551
-                      </a>
-                    </div>
-                    <span className="text-[11px] text-slate-500 font-light">Direct phone consultation</span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Schedule a Call</span>
+                    <Link
+                      href="/booking"
+                      className="text-[11px] sm:text-xs font-extrabold text-slate-900 hover:text-emerald-600 transition-colors no-underline inline-flex items-center gap-1"
+                    >
+                      Book 1-on-1 Strategy Session &rarr;
+                    </Link>
+                    <span className="text-[11px] text-slate-500 font-light">Direct engineering & architecture session</span>
                   </div>
                 </div>
               </div>

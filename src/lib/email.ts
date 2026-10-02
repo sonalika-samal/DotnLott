@@ -52,7 +52,7 @@ export function generateInquiryEmailHTML(data: EmailInquiryPayload): string {
   const whatsappCleanPhone = data.phone ? data.phone.replace(/[^0-9]/g, '') : '';
   const whatsappUrl = whatsappCleanPhone
     ? `https://wa.me/${whatsappCleanPhone.startsWith('91') ? whatsappCleanPhone : '91' + whatsappCleanPhone}`
-    : `https://wa.me/917846969508`;
+    : '';
 
   return `
 <!DOCTYPE html>
@@ -542,7 +542,7 @@ export function generateClientConfirmationEmailHTML(data: EmailInquiryPayload): 
       </table>
 
       <div class="btn-container" style="text-align: center; margin-top: 24px;">
-        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Need Immediate Help? Chat on WhatsApp</a>
+        <a href="mailto:connect@dotnlott.com" class="btn btn-primary" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #6366f1; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #6366f1;">✉️ Have Questions? Email Our Engineering Team</a>
       </div>
     </div>
 
@@ -731,7 +731,7 @@ export function generateBookingEmailHTML(data: EmailBookingPayload): string {
   const whatsappCleanPhone = data.phone ? data.phone.replace(/[^0-9]/g, '') : '';
   const whatsappUrl = whatsappCleanPhone
     ? `https://wa.me/${whatsappCleanPhone.startsWith('91') ? whatsappCleanPhone : '91' + whatsappCleanPhone}`
-    : `https://wa.me/917846969508`;
+    : '';
 
   const meetingTypeLabel = data.meetingType === 'google_meet' ? 'Google Meet' : data.meetingType === 'zoom' ? 'Zoom' : 'Phone Call';
 
@@ -1250,7 +1250,7 @@ export function generateClientBookingConfirmationEmailHTML(data: EmailBookingPay
       </table>
 
       <div class="btn-container" style="text-align: center; margin-top: 24px;">
-        <a href="https://wa.me/917846969508" class="btn btn-whatsapp" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #10b981; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #10b981;">💬 Need to Reschedule? Chat on WhatsApp</a>
+        <a href="mailto:connect@dotnlott.com" class="btn btn-primary" style="display: block; width: 100%; max-width: 380px; margin: 0 auto; box-sizing: border-box; padding: 14px 20px; font-size: 14px; font-weight: 700; color: #ffffff !important; background-color: #6366f1; text-decoration: none; border-radius: 10px; text-align: center; border: 1px solid #6366f1;">✉️ Need to Reschedule? Contact Us via Email</a>
       </div>
     </div>
 
@@ -1590,7 +1590,7 @@ export function generateCareerAdminNotificationHTML(data: EmailCareerPayload): s
   const whatsappCleanPhone = data.phone ? data.phone.replace(/[^0-9]/g, '') : '';
   const candidateWhatsAppUrl = whatsappCleanPhone
     ? `https://wa.me/${whatsappCleanPhone.startsWith('91') ? whatsappCleanPhone : '91' + whatsappCleanPhone}`
-    : `https://wa.me/917846969508`;
+    : '';
 
   const forwardWhatsAppText = [
     `*Candidate Application - DotnLott*`,

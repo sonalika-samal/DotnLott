@@ -81,7 +81,7 @@ export async function POST(request: Request) {
         const cmbRes = await fetch(callmebotUrl);
         if (cmbRes.ok) {
           whatsappDispatched = true;
-          console.log('Automated WhatsApp alert sent to 7846969508 via CallMeBot!');
+          console.log(`Automated WhatsApp alert sent to ${cleanRecruiterNumber} via CallMeBot!`);
         }
       } catch (cmbErr) {
         console.error('CallMeBot WhatsApp dispatch error:', cmbErr);

@@ -388,43 +388,6 @@ export default function BookingClient() {
                       </div>
                     </div>
 
-                    {/* Phones */}
-                    <div className="flex items-start gap-2.5">
-                      <Phone className="w-4 h-4 text-brand-purple flex-shrink-0 mt-0.5" />
-                      <div className="flex flex-col gap-0.5">
-                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-none">Call or WhatsApp</span>
-                        <div className="flex flex-col gap-1.5 mt-0.5">
-                          <div className="flex items-center gap-1.5">
-                            <a href="tel:+917846969508" className="font-bold text-slate-900 hover:text-brand-purple transition-colors">
-                              +91 78469 69508
-                            </a>
-                            <a
-                              href="https://wa.me/917846969508?text=Hey%20Sujata%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 px-1 py-0.5 rounded leading-none uppercase transition-colors"
-                              title="WhatsApp Sujata"
-                            >
-                              WhatsApp
-                            </a>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <a href="tel:+918544121551" className="font-bold text-slate-900 hover:text-brand-purple transition-colors">
-                              +91 85441 21551
-                            </a>
-                            <a
-                              href="https://wa.me/918544121551?text=Hi%20DotnLott%2C%20I%20would%20like%20to%20inquire%20about%20your%20workflow%20automation%20services."
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[8px] font-bold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 px-1 py-0.5 rounded leading-none uppercase transition-colors"
-                              title="WhatsApp Support"
-                            >
-                              WhatsApp
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
                     {/* Socials */}
                     <div className="flex flex-col gap-1.5 border-t border-slate-100 pt-3.5 mt-1">

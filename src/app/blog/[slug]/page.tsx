@@ -51,9 +51,8 @@ export default async function Page({ params }: PageProps) {
     'description': post.metaDescription,
     'datePublished': post.date,
     'author': {
-      '@type': 'Person',
-      'name': 'Sujata Sinha',
-      'jobTitle': 'Lead Systems Architect',
+      '@type': 'Organization',
+      'name': post.author || 'DotnLott Engineering Team',
     },
     'publisher': {
       '@type': 'Organization',

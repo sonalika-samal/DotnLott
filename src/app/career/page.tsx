@@ -30,7 +30,6 @@ const careerSchema = {
     'legalName': 'A2Z Version Private Limited',
     'url': 'https://dotnlott.com',
     'email': 'connect@dotnlott.com',
-    'telephone': '+91-78469-69508',
   },
 };
 

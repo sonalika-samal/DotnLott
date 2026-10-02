@@ -26,18 +26,6 @@ const organizationSchema = {
   'logo': 'https://dotnlott.com/logo-v2.png',
   'description': 'DotnLott is an AI Automation & Workflow Solutions company helping startups and SMEs automate repetitive work, streamline operations, and scale faster.',
   'foundingDate': '2026',
-  'founders': [
-    {
-      '@type': 'Person',
-      'name': 'Sujata Sinha',
-      'jobTitle': 'Founder & Systems Architect',
-    },
-    {
-      '@type': 'Person',
-      'name': 'Abhishek Abhinav',
-      'jobTitle': 'Founder & Software Engineer',
-    },
-  ],
   'address': [
     {
       '@type': 'PostalAddress',

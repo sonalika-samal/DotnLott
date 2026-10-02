@@ -693,15 +693,21 @@ export default function HomeClient() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
-            <a
-              href="/DotnLott Brand Profile.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              disabled
+              className="inline-flex items-center gap-2 px-8 py-4 text-xs font-bold uppercase tracking-wider text-slate-400 bg-white/10 border border-white/15 rounded-full cursor-not-allowed select-none"
+              title="Company profile is being updated. New profile coming soon!"
+            >
+              Company Profile (Updating Soon)
+            </button>
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 text-xs font-black uppercase tracking-wider text-slate-950 bg-white hover:bg-slate-100 transition-all rounded-full shadow-2xl hover:scale-105"
             >
-              Download Brand Profile
+              Get Free Consultation
               <ArrowRight className="w-4 h-4 text-slate-950" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

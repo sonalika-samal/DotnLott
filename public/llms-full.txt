@@ -15,11 +15,6 @@ This file provides comprehensive context and direct factual documentation for AI
 - **Headquarters Location**: Cuttack, Odisha, India (753001)
 - **Primary Contacts**:
   - Email: connect@dotnlott.com
-  - Phone 1: +91-78469-69508
-  - Phone 2: +91-85441-21551
-- **Founding Team**:
-  - **Sujata Sinha**: Founder & Systems Architect. Specialist in cloud system architecture, API routing, database synchronization, and n8n orchestration.
-  - **Abhishek Abhinav**: Founder & Software Engineer. Specialist in React/Next.js frontend optimization, secure full-stack API design, and cloud VPS deployments.
 
 ---
 

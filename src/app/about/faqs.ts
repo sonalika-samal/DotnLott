@@ -1,7 +1,7 @@
 export const faqsList = [
   {
     question: 'Who is behind DotnLott?',
-    answer: 'DotnLott was founded by Sujata Sinha and Abhishek Abhinav, hands-on software engineers and AI system architects. We operate with a core mission to make high-performance digital systems, custom web applications, and workflow automations practical and affordable for growing businesses.',
+    answer: 'DotnLott is driven by a passionate team of hands-on software engineers, AI system architects, and web specialists. We operate with a core mission to make high-performance digital systems, custom web applications, and workflow automations practical and affordable for growing businesses.',
   },
   {
     question: 'Is DotnLott a legitimate registered company?',
@@ -9,7 +9,7 @@ export const faqsList = [
   },
   {
     question: 'Why should I trust DotnLott over hiring random freelancers?',
-    answer: 'Unlike hiring freelancers where communication can be spotty, you deal directly with our founders and lead engineers from day one. We do not use middlemen or account managers. We sign clear legal contracts, provide 100% code ownership, offer transparent pricing, and take full accountability for deployment, hosting, and post-launch maintenance.',
+    answer: 'Unlike hiring freelancers where communication can be spotty, you deal directly with our principal engineers and technical leads from day one. We do not use middlemen or account managers. We sign clear legal contracts, provide 100% code ownership, offer transparent pricing, and take full accountability for deployment, hosting, and post-launch maintenance.',
   },
   {
     question: 'How do you guarantee the security of my data, API keys, and credentials?',

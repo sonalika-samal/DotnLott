@@ -65,15 +65,7 @@ const orgSchema = {
   'contactPoint': [
     {
       '@type': 'ContactPoint',
-      'telephone': '+91-78469-69508',
       'contactType': 'customer service',
-      'email': 'connect@dotnlott.com',
-      'availableLanguage': ['en', 'hi'],
-    },
-    {
-      '@type': 'ContactPoint',
-      'telephone': '+91-85441-21551',
-      'contactType': 'technical support',
       'email': 'connect@dotnlott.com',
       'availableLanguage': ['en', 'hi'],
     },
@@ -93,7 +85,6 @@ const localBusinessSchema = {
   'image': 'https://dotnlott.com/logo-v2.png',
   '@id': 'https://dotnlott.com/#localbusiness',
   'url': 'https://dotnlott.com',
-  'telephone': '+917846969508',
   'address': {
     '@type': 'PostalAddress',
     'streetAddress': 'Cuttack',

@@ -3,11 +3,11 @@ import ContactClient from './ContactClient';
 
 export const metadata: Metadata = {
   title: 'Contact Us | DotnLott AI Automation & Website Development',
-  description: 'Get in touch with DotnLott. Reach out to Sujata Sinha & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
-  keywords: 'contact DotnLott, AI automation inquiry, website development company contact, Sujata Sinha, Abhishek Abhinav, Odisha tech company, Odisha web developer',
+  description: 'Get in touch with DotnLott. Reach out to our engineering team for custom AI workflow automation, CRM integrations, and website development.',
+  keywords: 'contact DotnLott, AI automation inquiry, website development company contact, Odisha tech company, Odisha web developer',
   openGraph: {
     title: 'Contact Us | DotnLott AI Automation & Website Development',
-    description: 'Get in touch with DotnLott. Reach out to Sujata Sinha & Abhishek Abhinav for custom AI workflow automation, CRM integrations, and website development.',
+    description: 'Get in touch with DotnLott. Reach out to our engineering team for custom AI workflow automation, CRM integrations, and website development.',
     type: 'website',
   },
 };
@@ -22,7 +22,6 @@ const contactSchema = {
     'name': 'DotnLott',
     'legalName': 'A2Z Version Private Limited',
     'email': 'connect@dotnlott.com',
-    'telephone': '+91-78469-69508',
     'address': [
       {
         '@type': 'PostalAddress',

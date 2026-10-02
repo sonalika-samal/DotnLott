@@ -334,7 +334,7 @@ export default function CareerClient() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-base sm:text-lg text-slate-600 font-light leading-relaxed max-w-2xl mx-auto"
           >
-            Work with a passionate, founder-led team creating autonomous agent workflows, enterprise integrations, and
+            Work with a passionate, high-impact engineering team creating autonomous agent workflows, enterprise integrations, and
             cutting-edge web applications. Enjoy remote flexibility, fast ownership, and competitive rewards.
           </motion.p>
 
@@ -522,7 +522,7 @@ export default function CareerClient() {
               </span>
               <h4 className="text-sm font-bold text-slate-900">Application Review</h4>
               <p className="text-xs text-slate-600 font-light leading-relaxed">
-                Our founders and leads review your resume, code samples, or sales background within 48 hours.
+                Our technical leads and hiring team review your resume, code samples, or background within 48 hours.
               </p>
             </div>
 
