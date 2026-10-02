@@ -331,10 +331,7 @@ export default function ContactClient() {
                     <Mail className="w-5 h-5 text-brand-purple" />
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email (Default Mode of Contact)</span>
-                      <span className="text-[8px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">Primary</span>
-                    </div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-display">Email Us</span>
                     <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 sm:gap-2.5 text-[10.5px] sm:text-xs font-extrabold text-slate-900 min-w-0">
                       <a
                         href="mailto:connect@dotnlott.com"
@@ -352,7 +349,7 @@ export default function ContactClient() {
                         hello.dotnlott@gmail.com
                       </a>
                     </div>
-                    <span className="text-[11px] text-slate-500 font-light">Default channel for RFPs, technical inquiries, and project specs</span>
+                    <span className="text-[11px] text-slate-500 font-light">Formal RFPs, inquiries & project specs</span>
                   </div>
                 </div>
 

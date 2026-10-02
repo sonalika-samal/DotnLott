@@ -559,7 +559,7 @@ export default function CareerClient() {
           </div>
         </section>
 
-        {/* DIRECT EMAIL HIRING BANNER - DEFAULT MODE OF CONTACT */}
+        {/* DIRECT EMAIL APPLICATION BANNER */}
         <div className="max-w-4xl mx-auto mt-14 p-6 sm:p-8 rounded-3xl bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-slate-800 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none" />
           <div className="flex items-center gap-4 relative z-10">
@@ -567,18 +567,13 @@ export default function CareerClient() {
               <Mail className="w-6 h-6 text-purple-300" />
             </div>
             <div className="flex flex-col gap-1 text-left">
-              <div className="flex items-center gap-2">
-                <h4 className="text-base sm:text-lg font-bold text-white font-display">Email is Our Default Mode of Contact</h4>
-                <span className="text-[9px] font-extrabold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  Primary Channel
-                </span>
-              </div>
+              <h4 className="text-base sm:text-lg font-bold text-white font-display">Direct Applications & Inquiries</h4>
               <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
-                Prefer applying or asking questions directly? Send your CV, portfolio, and target role to{' '}
+                Prefer to connect directly? Send your CV, portfolio, or role of interest to{' '}
                 <a href="mailto:connect@dotnlott.com" className="text-amber-300 font-semibold underline hover:text-amber-200">
                   connect@dotnlott.com
                 </a>
-                . Our hiring team reviews inbound emails within 24–48 hours.
+                . Our hiring team reviews submissions within 24–48 hours.
               </p>
             </div>
           </div>
@@ -587,7 +582,7 @@ export default function CareerClient() {
             className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 flex-shrink-0 relative z-10 hover:scale-105 active:scale-95"
           >
             <Mail className="w-4 h-4 text-brand-purple" />
-            <span>Email Resume Directly</span>
+            <span>Email Your Application</span>
           </a>
         </div>
       </div>
